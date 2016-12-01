@@ -242,16 +242,8 @@
     <p>시간:</p><strong>홍대3번출구</strong>
     <p>날짜:</p><strong>홍대3번출구</strong> 
   </div>
-
-
-
-
 </div>
 </div>
-
-
-
-
 <div class="one_third">
 <div class="card123">
   <img src="artist/10cm.jpg" alt="Avatar" style="width:100%">

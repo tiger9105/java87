@@ -46,7 +46,11 @@
       <div class="footer"><a href="#">Forgot your password?</a></div>
       <div id="fb-root"></div>
       <fb:login-button show-faces="false" width="200" max-rows="1"></fb:login-button>
-        <a href="#" onclick="FB.logout();">[logout]</a><br>
+       <a href="#" onclick="FB.logout();">[logout]</a><br>
+           <div align="left">
+             <div id="name"></div>
+            <div id="id"></div>
+        </div>
     </form>
     
     
