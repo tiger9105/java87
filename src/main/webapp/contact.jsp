@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -33,6 +35,9 @@
 <link rel="stylesheet" href="css/screen.css">
 <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
 
+<!-- 새로 추가된 메인 UI로고부분   -->
+<link rel="stylesheet" href="css/UP/UP.css">
+
 <!-- Favicons ==================================================
 ================================================== -->
 
@@ -53,7 +58,8 @@
   <div class="container"> 
     <!-- Header | Logo, Menu
     ================================================== -->
-    <div class="logo"><a href="index.jsp"><img src="images/logo.png" alt="" /></a></div>
+   <div class="retrologo"><a href="index.jsp" style="font-size: 50px">Underground  Play</a></div>
+    <!-- ㅁㄴㅇㅁ니ㅏㅁㄴ어미ㅏㄴ어ㅣㅁㄴㅇ -->
     <div class="mainmenu">
       <div id="mainmenu">
         <ul class="sf-menu">
@@ -69,8 +75,14 @@
               <li><a href="singleblog.jsp">Single Post</a></li>
             </ul>
           </li>
-          <li><a href="features.jsp">Features</a></li>
-          <li><a href="contact.jsp" id="visited">Contact</a></li>
+          <li><a href="features.jsp" id="visited">Features</a></li>
+             <li><a href="contact.jsp">MY Page</a></li>
+               <c:if test="${user!=null}">
+            <li> <a href="/user/logout" onclick="FB.logout();" style="color: white;">logout</a><br></li>
+            </c:if>
+            <c:if test="${user==null}">
+            <li> <a href="/login.jsp" style="color: white;">login</a><br></li>
+            </c:if>
         </ul>
       </div>
       <!-- mainmenu ends here --> 
@@ -100,74 +112,164 @@
 <div class="breadcrumbs">
   <div class="container">
     <header>
-      <h3>Contact Page</h3>
-      <p>- Free, fully <span class="pink">responsive HTML</span> site template made by <a href="http://www.anarieldesign.com/" rel="nofollow"><strong>Anariel Design</strong></a> -</p>
-    </header>
-  </div>
+      <h3 > ${user.userId} 회원님 환영합니다. </h3>
+     </div>
   <!-- container ends here -->
   <hr class="separator1">
 </div>
 <!-- breadcrumbs ends here --> 
-<!-- Contact Content Part - GoogleMap ==================================================
+<!-- Features ==================================================
 ================================================== -->
-<section class="map"> 
-  <!-- google map -->
-  <div class="map-holder">
-    <div class="map-container">
-      <iframe class="map" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Munich,+Germany&amp;aq=0&amp;oq=M%C3%BCnchen&amp;sll=37.0625,-95.677068&amp;sspn=53.212719,135.263672&amp;ie=UTF8&amp;hq=&amp;hnear=Munich,+Upper+Bavaria,+Bavaria,+Germany&amp;t=m&amp;ll=48.23565,11.596069&amp;spn=0.347588,2.635345&amp;z=10&amp;iwloc=A&amp;output=embed"></iframe>
-      <!-- end google map --> 
+<div id="resume">
+  <div class="container resume">
+        <p>이곳은 회원정보를 수정하거나 관리하는  페이지입니다.  </p>
+    <div class="one_third">
+      <h4>Education</h4>
     </div>
-    <!--map-container ends here--> 
-  </div>
-  <!--map-holder ends here--> 
-</section>
-
-<!-- Contact Content Part - Contact Form ==================================================
-================================================== -->
-<div class="container contact"> 
-  <!-- Contact Sidebar ==================================================
-================================================== -->
-  <div class="one_third">
-    <h3>Our Info</h3>
-    <section class="first shadow">
-      <ul>
-        <li>123456 Street Name, London</li>
-        <li>Phone: (1800) 987-12341</li>
-        <li>Fax: (1800) 987-12341</li>
-        <li>Website: <a href="#" title="">http://yoursitename.com</a></li>
-        <li>Email: <a href="#" title="">info@freebix.com</a></li>
-      </ul>
-    </section>
-  </div>
-  <!-- one_third ends here -->
-  <div class="two_third lastcolumn contact1">
-    <div id="contactForm">
-      <h3>Contact us</h3>
-      <div class="sepContainer"></div>
-      <form action="process.php" method="post" id="contact_form">
-        <div class="name">
-          <label for="name">Your Name:</label>
-          <p> Please enter your full name</p>
-          <input id=name name=email type=text placeholder="e.g. Mr. John Smith" required />
-        </div>
-        <div class="email">
-          <label for="email">Your Email:</label>
-          <p> Please enter your email address</p>
-          <input id=email name=email type=email placeholder="example@domain.com" required />
-        </div>
-        <div class="message">
-          <label for="message">Your Message:</label>
-          <p> Please enter your question</p>
-          <textarea id=message name=message rows=6 cols=10 required></textarea>
-        </div>
-        <div id="loader">
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
+    <div class="two_third lastcolumn">
+      <p><strong>2000-2008</strong> - Mauris laoreet nulla at dui consectetur vel elementum justo tempor. Sed erat dui, sagittis a pharetra ut, tempor erat dui, sagittis a pharetra ut, tempor vel turpis. Vestibulum blandit ultricies tempus.</p>
+      <p><strong>2008-2009</strong> - Mauris laoreet nulla at dui consectetur vel elementum justo tempor. Sed erat dui, sagittis a pharetra ut, tempor erat dui, sagittis a pharetra ut, tempor vel turpis. Vestibulum blandit ultricies tempus.</p>
     </div>
-    <!-- end contactForm --> 
+    <div class="one_third">
+      <h4>Work Experience</h4>
+    </div>
+    <div class="two_third lastcolumn">
+      <p><strong>2009-2011</strong> - Mauris laoreet nulla at dui consectetur vel elementum justo tempor. Sed erat dui, sagittis a pharetra ut, tempor erat dui, sagittis a pharetra ut, tempor vel turpis. Vestibulum blandit ultricies tempus.</p>
+      <p><strong>2011-2012</strong> - Mauris laoreet nulla at dui consectetur vel elementum justo tempor. Sed erat dui, sagittis a pharetra ut, tempor erat dui, sagittis a pharetra ut, tempor vel turpis. Vestibulum blandit ultricies tempus.</p>
+    </div>
+    <div class="one_third">
+      <h4>Awards</h4>
+    </div>
+    <div class="two_third lastcolumn">
+      <div class="one_fourth">
+        <p><img src="images/portfolio/a.jpg" alt=""/></p>
+        <p>2011 Best Theme Award</p>
+      </div>
+      <div class="one_fourth">
+        <p><img src="images/portfolio/c.jpg" alt=""/></p>
+        <p>2012 Project Award</p>
+      </div>
+      <div class="one_fourth">
+        <p><img src="images/portfolio/b.jpg" alt=""/></p>
+        <p>2012 Project Award</p>
+      </div>
+      <div class="one_fourth lastcolumn">
+        <p><img src="images/portfolio/a.jpg" alt=""/></p>
+        <p>2009 Project of the Year</p>
+      </div>
+    </div>
+    <div class="one_third">
+      <h4>References</h4>
+    </div>
+    <div class="two_third lastcolumn">
+      <div class="one_half">
+        <p><strong>Jan Doe</strong><br />
+          Manager at Proximet in 2008<br />
+          200.000.0000</p>
+      </div>
+      <!--//grid_3-->
+      <div class="one_half lastcolumn">
+        <p><strong>Johnathan Smith</strong><br />
+          Co-worker at Proximet in 2012<br />
+          300.000.0000</p>
+      </div>
+    </div>
   </div>
 </div>
+<!-- Features FAQ ==================================================
+================================================== -->
+<div class="container">
+  <hr class="separator">
+  <h3>Accordions</h3>
+  <div class="accordion-trigger">
+    <h3>What did you eat for breakfast?</h3>
+  </div>
+  <div class="accordion-container">
+    <div class="one_third"> <img class="shadow" src="images/portfolio/c.jpg" alt="" /> </div>
+    <!--end one_third-->
+    <div class="one_third"> <img class="shadow" src="images/portfolio/a.jpg" alt="" /> </div>
+    <!--end one_third-->
+    <div class="one_third lastcolumn"> <img class="shadow" src="images/portfolio/b.jpg" alt="" /> </div>
+    <!--end one_third-->
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. </p>
+    <hr class="separator1">
+  </div>
+  <div class="accordion-trigger">
+    <h3>Morning or Night person?</h3>
+  </div>
+  <div class="accordion-container">
+    <div class="one_half">
+      <div class="video-holder">
+        <div class="video-container">
+          <iframe title="YouTube video player" class="youtube-player" src="http://www.youtube.com/embed/W7JXcoTty3Q"></iframe>
+        </div>
+        <!--video-container ends here--> 
+      </div>
+      <!--video-holder ends here--> 
+    </div>
+    <!--end one_half-->
+    <div class="one_half lastcolumn">
+      <div class="video-holder">
+        <div class="video-container">
+          <iframe title="YouTube video player" class="youtube-player" src="http://www.youtube.com/embed/W7JXcoTty3Q"></iframe>
+        </div>
+        <!--video-container ends here--> 
+      </div>
+      <!--video-holder ends here--> 
+    </div>
+    <!--end one_half-->
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. </p>
+    <hr class="separator1">
+  </div>
+  <div class="accordion-trigger">
+    <h3>If you were a animal, which would you be?</h3>
+  </div>
+  <div class="accordion-container">
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. </p>
+    <hr class="separator1">
+  </div>
+  <div class="accordion-trigger">
+    <h3>Your favorite places in the world?</h3>
+  </div>
+  <div class="accordion-container">
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. </p>
+    <hr class="separator1">
+  </div>
+  <div class="accordion-trigger">
+    <h3>Your favorite color?</h3>
+  </div>
+  <div class="accordion-container">
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. </p>
+    <hr class="separator1">
+  </div>
+  <div class="accordion-trigger">
+    <h3>The 5 things you can't live without?</h3>
+  </div>
+  <div class="accordion-container">
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.</p>
+    <hr class="separator1">
+    <!-- ENDS Accordions --> 
+  </div>
+  <hr class="separator">
+  <h3>Tabs</h3>
+  <ul class="tabs">
+    <li><a class="active" href="#trends">Trends</a></li>
+    <li><a class="" href="#fashion">Fashion</a></li>
+    <li><a class="" href="#shows">Shows</a></li>
+  </ul>
+  <ul class="tabs-content">
+    <li class="active" id="trends">
+      <p>Lorem ipsum dolor sit amet, proscriptum videt ulteriori. Filiam sunt amore nec est cum autem est se in. Cellam sanctissima coniunx in lucem exempli paupers coniunx rex cum autem quod ait regem Ardalio. Filiam sunt amore nec est cum autem est se in.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+    </li>
+    <li id="fashion">
+      <p>Lorem ipsum dolor sit amet, proscriptum videt ulteriori. Filiam sunt amore nec est cum autem est se in. Cellam sanctissima coniunx in lucem exempli paupers coniunx rex cum autem quod ait regem Ardalio. Filiam sunt amore nec est cum autem est se in.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+    </li>
+    <li id="shows">
+      <p>Lorem ipsum dolor sit amet, proscriptum videt ulteriori. Filiam sunt amore nec est cum autem est se in. Cellam sanctissima coniunx in lucem exempli paupers coniunx rex cum autem quod ait regem Ardalio. Filiam sunt amore nec est cum autem est se in.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+    </li>
+  </ul>
+</div>
+<!-- container ends here -->
 <div class="blankSeparator"></div>
 
 <!-- Socialize ==================================================

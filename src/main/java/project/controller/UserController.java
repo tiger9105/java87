@@ -1,9 +1,13 @@
 package project.controller;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import project.domain.Page;
 import project.domain.Search;
@@ -147,7 +154,8 @@ public class UserController {
     
     session.invalidate();
     
-    return "foward:/index.html";
+    return "redirect:/index.jsp";
+    
   }
   
   
@@ -186,4 +194,45 @@ public class UserController {
     
     return "forward:/user/listUser.jsp";
   }
+  
+  
+  
+  @RequestMapping(value = "/upload")
+  @ResponseBody
+  public Object uploadFile(MultipartHttpServletRequest request,@RequestParam("uploadfile") MultipartFile multipartfile) throws Exception {
+      Iterator<String> itr =  request.getFileNames();
+      if(itr.hasNext()) {
+          MultipartFile mpf = request.getFile(itr.next());
+          System.out.println(mpf.getOriginalFilename() +" uploaded!");
+          try {
+              //just temporary save file info into ufile
+       
+           
+              String path="C:\\Users\\BitCamp\\git\\java87\\UI02Project\\src\\main\\webapp\\images\\uploadFiles\\"+multipartfile.getOriginalFilename(); //내가 저장할 공간 
+              File file =new File(path);
+              multipartfile.transferTo(file); // 파일보냄 
+              
+              
+              System.out.println(path);
+              User user = userService.getUser("abcd");
+               System.out.println(user);
+              user.setFilepath(path);
+              
+              userService.updateUser(user);
+              System.out.println(user);
+           
+              
+              
+          } catch (IOException e) {
+              System.out.println(e.getMessage());
+              e.printStackTrace();
+          }
+          return true;
+      } else {
+          return false;
+      }
+  }
+  
+  
+  
 }

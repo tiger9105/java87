@@ -35,8 +35,8 @@ public class UserDaoImpl implements UserDao{
   }
 
   public User getUser(String userId) throws Exception {
-    System.out.println("오나"+userId);
-    return sqlSession.selectOne("UserMapper.getUser", userId);
+        System.out.println("여기는 getUser 유저매퍼에서 ");
+       return sqlSession.selectOne("UserMapper.getUser", userId);
   }
   
   public void updateUser(User user) throws Exception {

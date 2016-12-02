@@ -19,3 +19,9 @@ img {
 .container12 {
     padding: 2px 16px;
 }
+.img12{
+	 width: inherit;
+  max-width: 100%;
+  height: auto;
+	
+}

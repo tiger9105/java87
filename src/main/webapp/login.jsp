@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
+  <link rel="stylesheet" href="css/button/button.css">
+  
   <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
 <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
@@ -45,8 +46,14 @@
       </div>
       <div class="footer"><a href="#">Forgot your password?</a></div>
       <div id="fb-root"></div>
-      <fb:login-button show-faces="false" width="200" max-rows="1"></fb:login-button>
-       <a href="#" onclick="FB.logout();">[logout]</a><br>
+     <!-- facebook icon 수정본  -->
+       <a class='btn fb1' href="#" onclick="FB.login();">
+    login
+    <span>
+      with facebook
+    </span>
+  </a>
+  <!--  ///////////////////////////////////// -->
            <div align="left">
              <div id="name"></div>
             <div id="id"></div>

@@ -1,0 +1,16 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300);
+
+
+.containerlogo {
+   margin:5% auto;
+}
+
+ .retrologo {
+   font-family: 'Oswald', sans-serif;
+  font-size:100px;
+   text-shadow: 5px 5px 0px #f0e8db, 8px 8px 0px #6c5257;
+  color:#962f42;
+  transform: rotate(-10deg);
+ }
+ 
+ 

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
@@ -34,6 +36,8 @@
 <link rel="stylesheet" href="css/screen.css">
 <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/font-awesome.min.css">
+<!-- 새로 추가된 메인 UI로고부분   -->
+<link rel="stylesheet" href="css/UP/UP.css">
 <!-- 메인문짜면서 추가된부분 버스킹 공고 부분  -->
 <link rel="stylesheet" href="css/main/main.css">
   <link rel="stylesheet"
@@ -61,8 +65,14 @@
 <div id="header">
   <div class="container"> 
     <!-- Header | Logo, Menu
-    ================================================== -->
-    <div class="logo"><a href="index.jsp"><img src="images/logo1.png" alt="" /></a></div>
+    ==================================여기는 UP ================ -->
+
+
+   <div class="retrologo"><a href="index.jsp" >Underground  Play</a></div>
+ 
+
+<!-- ㄴㅇ러미ㅏㄴㅇ러ㅏ민ㅇ러;ㅁㄴㅇ러ㅏㅣㅁㄴㅇ러ㅏㅣ;ㅁㄴㅇ럼ㄴ;ㅣㅇ러ㅣㅁ -->
+    <!-- 여기는 UP 로고  -->
     <div class="mainmenu">
       <div id="mainmenu">
         <ul class="sf-menu">
@@ -79,8 +89,15 @@
             </ul>
           </li>
           <li><a href="features.jsp">Features</a></li>
-          <li><a href="contact.jsp">My page</a></li>
-        </ul>
+          <li><a href="contact.jsp">MY Page</a></li>
+          <!-- 로그인 로그아웃 부분  -->
+            <c:if test="${user!=null}">
+            <li> <a href="/user/logout" onclick="FB.logout();" style="color: white;">logout</a><br></li>
+            </c:if>
+            <c:if test="${user==null}">
+            <li> <a href="/login.jsp" style="color: white;">login</a><br></li>
+            </c:if>
+            </ul>
       </div>
       <!-- mainmenu ends here --> 
       
@@ -109,7 +126,7 @@
 <section class="slider">
   <div class="flexslider">
     <ul class="slides">
-      <li> <a href="#"><img src="images/flexslider/musicback1.jpg"   style="width: 100%; height:400px; " alt=""/></a>
+      <li> <a href="#"><img class="img12" src="images/flexslider/musicback1.jpg"   style="width:1600px; height:500px; overflow: hidden;" /></a>
         <section class="caption">
        
           <h2 class="shadow3">Up contest</h2>
@@ -117,14 +134,14 @@
           <a class="button" href="#">지금 바로 보러가기 !</a></section>
        
       </li>
-      <li> <img src="images/flexslider/musicback2.jpg" alt=""  style="width: 100%; height: 400px;"/>
+      <li> <img  class="img12"  src="images/flexslider/musicback2.jpg" alt=""  style=" width:1600px; height:500px; overflow: hidden; "/>
         
         <section class="caption" style="text-align: center;">
           <h2 class="shadow3">Best Artist</h2>
           <p>김지희가 현재 1등을 유지하고있어요 <a href="http://www.anarieldesign.com/" rel="nofollow"></a></p>
           <a class="button" href="#">지금 바로 보러가기!</a></section>
       </li>
-      <li> <a href="#"><img src="images/flexslider/musicback3.jpg"   style="width: 100%; height:400px;" alt="" /></a>
+      <li> <a href="#"><img  class="img12"src="images/flexslider/musicback3.jpg"   style="width:1600px; height:500px; overflow: hidden; " alt="" /></a>
         <section class="caption">
           <h2 class="shadow3">Busking</h2>
           <p>이민옥의 거리공연 어디서하는지  궁금하시죠? <a href="http://www.anarieldesign.com/" rel="nofollow"></a></p>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -33,6 +34,9 @@
 <link rel="stylesheet" href="css/screen.css">
 <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
 
+
+<!-- 새로 추가된 메인 UI로고부분   -->
+<link rel="stylesheet" href="css/UP/UP.css">
 <!-- Favicons ==================================================
 ================================================== -->
 
@@ -53,7 +57,8 @@
   <div class="container"> 
     <!-- Header | Logo, Menu
     ================================================== -->
-    <div class="logo"><a href="index.jsp"><img src="images/logo.png" alt="" /></a></div>
+      <div class="retrologo"><a href="index.jsp" style="font-size: 50px">Underground  Play</a></div>
+    <!-- ㅁㄴㅇㅁ니ㅏㅁㄴ어미ㅏㄴ어ㅣㅁㄴㅇ -->
     <div class="mainmenu">
       <div id="mainmenu">
         <ul class="sf-menu">
@@ -70,7 +75,13 @@
             </ul>
           </li>
           <li><a href="features.jsp">Features</a></li>
-          <li><a href="contact.jsp">Contact</a></li>
+        <li><a href="contact.jsp">MY Page</a></li>
+               <c:if test="${user!=null}">
+            <li> <a href="/user/logout" onclick="FB.logout();" style="color: white;">logout</a><br></li>
+            </c:if>
+            <c:if test="${user==null}">
+            <li> <a href="/login.jsp" style="color: white;">login</a><br></li>
+            </c:if>
         </ul>
       </div>
       <!-- mainmenu ends here --> 

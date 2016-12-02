@@ -33,6 +33,14 @@
              #{filepath:VARCHAR} )
    </insert>
    
+    <update  id="updateUser" parameterType="user" >
+      UPDATE users
+      <set>
+        IMAGE_FILE  = #{filepath} 
+       </set>
+      WHERE user_id = #{userId}
+    </update>
+   
    <!-- SQL : SELECT ONE  유저 선택하기  -->
    <!--  
    <select  id="getUser"  parameterType="string"  resultMap="userSelectMap">
