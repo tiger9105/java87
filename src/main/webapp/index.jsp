@@ -46,6 +46,10 @@
     <link rel="stylesheet"
           href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
           <!-- 여기까지 버스킹 공고 부분 부트스트랩과 css를 추가했다  -->
+          
+            <link rel="stylesheet"
+            href="css/menuslide/menuslide.css">
+            <!-- 메뉴 슬라이드 부분  -->
 <!-- Favicons ==================================================
 ================================================== -->
 
@@ -66,10 +70,23 @@
   <div class="container"> 
     <!-- Header | Logo, Menu
     ==================================여기는 UP ================ -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">최근본동영상</a>
+  <a href="#">내가찜한 아티스트</a>
+  <a href="#">버스킹찜목록</a>
+  <a href="#">내정보수정</a>
+</div>
 
 
-   <div class="retrologo"><a href="index.jsp" >Underground  Play</a></div>
- 
+<div id="main">
+  <span style="font-size:30px;cursor:pointer; color: white;"   onclick="openNav()">&#9776; open</span>
+
+ </div>
+
+
+   <div class="retrologo"> <a href="index.jsp" >Underground  Play</a></div>
+
 
 <!-- ㄴㅇ러미ㅏㄴㅇ러ㅏ민ㅇ러;ㅁㄴㅇ러ㅏㅣㅁㄴㅇ러ㅏㅣ;ㅁㄴㅇ럼ㄴ;ㅣㅇ러ㅣㅁ -->
     <!-- 여기는 UP 로고  -->
@@ -95,7 +112,7 @@
             <li> <a href="/user/logout" onclick="FB.logout();" style="color: white;">logout</a><br></li>
             </c:if>
             <c:if test="${user==null}">
-            <li> <a href="/login.jsp" style="color: white;">login</a><br></li>
+            <li> <a href="/login.jsp" style="color: white;">login</a><br></li> 
             </c:if>
             </ul>
       </div>
@@ -152,8 +169,7 @@
   <!-- flexslider ends here --> 
 </section>
 <!-- slider ends here --> 
-<!-- info Box ==================================================
-================================================== -->
+<!-- info Box ==================================================================================================== -->
 <div class="infobox">
   <div class="container info">
     <header>
@@ -167,8 +183,7 @@
   <!-- container ends here --> 
 </div>
 <!-- infobox ends here --> 
-<!--Latest Photos ==================================================
-================================================== -->
+<!--Latest Photos ==================================================================================================== -->
 <div class="container latest">
   <div class="one_third">
     <figure class="shadow"><a href="#" class="thumb"> <iframe width="300" height="200" src="https://www.youtube.com/embed/tSAJ-iW1GBg"></iframe></a>
@@ -380,7 +395,12 @@
 <!-- End Document
 ================================================== --> 
 <!-- Scripts ==================================================
+
 ================================================== --> 
+<script src="javascript/facebookjs/facebooklogout.js"></script>
+<!-- 로그아웃버튼  -->
+<script  src="javascript/menusliderjs/menuslide.js"></script>
+<!-- 메뉴 슬라이드 부분 자바스크립트  -->
 <script src="javascript/jquery-1.8.0.min.js" type="text/javascript"></script> 
 <!-- Main js files --> 
 <script src="javascript/screen.js" type="text/javascript"></script> 

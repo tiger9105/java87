@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,16 +61,18 @@ public class UserController {
   }
   
   //@RequestMapping("/addUser.do")
-  @RequestMapping( value="addUser", method=RequestMethod.POST )
-  public String addUser( @ModelAttribute("user") User user ) throws Exception {
-
+  @RequestMapping( value="addUser12", method=RequestMethod.POST )
+  public String addUser12( @ModelAttribute("user") User user,String pwd ) throws Exception {
+    user.setPassword(pwd);
+    
     System.out.println("/user/addUser : POST");
     //Business Logic
+    
     userService.addUser(user);
     
     return "redirect:/user/loginView.jsp";
   }
-  
+ 
   //@RequestMapping("/getUser.do")
   @RequestMapping( value="getUser", method=RequestMethod.GET )
   public String getUser( @RequestParam("userId") String userId , Model model ) throws Exception {
@@ -115,16 +118,18 @@ public class UserController {
   //@RequestMapping("/loginView.do")
   //public String loginView() throws Exception{
   @RequestMapping( value="login", method=RequestMethod.GET )
-  public String login() throws Exception{
+  public String login(HttpServletRequest req) throws Exception{
+
     
     System.out.println("/user/logon : GET");
-
-    return "forward:index.jsp";
+    
+    
+    return "redirect:/index.jsp";
   }
   
   //@RequestMapping("/login.do")
   @RequestMapping( value="login", method=RequestMethod.POST )
-  public String login(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
+  public String login12(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
     
     System.out.println("/user/login : POST");
     //Business Logic
@@ -143,7 +148,34 @@ public class UserController {
     }
     
     return "redirect:/index.jsp";
-    
+   }
+  @RequestMapping(value="login12",method=RequestMethod.POST)
+  public @ResponseBody User login12(String userId,HttpSession session) throws Exception{
+     System.out.println(userId);
+     System.out.println("===============================여기는 새로만든 로긴 포스트 ");
+    User user = userService.getUser(userId);
+      System.out.println(user);
+      if(user != null){
+        session.setAttribute("user", user);
+      }
+    return user;
+  }
+  
+  @RequestMapping(value="addUser",method=RequestMethod.POST)
+  public @ResponseBody User addUser(String userId, String email,String pwd, HttpSession session) throws Exception{
+    System.out.println(userId);
+    System.out.println("여기는 Add USER 입니다. ");
+    User user=new User();
+    user.setUserId(userId);
+    user.setEmail(email);
+    user.setPassword(pwd);
+    System.out.println(user);
+    userService.addUser(user);
+   if(user !=null){
+     session.setAttribute("user", user);
+   }
+            
+    return user;
   }
   
   //@RequestMapping("/logout.do")

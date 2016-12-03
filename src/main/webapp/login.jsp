@@ -44,7 +44,7 @@
       <div class="button-container">
         <button type="submit"><span>Go</span></button>
       </div>
-      <div class="footer"><a href="#">Forgot your password?</a></div>
+      <div class="footer"><a href="#" >Forgot your password?</a></div>
       <div id="fb-root"></div>
      <!-- facebook icon 수정본  -->
        <a class='btn fb1' href="#" onclick="FB.login();">
@@ -54,10 +54,7 @@
     </span>
   </a>
   <!--  ///////////////////////////////////// -->
-           <div align="left">
-             <div id="name"></div>
-            <div id="id"></div>
-        </div>
+    
     </form>
     
     
@@ -94,10 +91,7 @@
   </form>
   </div>
 </div>
-
- 
- 
-  
+   
 </span>
   <span class="blank"></span>
 </div>
