@@ -12,26 +12,37 @@
     <link rel="stylesheet"
           href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
      <link rel="stylesheet"
-            href="css/menuslide/menuslide.css">
+            href="css/test/test.css">
 </head>
 <body>
-
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
-
-
-<div id="main">
-  <h2>Sidenav Push Example</h2>
-  <p>Click on the element below to open the side navigation menu, and push this content to the right.</p>
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-</div>
-
-
-<script  src="javascript/menusliderjs/menuslide.js"></script>
+<section class="wrapper">
+  <h1>
+    <a href="#">UP</a>
+    <div class="orbit orbit-1"></div>
+    <div class="orbit orbit-2"></div>
+    <div class="orbit orbit-3"></div>
+    <div class="orbit orbit-4"></div>
+    <div class="orbit orbit-5"></div>
+    <div class="orbit orbit-6"></div>
+    <div class="orbit orbit-7"></div>
+    <div class="orbit orbit-8"></div>
+    <div class="orbit orbit-9"></div>
+    <div class="orbit orbit-10"></div>
+    <div class="orbit orbit-11"></div>
+    <div class="orbit orbit-12"></div>
+    <div class="orbit orbit-13"></div>
+    <div class="orbit orbit-14"></div>
+    <div class="orbit orbit-15"></div>
+    <div class="orbit orbit-16"></div>
+    <div class="orbit orbit-17"></div>
+    <div class="orbit orbit-18"></div>
+    <div class="orbit orbit-19"></div>
+    <div class="orbit orbit-20"></div>
+    
+  </h1>
+  </span>
+</section>
+<script  src="javascript/test/test.js"></script>
+<script src="javascript/jquery-1.8.0.min.js" type="text/javascript"></script> 
  </body>
 </html>

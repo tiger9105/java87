@@ -3,11 +3,12 @@ package project.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,16 +53,19 @@ public class UserController {
   
   //@RequestMapping("/addUserView.do")
   //public String addUserView() throws Exception {
-  @RequestMapping( value="addUser", method=RequestMethod.GET )
-  public String addUser() throws Exception{
-  
-    System.out.println("/user/addUser : GET");
+  @RequestMapping( value="addUser", method=RequestMethod.POST )
+  public String addUser(@ModelAttribute("user") User user,HttpSession session) throws Exception{
+    userService.addUser(user);
     
-    return "redirect:/user/addUserView.jsp";
+    System.out.println("/user/addUser : GET");
+    if(user !=null){
+      session.setAttribute("user", user);
+    }
+    return "redirect:/index.jsp";
   }
   
   //@RequestMapping("/addUser.do")
-  @RequestMapping( value="addUser12", method=RequestMethod.POST )
+ /* @RequestMapping( value="addUser12", method=RequestMethod.POST )
   public String addUser12( @ModelAttribute("user") User user,String pwd ) throws Exception {
     user.setPassword(pwd);
     
@@ -72,7 +76,7 @@ public class UserController {
     
     return "redirect:/user/loginView.jsp";
   }
- 
+ */
   //@RequestMapping("/getUser.do")
   @RequestMapping( value="getUser", method=RequestMethod.GET )
   public String getUser( @RequestParam("userId") String userId , Model model ) throws Exception {
@@ -105,8 +109,7 @@ public class UserController {
     System.out.println("/user/updateUser : POST");
     //Business Logic
     userService.updateUser(user);
-    
-    String sessionId=((User)session.getAttribute("user")).getUserId();
+     String sessionId=((User)session.getAttribute("user")).getUserId();
     if(sessionId.equals(user.getUserId())){
       session.setAttribute("user", user);
     }
@@ -129,7 +132,7 @@ public class UserController {
   
   //@RequestMapping("/login.do")
   @RequestMapping( value="login", method=RequestMethod.POST )
-  public String login12(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
+  public String login(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
     
     System.out.println("/user/login : POST");
     //Business Logic
@@ -161,8 +164,8 @@ public class UserController {
     return user;
   }
   
-  @RequestMapping(value="addUser",method=RequestMethod.POST)
-  public @ResponseBody User addUser(String userId, String email,String pwd, HttpSession session) throws Exception{
+  @RequestMapping(value="addUser12",method=RequestMethod.POST)
+  public @ResponseBody User addUser12(String userId, String email,String pwd, HttpSession session) throws Exception{
     System.out.println(userId);
     System.out.println("여기는 Add USER 입니다. ");
     User user=new User();
@@ -177,7 +180,7 @@ public class UserController {
             
     return user;
   }
-  
+ 
   //@RequestMapping("/logout.do")
   @RequestMapping( value="logout", method=RequestMethod.GET )
   public String logout(HttpSession session ) throws Exception{
@@ -192,18 +195,17 @@ public class UserController {
   
   
   //@RequestMapping("/checkDuplication.do")
-  @RequestMapping( value="checkDuplication", method=RequestMethod.POST )
-  public String checkDuplication( @RequestParam("userId") String userId , Model model ) throws Exception{
+  @RequestMapping( value="checkDuplication", method=RequestMethod.GET )
+  public @ResponseBody boolean checkDuplication( @RequestParam("id") String userId ) throws Exception{
     
-    System.out.println("/user/checkDuplication : POST");
+    System.out.println("/user/checkDuplication : GET");
     //Business Logic
-    boolean result=userService.checkDuplication(userId);
-    model.addAttribute("result", new Boolean(result));
-    model.addAttribute("userId", userId);
+    boolean result = userService.checkDuplication(userId);
+    // Model 과 View 연결
+   System.out.println("userId : " +userId );
 
-    return "forward:/user/checkDuplication.jsp";
+    return result;
   }
-  
   //@RequestMapping("/listUser.do")
   @RequestMapping( value="listUser" )
   public String listUser( @ModelAttribute("search") Search search , Model model , HttpServletRequest request) throws Exception{
@@ -263,6 +265,26 @@ public class UserController {
       } else {
           return false;
       }
+  }
+  
+  
+  @RequestMapping(value="video/{url}")
+  public String video(HttpSession session,@PathVariable("url") String url,HttpServletRequest request){
+    System.out.println("video:"+url);
+    
+    
+   /* Set<String> set  = null;
+    if((Set<String>)session.getAttribute("set")==null){
+      set  = new HashSet<String>();
+    }else{
+      set  = (Set<String>)session.getAttribute("set");
+    }
+    set.add(url);
+    session.setAttribute("set", set);
+     Set<String> set =(Set<String>)session.getAttribute("set");
+    set.add(user);
+    */
+    return "redirect:index.jsp";
   }
   
   

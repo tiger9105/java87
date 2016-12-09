@@ -41,7 +41,7 @@ public class LogonCheckInterceptor extends HandlerInterceptorAdapter {
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
       
       if(   uri.indexOf("addUser") != -1 || uri.indexOf("login") != -1    || 
-          uri.indexOf("checkDuplication") != -1   ){
+          uri.indexOf("checkDuplication") != -1  || uri.indexOf("login12") != -1 ){
         request.getRequestDispatcher("/index.jsp").forward(request, response);
         System.out.println("[ .... ]");
         System.out.println("[ LogonCheckInterceptor end........]\n");
@@ -61,7 +61,7 @@ public class LogonCheckInterceptor extends HandlerInterceptorAdapter {
           uri.indexOf("checkDuplication") != -1 ){
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
       if(   uri.indexOf("addUser") != -1 || uri.indexOf("login") != -1    || 
-          uri.indexOf("checkDuplication") != -1 || uri.indexOf("upload") != -1 ){
+          uri.indexOf("checkDuplication") != -1 || uri.indexOf("upload") != -1 || uri.indexOf("video") != -1  || uri.indexOf("login12") != -1 ){
         System.out.println("[... ]");
         System.out.println("[ LogonCheckInterceptor end........]\n");
         return true;
