@@ -55,6 +55,7 @@ public class UserController {
   //public String addUserView() throws Exception {
   @RequestMapping( value="addUser", method=RequestMethod.POST )
   public String addUser(@ModelAttribute("user") User user,HttpSession session) throws Exception{
+     user.setFilepath("Straight-Up.png"); //경로 걍 넣어주기 
     userService.addUser(user);
     
     System.out.println("/user/addUser : GET");
@@ -78,7 +79,7 @@ public class UserController {
   }
  */
   //@RequestMapping("/getUser.do")
-  @RequestMapping( value="getUser", method=RequestMethod.GET )
+/*  @RequestMapping( value="getUser", method=RequestMethod.GET )
   public String getUser( @RequestParam("userId") String userId , Model model ) throws Exception {
     
     System.out.println("/user/getUser : GET");
@@ -87,11 +88,25 @@ public class UserController {
     model.addAttribute("user", user);
     
     return "forward:/user/getUser.jsp";
+    
+    
+  }*/
+
+  @RequestMapping( value="getUser", method=RequestMethod.GET )
+  public @ResponseBody User getUser(MultipartHttpServletRequest request,HttpSession session) throws Exception {
+    System.out.println("/user/getUser : GET");
+    User user=new User();
+    session.invalidate();
+    request.getParameter("userId");
+    System.out.println(request.getParameter("userId"));
+   
+
+    return user;
   }
   
   //@RequestMapping("/updateUserView.do")
   //public String updateUserView( @RequestParam("userId") String userId , Model model ) throws Exception{
-  @RequestMapping( value="updateUser", method=RequestMethod.GET )
+ /* @RequestMapping( value="updateUser", method=RequestMethod.GET )
   public String updateUser( @RequestParam("userId") String userId , Model model ) throws Exception{
 
     System.out.println("/user/updateUser : GET");
@@ -100,22 +115,65 @@ public class UserController {
     model.addAttribute("user", user);
     
     return "forward:/user/updateUser.jsp";
-  }
+  }*/
   
   //@RequestMapping("/updateUser.do")
   @RequestMapping( value="updateUser", method=RequestMethod.POST )
-  public String updateUser( @ModelAttribute("user") User user , Model model , HttpSession session) throws Exception{
+  public @ResponseBody User updateUser(MultipartHttpServletRequest request,HttpSession session) throws Exception{
 
     System.out.println("/user/updateUser : POST");
+    //String sessionId=((User)session.getAttribute("user")).getUserId();
     //Business Logic
-    userService.updateUser(user);
-     String sessionId=((User)session.getAttribute("user")).getUserId();
-    if(sessionId.equals(user.getUserId())){
-      session.setAttribute("user", user);
-    }
+    User user=new User();
+    MultipartFile file = request.getFile("uploadfile");
     
-    //return "redirect:/getUser.do?userId="+user.getUserId();
-    return "redirect:/user/getUser?userId="+user.getUserId();
+    user= userService.getUser(request.getParameter("user_Id"));
+    System.out.println(user.getUserId());
+    System.out.println(request.getFile("uploadfile"));
+    System.out.println(file.getName());
+    System.out.println(file.getOriginalFilename());
+    System.out.println(file.getInputStream());
+    
+   
+   if(file.getOriginalFilename()!=""){  //디비에 있는 파일경로랑 jsp 에 있는 파일경로가 같지 않다면 
+    String path="C:\\Users\\BitCamp\\git\\java87\\UI02Project\\src\\main\\webapp\\images\\uploadFiles\\"+file.getOriginalFilename();
+    file.transferTo(new File(path));
+    System.out.println("다른가 ======================");
+    System.out.println(user.getUserId());
+    System.out.println(request.getParameter(file.getOriginalFilename()));
+    System.out.println("다른가 ======================");
+        
+    user.setUserId(request.getParameter("user_Id"));
+    user.setPassword(request.getParameter("password"));
+    user.setEmail(request.getParameter("email"));
+    user.setFilepath(file.getOriginalFilename());
+    
+    userService.updateUser(user);
+    
+ 
+    user=userService.getUser(user.getUserId());
+    session.setAttribute("user", user);
+           
+   }if(file.getOriginalFilename()==""){ //jsp 에서 가져온값이랑 user안의 파일경로에 파일이름이랑 같은애들 
+     System.out.println("같은가 ======================");
+     System.out.println(user.getUserId());
+     System.out.println(request.getParameter(file.getOriginalFilename()));
+     System.out.println("같은가 ======================");
+     
+    user.setUserId(request.getParameter("user_Id"));
+    user.setPassword(request.getParameter("password"));
+    user.setEmail(request.getParameter("email"));
+    user.setFilepath(user.getFilepath());
+    
+    userService.updateUser(user);
+    
+    user=userService.getUser(user.getUserId());
+    session.setAttribute("user", user);
+      
+   }
+     //return "redirect:/getUser.do?userId="+user.getUserId();
+//    return "redirect:/user/getUser?userId="+user.getUserId();
+    return user;
   }
   
   //@RequestMapping("/loginView.do")
@@ -140,10 +198,8 @@ public class UserController {
     System.out.println("=-=-=--=-=-=-");
     
     User dbUser=userService.getUser(user.getUserId());
-    
-    
-    System.out.println(user);
-    System.out.println("==========");
+     
+
     System.out.println(dbUser);
     
     if( user.getPassword().equals(dbUser.getPassword())){
@@ -172,6 +228,7 @@ public class UserController {
     user.setUserId(userId);
     user.setEmail(email);
     user.setPassword(pwd);
+    user.setFilepath("Straight-Up.png"); //경로 걍 넣어주기 
     System.out.println(user);
     userService.addUser(user);
    if(user !=null){
@@ -250,7 +307,7 @@ public class UserController {
               System.out.println(path);
               User user = userService.getUser("abcd");
                System.out.println(user);
-              user.setFilepath(path);
+              user.setFilepath(multipartfile.getOriginalFilename());
               
               userService.updateUser(user);
               System.out.println(user);

@@ -19,6 +19,8 @@
 <p><a  class='youtube' id="player4" name="video"  href="ab"></a></p>
 
 <p><a  class='youtube' id="player5" name="video"  href="ab"></a></p>
+
+
 <script src="javascript/jquery-1.8.0.min.js" type="text/javascript"></script> 
 <script src="javascript/cookie/cookie.js"></script>
 <script src="javascript/colorbox/jquery.colorbox.js"></script>
@@ -27,6 +29,9 @@
 <script type="text/javascript">
 //전체의 uri 를 배열의 넣고 배열의 값이 널이 아닌부분만 뽑아서 
 function sucess(){
+	console.log("여기밑에 쿠키");
+	console.log($.cookie('uri'));
+	console.log("여기위에 쿠키");
 	///1번 
 var check=false;
 var def = new Array();

@@ -23,7 +23,7 @@
     <result property="password"   column="password"     jdbcType="VARCHAR" />
     <result property="email"      column="email"        jdbcType="NUMERIC"  />
     <result property="filepath"   column="IMAGE_FILE"   jdbcType="VARCHAR"  />
-  
+    <result property="artistCode"    column="artist_code"      jdbcType="NUMERIC"/>
   </resultMap>
   <!-- SQL : INSERT -->
   <insert   id="addUser"    parameterType="user" >
@@ -36,7 +36,11 @@
     <update  id="updateUser" parameterType="user" >
       UPDATE users
       <set>
-        IMAGE_FILE  = #{filepath} 
+        user_id=#{userId},
+        password=#{password},
+        email=#{email},
+        IMAGE_FILE  = #{filepath},
+        artist_code= #{artistCode} 
        </set>
       WHERE user_id = #{userId}
     </update>

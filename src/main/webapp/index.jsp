@@ -14,11 +14,23 @@
 
 <!-- Basic Page Needs ==================================================  6 
 ================================================== -->
+<style type="text/css">
+#id{
+  font-family: 'overwatch';
+}
+
+@font-face {
+font-family: 'overwatch'; /* 폰트 패밀리 이름 주기*/
+src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
+}
+</style>
 
 <meta charset="utf-8">
 <title>Freebix Responsive Site Template</title>
 
 <meta name="description" content="Place to put your description text">
+
+
 <meta name="author" content="">
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,27 +45,28 @@
 <!-- CSS ==================================================
 ================================================== -->
 <link rel="stylesheet"
-	href="node_modules/sweetalert/dist/sweetalert.css">
-<link rel="stylesheet" href="css/colorbox/colorbox.css">
+	href="/node_modules/sweetalert/dist/sweetalert.css">
+<link rel="stylesheet" href="/css/colorbox/colorbox.css">
+<link rel='stylesheet' href='/css/versus/versus.css'>
 <!-- 컬러박스  -->
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/skeleton.css">
-<link rel="stylesheet" href="css/screen.css">
-<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css"
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/skeleton.css">
+<link rel="stylesheet" href="/css/screen.css">
+<link rel="stylesheet" href="/css/prettyPhoto.css" type="text/css"
 	media="screen" />
-<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <!-- 새로 추가된 메인 UI로고부분   -->
-<link rel="stylesheet" href="css/UP/UP.css">
+<link rel="stylesheet" href="/css/UP/UP.css">
 <!-- 메인문짜면서 추가된부분 버스킹 공고 부분  -->
-<link rel="stylesheet" href="css/main/main.css">
+<link rel="stylesheet" href="/css/main/main.css">
 <link rel="stylesheet"
-	href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 
 <link rel="stylesheet"
-	href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+	href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
 <!-- 여기까지 버스킹 공고 부분 부트스트랩과 css를 추가했다  -->
 
-<link rel="stylesheet" href="css/menuslide/menuslide.css">
+<link rel="stylesheet" href="/css/menuslide/menuslide.css">
 <!-- 메뉴 슬라이드 부분  -->
 <!-- Favicons ==================================================
 ================================================== -->
@@ -85,9 +98,11 @@
     ==================================여기는 UP ================ -->
 			<div id="mySidenav" class="sidenav">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				<a class='youtube' id="player" name="video" href="index.jsp"
-					onclick="sucess()"> 최근본동영상 </a> <a href="#">내가찜한 아티스트</a> <a
-					href="#">버스킹찜목록</a> <a class='inline' href="#inline_content">내정보수정</a>
+				<a id="player" name="video" href="/youtubelisttest.jsp"
+					> 최근본동영상 </a> 
+					<a href="#">내가찜한 아티스트</a> 
+					<a href="#">버스킹찜목록</a> 
+					<a class='ajax'  href="/updateUser.jsp">내정보수정</a>
 			</div>
 			<div class="retrologo">
 				<a href="index.jsp">Underground Play</a>
@@ -101,7 +116,7 @@
 					<ul class="sf-menu">
 						<li><a href="index.jsp" id="visited">Home</a></li>
 						<li><a href="about.jsp">About</a></li>
-						<li><a href="artist.jsp">Artist</a>
+						<li><a href="/artist/listArtist">Artist</a>
 							<ul>
 								<li><a href="portfolioproject.jsp">Portfolio Project</a></li>
 							</ul></li>
@@ -110,10 +125,10 @@
 								<li><a href="singleblog.jsp">Single Post</a></li>
 							</ul></li>
 						<li><a href="features.jsp">Features</a></li>
-						<li><a href="contact.jsp">MY Page</a></li>
+						<li><a href="upcontest.jsp">UP contest</a></li>
 						<!-- 로그인 로그아웃 부분  -->
 						<c:if test="${user!=null}">
-							<li><a href="user/logout" onclick="FB.logout();"
+							<li><a href="/user/logout" onclick="FB.logout();"
 								style="color: white;">logout</a><br></li>
 						</c:if>
 						<c:if test="${user==null}">
@@ -129,12 +144,12 @@
 						<option value="">메뉴</option>
 						<option value="index.jsp">Home</option>
 						<option value="about.jsp">About</option>
-						<option value="artist.jsp">Artist</option>
+						<option value="/artist/listArtist">Artist</option>
 						<option value="portfolioproject.jsp">Portfolio Project</option>
 						<option value="blog.jsp">asdsa</option>
 						<option value="singleblog.jsp">Busking</option>
 						<option value="features.jsp">Features</option>
-						<option value="contact.jsp">My page</option>
+						<option value="contact.jsp">UP contest</option>
 					</select>
 				</form>
 			</div>
@@ -148,18 +163,14 @@
 	<section class="slider">
 		<div class="flexslider">
 			<ul class="slides">
-				<li><a href="#"><img class="img12"
-						src="images/flexslider/musicback1.jpg"
-						style="width: 1600px; height: 500px; overflow: hidden;" /></a>
-					<section class="caption">
-
-						<h2 class="shadow3">Up contest</h2>
-						<p>
-							이번주는 이승기와 창민이가 대결합니다 <a href="http://www.anarieldesign.com/"
-								rel="nofollow"></a>
-						</p>
-						<a class="button" href="#">지금 바로 보러가기 !</a>
-					</section></li>
+			
+			
+				<li>
+				<div style="width:100%; height:500px; font-family: overwatch; font-style: italic;">
+          <c:import url="versus.jsp"></c:import>
+       </div>
+									
+					</li>
 				<li><img class="img12" src="images/flexslider/musicback2.jpg"
 					alt="" style="width: 1600px; height: 500px; overflow: hidden;" />
 
@@ -453,7 +464,7 @@
 				<h3>About</h3>
 				<p>이페지를 들어와주셔서 감사합니다.</p>
 				<p>방문해주셔서감사해욧 ^^ 자바라기일동</p>
-				<p>
+			<!-- 	<p>
 					<a class='youtube' id="youtube1" name="video" href="ab"></a>
 				</p>
 				<p>
@@ -462,7 +473,7 @@
 				<p>
 					<a class='youtube' id="youtube3" name="video" href="ab"></a>
 				</p>
-
+ -->
 				<div style='display: none'>
 					<div id='inline_content' style='padding: 10px; background: #fff;'>
 						    <form id="form">
@@ -514,35 +525,35 @@
 	<!-- Scripts ==================================================
 
 ================================================== -->
-	<script src="javascript/jquery-1.8.0.min.js" type="text/javascript"></script>
+	<script src="/javascript/jquery-1.8.0.min.js" type="text/javascript"></script>
 
-	<script src="javascript/cookie/cookie.js"></script>
-	<script src="javascript/colorbox/jquery.colorbox.js"></script>
+	<script src="/javascript/cookie/cookie.js"></script>
+	<script src="/javascript/colorbox/jquery.colorbox.js"></script>
 	<script src="https://www.youtube.com/iframe_api"></script>
-	<script src="javascript/colorbox/jquery.colorbox.js"></script>
+	<script src="/javascript/colorbox/jquery.colorbox.js"></script>
 
-	<script src="javascript/facebookjs/facebooklogout.js"></script>
+	<script src="/javascript/facebookjs/facebooklogout.js"></script>
 	<!-- 로그아웃버튼  -->
-	<script src="javascript/menusliderjs/menuslide.js"></script>
+	<script src="/javascript/menusliderjs/menuslide.js"></script>
 	<!-- 메뉴 슬라이드 부분 자바스크립트  -->
 
 	<!-- Main js files -->
-	<script src="javascript/screen.js" type="text/javascript"></script>
+	<script src="/javascript/screen.js" type="text/javascript"></script>
 	<!-- Tabs -->
-	<script src="javascript/tabs.js" type="text/javascript"></script>
+	<script src="/javascript/tabs.js" type="text/javascript"></script>
 	<!-- Include prettyPhoto -->
-	<script src="javascript/jquery.prettyPhoto.js" type="text/javascript"></script>
+	<script src="/javascript/jquery.prettyPhoto.js" type="text/javascript"></script>
 	<!-- Include Superfish -->
-	<script src="javascript/superfish.js" type="text/javascript"></script>
-	<script src="javascript/hoverIntent.js" type="text/javascript"></script>
+	<script src="/javascript/superfish.js" type="text/javascript"></script>
+	<script src="/javascript/hoverIntent.js" type="text/javascript"></script>
 	<!-- Flexslider -->
-	<script src="javascript/jquery.flexslider-min.js"
+	<script src="/javascript/jquery.flexslider-min.js"
 		type="text/javascript"></script>
 	<!-- Modernizr -->
 	<script type="text/javascript"
-		src="javascript/modernizr.custom.29473.js"></script>
+		src="/javascript/modernizr.custom.29473.js"></script>
 
-	<script src="node_modules/sweetalert/dist/sweetalert.min.js"
+	<script src="/node_modules/sweetalert/dist/sweetalert.min.js"
 		type="text/javascript"></script>
 	<script type="text/javascript">
 		/////////////////////////////////////////////////////////////여기는 최근본 동영상 자바스크립트 
@@ -584,12 +595,9 @@
 
 			switch (event.data) {
 			case -1:
-				youtubeuri.push('https://www.youtube.com/embed/tSAJ-iW1GBg');
+		
 				console.log(($(player1.getIframe()).attr('src')));
-				$.cookie('uri', ($(player1.getIframe()).attr('src')), {
-					path : '/index.jsp',
-					domain : 'index.jsp'
-				});
+				$.cookie('uri', player1.getVideoUrl(), {path :'/'});
 
 				break;
 			case 0:
@@ -607,11 +615,11 @@
 			console.log(event.data);
 			switch (event.data) {
 			case -1:
-				youtubeuri.push('https://www.youtube.com/embed/r52he_XcBXg');
+		
 				console.log(($(player2.getIframe()).attr('src')));
-				$.cookie('uri1', ($(player2.getIframe()).attr('src')), {
-					path : '/index.jsp',
-					domain : 'index.jsp'
+				console.log(player2.getVideoUrl());
+				$.cookie('uri1',  player2.getVideoUrl(), {
+					path :'youtubelisttest.jsp'
 				});
 
 				break;
@@ -630,12 +638,9 @@
 			console.log(event.data);
 			switch (event.data) {
 			case -1:
-				youtubeuri.push('https://www.youtube.com/embed/UeCTNhP-E_c');
+				
 				console.log(($(player3.getIframe()).attr('src')));
-				$.cookie('uri2', ($(player3.getIframe()).attr('src')), {
-					path : '/index.jsp',
-					domain : 'index.jsp'
-				});
+				$.cookie('uri2', player3.getVideoUrl(),{path :'youtubelisttest.jsp'});
 
 				break;
 			case 0:
@@ -649,30 +654,30 @@
 			}
 		}
 		////////////////////////////////////////////////////////////////////
-		function sucess() {
+	//	function sucess() {
 			///1번 
-			console.log('클릭 이벤트 처음 시작부분 ㅇㄴㄻㄴㅇㄻㄴㅇㅁㄴㅇㄹ')
-			var check = false;
-			var abc = new Array();
-			if (youtubeuri.length != 0) {
-				for (var i = 0; i < youtubeuri.length; i++) {
-					abc.push(youtubeuri[i]); //새로운 배열에다가 다시 null이 아닌것만 넣어줌 
-					console.log('여기 안들어오나?ㅁㄴㅇ리ㅏㅁㄴ이럼ㄴ이런ㅇ미ㅏㅓㅁ니ㅏ럼나ㅣㅁ널');
-					document.getElementsByName('video')[i].setAttribute("href",
-							youtubeuri[i]);
+	//		console.log('클릭 이벤트 처음 시작부분 ㅇㄴㄻㄴㅇㄻㄴㅇㅁㄴㅇㄹ')
+	//		var check = false;
+	//		var abc = new Array();
+	//		if (youtubeuri.length != 0) {
+	//			for (var i = 0; i < youtubeuri.length; i++) {
+		//			abc.push(youtubeuri[i]); //새로운 배열에다가 다시 null이 아닌것만 넣어줌 
+		///			console.log('여기 안들어오나?ㅁㄴㅇ리ㅏㅁㄴ이럼ㄴ이런ㅇ미ㅏㅓㅁ니ㅏ럼나ㅣㅁ널');
+		//			document.getElementsByName('video')[i].setAttribute("href",
+			//				youtubeuri[i]);
 					// document.getElementsByName('video')[i].setAttribute("href",abc[i]);  
 					// console.log($('a').attr("href")+'여기 제대로 값이 전달이 되었나');
-					check = true;
-				}
-				if (check == true) {
-					console.log('여기잘들어오나?');
-					console.log(($("a[href='ab']")).remove());
-				}
-			} else {
-				alert('최신본 동영상이 없어요.');
-
-				location.href = "index.jsp";
-			}
+		//			check = true;
+			//	}
+			//	if (check == true) {
+		//			console.log('여기잘들어오나?');
+			//		console.log(($("a[href='ab']")).remove());
+		////		}
+		//	} else {
+		//		alert("최근본 동영상이없어요. ")
+		//		parent.location.href = "index.jsp";
+		//	}
+			
 			/* 
 			for(var j=0;j<(def.length);j++){
 			 console.log('여기는 다시 넣어주는 부분');
@@ -686,8 +691,8 @@
 			          console.log('여기잘들어오나?');
 			          console.log(($("a[href='ab']")).remove());
 			} */
-		}// 이벤트 닫음 
-		$(".group3").colorbox({
+		//}// 이벤트 닫음 
+/* 		$(".group3").colorbox({
 			rel : 'group3',
 			transition : "none",
 			width : "75%",
@@ -698,135 +703,13 @@
 			iframe : true,
 			innerWidth : "75%",
 			innerHeight : "75%"
-		});
-
 		
-		
-		
-		
-		$(".inline").colorbox({
-			inline : true,
-			width : "50%"
-		});//내정보수정때문에 쓴것
-		$(".ajax").colorbox(); //내정보수정때문에 쓴것
-		/////////////////////////////////////////////////////////////여기는 최근본 동영상 자바스크립트 
-
-		////////////////여기는 내정보 수정 
-		$(document)
-				.ready(
-						function() {
-							var fileTarget = $('.filebox .upload-hidden');
-
-							fileTarget.on('change', function() {
-								if (window.FileReader) {
-									// 파일명 추출
-									var filename = $(this)[0].files[0].name;
-								}
-
-								else {
-									// Old IE 파일명 추출
-									var filename = $(this).val().split('/')
-											.pop().split('\\').pop();
-								}
-								;
-
-								$(this).siblings('.upload-name').val(filename);
-							});
-
-							//preview image 
-							var imgTarget = $('.preview-image .upload-hidden');
-
-							imgTarget
-									.on(
-											'change',
-											function() {
-												var parent = $(this).parent();
-												parent.children(
-														'.upload-display')
-														.remove();
-
-												if (window.FileReader) {
-													//image 파일만
-													if (!$(this)[0].files[0].type
-															.match(/image\//))
-														return;
-
-													var reader = new FileReader();
-													reader.onload = function(e) {
-														var src = e.target.result;
-														parent
-																.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>');
-													}
-													reader
-															.readAsDataURL($(this)[0].files[0]);
-												}
-
-												else {
-													$(this)[0].select();
-													$(this)[0].blur();
-													var imgSrc = document.selection
-															.createRange().text;
-													parent
-															.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
-
-													var img = $(this).siblings(
-															'.upload-display')
-															.find('img');
-													img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""
-															+ imgSrc + "\")";
-												}
-											});
-						});
-		///////////////여기는 내정보 수정
-		////////////////  여기도 내정보 수정
-		$(document)
-				.ready(
-						function() {
-							$(".drop .option")
-									.click(
-											function() {
-												var val = $(this).attr(
-														"data-value"), $drop = $(".drop"), prevActive = $(
-														".drop .option.active")
-														.attr("data-value"), options = $(".drop .option").length;
-												$drop.find(".option.active")
-														.addClass("mini-hack");
-												$drop.toggleClass("visible");
-												$drop.removeClass("withBG");
-												$(this).css("top");
-												$drop.toggleClass("opacity");
-												$(".mini-hack").removeClass(
-														"mini-hack");
-												if ($drop.hasClass("visible")) {
-													setTimeout(
-															function() {
-																$drop
-																		.addClass("withBG");
-															},
-															400 + options * 100);
-												}
-												triggerAnimation();
-												if (val !== "placeholder"
-														|| prevActive === "placeholder") {
-													$(".drop .option")
-															.removeClass(
-																	"active");
-													$(this).addClass("active");
-												}
-												;
-											});
-
-							function triggerAnimation() {
-								var finalWidth = $(".drop").hasClass("visible") ? 22
-										: 20;
-								$(".drop").css("width", "24em");
-								setTimeout(function() {
-									$(".drop").css("width", finalWidth + "em");
-								}, 400);
-							}
-						});
-
-		/////////여기도 내정보 수정
+		}); */
+ /////////////////////////////////////////////////////////////여기는 최근본 동영상 자바스크립트 
+  $(".ajax").colorbox({iframe:true, width:"30%", height:"80%"});
+ ////////
+			
+			//내 정보 수정 페이지 처리하기 
 	</script>
 </body>
 </html>

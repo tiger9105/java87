@@ -62,13 +62,8 @@
 								with facebook </span>
 						</a>
 						<!--  ///////////////////////////////////// -->
-
 					</form>
-
-
-				</div>
-
-
+			</div>
 				<div class="card alt">
 					<div class="toggle"></div>
 					<h1 class="title" style="margin-right: 70px;">JOIN</h1>

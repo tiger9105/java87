@@ -10,7 +10,7 @@ window.fbAsyncInit = function() {
 	});
 	FB.getLoginStatus(function(response) {
 		if (response.status === 'connected') {
-			alert("여긴 로그인 response.staut=connected 인경우");
+			
 			FB.api('/me', {
 				fields : [ 'email', 'name' ]
 			}, function(user) {

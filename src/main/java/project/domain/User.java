@@ -8,7 +8,9 @@ public class User {
   private String password;
   private String email;
   private String filepath;
+  private int artistCode;
   
+
   public User() {
     // TODO Auto-generated constructor stub
   }
@@ -52,10 +54,18 @@ public class User {
   public void setFilepath(String filepath) {
     this.filepath = filepath;
   }
+  
+  public int getArtistCode() {
+	return artistCode;
+  }
+  
+  public void setArtistCode(int artistCode) {
+	this.artistCode = artistCode;
+  }
 
   @Override
   public String toString() {
-    return "User [userId=" + userId + ", password=" + password + ", email=" + email + ", filepath=" + filepath + "]";
+    return "User [userId=" + userId + ", password=" + password + ", email=" + email + ", filepath=" + filepath + "]"+",artistCode=" + artistCode + "]";
   }
 
   

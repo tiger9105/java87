@@ -1,0 +1,156 @@
+.mask {
+  position: absolute;
+  background: #2c2c2c;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+.mask.right {
+  animation: slideRight 1s both;
+  animation-delay: 2s;
+  -webkit-clip-path: polygon(100% 0, 100% 100%, 30% 100%, 70% 0);
+}
+.mask.left {
+  animation: slideLeft 1s both;
+  animation-delay: 2s;
+  -webkit-clip-path: polygon(70% 0, 30% 100%, 0 100%, 0 0);
+}
+
+.path {
+  background: #2c2c2c;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.path h1 {
+  text-transform: uppercase;
+  position: absolute;
+  z-index: 50;
+  color: white;
+  font-size: 100px;
+}
+.path .overlay {
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 44, 44, 0.75);
+}
+.path.right {
+  -webkit-clip-path: polygon(100% 0, 100% 100%, 30% 100%, 70% 0);
+}
+.path.right h1 {
+  animation: h1Right 3s both;
+  animation-delay: 3s;
+  bottom: 20%;
+  text-align: left;
+}
+.path.right .img {
+  background-position: left;
+  right: 0;
+  background-image: url("/artist/10cm.jpg");
+}
+.path.left {
+  -webkit-clip-path: polygon(70% 0, 30% 100%, 0 100%, 0 0);
+}
+.path.left h1 {
+  animation: h1Left 3s both;
+  animation-delay: 3s;
+  top: 20%;
+  text-align: right;
+}
+.path.left .img {
+  left: 0;
+  background-position: right;
+  background-image: url("/artist/bin.jpg");
+}
+.path .img {
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  background-size: cover;
+}
+
+.progress-bar {
+  animation: progress 1s both;
+  animation-delay: 0.5s;
+  z-index: 20;
+  background-color: #ef5038;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.circle {
+  animation: scale 1s both;
+  padding-top: 9px;
+  box-sizing: border-box;
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  z-index: 30;
+  width: 40px;
+  margin-left: -20px;
+  height: 40px;
+  margin-top: -20px;
+  top: 50%;
+  left: 50%;
+  background-color: #ef5038;
+  border-radius: 50%;
+  text-align: center;
+}
+
+@-webkit-keyframes scale {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes progress {
+  0% {
+    -webkit-clip-path: polygon(50.2% 50%, 50.2% 50%, 49.8% 50%, 49.8% 50%);
+  }
+  60% {
+    -webkit-clip-path: polygon(50.2% 0, 50.2% 100%, 49.8% 100%, 49.8% 0);
+  }
+  100% {
+    -webkit-clip-path: polygon(70.2% 0, 30.2% 100%, 29.8% 100%, 69.8% 0%);
+  }
+}
+@-webkit-keyframes slideLeft {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -70%;
+  }
+}
+@-webkit-keyframes slideRight {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -70%;
+  }
+}
+@-webkit-keyframes h1Left {
+  0% {
+    left: 5%;
+  }
+  100% {
+    left: 10%;
+  }
+}
+@-webkit-keyframes h1Right {
+  0% {
+    right: 5%;
+  }
+  100% {
+    right: 10%;
+  }
+  
+  
+}

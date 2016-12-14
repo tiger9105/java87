@@ -1,0 +1,85 @@
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+
+.pagination1-container {
+  display: inline-block;
+  margin-top: 1em;
+  padding-top: 2em;
+  margin-left:18%;
+  text-align: center;
+}
+
+.pagination1-item {
+  list-style-type: none;
+  display: inline-block;
+  border-right: 1px solid #d7dadb;
+  transform: scale(1) rotate(19deg) translateX(0px) translateY(0px) skewX(-10deg) skewY(-20deg);
+}
+
+.pagination1-item:hover,
+.pagination1-item.is-active {
+  background-color: rgba(254, 82, 76, 1);
+  border-right: 1px solid #fff;
+}
+.pagination1-item:hover .pagination1-link,
+.pagination1-item.is-active .pagination1-link {
+  color: #fff;
+}
+
+.pagination1-item.first-number {
+  border-left: 1px solid #d7dadb;
+}
+
+.pagination1-link {
+  padding: 1.1em 1.6em;
+  display: inline-block;
+  text-decoration: none;
+  color: #8b969c;
+  transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(20deg) skewY(0deg);
+}
+
+.pagination1-item--wide {
+  list-style-type: none;
+  display: inline-block;
+}
+
+.pagination1-item--wide.first {
+  margin: 0 1em 0 0;
+}
+
+.pagination1-item--wide.last {
+  margin: 0 0 0 1em;
+}
+
+.pagination1-link--wide {
+  text-decoration: none;
+  color: #8b969c;
+  padding: 1.1em 1.6em;
+}
+
+.pagination1-link--wide:hover {
+  color: rgba(254, 82, 76, 1);
+}
+
+.pagination1-link--wide.first:before,
+.pagination1-link--wide.last:after {
+  font-family: 'entypo';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pagination1-link--wide.first::before {
+  content: "\E765";
+  margin-right: 0.5em;
+}
+
+.pagination1-link--wide.last::after {
+  content: "\E766";
+  margin-left: 0.5em;
+}

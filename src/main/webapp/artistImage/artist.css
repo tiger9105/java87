@@ -1,0 +1,562 @@
+@import
+  'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'
+  ;
+
+@import
+  'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
+  ;
+
+@import 'http://fonts.googleapis.com/css?family=Raleway:100,600';
+
+@import 'http://fonts.googleapis.com/css?family=Open+Sans:300';
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  color: #999;
+  background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 20px 0;
+  text-transform: none;
+  color: rgba(254, 82, 76, 1);
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+.captiongray{
+	text-align:center;
+	color:gray;
+	
+}
+
+a:link, a:active, a:visited {
+  color: #9EACB8;
+}
+
+a:hover {
+  color: #9EACB8;
+}
+
+.gray {
+  color: #a5a5a5;
+}
+
+.team {
+  margin: 40px;
+}
+
+.team-member {
+	width:300px;
+  height:300px;
+ 
+
+  margin: 15px 0;
+  padding: 0;
+}
+
+.team-member figure {
+  width:290px;
+  height:240px;
+ 
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.team-member figure img {
+  -webkit-filter: grayscale(100%);
+  min-width: 100%;
+
+}
+
+.team-member figcaption p {
+  font-size: 16px;
+}
+
+.team-member figcaption ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.team-member figcaption ul {
+  visibility: visible;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.team-member figcaption ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.team-member h4 {
+	
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.team-member figcaption {
+  padding: 50px;
+  color: transparent;
+  background-color: transparent;
+  position: absolute;
+  z-index: 996;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.team-member figure:hover figcaption {
+  visibility: visible;
+  color: #fff;
+  background: rgba(230, 78, 62, 0.9);
+  /* Primary color, can be changed via colors.css */
+  height: 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-member figure:hover figcaption ul li a:hover {
+  color: rgba(49, 49, 49, .97);
+}
+
+.team-member figure img {
+  -webkit-transform: scale(1) rotate(0) translateY(0);
+  -moz-transform: scale(1) rotate(0) translateY(0);
+  -o-transform: scale(1) rotate(0) translateY(0);
+  -ms-transform: scale(1) rotate(0) translateY(0);
+  transform: scale(1) rotate(0) translateY(0);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+
+
+}
+
+.team-member figure:hover img {
+  -webkit-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -moz-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -o-transform: scale(1.1) rotate(1deg) translateY(12px);
+  -ms-transform: scale(1.1) rotate(1deg) translateY(12px);
+  transform: scale(1.1) rotate(1deg) translateY(12px);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+/* //////////////////tabs//////////// */
+
+
+nav ul {
+  background: #FFF;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1200px;
+  list-style: none;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+nav li {
+
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin: 0;
+  text-align: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 16px;
+}
+
+nav li a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 2.5;
+  padding: 1em 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  color: #9EACB8;
+  line-height: 1;
+  -webkit-transition: all 0.3s, -webkit-transform 0.3s;
+  transition: all 0.3s, -webkit-transform 0.3s;
+  transition: all 0.3s, transform 0.3s;
+  transition: all 0.3s, transform 0.3s, -webkit-transform 0.3s;
+}
+nav li a:hover {
+  opacity: 1;
+}
+
+nav li.current a {
+  opacity: 1;
+  color: #FF5C4E;
+}
+
+/* The line */
+nav li:first-child::before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 4px;
+  background: #FF5C4E;
+  content: '';
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+/* Move the line */
+nav li:first-child.current ~ li:last-child::before {
+  -webkit-transform: translate3d(-112.5%, 0, 0);
+  transform: translate3d(-112.5%, 0, 0);
+}
+
+nav li:last-child.current::before {
+  -webkit-transform: translate3d(12.5%, 0, 0);
+  transform: translate3d(12.5%, 0, 0);
+}
+
+/* ///////////////////button///////////////// */
+.container1 {
+  float:right;
+  margin-right:50px;
+  margin-top:50px;
+  width: 100px;
+  height: 100px;
+
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+  background: #fff;
+}
+
+.pulse-button {
+  position: relative;
+  top: 50%;
+  left: ;
+  margin-left: -50px;
+  margin-top: -50px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  font-size: 1.2em;
+  font-weight: light;
+  font-family: 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 80px;
+  letter-spacing: -1px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  background: rgba(254,82,76,1);
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(254,82,76,0.5);
+  -webkit-animation: pulse 1.5s infinite;
+}
+
+.pulse-button:hover {
+  -webkit-animation: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  70% {
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(90, 153, 212, 0);
+  }
+  100% {
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+  }
+}
+/* //////////////////�쐵 �긽�떒//////////////////// */
+
+#header {
+  background:#261b0d url(../images/rausch.png) repeat;
+  margin-top:0px;
+  border-bottom:1px solid #1d1b18;
+}
+.logo {
+  float: left;
+  padding-top:25px;
+}
+.mainmenu {
+  float:right;
+}
+ul.sf-menu {
+  margin-top:0px;
+}
+.header form {
+  margin-bottom: 15px;
+}
+#header select {
+  -webkit-appearance: none;
+  padding: 10px;
+  outline: none;
+  border:1px solid #22180b;
+  overflow: hidden;
+  font: 12px Arial, Helvetica, sans-serif;
+  max-width: 100%;
+  display: block;
+  background:#483319 url(../images/navselect.gif) no-repeat right center;
+  color: #fff;
+}
+#header option {
+  outline: none;
+  border: 0;
+  overflow: hidden;
+  font: 12px Arial, Helvetica, sans-serif;
+  max-width: 100%;
+  display: block;
+  padding-left: 15px;
+}
+
+
+/* //////////menubar/////////// */
+
+.sf-menu li a {
+
+    font-size: 15px;
+    padding: 45px 15px 45px 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fbe6cb;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.sf-menu a {
+    display: block;
+    position: relative;
+}
+a, a:visited {
+ 
+    text-decoration: none;
+    outline: 0;
+}
+.sf-menu, .sf-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.sf-menu, .sf-menu * {
+  margin:     0;
+  padding:    0;
+  list-style:   none;
+}
+.sf-menu {
+  line-height:  1.0;
+}
+.sf-menu ul {
+  position:   absolute;
+  top:      -999em;
+  width:      10em; /* left offset of submenus need to match (see below) */
+}
+.sf-menu ul li {
+  width:      100%;
+}
+.sf-menu li:hover {
+  visibility:   inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menu li {
+  float:      left;
+  position:   relative;
+}
+.sf-menu a {
+  display:    block;
+  position:   relative;
+}
+.sf-menu li:hover ul, .sf-menu li.sfHover ul {
+  left:     0;
+  top:      2.5em; /* match top ul list item height */
+  z-index:    99;
+}
+ul.sf-menu li:hover li ul, ul.sf-menu li.sfHover li ul {
+  top:      -999em;
+}
+ul.sf-menu li li:hover ul, ul.sf-menu li li.sfHover ul {
+  left:     10em; /* match ul width */
+  top:      0;
+}
+ul.sf-menu li li:hover li ul, ul.sf-menu li li.sfHover li ul {
+  top:      -999em;
+}
+ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul {
+  left:     10em; /* match ul width */
+  top:      0;
+}
+.sf-menu li a {
+/*   �룿�듃吏��� */
+  font-size:15px;
+  padding:45px 15px 45px 15px;
+  text-decoration:none;
+  text-transform:uppercase;
+  color: #fbe6cb;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.sf-menu li a:hover { /* visited pseudo selector so IE6 applies text colour*/
+  color:#fff;
+}
+li a#visited {
+  border-bottom:3px solid #e8ded1;
+  color:#fff;
+}
+/*** submenu ***/
+.sf-menu li ul {
+  background:#261b0d url(../images/rausch.png) repeat;
+  border-top:3px solid #e8ded1;
+  margin-top:75px;
+}
+.sf-menu li ul li a {
+  font-family: Arial, Helvetica, sans-serif;
+  padding:15px 0 15px 0;
+  text-decoration:none;
+  color: #e8ded1;
+  border: 0;
+  padding:15px;
+  font-weight: normal;
+  font-size: 12px;
+  text-transform:lowercase;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.sf-menu li ul li a:hover {
+  padding-left: 18px;
+}
+/* apply hovers to modern browsers */
+a:focus > .sf-sub-indicator, a:hover > .sf-sub-indicator, a:active > .sf-sub-indicator, li:hover > a > .sf-sub-indicator, li.sfHover > a > .sf-sub-indicator {
+  background-position: -10px -100px; /* arrow hovers for modern browsers*/
+}
+/* point right for anchors in subs */
+.sf-menu ul .sf-sub-indicator {
+  background-position:-10px 0;
+}
+.sf-menu ul a > .sf-sub-indicator {
+  background-position:  0 0;
+}
+/* apply hovers to modern browsers */
+.sf-menu ul a:focus > .sf-sub-indicator, .sf-menu ul a:hover > .sf-sub-indicator, .sf-menu ul a:active > .sf-sub-indicator, .sf-menu ul li:hover > a > .sf-sub-indicator, .sf-menu ul li.sfHover > a > .sf-sub-indicator {
+  background-position: -10px 0; /* arrow hovers for modern browsers*/
+}
+
+@media only screen and (max-width: 767px) and (min-width: 480px)
+.mainmenu select {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 40px;
+}
+@media only screen and (max-width: 767px)
+.mainmenu select {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 40px;
+}
+@media (min-width: 768px)
+.container {
+    width: 750px;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media only screen and (max-width: 959px) and (min-width: 768px)
+.container {
+    width: 768px;
+}
+.container {
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+}
+
+/* //navigation// */
+#mainmenu {
+  visibility: visible;
+}
+#responsive-menu {
+  display: none;
+  float: left;
+}
+ @media only screen and (max-width: 767px) {
+ #mainmenu {
+visibility: hidden;
+height: 0;
+}
+ #responsive-menu {
+display: inline-block;
+width: 100%;
+margin-top: 13px;
+}
+
+
+      

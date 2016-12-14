@@ -102,7 +102,7 @@
 		    switch(event.data) {
 		    case -1:
 		    	 console.log(($(player2.getIframe()).attr('src')));
-		         $.cookie('uri1', ($(player2.getIframe()).attr('src')), {path:'/'});
+		        $.cookie('uri1', ($(player2.getIframe()).attr('src')), {path:'/'});
 		      break;
 		   case 0:
 		       
@@ -121,6 +121,10 @@
         switch(event.data) {
         case -1:
             console.log(($(player3.getIframe()).attr('src')));
+            console.log(player3.getVideoUrl());
+            console.log(player3.getVideoUrl());
+            console.log(player3.getVideoUrl());
+            console.log("여기가 테스트할곳이야 !!!! ");
             $.cookie('uri2', ($(player3.getIframe()).attr('src')), {path:'/'});
           break;
        case 0:
