@@ -12,9 +12,9 @@
      overflow: hidden;
 }
 
-.layer{position:absolute;top:0;left:0;width:100%;height:100%;text-align:center}
+.layer{position:absolute;top:0;left:0;width:90%;height:50%;text-align:center}
 .layer .content{display:inline-block;background:#ffffff;  opacity: 0.9; opvertical-align:middle}
-.layer .blank{display:inline-block;width:0;height:100%;vertical-align:middle}
+.layer .blank{display:inline-block;width:0;height:80%;vertical-align:middle}
 
 
 body {

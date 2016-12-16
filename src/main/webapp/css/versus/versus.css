@@ -1,3 +1,4 @@
+
 .mask {
   position: absolute;
   background: #2c2c2c;
@@ -49,7 +50,7 @@
 .path.right .img {
   background-position: left;
   right: 0;
-  background-image: url("/artist/10cm.jpg");
+  background-image: url("/artistImage/10cm.jpg");
 }
 .path.left {
   -webkit-clip-path: polygon(70% 0, 30% 100%, 0 100%, 0 0);
@@ -63,7 +64,7 @@
 .path.left .img {
   left: 0;
   background-position: right;
-  background-image: url("/artist/bin.jpg");
+  background-image: url("/artistImage/bin.jpg");
 }
 .path .img {
   position: absolute;
@@ -152,5 +153,12 @@
     right: 10%;
   }
   
+  
+  
+ @media only screen and (max-width: 767px) {
+  .versus{
+    display: flex;
+  
+  }
   
 }

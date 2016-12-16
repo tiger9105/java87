@@ -11,7 +11,7 @@
 
 
 <body>
-  
+  <div class="versus">
   <div class="circle">
     VS
   </div>
@@ -22,9 +22,10 @@
   <div class="mask right"></div>
   
   <div class="path left">
-    <h1 style="color: yellow;"> 언더의 제왕<br/>
-     <strong style="color:white;">이승기</strong>
+    <h1 style="color:white;">최고의플레이<br/>
+     <strong style="color:yellow;">용사</strong>
     </h1>
+    <h4>장인</h4>
     <div class="overlay"></div>
     <div class="img">
     
@@ -32,14 +33,18 @@
   </div>
 
   <div class="path right">
-    <h1 style="color: yellow;"> 언더의 감성<br/>
-     <strong style="color:white;">김창민</strong>
+    <h1 style="color:white;">최고의플레이<br/>
+     <strong style="color:yellow;">겐지</strong>
     </h1>
+    <h4>장인</h4>
     <div class="overlay"></div>
     <div class="img">
     
     </div>
   </div>
+  </div>
+  
+  
 </body>
 
 	<script src="javascript/jquery-1.8.0.min.js" type="text/javascript"></script>

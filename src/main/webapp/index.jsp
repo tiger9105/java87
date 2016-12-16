@@ -86,34 +86,44 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 <body>
 	<div id="main" style="padding-top: 0px; padding-bottom: 0px;">
 		<span
-			style="font-size: 30px; cursor: pointer; color: white; float: left; padding-top: 10px"
+			style="font-size: 30px; cursor: pointer; color: white; float: left; padding-top: 10px; padding-right: 50px" 
 			onclick="openNav()">&#9776; open</span>
 	</div>
+
 
 	<!--Content Part ==================================================
 ================================================== -->
 	<div id="header">
+	<div id="roundedlogo" style="float: left;">
+  <div class="wrapper12">
+   UP<span class="hidden-name12">laudio</span>
+  </div>
+</div>
 		<div class="container">
 			<!-- Header | Logo, Menu
     ==================================여기는 UP ================ -->
 			<div id="mySidenav" class="sidenav">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				<a id="player" name="video" href="/youtubelisttest.jsp"
-					> 최근본동영상 </a> 
+				<a class='ajax1' href="/history.jsp"> 최근본동영상 </a> 
 					<a href="#">내가찜한 아티스트</a> 
 					<a href="#">버스킹찜목록</a> 
 					<a class='ajax'  href="/updateUser.jsp">내정보수정</a>
 			</div>
-			<div class="retrologo">
+		<!-- 	<div class="retrologo">
 				<a href="index.jsp">Underground Play</a>
-			</div>
+			</div> -->
 
 
 			<!-- ㄴㅇ러미ㅏㄴㅇ러ㅏ민ㅇ러;ㅁㄴㅇ러ㅏㅣㅁㄴㅇ러ㅏㅣ;ㅁㄴㅇ럼ㄴ;ㅣㅇ러ㅣㅁ -->
 			<!-- 여기는 UP 로고  -->
 			<div class="mainmenu">
+			
+			
 				<div id="mainmenu">
+				
+				
 					<ul class="sf-menu">
+					
 						<li><a href="index.jsp" id="visited">Home</a></li>
 						<li><a href="about.jsp">About</a></li>
 						<li><a href="/artist/listArtist">Artist</a>
@@ -169,19 +179,22 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 				<div style="width:100%; height:500px; font-family: overwatch; font-style: italic;">
           <c:import url="versus.jsp"></c:import>
        </div>
-									
 					</li>
-				<li><img class="img12" src="images/flexslider/musicback2.jpg"
-					alt="" style="width: 1600px; height: 500px; overflow: hidden;" />
-
-					<section class="caption" style="text-align: center;">
-						<h2 class="shadow3">Best Artist</h2>
-						<p>
-							김지희가 현재 1등을 유지하고있어요 <a href="http://www.anarieldesign.com/"
-								rel="nofollow"></a>
-						</p>
-						<a class="button" href="#">지금 바로 보러가기!</a>
-					</section></li>
+								
+					         
+        <li><img class="img12" src="images/flexslider/musicback2.jpg"
+          alt="" style="width: 1600px; height: 500px; overflow: hidden;" />
+          <section class="caption" style="text-align: center;">
+            <h2 class="shadow3">Best Artist</h2>
+            <p>
+              김지희가 현재 1등을 유지하고있어요 <a href="http://www.anarieldesign.com/"
+                rel="nofollow"></a>
+            </p>
+            <a class="button" href="#">지금 바로 보러가기!</a>
+          </section></li>
+          
+									
+					
 				<li><a href="#"><img class="img12"
 						src="images/flexslider/musicback3.jpg"
 						style="width: 1600px; height: 500px; overflow: hidden;" alt="" /></a>
@@ -388,10 +401,6 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 					<p>날짜:</p>
 					<strong>홍대3번출구</strong>
 				</div>
-
-
-
-
 			</div>
 		</div>
 
@@ -464,47 +473,6 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 				<h3>About</h3>
 				<p>이페지를 들어와주셔서 감사합니다.</p>
 				<p>방문해주셔서감사해욧 ^^ 자바라기일동</p>
-			<!-- 	<p>
-					<a class='youtube' id="youtube1" name="video" href="ab"></a>
-				</p>
-				<p>
-					<a class='youtube' id="youtube2" name="video" href="ab"></a>
-				</p>
-				<p>
-					<a class='youtube' id="youtube3" name="video" href="ab"></a>
-				</p>
- -->
-				<div style='display: none'>
-					<div id='inline_content' style='padding: 10px; background: #fff;'>
-						    <form id="form">
-      <h1 id="h1">내 정보 수정 </h1>
-      <div class="control">
-      <input type="text" placeholder="User ID"/>
-      </div>
-      <div class="control">
-      <input type="text" placeholder="PASSWORD "/>
-      </div>
-      <div class="control">
-      <input type="text" placeholder="User Email" />
-      </div>
-
-        <div class="filebox bs3-primary preview-image">
-    <input class="upload-name" value="PROFILE" disabled="disabled"
-      > <label for="input_file">프로필사진 업로드 </label> <input
-      type="file" id="input_file" name="uploadfile"class="upload-hidden">
-  </div>
-      
-      <div class="control submit">
-      <span><button id="button"> 수정하기</button></span>
-      <span><button id="button"> 취소</button></span>
-      </div>
-    </form>
-
-
-					</div>
-				</div>
-
-
 			</div>
 			<!-- four columns ends here -->
 		</div>
@@ -546,170 +514,15 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 	<!-- Include Superfish -->
 	<script src="/javascript/superfish.js" type="text/javascript"></script>
 	<script src="/javascript/hoverIntent.js" type="text/javascript"></script>
+	 <script src="/javascript/UP/up.js" type="text/javascript"></script><!-- UP로고 자바스크립 -->
 	<!-- Flexslider -->
 	<script src="/javascript/jquery.flexslider-min.js"
 		type="text/javascript"></script>
 	<!-- Modernizr -->
 	<script type="text/javascript"
 		src="/javascript/modernizr.custom.29473.js"></script>
-
 	<script src="/node_modules/sweetalert/dist/sweetalert.min.js"
 		type="text/javascript"></script>
-	<script type="text/javascript">
-		/////////////////////////////////////////////////////////////여기는 최근본 동영상 자바스크립트 
-		var player1;
-		var player2;
-		var player3;
-		var youtubeuri = new Array();
-		function onYouTubeIframeAPIReady() {
-			$('iframe').each(function(i, e) {
-				if ($(e).attr('id') == 'player1') {
-					player1 = new YT.Player($(e).attr('id'), {
-						events : {
-							'onStateChange' : onPlayerStateChange
-						}
-					});
-
-				}//end if
-
-				if ($(e).attr('id') == 'player2') {
-					player2 = new YT.Player($(e).attr('id'), {
-						events : {
-							'onStateChange' : onPlayerStateChange2
-						}
-					});
-
-				}//end if
-
-				if ($(e).attr('id') == 'player3') {
-					player3 = new YT.Player($(e).attr('id'), {
-						events : {
-							'onStateChange' : onPlayerStateChange3
-						}
-					});
-
-				}//end if
-			});//end each function
-		}//end function
-		function onPlayerStateChange(event) {
-
-			switch (event.data) {
-			case -1:
-		
-				console.log(($(player1.getIframe()).attr('src')));
-				$.cookie('uri', player1.getVideoUrl(), {path :'/'});
-
-				break;
-			case 0:
-				record('video ended');
-				break;
-			case 1:
-
-				break;
-			case 2:
-				break;
-			}
-		}
-		////////////
-		function onPlayerStateChange2(event) {
-			console.log(event.data);
-			switch (event.data) {
-			case -1:
-		
-				console.log(($(player2.getIframe()).attr('src')));
-				console.log(player2.getVideoUrl());
-				$.cookie('uri1',  player2.getVideoUrl(), {
-					path :'youtubelisttest.jsp'
-				});
-
-				break;
-			case 0:
-
-				break;
-			case 1:
-
-				break;
-			case 2:
-				break;
-			}
-		}
-		//////////////////
-		function onPlayerStateChange3(event) {
-			console.log(event.data);
-			switch (event.data) {
-			case -1:
-				
-				console.log(($(player3.getIframe()).attr('src')));
-				$.cookie('uri2', player3.getVideoUrl(),{path :'youtubelisttest.jsp'});
-
-				break;
-			case 0:
-
-				break;
-			case 1:
-
-				break;
-			case 2:
-				break;
-			}
-		}
-		////////////////////////////////////////////////////////////////////
-	//	function sucess() {
-			///1번 
-	//		console.log('클릭 이벤트 처음 시작부분 ㅇㄴㄻㄴㅇㄻㄴㅇㅁㄴㅇㄹ')
-	//		var check = false;
-	//		var abc = new Array();
-	//		if (youtubeuri.length != 0) {
-	//			for (var i = 0; i < youtubeuri.length; i++) {
-		//			abc.push(youtubeuri[i]); //새로운 배열에다가 다시 null이 아닌것만 넣어줌 
-		///			console.log('여기 안들어오나?ㅁㄴㅇ리ㅏㅁㄴ이럼ㄴ이런ㅇ미ㅏㅓㅁ니ㅏ럼나ㅣㅁ널');
-		//			document.getElementsByName('video')[i].setAttribute("href",
-			//				youtubeuri[i]);
-					// document.getElementsByName('video')[i].setAttribute("href",abc[i]);  
-					// console.log($('a').attr("href")+'여기 제대로 값이 전달이 되었나');
-		//			check = true;
-			//	}
-			//	if (check == true) {
-		//			console.log('여기잘들어오나?');
-			//		console.log(($("a[href='ab']")).remove());
-		////		}
-		//	} else {
-		//		alert("최근본 동영상이없어요. ")
-		//		parent.location.href = "index.jsp";
-		//	}
-			
-			/* 
-			for(var j=0;j<(def.length);j++){
-			 console.log('여기는 다시 넣어주는 부분');
-			 console.log(def.length);
-			 console.log(def[j]);
-			  if(document.getElementsByName('video')[j].getAttribute("href")=='ab'){
-			   document.getElementsByName('video')[j].setAttribute("href", def[j]);
-			 }
-			}
-			if(check==true){
-			          console.log('여기잘들어오나?');
-			          console.log(($("a[href='ab']")).remove());
-			} */
-		//}// 이벤트 닫음 
-/* 		$(".group3").colorbox({
-			rel : 'group3',
-			transition : "none",
-			width : "75%",
-			height : "75%"
-		});
-		$(".youtube").colorbox({
-			rel : 'group3',
-			iframe : true,
-			innerWidth : "75%",
-			innerHeight : "75%"
-		
-		}); */
- /////////////////////////////////////////////////////////////여기는 최근본 동영상 자바스크립트 
-  $(".ajax").colorbox({iframe:true, width:"30%", height:"80%"});
- ////////
-			
-			//내 정보 수정 페이지 처리하기 
-	</script>
+	<script type="text/javascript" src="/javascript/mainjs/main.js"></script>
 </body>
 </html>

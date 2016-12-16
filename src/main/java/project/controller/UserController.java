@@ -99,8 +99,6 @@ public class UserController {
     session.invalidate();
     request.getParameter("userId");
     System.out.println(request.getParameter("userId"));
-   
-
     return user;
   }
   
@@ -189,7 +187,7 @@ public class UserController {
   }
   
   //@RequestMapping("/login.do")
-  @RequestMapping( value="login", method=RequestMethod.POST )
+ /* @RequestMapping( value="login", method=RequestMethod.POST )
   public String login(@ModelAttribute("user") User user , HttpSession session ) throws Exception{
     
     System.out.println("/user/login : POST");
@@ -207,7 +205,40 @@ public class UserController {
     }
     
     return "redirect:/index.jsp";
+   }*/
+  /////////////
+  @RequestMapping( value="login", method=RequestMethod.POST )
+  public  @ResponseBody User login(HttpServletRequest req,HttpSession session ) throws Exception{
+    
+    User user=new User();
+    System.out.println("/user/login : POST");
+    //System.out.println("여기맞어? ");
+   // System.out.println("도대체무슨값이들어오는데?:"+req.getParameter("userId"));
+    //Business Logic
+
+     user=userService.getUser(req.getParameter("userId"));
+
+    
+   /*  if(!req.getParameter("password").equals("") && user.getPassword().equals(req.getParameter("password"))){
+             session.setAttribute("user", user);
+     }*/
+     
+     if(!req.getParameter("password").equals("")){  //값이 있다면 
+       if(user!=null){ //값이있따면 
+         if(user.getPassword().equals(req.getParameter("password"))){
+           session.setAttribute("user", user);
+         }
+       }
+     }
+       
+       
+     return user;
    }
+  
+  //////////////
+  
+  
+  
   @RequestMapping(value="login12",method=RequestMethod.POST)
   public @ResponseBody User login12(String userId,HttpSession session) throws Exception{
      System.out.println(userId);
@@ -220,6 +251,7 @@ public class UserController {
     return user;
   }
   
+ 
   @RequestMapping(value="addUser12",method=RequestMethod.POST)
   public @ResponseBody User addUser12(String userId, String email,String pwd, HttpSession session) throws Exception{
     System.out.println(userId);

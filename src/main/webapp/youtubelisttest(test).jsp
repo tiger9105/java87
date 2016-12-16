@@ -68,81 +68,71 @@
 <body>
 <!--Pattern HTML-->
 
-
+<center><h1>최근본 동영상</h1></center>
   <div id="pattern" class="pattern">
     <ul class="list img-list">
       <li>
-        <a href="#" class="inner">
-          <div class="li-img">
-            <p><a  id="player2"  name="video" href="ab"></a></p>
+            <div class="li-img">
+            <p>
+            <a  name="video" href="ab"></a>
+            </p>
           </div>
           <div class="li-text">
-            <h4 class="li-head">최근본 동영상 </h4>
-            <p class="li-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet tellus velit, ut semper neque.</p>
-            <p class="li-action">Read More</p>
+            <h4 class="li-head"> </h4>
+          
           </div>
         </a>
       </li>
       <li>
-        <a href="#" class="inner">
-          <div class="li-img">
-           <p><a  id="player3"  name="video" href="ab"></a></p>
+            <div class="li-img">
+           <p>
+           <a name="video" href="ab"></a>
+           </p>
           </div>
           <div class="li-text">
             <h4 class="li-head">Title of Content</h4>
-            <p class="li-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet tellus velit, ut semper neque.</p>
-            <p class="li-action">Learn More</p>
+           
           </div>
         </a>
       </li>
       <li>
-        <a href="#" class="inner">
           <div class="li-img">
-     <p><a  id="player4" name="video"  href="ab"></a></p>
+     <p>
+    <a   name="video" href="ab"></a>
+     </p>
           </div>
           <div class="li-text">
             <h4 class="li-head">Title of Content</h4>
-            <p class="li-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet tellus velit, ut semper neque.</p>
-            <p class="li-action">Read More</p>
+          
           </div>
         </a>
       </li>
       <li>
-        <a href="#" class="inner">
           <div class="li-img">
-  <p><a  id="player5" name="video"  href="ab"></a></p>
+  <p>
+<iframe src="https://www.youtube.com/embed/UeCTNhP-E_c?enablejsapi=1"></iframe>
+  </p>
           </div>
           <div class="li-text">
             <h4 class="li-head">Title of Content</h4>
-            <p class="li-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet tellus velit, ut semper neque.</p>
-            <p class="li-action">Learn More</p>
+           
           </div>
+          
+          
         </a>
       </li>
       <li>
         <a href="#" class="inner">
-          <div class="li-img">
-            <img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Image Alt Text" />
-          </div>
+ 
+           <p><a   name="video" href="ab"></a></p>
+   
           <div class="li-text">
             <h4 class="li-head">Title of Content</h4>
-            <p class="li-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet tellus velit, ut semper neque.</p>
-            <p class="li-action">Read More</p>
+     
           </div>
         </a>
       </li>
-      <li>
-        <a href="#" class="inner">
-          <div class="li-img">
-            <img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Image Alt Text" />
-          </div>
-          <div class="li-text">
-            <h4 class="li-head">Title of Content</h4>
-            <p class="li-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet tellus velit, ut semper neque.</p>
-            <p class="li-action">Read More</p>
-          </div>
-        </a>
-      </li>
+   
     </ul>
   </div>
   <!--End Pattern HTML-->
@@ -150,7 +140,10 @@
 	<script src="javascript/cookie/cookie.js"></script>
 	<script src="https://www.youtube.com/iframe_api"></script>
 	<script type="text/javascript">
-	function sucess(){
+
+	
+	$(document).ready(function(){
+				console.log("여기시작하나");
 		  console.log("여기밑에 쿠키");
 		  console.log($.cookie('uri'));
 		  console.log("여기위에 쿠키");
@@ -179,7 +172,7 @@
 		             console.log('여기잘들어오나?');
 		             console.log(($("a[href='ab']")).remove());
 		  }
-		}// 이벤트 닫음 
+		});// 이벤트 닫음 
 
 
 
