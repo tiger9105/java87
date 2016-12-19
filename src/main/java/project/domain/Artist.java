@@ -6,10 +6,19 @@ public class Artist {
   private int artistNo;
   private String artistName;
   private String genre;
-  private String music;
-  private String image;
+   private String image;
   private String introduce;
+  private User userNumber;
   
+
+  public User getUserNumber() {
+    return userNumber;
+  }
+
+  public void setUserNumber(User userNumber) {
+    this.userNumber = userNumber;
+  }
+
   public Artist() {
     // TODO Auto-generated constructor stub
   }
@@ -38,13 +47,6 @@ public class Artist {
     this.genre = genre;
   }
 
-  public String getMusic() {
-    return music;
-  }
-
-  public void setMusic(String music) {
-    this.music = music;
-  }
 
   public String getImage() {
     return image;
@@ -64,7 +66,9 @@ public class Artist {
 
   @Override
   public String toString() {
-    return "Artist [artistNo=" + artistNo + ", artistName=" + artistName + ", genre=" + genre + ", music=" + music
-        + ", image=" + image + ", introduce=" + introduce + "]";
+    return "Artist [artistNo=" + artistNo + ", artistName=" + artistName + ", genre=" + genre + ", image=" + image
+        + ", introduce=" + introduce + ", userNumber=" + userNumber + "]";
   }
+
+
 }

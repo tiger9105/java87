@@ -8,7 +8,7 @@ public class User {
   private String password;
   private String email;
   private String filepath;
-  private int artistCode;
+  private String artistCode;
   
 
   public User() {
@@ -55,11 +55,11 @@ public class User {
     this.filepath = filepath;
   }
   
-  public int getArtistCode() {
+  public String getArtistCode() {
 	return artistCode;
   }
   
-  public void setArtistCode(int artistCode) {
+  public void setArtistCode(String artistCode) {
 	this.artistCode = artistCode;
   }
 

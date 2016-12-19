@@ -20,27 +20,27 @@
     <resultMap id="userSelectMap" type="user">
     <result property="userNo"    column="user_no"      jdbcType="NUMERIC"/>
     <result property="userId"     column="user_id"      jdbcType="VARCHAR"/>
-    <result property="password"   column="password"     jdbcType="VARCHAR" />
-    <result property="email"      column="email"        jdbcType="NUMERIC"  />
-    <result property="filepath"   column="IMAGE_FILE"   jdbcType="VARCHAR"  />
-    <result property="artistCode"    column="artist_code"      jdbcType="NUMERIC"/>
+    <result property="password"   column="user_pwd"     jdbcType="VARCHAR" />
+    <result property="email"      column="user_email"        jdbcType="NUMERIC"  />
+    <result property="filepath"   column="user_pro"   jdbcType="VARCHAR"  />
+    <result property="artistCode"    column="user_rank"      jdbcType="VARCHAR"/>
   </resultMap>
   <!-- SQL : INSERT -->
   <insert   id="addUser"    parameterType="user" >
     INSERT
-    INTO users( user_no , user_id , password , email, image_file) 
-    VALUES   (seq_user_userno.NEXTVAL,  #{userId} ,  #{password} , #{email:VARCHAR} , 
-             #{filepath:VARCHAR} )
+    INTO users( user_no , user_id , user_pwd , user_email, user_pro,user_rank) 
+    VALUES   (seq_user_userno.NEXTVAL,  #{userId:VARCHAR} ,  #{password:VARCHAR} , #{email:VARCHAR} , 
+             #{filepath:VARCHAR},#{artistCode:VARCHAR} )
    </insert>
    
     <update  id="updateUser" parameterType="user" >
       UPDATE users
       <set>
         user_id=#{userId},
-        password=#{password},
-        email=#{email},
-        IMAGE_FILE  = #{filepath},
-        artist_code= #{artistCode} 
+        user_pwd=#{password},
+        user_email=#{email},
+        user_pro  = #{filepath},
+        user_rank= #{artistCode} 
        </set>
       WHERE user_id = #{userId}
     </update>
@@ -57,7 +57,7 @@
    
     <select  id="getUser"  parameterType="string"  resultMap="userSelectMap">
     SELECT
-    user_no,  user_id , password , email , image_file    
+    user_no,  user_id , user_pwd , user_email , user_pro,user_rank
     FROM users 
     WHERE user_id = #{value}
    </select>

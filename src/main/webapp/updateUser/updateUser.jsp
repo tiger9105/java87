@@ -10,12 +10,11 @@
 <link rel="stylesheet" href="/node_modules/sweetalert/dist/sweetalert.css">
 <link rel="stylesheet" href="/updateUser/updateUser.css">
 <link rel="stylesheet" href="/css/updateUser.css">
-
 </head>
 
 <body>
 
-	<form id="form" enctype="multipart/form-data">
+	<form enctype="multipart/form-data">
 	 
 		<h1 id="h1">내 정보 수정</h1>
 		<div class="control">
@@ -86,7 +85,7 @@
                            showLoaderOnConfirm: true
                          }, function () {
                            setTimeout(function () {
-                        	    parent.location.href = '/index.jsp';
+                        	   parent.location.href = '/artist/listArtist';
                             }, 3000);
                          }); 
                     	
@@ -96,7 +95,7 @@
           
           
           $("#closebutton").on("click",function(){
-        	  parent.location.href = 'index.jsp';
+        	  parent.location.href = '/artist/listArtist';
           });
                    
       });

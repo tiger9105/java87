@@ -29,10 +29,12 @@ public class ArtistDaoImpl implements ArtistDao{
   ///Constructor
   public ArtistDaoImpl() {
     System.out.println(this.getClass());
+    
   }
 
   ///Method
   public void addArtist(Artist artist) throws Exception {
+    
     sqlSession.insert("ArtistMapper.addArtist", artist);
   }
 
@@ -40,7 +42,12 @@ public class ArtistDaoImpl implements ArtistDao{
     System.out.println("오나"+artistNo);
     return sqlSession.selectOne("ArtistMapper.getArtist", artistNo);
   }
-
+  
+  public Artist getArtist1(int userNo) throws Exception {
+    System.out.println("오나"+userNo);
+    return sqlSession.selectOne("ArtistMapper.getArtist1", userNo);
+  }
+  
   /*
   public void updateUser(User user) throws Exception {
     sqlSession.update("UserMapper.updateUser", user);
@@ -52,10 +59,9 @@ public class ArtistDaoImpl implements ArtistDao{
     System.out.println("여기까지는 옴");
     return sqlSession.selectList("ArtistMapper.getArtistList");
   }
-
+  
   public int getTotalCount() throws Exception {
     return sqlSession.selectOne("ArtistMapper.getTotalCount");
   }
-
 
 }

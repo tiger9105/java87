@@ -48,7 +48,7 @@ public class ArtistServiceImpl implements ArtistService{
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("list", list );
     map.put("totalCount", new Integer(totalCount));
-    
+  
     return map;
   }
 
@@ -56,6 +56,9 @@ public class ArtistServiceImpl implements ArtistService{
     return artistDao.getArtist(artistNo);
   }
 
+  
+  
+  
 /*
 
   public void updateUser(User user) throws Exception {

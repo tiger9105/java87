@@ -1,3 +1,4 @@
+
 package project.controller;
 
 
@@ -71,15 +72,19 @@ public class ArtistController {
   */
   
   @RequestMapping( value="addArtist", method=RequestMethod.POST )
-  public String addArtist( @ModelAttribute("artist") Artist artist ,@RequestParam("image") MultipartFile imgFile) throws Exception {
+  public String addArtist( @ModelAttribute("artist") Artist artist ,@RequestParam("image") MultipartFile imgFile,HttpSession session) throws Exception {
+    User user;
+    user=(User)session.getAttribute("user");
+   
+    
     System.out.println("image ?"+artist.getImage());
-    System.out.println(artist);
     System.out.println("/artist/addArtist : POST");
+    System.out.println("이글이 잘 찍히나? ");
+    System.out.println(user);
+    
+    artist.setUserNumber(user);
     //Business Logic
     artistService.addArtist(artist);
-    
-  
-    
     ////////////////////
     return "redirect:/artist/artist.jsp";
 
@@ -87,7 +92,7 @@ public class ArtistController {
  
   @RequestMapping(value = "upload")
   @ResponseBody
-  public String uploadFile( @ModelAttribute("artist") Artist artist,MultipartHttpServletRequest request,@RequestParam("uploadfile") MultipartFile multipartfile, HttpSession session) throws Exception {
+  public String uploadFile( @ModelAttribute("artist") Artist artist,MultipartHttpServletRequest request,@RequestParam("uploadfile") MultipartFile multipartfile, HttpSession session,Model model) throws Exception {
       
     
     Iterator<String> itr =  request.getFileNames();
@@ -98,23 +103,39 @@ public class ArtistController {
               //just temporary save file info into ufile
               
               System.out.println("image?"+multipartfile.getOriginalFilename());
-              String path="C:\\Users\\BitCamp\\git\\java87\\UI02Project\\src\\main\\webapp\\images\\uploadFiles\\"+multipartfile.getOriginalFilename(); 
-           // String path="C:\\Users\\kimjihee\\git\\java87\\src\\main\\webapp\\images\\uploadFiles\\"+multipartfile.getOriginalFilename(); //�궡媛� ���옣�븷 怨듦컙
+            String path="C:\\Users\\BitCamp\\git\\java87\\UI02Project\\src\\main\\webapp\\images\\uploadFiles\\"+multipartfile.getOriginalFilename(); 
+      //        String path="C:\\Users\\kimjihee\\git\\java87\\src\\main\\webapp\\images\\uploadFiles\\"+multipartfile.getOriginalFilename(); //
+      //        String path1="C:\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\java87\\images\\uploadFiles"+multipartfile.getOriginalFilename(); //
               File file =new File(path);
-              multipartfile.transferTo(file); // �뙆�씪蹂대깂 
-
-              System.out.println("�쟾:"+artist);
-              artist.setImage(multipartfile.getOriginalFilename());
- 
-               
-              artistService.addArtist(artist);
+      //        File file1=new File(path1);
               
+              multipartfile.transferTo(file); // �뙆�씪蹂대깂 
+      //        multipartfile.transferTo(file1);
               String sessionId=((User)session.getAttribute("user")).getUserId();
               System.out.println(sessionId);
               User user = userService.getUser(sessionId);
-              user.setArtistCode(1);
+             
+            
+              artist.setImage(multipartfile.getOriginalFilename());
+              
+              user.setArtistCode("1");
               userService.updateUser(user);
-              System.out.println(user);
+               session.setAttribute("user",user);
+              
+              
+              
+              artist.setUserNumber(user);
+              artistService.addArtist(artist);
+               
+             model.addAttribute("artist",artist);  //애는 아티스트에 있는 값 가져올때 
+             
+             
+            /*  userService.updateUser(user);
+              session.setAttribute("user", user);
+              System.out.println("update후:"+user);
+              user=userService.getUser(user.getUserId());
+              System.out.println("update후 get:"+user);
+              System.out.println("artistCode???"+user.getArtistCode());*/
               
      
               
@@ -160,29 +181,14 @@ public class ArtistController {
 }
 
   
-  
-
-/*  
-  //@RequestMapping("/updateUserView.do")
-  //public String updateUserView( @RequestParam("userId") String userId , Model model ) throws Exception{
-  @RequestMapping( value="updateUser", method=RequestMethod.GET )
-  public String updateUser( @RequestParam("userId") String userId , Model model ) throws Exception{
-
-    System.out.println("/user/updateUser : GET");
-    //Business Logic
-    User user = userService.getUser(userId);
-    model.addAttribute("user", user);
-    
-    return "forward:/user/updateUser.jsp";
-  }
-  
-  //@RequestMapping("/updateUser.do")
-  @RequestMapping( value="updateUser", method=RequestMethod.POST )
+ 
+/*  //@RequestMapping("/updateUser.do")
+  @RequestMapping( value="updateArtist", method=RequestMethod.POST )
   public String updateUser( @ModelAttribute("user") User user , Model model , HttpSession session) throws Exception{
 
-    System.out.println("/user/updateUser : POST");
+    System.out.println("/user/updateArtist : POST");
     //Business Logic
-    userService.updateUser(user);
+    
     
     String sessionId=((User)session.getAttribute("user")).getUserId();
     if(sessionId.equals(user.getUserId())){
@@ -191,11 +197,13 @@ public class ArtistController {
     
     //return "redirect:/getUser.do?userId="+user.getUserId();
     return "redirect:/user/getUser?userId="+user.getUserId();
-  }
-*/
+  }*/
+  
+  
+  
   //@RequestMapping("/listUser.do")
   @RequestMapping( value="listArtist" )
-  public String listUser( Model model , HttpServletRequest request) throws Exception{
+  public String listArtist( Model model , HttpServletRequest request) throws Exception{
     
     System.out.println("/artist/listArtist : GET / POST");
     

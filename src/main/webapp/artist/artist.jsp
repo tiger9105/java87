@@ -34,11 +34,33 @@
 		<div class="posts">		
 			<div class="Userprofile">
 				<a href="#">
-					<img src="/images/uploadFiles/daybreak.jpg" >
-					데이브레이크
+					<img src="/images/uploadFiles/${user.filepath}" >
+					${user.userId}
+					
 				</a>
 			</div>	
 			<hr>
+<!-- 아티스트 경우 메뉴바	-->	
+			<c:if test="${user.artistCode =='1'}">
+  				<div class="post">
+					<a href="#">
+						아티스트 정보 수정
+					</a>
+				</div> 
+				<div class="post">
+					<a href="#">
+						동영상 올리기
+					</a>
+				</div>
+				<div class="post">
+					<a href="#">
+						내가 올린 동영상
+					</a>
+				</div>
+					<hr>
+		</c:if> 
+<!--ends 아티스트 경우 메뉴바	-->		
+		
 			<div class="post">
 				<a href="#">
 					최근 본 동영상
@@ -56,14 +78,10 @@
 			</div>
 			<div class="post">
 				<a class='ajax'  href="/updateUser/updateUser.jsp">
-				내정보수정
+				내 정보 수정
 				</a>
 			</div>
-			<div id="footer1">
-				<a href="#">
-					설정 	
-				</a>
-			</div>
+
 		</div>	
 	</nav>
 <!-- ends 내정보 슬라이드 -->
@@ -72,13 +90,12 @@
 	<div id="header">
 		<div class="container">
 			
-			<!-- UP 로고  -->
+			<!-- UP 로고 
 			<div class="retrologo">
 				<a href="/index.jsp">Underground Play</a>
 			</div>
-			<!-- ends UP 로고  -->
+			ends UP 로고  -->
 	
-			
 			<div class="mainmenu">
 				<div id="mainmenu">
 					<ul class="sf-menu">
@@ -128,9 +145,17 @@
 	<!-- header ends here -->
 	
 <!--ends 홈페이지 메뉴바 -->
+	
+	<!-- 아티스트 등록하기 버튼 -->
+	<p>
+		<div class="container1">
+			<span class="pulse-button">register</span>
+		</div>
+	</p>
+	<!-- ends 아티스트 등록하기 버튼 -->
 
 <!-- artist 장르별 메뉴 -->
-	<nav>
+	<nav class="genre">
 		<ul>
 			<li class="current"><a href="#"><span>ALL</span></a></li>
 			<li class=""><a href="#"><span>R & B</span></a></li>
@@ -142,13 +167,6 @@
 	</nav>
 <!--ends artist 장르별 메뉴 -->
 
-<!-- 아티스트 등록하기 버튼 -->
-	<p>
-		<div class="container1">
-			<span class="pulse-button">register</span>
-		</div>
-	</p>
-<!-- ends 아티스트 등록하기 버튼 -->
 
 <!-- artist list -->
 	<section id="team" class="team content-section">
@@ -161,6 +179,7 @@
 			</div>
 		</div>
 	</section>
+	
 
 <!-- 반복문으로 artists 뽑아오는 곳(getArtistList) -->
 	<c:forEach var="i" begin="0" end="${totalCount/3}" step="1">
@@ -247,7 +266,7 @@
     </script>
     
     <script>
-   	 $(".ajax").colorbox({iframe:true, width:"30%", height:"80%"});
+   	 $(".ajax").colorbox({iframe:true, width:"40%", height:"650px"});
     </script>
 
 <!-- genre 부분 자바스크립트 (아직 작동안됌) -->
@@ -431,7 +450,7 @@
 	        iframe : "true",
 	        href : "/register/register.jsp", 
 	        width : "600px",
-	        height : "700px",
+	        height : "650px",
 	        scrolling : false	       
 	      }); 
 	    });

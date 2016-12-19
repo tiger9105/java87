@@ -30,7 +30,7 @@ form .control.submit {
 	text-align: right;
 }
 
-form input {
+form input[type="text"] {
 	width: 80%;
 	border: none;
 	border-bottom: 2px solid #e3e3e3;
@@ -53,6 +53,28 @@ form input {
 }
 
 #uploadbutton:hover {
+	width: auto;
+	background: rgba(254, 82, 76, 1);;
+	color: #fff;
+	padding: 10px 40px;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+
+
+#closebutton{
+	width: auto;
+	border: 2px solid rgba(254, 82, 76, 1);;
+	background: #fff;
+	padding: 10px 40px;
+	color: rgba(254, 82, 76, 1);;
+	border-radius: 2px;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+#closebutton:hover {
 	width: auto;
 	background: rgba(254, 82, 76, 1);;
 	color: #fff;

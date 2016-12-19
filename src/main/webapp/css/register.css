@@ -61,6 +61,28 @@ form input {
 	cursor: pointer;
 }
 
+#closebutton{
+	width: auto;
+	border: 2px solid rgba(254, 82, 76, 1);;
+	background: #fff;
+	padding: 7px 40px 10px 40px;
+	color: rgba(254, 82, 76, 1);;
+	border-radius: 2px;
+	cursor: pointer;
+	text-transform: uppercase;
+	margin-bottom:0px;
+
+}
+
+#closebutton:hover {
+	width: auto;
+	background: rgba(254, 82, 76, 1);;
+	color: #fff;
+	padding: 7px 40px 10px 40px;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
 h1 {
 	text-transform: uppercase;
 	color: rgba(254, 82, 76, 1);;

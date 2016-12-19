@@ -31,11 +31,12 @@ public class UserDaoImpl implements UserDao{
 
   ///Method
   public void addUser(User user) throws Exception {
+    System.out.println("여기는 에드유저 바로직전 디에이오");
     sqlSession.insert("UserMapper.addUser", user);
   }
 
   public User getUser(String userId) throws Exception {
-        System.out.println("여기는 getUser 유저매퍼에서 ");
+     
        return sqlSession.selectOne("UserMapper.getUser", userId);
   }
   

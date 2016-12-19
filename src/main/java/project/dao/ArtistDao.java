@@ -15,14 +15,18 @@ public interface ArtistDao {
 
   // SELECT ONE
   public Artist getArtist(int artistNo) throws Exception ;
+  
+  public Artist getArtist1(int userNo) throws Exception ;
 
   // SELECT LIST
   public List<Artist> getArtistList() throws Exception ;
+
+  public int getTotalCount() throws Exception ;
 
   // UPDATE
 //  public void updateUser(User user) throws Exception ;
   
   // �Խ��� Page ó���� ���� ��üRow(totalCount)  return
-  public int getTotalCount() throws Exception ;
+ 
   
 }

@@ -15,8 +15,8 @@
 	href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
 
-<link rel="stylesheet" href="css/login/login.css">
-<link rel="stylesheet" href="node_modules/sweetalert/dist/sweetalert.css">
+<link rel="stylesheet" href="/css/login/login.css">
+<link rel="stylesheet" href="/node_modules/sweetalert/dist/sweetalert.css">
 </head>
 <body>
 
@@ -25,14 +25,17 @@
 		<source src="video/video.mp4">
 
 	</video>
+	
+	<div class="layer">
+	
+
 	<div class="layer" > 
-		<span class="content" style="height: 500px;">
+		<span class="content" style="height: 500px; margin-top: 100px; margin-left: 250px; ">
 
 
-			<div class="rerun" >
-				<a href="">Rerun Pen</a>
-			</div>
-			<div class="container" >
+
+		
+			<div class="container"  >
 				<div class="card"></div>
 				<div class="card">
 					<h1 class="title">로그인</h1>
@@ -65,7 +68,9 @@
 			</div>
 				<div class="card alt">
 					<div class="toggle"></div>
-					<h1 class="title" style="margin-right: 70px;">JOIN</h1>
+				  <h1 class="title">Register
+      <div class="close"></div>
+    </h1>
 					<!-- action="user/addUser" -->
 					<form name="detailForm" method="post">
 						<div class="input-container">

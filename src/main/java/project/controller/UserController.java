@@ -55,10 +55,13 @@ public class UserController {
   //public String addUserView() throws Exception {
   @RequestMapping( value="addUser", method=RequestMethod.POST )
   public String addUser(@ModelAttribute("user") User user,HttpSession session) throws Exception{
-     user.setFilepath("Straight-Up.png"); //경로 걍 넣어주기 
-    userService.addUser(user);
+     
+    System.out.println("/user/addUser : POST 여기로오나?");
+    user.setFilepath("Straight-Up.png"); //경로 걍 넣어주기 
+    user.setArtistCode("0");
+     userService.addUser(user);
     
-    System.out.println("/user/addUser : GET");
+    System.out.println("/user/addUser : POST 여기로오나?");
     if(user !=null){
       session.setAttribute("user", user);
     }

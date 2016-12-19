@@ -51,13 +51,7 @@
 					<option value="락">락</option>
 					<option value="일렉트로닉">일렉트로닉</option>
 		</select>
-
-    <div class="control">
-				<input type="text" id="music" name="music"
-				placeholder="MASTERPIECE OF MUSIC" />
-		</div>
-
-    <div class="filebox bs3-primary preview-image">
+     <div class="filebox bs3-primary preview-image">
 			  <input class="upload-name" placeholder="PROFILE"
 						disabled="disabled"> <label for="input_file">UPLOAD</label>
 				<input type="file" id="input_file" name="uploadfile"
@@ -72,6 +66,7 @@
 		<div class="control submit">
 			   <!--      <button id="uploadbutton">register</button> -->
 				<input type="button" id="uploadbutton" value="register" />
+				<input type="button" id="closebutton" value="취소"/>
 		</div>
 	</form>
 
@@ -239,7 +234,7 @@
 			               type: 'POST',
 			               success: function(result){
 			            	   swal({
-			            		   title: "아트스트 등록하시겠습니까?",
+			            		   title: "아티스트 등록하시겠습니까?",
 			            		   type: "info",
 			            		   showCancelButton: true,
 			            		   closeOnConfirm: false,
@@ -264,6 +259,11 @@
             }
         }
 </script>
-
+<!-- 취소버튼 -->
+<script>
+    $("#closebutton").on("click",function(){
+        	  parent.location.href = '/artist/listArtist';
+    });
+</script>
 </body>
 </html>
