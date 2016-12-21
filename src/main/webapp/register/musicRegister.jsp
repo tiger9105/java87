@@ -5,21 +5,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+<!--  모달창 -->
+<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">  
 <link rel="stylesheet" href="/css/register.css">
+<link rel="stylesheet" href="/css/register/musicRegister.css">
 <!-- colorbox창 -->
 <link rel="stylesheet" href="/css/colorbox/colorbox.css">
 <!-- alert창 (등록) -->
 <link rel="stylesheet"
   href="/node_modules/sweetalert/dist/sweetalert.css">
+
 </head>
 <body>
-	<form id="frm" method="post" action="/artist/upload" enctype="multipart/form-data">
+	<form  method="post" action="/video/addVideo" >
 			<h1>Register</h1>
 			<div class="control">
-				<input type="text" id="musicName" name="musicName" placeholder="title of a song" />
+				<input type="text" id="title" name="title" placeholder="TITLE OF A SONG" />
 			</div>
-
+																
       <!-- genre 나중에 수정할거임
 	    <div class="drop">
 	        <div class="option active placeholder" data-value="placeholder">
@@ -51,32 +54,80 @@
 					<option value="락">락</option>
 					<option value="일렉트로닉">일렉트로닉</option>
 		</select>
+	
+		<div class="control12">	
+			<div class="control1">
+			리그 참여 여부
+			<br>
+			<br>
+					<input type="radio" id="app" name="app"
+								value="참여" >참여
+					<input type="radio" id="app" name="app"
+								value="불참여" >불참여
+			</div>
+		</div>	
+	
+		<div class="control">
+			<input type="text" id="url" name="url" placeholder="YOUTUBE URL" />				
+		</div>
+	
+		<div class="container">
+		  <!-- Trigger the modal with a button -->
+		  <button type="button" id="btn" data-toggle="modal" data-target="#myModal">가사 등록</button>
+		
+		  <!-- Modal -->
+		  <div class="modal fade" id="myModal" role="dialog">
+		    <div class="modal-dialog">
+		    
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">가사</h4>
+		        </div>
+		        <div class="modal-body">
+		          <textarea cols="60" rows="20" name="text" id="text"></textarea>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">완료</button>
+		        </div>
+		      </div>
+		      
+		    </div>
+		  </div>
+		  
+		</div>
 
- 
-    <div class="filebox bs3-primary preview-image">
-			  <input class="upload-name" placeholder="music"
-						disabled="disabled"> <label for="input_file">UPLOAD</label>
-				<input type="file" id="input_file" name="uploadfile"
-						class="upload-hidden">
-	</div>
+<!-- 	<div class="control">
+				<input type="text" id="text" name="text"
+						placeholder="LYRICS" />
+	</div> 
+	
+	<div class="control">
+			       <label for="textarea">Textarea</label>
+        <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+	</div>   -->
 
     <div class="control">
 				<input type="text" id="introduce" name="introduce"
 						placeholder="INTRODUCE" />
 	</div>
+	
 				
 	<div class="control submit">
 			   <!--      <button id="uploadbutton">register</button> -->
 				<input type="button" id="uploadbutton" value="register" />
 				<input type="button" id="closebutton" value="취소"/>
-		</div>
+	</div>
 	</form>
 
 <!--javascript 모음  -->  
 	<script src="/javascript/jquery-1.8.0.min.js" type="text/javascript"></script>
 	<script src="/javascript/colorbox/jquery.colorbox.js"></script>
 	<script src="/node_modules/sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
-
+	<!-- 모달창 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- 이미지 사이즈 조정 -->
   <script>
@@ -229,21 +280,22 @@
 			        var form = $('form')[0];
 			        var formData = new FormData(form);
 			            $.ajax({
-			               url: '/artist/upload',
+			               url: '/video/addVideo',
 			               processData: false,
 			               contentType: false,
 			               data: formData,
 			               type: 'POST',
 			               success: function(result){
 			            	   swal({
-			            		   title: "아티스트 등록하시겠습니까?",
+			            		   title: "동영상을 업로드하시겠습니까?",
 			            		   type: "info",
+			            		   confirmButtonColor : "rgba(254, 82, 76, 1)",
 			            		   showCancelButton: true,
 			            		   closeOnConfirm: false,
 			            		   showLoaderOnConfirm: true
 			            		   }, function () {
 			            		   setTimeout(function () {	   
-			            				parent.location.href = '/artist/listArtist';
+			            				parent.location.href = '/video/listVideo';
 			            				}, 2000);			               
 			            		   });											  
 			            	 }			            

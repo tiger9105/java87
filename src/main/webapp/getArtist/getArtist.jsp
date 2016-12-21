@@ -11,6 +11,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/getArtist.css">
 <link rel="stylesheet" href="/getArtist/getArtist.css">
+<link rel="stylesheet"
+  href="/node_modules/sweetalert/dist/sweetalert.css">
 
 </head>
 <body>
@@ -35,13 +37,15 @@
 				${artist.artistName }<br>
 				
 				장르 : ${artist.genre}<br>
-				
-				대표곡 : ${artist.music}<br>
-				
+		
 				소개글 : ${artist.introduce}<br>
 		
 		
 			</h2>
+  <input type="hidden" name="artistjjim" id="artistjjim" value="${artist.artistNo}">
+      
+      <input type="button" id="jjim_btn" value="찜버튼">
+        
 
 		</article> <article class='dos fontawesome-wrench'>
 	<p>내가 올린 동영상</p>
@@ -69,8 +73,27 @@
 
 
 	<script src="/javascript/jquery-1.8.0.min.js" type="text/javascript"></script>
+	  <script src="/node_modules/sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		
+	$(function(){
+        $("#jjim_btn").click(function(){
+            var artNo = $("#artistjjim").val();
+              $.ajax({
+                   url:'/user/addLikeArt/'+artNo,
+                   type: 'GET',
+                   success: function(userlikeart){
+                     console.log("여기들어왔다옴");
+                     if(userlikeart.artNo==0 && userlikeart.userNo==0 ){
+                     swal("찜목록에 이미들어갔슴");
+                     }
+                     else{
+                       swal("찜목록에 추가로들어갔슴");
+                     }
+                 }                  
+          });              
+      });
+    });
+
 	</script>
 
 

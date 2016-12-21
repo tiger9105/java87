@@ -92,7 +92,7 @@ body.overflow-hidden {
  */
 .menubar {
 	float: left;
-	width: 300px;
+	width: 200px;
 	position: fixed;
 	height: 700px;
 	z-index: 29;
@@ -100,7 +100,7 @@ body.overflow-hidden {
 
 .menubar header {
 	float: left;
-	width: 300px;
+	width: 200px;
 	background: #e0603d;
 	height: 60px;
 	position: fixed;
@@ -108,7 +108,7 @@ body.overflow-hidden {
 	left: 0;
 	z-index: 2;
 	transition: 1s;
-	transform: translateX(-300px);
+	transform: translateX(-200px);
 }
 
 .menubar header.open {
@@ -121,7 +121,7 @@ body.overflow-hidden {
 
 .menubar .posts {
 	float: left;
-	width: 300px;
+	width: 200px;
 	height: calc(100% - 60px);
 	position: fixed;
 	top: 60px;
@@ -130,7 +130,7 @@ body.overflow-hidden {
 	bottom: 0;
 	z-index: 3;
 	transition: 1s;
-	transform: translateX(-300px);
+	transform: translateX(-200px);
 }
 
 .menubar .posts.open {
@@ -249,7 +249,7 @@ body.overflow-hidden {
 .content {
 	float: left;
 	width: 100%;
-	height: 3000px;
+	height: 2000px;
 	position: relative;
 	transition: 1s;
 }
@@ -266,7 +266,7 @@ body.overflow-hidden {
  * Animation keyframes
  */
 @
--webkit-keyframes openNav {from { transform:translateX(-300px);
+-webkit-keyframes openNav {from { transform:translateX(-200px);
 	
 }
 
@@ -276,7 +276,7 @@ to {
 
 }
 @
--moz-keyframes openNav {from { transform:translateX(-300px);
+-moz-keyframes openNav {from { transform:translateX(-200px);
 	
 }
 
@@ -286,7 +286,7 @@ to {
 
 }
 @
-keyframes openNav {from { transform:translateX(-300px);
+keyframes openNav {from { transform:translateX(-200px);
 	
 }
 
@@ -301,7 +301,7 @@ to {
 }
 
 to {
-	transform: translateX(300px);
+	transform: translateX(200px);
 }
 
 }
@@ -311,7 +311,7 @@ to {
 }
 
 to {
-	transform: translateX(300px);
+	transform: translateX(200px);
 }
 
 }
@@ -321,7 +321,7 @@ keyframes moveContent {from { transform:translateX(0px);
 }
 
 to {
-	transform: translateX(300px);
+	transform: translateX(200px);
 }
 
 }

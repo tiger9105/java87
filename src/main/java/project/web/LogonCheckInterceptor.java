@@ -39,18 +39,21 @@ public class LogonCheckInterceptor extends HandlerInterceptorAdapter {
           uri.indexOf("loginView") != -1      ||  uri.indexOf("login") != -1    || 
           uri.indexOf("checkDuplication") != -1 ){
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-      
+      System.out.println("uti"+uri);
       if(   uri.indexOf("addUser") != -1 || uri.indexOf("login") != -1    || 
           uri.indexOf("checkDuplication") != -1  || uri.indexOf("login12") != -1 ){
         request.getRequestDispatcher("/index.jsp").forward(request, response);
-        System.out.println("[ .... ]");
+        System.out.println("[ .... 1]");
+        System.out.println(uri.indexOf("addUserLikeArt"));
         System.out.println("[ LogonCheckInterceptor end........]\n");
         return false;
       }
       
-      System.out.println("[ ... ]");
+      System.out.println("[ ... 2]");
       System.out.println("[ LogonCheckInterceptor end........]\n");
       return true;
+      
+      
     }else{ 
       String uri = request.getRequestURI();
       
@@ -62,13 +65,13 @@ public class LogonCheckInterceptor extends HandlerInterceptorAdapter {
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
       if(   uri.indexOf("addUser") != -1 || uri.indexOf("login") != -1    || 
           uri.indexOf("checkDuplication") != -1 || uri.indexOf("upload") != -1 || uri.indexOf("video") != -1  || uri.indexOf("login12") != -1 || uri.indexOf("listArtist")!=-1    ){
-        System.out.println("[... ]");
+        System.out.println("[...3 ]");
         System.out.println("[ LogonCheckInterceptor end........]\n");
         return true;
       }
       
       request.getRequestDispatcher("/index.jsp").forward(request, response);
-      System.out.println("[ ... ]");
+      System.out.println("[ ...4 ]");
       System.out.println("[ LogonCheckInterceptor end........]\n");
       return false;
     }

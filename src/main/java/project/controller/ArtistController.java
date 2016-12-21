@@ -5,6 +5,7 @@ package project.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -179,6 +180,25 @@ public class ArtistController {
 
 
 }
+  
+  @RequestMapping(value = "getArtist1", method = RequestMethod.GET)
+  public String getArtist1(HttpSession session, Model model) throws Exception {
+      //Business Logic
+    
+    System.out.println("/artist/getArtist1 : GET");
+    
+    int userNo=((User)session.getAttribute("user")).getUserNo();
+    System.out.println(userNo);
+
+    Artist artist = artistService.getArtist1(userNo);
+    System.out.println(artist);
+
+    model.addAttribute("artist", artist);
+  
+    return "forward:/updateArtist/updateArtist.jsp";
+
+
+}
 
   
  
@@ -218,4 +238,16 @@ public class ArtistController {
     return "forward:/artist/artist.jsp";
   }
   
+  
+  
+  @RequestMapping(value="getLikeArtistList" ,method=RequestMethod.GET)
+  public String getLikeArtistList(Model model,HttpSession session) throws Exception{
+    User user = (User)session.getAttribute("user");
+    
+    List<Artist> artistList=artistService.getLikeArtistList(user.getUserNo());
+    
+    model.addAttribute("artistList", artistList);
+  System.out.println("아티스트 리스트 :"+artistList);
+    return "forward:/getLikeArtist.jsp";
+  }
 }  

@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
 import project.dao.UserDao;
 import project.domain.Search;
 import project.domain.User;
-import project.service.UserService;;
-
+import project.domain.UserLikeArt;
+import project.service.UserService;
+import project.dao.UserLikeArtDao;
 
 @Service("userServiceImpl")
 public class UserServiceImpl implements UserService{
@@ -23,6 +24,12 @@ public class UserServiceImpl implements UserService{
   @Autowired
   @Qualifier("userDaoImpl")
   private UserDao userDao;
+  
+  
+  @Autowired
+  @Qualifier("userlikeArtDaoImpl")
+  private UserLikeArtDao userLikeArtDao;
+  
   
   public void setUserDao(UserDao userDao) { /** */
     this.userDao = userDao;
@@ -65,4 +72,20 @@ public class UserServiceImpl implements UserService{
     }
     return result;
   }
+  
+  public void addlikeArtUser(UserLikeArt userLikeArt) throws Exception {
+    userLikeArtDao.addUserLikeArt(userLikeArt);
+  }
+  
+ public void deletelikeArtUser(int userNo, int artNo) throws Exception {
+   userLikeArtDao.deleteUserLikeArt(userNo,artNo);
+    }
+
+@Override
+public UserLikeArt getLikeArt(UserLikeArt userLikeArt) throws Exception {
+  // TODO Auto-generated method stub
+  return userLikeArtDao.getLikeArt(userLikeArt);
+}
+    
+  
 }

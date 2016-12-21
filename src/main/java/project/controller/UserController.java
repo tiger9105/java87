@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import project.domain.Page;
 import project.domain.Search;
 import project.domain.User;
+import project.domain.UserLikeArt;
 import project.service.UserService;
 
 
@@ -60,10 +61,12 @@ public class UserController {
     user.setFilepath("Straight-Up.png"); //경로 걍 넣어주기 
     user.setArtistCode("0");
      userService.addUser(user);
-    
+     
+     User user1=new User();
+     user1=userService.getUser(user.getUserId());
     System.out.println("/user/addUser : POST 여기로오나?");
     if(user !=null){
-      session.setAttribute("user", user);
+      session.setAttribute("user", user1);
     }
     return "redirect:/index.jsp";
   }
@@ -272,6 +275,38 @@ public class UserController {
             
     return user;
   }
+  
+  @RequestMapping(value="addLikeArt/{artNo}",method=RequestMethod.GET)
+ public @ResponseBody UserLikeArt addLikeArt(@PathVariable("artNo") int artNo, HttpSession session) throws Exception {
+    System.out.println("addUserLikeArt"+artNo);
+    User user=(User)session.getAttribute("user");
+    UserLikeArt userlikeart = new UserLikeArt();
+    userlikeart.setArtNo(artNo);
+    userlikeart.setUserNo(user.getUserNo());
+    System.out.println(userlikeart);
+    UserLikeArt userlikeart1 = new UserLikeArt();
+    
+    userlikeart1=userService.getLikeArt(userlikeart);
+    if(userlikeart1==null){
+      userService.addlikeArtUser(userlikeart);
+      return userlikeart1;
+    }else{
+      userlikeart1.setArtNo(0);
+      userlikeart1.setUserNo(0);
+      return userlikeart1;
+    }
+       
+   
+  }
+  
+  @RequestMapping(value="deleteUserLikeArt")
+ public @ResponseBody User deleteUserLikeArt() throws Exception {
+    System.out.println("deleteUserLikeArt");
+    
+    
+    return null;
+  }
+  
  
   //@RequestMapping("/logout.do")
   @RequestMapping( value="logout", method=RequestMethod.GET )
@@ -364,7 +399,7 @@ public class UserController {
   public String video(HttpSession session,@PathVariable("url") String url,HttpServletRequest request){
     System.out.println("video:"+url);
     
-    
+ 
    /* Set<String> set  = null;
     if((Set<String>)session.getAttribute("set")==null){
       set  = new HashSet<String>();
@@ -378,6 +413,8 @@ public class UserController {
     */
     return "redirect:index.jsp";
   }
+  
+  
   
   
   

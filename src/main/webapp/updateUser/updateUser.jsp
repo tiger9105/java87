@@ -82,6 +82,7 @@
                            type: "info",
                            showCancelButton: true,
                            closeOnConfirm: false,
+                           confirmButtonColor : "rgba(254, 82, 76, 1)",
                            showLoaderOnConfirm: true
                          }, function () {
                            setTimeout(function () {

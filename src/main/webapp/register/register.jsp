@@ -51,7 +51,8 @@
 					<option value="락">락</option>
 					<option value="일렉트로닉">일렉트로닉</option>
 		</select>
-     <div class="filebox bs3-primary preview-image">
+
+    <div class="filebox bs3-primary preview-image">
 			  <input class="upload-name" placeholder="PROFILE"
 						disabled="disabled"> <label for="input_file">UPLOAD</label>
 				<input type="file" id="input_file" name="uploadfile"
@@ -237,6 +238,7 @@
 			            		   title: "아티스트 등록하시겠습니까?",
 			            		   type: "info",
 			            		   showCancelButton: true,
+			            		   confirmButtonColor : "rgba(254, 82, 76, 1)",
 			            		   closeOnConfirm: false,
 			            		   showLoaderOnConfirm: true
 			            		   }, function () {

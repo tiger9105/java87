@@ -134,10 +134,10 @@ nav:after {
 	position: absolute;
 	transition: .5s;
 }
-
-input {
+input[type="radio"]{
 	display: none;
 }
+
 
 label {
 	width: 25%;

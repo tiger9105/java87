@@ -20,6 +20,8 @@ public interface ArtistDao {
 
   // SELECT LIST
   public List<Artist> getArtistList() throws Exception ;
+  
+  public List<Artist> getLikeArtistList(int userNo) throws Exception;
 
   public int getTotalCount() throws Exception ;
 

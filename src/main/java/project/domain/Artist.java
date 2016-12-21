@@ -10,7 +10,11 @@ public class Artist {
   private String introduce;
   private User userNumber;
   
-
+  public Artist() {
+    // TODO Auto-generated constructor stub
+  }
+  
+  
   public User getUserNumber() {
     return userNumber;
   }
@@ -19,9 +23,7 @@ public class Artist {
     this.userNumber = userNumber;
   }
 
-  public Artist() {
-    // TODO Auto-generated constructor stub
-  }
+
 
   public int getArtistNo() {
     return artistNo;

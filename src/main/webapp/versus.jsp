@@ -25,7 +25,7 @@
     <h1 style="color:white;">최고의플레이<br/>
      <strong style="color:yellow;">용사</strong>
     </h1>
-    <h4>장인</h4>
+    <h4></h4>
     <div class="overlay"></div>
     <div class="img">
     
@@ -36,7 +36,7 @@
     <h1 style="color:white;">최고의플레이<br/>
      <strong style="color:yellow;">겐지</strong>
     </h1>
-    <h4>장인</h4>
+    <h4></h4>
     <div class="overlay"></div>
     <div class="img">
     

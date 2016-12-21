@@ -1,0 +1,64 @@
+.thumbnail {
+    position: relative;
+    padding-top: 100%;  /* 1:1 ratio */
+    overflow: hidden;
+}
+
+.thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    height: auto;
+}
+.g-carousel .prev, .g-carousel .next {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  height: 100%;
+  min-height: 20px;
+  width: 40px;
+  background: rgba(254, 82, 76, 1);
+  text-align: center;
+  line-height: 200px;
+  position: relative;
+  z-index: 5;
+}
+
+
+.g-carousel {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  height: 200px;
+  width: 880px;
+}
+.g-carousel .prev {
+ font-weight: 700;		
+  float: left;
+  color:white;
+  font-size:18px;
+}
+.g-carousel .next {
+  font-weight: 700;		
+   color:white;
+  font-size:18px;
+  float: right;
+}
+.g-carousel ul.carousel {
+  position: absolute;
+  top: 0;
+  height: 200px;
+  margin: 0;
+  left: 40px;
+  right: 40px;
+  padding: 0;
+}
+.g-carousel ul.carousel li {
+  width: 200px;
+  list-style-type: none;
+  float: left;
+}

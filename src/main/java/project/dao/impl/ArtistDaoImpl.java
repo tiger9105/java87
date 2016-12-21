@@ -64,4 +64,11 @@ public class ArtistDaoImpl implements ArtistDao{
     return sqlSession.selectOne("ArtistMapper.getTotalCount");
   }
 
+  @Override
+  public List<Artist> getLikeArtistList(int userNo) throws Exception {
+    // TODO Auto-generated method stub
+    
+    return sqlSession.selectList("ArtistMapper.getLikeArtistList",userNo);
+  }
+
 }

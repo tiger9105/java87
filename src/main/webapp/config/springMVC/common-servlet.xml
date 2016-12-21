@@ -87,6 +87,8 @@
     <mvc:resources mapping="/artist/**" location="/artist/" /> 
     <mvc:resources mapping="/fonts/**" location="/fonts/" /> 
       <mvc:resources mapping="/artistImage/**" location="/artistImage/" />
+       <mvc:resources mapping="/getLikeArtist/**" location="/getLikeArtist/" />
+        <mvc:resources mapping="/getLikeArtist/**" location="/getLikeArtist/" />
     
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
    	

@@ -36,19 +36,18 @@
 				<a href="#">
 					<img src="/images/uploadFiles/${user.filepath}" >
 					${user.userId}
-					
 				</a>
 			</div>	
 			<hr>
 <!-- 아티스트 경우 메뉴바	-->	
 			<c:if test="${user.artistCode =='1'}">
   				<div class="post">
-					<a href="#">
+					<a href="#" class="updateArtist">
 						아티스트 정보 수정
 					</a>
 				</div> 
 				<div class="post">
-					<a href="#">
+					<a href="#" class="videoRegister">
 						동영상 올리기
 					</a>
 				</div>
@@ -66,19 +65,14 @@
 					최근 본 동영상
 				</a>
 			</div>
-			<div class="post">
-				<a href="#">
-					내가 찜한 아티스트
-				</a>
-			</div>
-			<div class="post">
-				<a href="#">
-					버스킹 찜 목록
-				</a>
-			</div>
+		<div class="post">
+        <a id="getLikeArtistList">
+              내가 찜한 아티스트
+        </a>
+      </div>
 			<div class="post">
 				<a class='ajax'  href="/updateUser/updateUser.jsp">
-				내 정보 수정
+				  내 정보 수정
 				</a>
 			</div>
 
@@ -103,14 +97,14 @@
 						<li><a href="/about.jsp">About</a></li>
 						<li><a href="/artist/listArtist" id="visited">Artist</a>
 							<ul>
-								<li><a href="portfolioproject.jsp">Portfolio Project</a></li>
+								<li><a href="portfolioproject.jsp">Artist</a></li>
 							</ul></li>
-						<li><a href="/blog.jsp">Blog</a>
+						<li><a href="/video/listVideo">Video</a>
 							<ul>
-								<li><a href="/singleblog.jsp">Single Post</a></li>
+								<li><a href="/video/listVideo">Video</a></li>
 							</ul></li>
 						<li><a href="/features.jsp">Features</a></li>
-						<li><a href="/contact.jsp">MY Page</a></li>
+						<li><a href="upcontest.jsp">UP contest</a></li>
 						<!-- 로그인 로그아웃 부분  -->
 						<c:if test="${user!=null}">
 							<li><a href="/user/logout" onclick="FB.logout();"
@@ -149,7 +143,9 @@
 	<!-- 아티스트 등록하기 버튼 -->
 	<p>
 		<div class="container1">
+		<c:if test="${user.artistCode=='0'}">
 			<span class="pulse-button">register</span>
+		</c:if>
 		</div>
 	</p>
 	<!-- ends 아티스트 등록하기 버튼 -->
@@ -236,6 +232,17 @@
 	
 <!-- 이미지 사이즈 조정 -->
 	<script>
+	   $("#getLikeArtistList").on("click",function(){
+	       $.colorbox({
+	         iframe:true,
+	         href:"/artist/getLikeArtistList",
+	         width:"700px",
+	         height:"600px",
+	         fixed: true
+	         });
+	      });
+	
+	
 
 		var div = figure.querySelector('figure');// 이미지를 감싸는 div
 		var img = div.querySelector('img'); // 이미지
@@ -266,8 +273,8 @@
     </script>
     
     <script>
-   	 $(".ajax").colorbox({iframe:true, width:"40%", height:"650px"});
-    </script>
+   		$(".ajax").colorbox({iframe:true, width:"40%", height:"650px"});
+   	</script>
 
 <!-- genre 부분 자바스크립트 (아직 작동안됌) -->
 	<script>
@@ -400,6 +407,7 @@
 			            		   type: "info",
 			            		   showCancelButton: true,
 			            		   closeOnConfirm: false,
+			            		   confirmButtonColor : "rgba(254, 82, 76, 1)",
 			            		   showLoaderOnConfirm: true
 			            		 }, function () {
 			            		   setTimeout(function () {
@@ -430,7 +438,6 @@
 	    	$.colorbox({
 	        closeButton : "false",
 	        fixed : "true",
-	        top : "true",
 	        iframe : "true",
 	        href : "/artist/getArtist/"+artNo, 
 	        width : "640px",
@@ -446,11 +453,11 @@
 	    	$.colorbox({
 	        closeButton : "false",
 	        fixed : "true",
-	        top : "true",
 	        iframe : "true",
 	        href : "/register/register.jsp", 
 	        width : "600px",
 	        height : "650px",
+	        fixed : true,
 	        scrolling : false	       
 	      }); 
 	    });
@@ -469,7 +476,35 @@
 		});
 	</script>
 	
+<!-- 아티스트 수정 창 -->
+	<script type="text/javascript">
+	    $('.updateArtist').on("click", function() {
+	    	$.colorbox({
+	        closeButton : "false",
+	        fixed : "true",
+	        iframe : "true",
+	        href : "/artist/getArtist1", 
+	        width : "600px",
+	        height : "600px",
+	        scrolling : false	       
+	      }); 
+	    });
+	</script>
 	
+<!-- 동영상 올리기 -->	
+	<script type="text/javascript">
+	    $('.videoRegister').on("click", function() {
+	    	$.colorbox({
+	        closeButton : "false",
+	        fixed : "true",
+	        iframe : "true",
+	        href : "/register/musicRegister.jsp", 
+	        width : "600px",
+	        height : "650px",
+	        scrolling : true	       
+	      }); 
+	    });
+	</script>	
 	
 </body>
 </html>

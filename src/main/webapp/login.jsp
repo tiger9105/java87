@@ -23,18 +23,10 @@
 	<video id="video" preload="auto" autoplay="true" loop="loop"
 		muted="muted" volume="0">
 		<source src="video/video.mp4">
-
 	</video>
-	
-	<div class="layer">
-	
-
-	<div class="layer" > 
+  <div class="layer">
+	 <div class="layer" > 
 		<span class="content" style="height: 500px; margin-top: 100px; margin-left: 250px; ">
-
-
-
-		
 			<div class="container"  >
 				<div class="card"></div>
 				<div class="card">

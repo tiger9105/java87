@@ -4,6 +4,7 @@ import java.util.Map;
 
 import project.domain.Search;
 import project.domain.User;
+import project.domain.UserLikeArt;
 
 
 public interface UserService {
@@ -16,7 +17,12 @@ public interface UserService {
   
   public void updateUser(User user) throws Exception;
   
-  // ȸ�� ID �ߺ� Ȯ��
+
   public boolean checkDuplication(String userId) throws Exception;
   
+  public void addlikeArtUser(UserLikeArt userLikeArt) throws Exception;
+  
+  public void deletelikeArtUser(int userNo,int artNo) throws Exception ;
+  
+  public UserLikeArt getLikeArt(UserLikeArt userLikeArt) throws Exception ;
 }

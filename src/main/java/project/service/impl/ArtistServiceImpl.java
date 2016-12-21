@@ -56,8 +56,16 @@ public class ArtistServiceImpl implements ArtistService{
     return artistDao.getArtist(artistNo);
   }
 
+  @Override
+  public List<Artist> getLikeArtistList(int userNo) throws Exception {
+    // TODO Auto-generated method stub
+    return artistDao.getLikeArtistList(userNo);
+  }
+
   
-  
+  public Artist getArtist1(int userNo) throws Exception {
+    return artistDao.getArtist1(userNo);
+  }
   
 /*
 

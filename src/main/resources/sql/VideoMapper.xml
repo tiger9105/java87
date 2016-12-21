@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="VideoMapper">
+    <resultMap id="videoSelectMap" type="video">
+    <result property="videoNo"    column="vid_no"      jdbcType="NUMERIC"/>
+    <result property="heart"    column="vid_hat"      jdbcType="NUMERIC"/>
+    <result property="hits"    column="vid_hits"      jdbcType="NUMERIC"/>
+    <result property="title"   column="vid_title"      jdbcType="VARCHAR"/>
+    <result property="url"   column="vid_url"     jdbcType="VARCHAR" />
+    <result property="genre"   column="genre"     jdbcType="VARCHAR" />
+    <result property="app"   column="vid_app"   jdbcType="VARCHAR"  />
+    <result property="introduce"   column="vid_int"   jdbcType="VARCHAR"  />
+    <result property="text"   column="vid_text"   jdbcType="VARCHAR"  />
+    <association property="userNumber" column="user_no" select="UserMapper.getUserByNo" javaType="project.domain.User" />
+	<association property="artist" column="user_no" select="ArtistMapper.getArtist1" javaType="project.domain.Artist" /> 
+  </resultMap>
+  <!-- SQL : INSERT -->
+  <insert   id="addVideo"    parameterType="video"  keyColumn="vid_no" keyProperty="videoNo" useGeneratedKeys="true">
+    INSERT
+    INTO video( vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no) 
+    VALUES  (seq_video_vidno.NEXTVAL,#{heart:NUMERIC},#{hits:NUMERIC},#{title:VARCHAR},#{url:VARCHAR},#{genre:VARCHAR},#{app:VARCHAR}, #{introduce},#{text},#{userNumber.userNo} )
+   </insert>
+      
+   <select  id="getVideo"   parameterType="int" resultMap="videoSelectMap" >
+		SELECT *FROM video 
+		WHERE vid_no =#{value}
+   </select>   
+      
+<!--    <select  id="getArtist"  parameterType="int"  resultMap="artistSelectMap">
+    SELECT
+    *  
+    FROM artists 
+    WHERE ARTIST_NO = #{value}
+   </select>
+    
+    <select  id="getArtist1"  parameterType="int"  resultMap="artistSelectMap">
+    SELECT
+    *  
+    FROM artists ,users
+    WHERE artists.user_no=users.user_no AND users.user_no = #{value}
+   </select>
+    
+   <update  id="updateArtist" parameterType="artist" >
+      UPDATE artists
+      <set>
+        artist_name=#{artistName},
+        genre=#{genre},
+        artist_pro = #{image},
+        art_int= #{introduce} 
+       </set>
+      WHERE user_no = #{userNumber.userNo}
+    </update>
+    -->     
+    <select  id="getVideoList"  resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no FROM video ORDER BY vid_no DESC
+   </select>
+   
+   
+<!--     <select  id="getVideoList"  resultMap="videoSelectMap" >
+	SELECT artists.artist_name , artists.artist_pro, video.vid_no,video.vid_title,
+	video.genre,video.vid_hat, video.vid_hits from artists,video where artists.user_no=video.user_no ORDER BY video.vid_no desc
+   </select>
+    -->
+     <select id= "getTotalCount" resultType="int">
+    SELECT COUNT(*)
+    FROM video
+   </select> 
+ 
+</mapper>

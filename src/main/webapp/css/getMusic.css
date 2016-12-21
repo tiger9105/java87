@@ -1,0 +1,48 @@
+.container > #btn{
+	width: auto;
+	border: 2px solid rgba(254, 82, 76, 1);;
+	background: #fff;
+	padding: 10px 40px;
+	margin-left:-15px;
+	color: rgba(254, 82, 76, 1);;
+	border-radius: 2px;
+	cursor: pointer;
+	text-transform: uppercase;
+	
+}
+.container3{
+	margin:5%;
+	margin-left:20%;
+	margin-right:20%;
+}
+.container3 h4{
+	color:gray;
+	float:left;
+}
+.good{
+	font-weight: 600;
+    letter-spacing: 1px;
+	float:right;
+	font-size:14px;
+	margin:0% 5% 5% 5%;
+}
+
+.good .heart  {
+
+	margin: 0 16px 0 0;
+}
+.good .heart img{
+	margin: 0 4px 0 0 ;
+	width:35px;
+	height:25px;
+}
+.good .hits  {
+
+	margin: 0 16px 0 0;
+}
+.good .hits img{
+	margin: 0 4px 0 0 ;
+	width:30px;
+	height:30px;
+}
+

@@ -30,7 +30,7 @@ form .control.submit {
 	text-align: right;
 }
 
-form input {
+form input[type="text"]{
 	width: 80%;
 	border: none;
 	border-bottom: 2px solid #e3e3e3;
@@ -38,7 +38,13 @@ form input {
 	padding: 10px 0;
 	padding-left: 12px;
 	letter-spacing: 3px;
-	font-size: 16px
+	font-size: 16px;
+}
+
+form input[type="radio"]{
+	width: 8%;
+	letter-spacing: 3px;
+	font-size: 16px;
 }
 
 #uploadbutton {
@@ -388,3 +394,4 @@ a {
 	cursor: pointer;
 	text-transform: uppercase;
 }
+

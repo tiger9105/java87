@@ -84,17 +84,20 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 	rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div id="main" style="padding-top: 0px; padding-bottom: 0px;">
+<c:import url="/artist/nav.jsp"></c:import>  <!--  네비게이션 부분 모듈화  -->
+	
+	<!--  위에 네비게이터부분 모듈화함  -->
+	<!-- <div id="main" style="padding-top: 0px; padding-bottom: 0px;">
 		<span
 			style="font-size: 30px; cursor: pointer; color: white; float: left; padding-top: 10px; padding-right: 50px" 
 			onclick="openNav()">&#9776; open</span>
-	</div>
+	</div> -->
 
 
 	<!--Content Part ==================================================
 ================================================== -->
 	<div id="header">
-	<div id="roundedlogo" style="float: left;">
+	<div id="roundedlogo" style="float: left; margin-left: 100px">
   <div class="wrapper12">
    UP<span class="hidden-name12">laudio</span>
   </div>
@@ -102,13 +105,18 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 		<div class="container">
 			<!-- Header | Logo, Menu
     ==================================여기는 UP ================ -->
-			<div id="mySidenav" class="sidenav">
+    <!--  위에 네비게이터부분 모듈화함  -->
+    
+    <!--  위에 네비게이터부분 모듈화함  -->
+			<!-- <div id="mySidenav" class="sidenav">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 				<a class='ajax1' href="/history.jsp"> 최근본동영상 </a> 
 					<a href="#">내가찜한 아티스트</a> 
 					<a href="#">버스킹찜목록</a> 
 					<a class='ajax'  href="/updateUser.jsp">내정보수정</a>
-			</div>
+			</div> -->
+			
+			
 		<!-- 	<div class="retrologo">
 				<a href="index.jsp">Underground Play</a>
 			</div> -->

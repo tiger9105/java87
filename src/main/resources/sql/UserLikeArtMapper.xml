@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserLikeArtMapper">
+ <resultMap id="userSelectMap" type="userLikeArt">
+    <result property="userNo"    column="user_no"      jdbcType="NUMERIC"/>
+    <result property="artNo"     column="art_no" jdbcType="NUMERIC"/>
+  </resultMap>
+ 
+ 
+ 
+ <insert id="addUserLikeArt" parameterType="userLikeArt">
+    INSERT
+    INTO ART_LIKE(USER_NO,ARTIST_NO)
+    VALUES (#{userNo:INTEGER},
+             #{artNo:INTEGER})
+  </insert>
+  
+  
+  <delete id="deleteUser" parameterType="hashmap">
+      DELETE 
+      FROM ART_LIKE
+      WHERE USER_NO = #{userNo:INTEGER} AND ARTIST_NO = #{artNo:INTEGER} 
+  </delete>
+  
+  <select id="getLikeArt" parameterType="userLikeArt" resultMap="userSelectMap">
+    SELECT *
+    FROM ART_LIKE
+    WHERE USER_NO = #{userNo:INTEGER} AND ARTIST_NO = #{artNo:INTEGER} 
+  </select>
+  
+ 
+ 
+</mapper>

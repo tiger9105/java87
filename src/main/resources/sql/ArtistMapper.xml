@@ -29,10 +29,9 @@
      <select  id="getArtist1"  parameterType="int"  resultMap="artistSelectMap">
     SELECT
     *  
-    FROM artists 
-    WHERE user_no = #{value}
+    FROM artists ,users
+    WHERE artists.user_no=users.user_no AND users.user_no = #{value}
    </select>
-    
     
     
    <select  id="getArtistList"  resultMap="artistSelectMap" >
@@ -43,5 +42,11 @@
     SELECT COUNT(*)
     FROM artists
    </select>
+ 
+  <select id="getLikeArtistList" parameterType="int"  resultMap="artistSelectMap">
+  select a.* 
+  from ART_LIKE al, ARTISTS a 
+  where al.ARTIST_NO=a.ARTIST_NO AND al.user_no=#{value}
+    </select> 
  
 </mapper>
