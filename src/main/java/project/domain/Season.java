@@ -1,5 +1,6 @@
 package project.domain;
 
+import java.util.List;
 
 public class Season {
   
@@ -7,7 +8,7 @@ public class Season {
   private String seasonName;
   private String seasonStart;
   private String seasonEnd;
-  private Artist seasonwinner;
+   private Artist seasonwinner;
   private Artist seasonsecondwinner;
   
   public Season(){

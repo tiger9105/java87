@@ -29,26 +29,28 @@
 <!-- CSS ==================================================
 ================================================== -->
 
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/skeleton.css">
-<link rel="stylesheet" href="css/screen.css">
-<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/skeleton.css">
+<link rel="stylesheet" href="/css/screen.css">
+<link rel="stylesheet" href="/css/prettyPhoto.css" type="text/css" media="screen" />
 
 <!-- 새로 추가된 메인 UI로고부분   -->
-<link rel="stylesheet" href="css/UP/UP.css">
+<link rel="stylesheet" href="/css/UP/UP.css">
 <!-- Favicons ==================================================
 ================================================== -->
 
-<link rel="shortcut icon" href="images/favicon.png">
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+<link rel="shortcut icon" href="/images/favicon.png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
 
 <!-- Google Fonts ==================================================
 ================================================== -->
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+<c:import url="/nav/nav.jsp"></c:import>
+
 
 <!--Content Part ==================================================
 ================================================== -->
@@ -62,8 +64,8 @@
     <div class="mainmenu">
       <div id="mainmenu">
         <ul class="sf-menu">
-          <li><a href="index.jsp">Home</a></li>
-          <li><a href="about.jsp">About</a></li>
+          <li><a href="/index.jsp">Home</a></li>
+          <li><a href="/about.jsp">About</a></li>
           <li><a href="portfolio.jsp">Portfolio</a>
             <ul>
               <li><a href="portfolioproject.jsp">Portfolio Project</a></li>
@@ -75,7 +77,7 @@
             </ul>
           </li>
           <li><a href="features.jsp">Features</a></li>
-             <li><a href="upcontest.jsp">UP Contest</a></li>
+             <li><a href="/upcontest.jsp">UP Contest</a></li>
                <c:if test="${user!=null}">
             <li> <a href="/user/logout" onclick="FB.logout();" style="color: white;">logout</a><br></li>
             </c:if>
@@ -123,6 +125,14 @@
 <!-- breadcrumbs ends here --> 
 <!-- Contact Content Part - GoogleMap ==================================================
 ================================================== -->
+
+
+
+
+
+
+
+
 
 
 
@@ -253,19 +263,19 @@
 ================================================== --> 
 <!-- Scripts ==================================================
 ================================================== --> 
-<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script> 
+<script src="/js/jquery-1.8.0.min.js" type="text/javascript"></script> 
 <!-- Main js files --> 
-<script src="js/screen.js" type="text/javascript"></script> 
+<script src="/js/screen.js" type="text/javascript"></script> 
 <!-- Tabs --> 
-<script src="js/tabs.js" type="text/javascript"></script> 
+<script src="/js/tabs.js" type="text/javascript"></script> 
 <!-- Include prettyPhoto --> 
-<script src="js/jquery.prettyPhoto.js" type="text/javascript"></script> 
+<script src="/js/jquery.prettyPhoto.js" type="text/javascript"></script> 
 <!-- Include Superfish --> 
-<script src="js/superfish.js" type="text/javascript"></script> 
-<script src="js/hoverIntent.js" type="text/javascript"></script> 
+<script src="/js/superfish.js" type="text/javascript"></script> 
+<script src="/js/hoverIntent.js" type="text/javascript"></script> 
 <!-- Flexslider --> 
-<script src="js/jquery.flexslider-min.js" type="text/javascript"></script> 
+<script src="/js/jquery.flexslider-min.js" type="text/javascript"></script> 
 <!-- Modernizr --> 
-<script type="text/javascript" src="js/modernizr.custom.29473.js"></script>
+<script type="text/javascript" src="/js/modernizr.custom.29473.js"></script>
 </body>
 </html>

@@ -29,31 +29,20 @@
 		WHERE vid_no =#{value}
    </select>   
       
-<!--    <select  id="getArtist"  parameterType="int"  resultMap="artistSelectMap">
-    SELECT
-    *  
-    FROM artists 
-    WHERE ARTIST_NO = #{value}
-   </select>
-    
-    <select  id="getArtist1"  parameterType="int"  resultMap="artistSelectMap">
-    SELECT
-    *  
-    FROM artists ,users
-    WHERE artists.user_no=users.user_no AND users.user_no = #{value}
-   </select>
-    
-   <update  id="updateArtist" parameterType="artist" >
-      UPDATE artists
+
+   <update  id="updateVideo" parameterType="video" >
+      UPDATE video
       <set>
-        artist_name=#{artistName},
+        vid_title=#{title},
         genre=#{genre},
-        artist_pro = #{image},
-        art_int= #{introduce} 
+        vid_url = #{url},
+        vid_app= #{app},
+        vid_int=#{introduce},
+        vid_text=#{text} 
        </set>
-      WHERE user_no = #{userNumber.userNo}
+      WHERE vid_no = #{videoNo}
     </update>
-    -->     
+  
     <select  id="getVideoList"  resultMap="videoSelectMap" >
 		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no FROM video ORDER BY vid_no DESC
    </select>
@@ -64,9 +53,23 @@
 	video.genre,video.vid_hat, video.vid_hits from artists,video where artists.user_no=video.user_no ORDER BY video.vid_no desc
    </select>
     -->
-     <select id= "getTotalCount" resultType="int">
-    SELECT COUNT(*)
-    FROM video
+   <select id= "getTotalCount" resultType="int">
+	    SELECT COUNT(*)
+	    FROM video
    </select> 
+   
+   <delete id="deleteVideo" parameterType="int">
+	   DELETE FROM video 
+	   WHERE vid_no=#{videoNo}
+   
+   </delete>
+   
+    <update  id="updateHits" parameterType="video" >
+      UPDATE video
+      <set>
+        vid_hits=#{hits}
+       </set>
+      WHERE vid_no = #{videoNo}
+    </update>
  
 </mapper>

@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/node_modules/sweetalert/dist/sweetalert.css">
-<link rel="stylesheet" href="/updateUser/updateUser.css">
+
 <link rel="stylesheet" href="/css/updateUser.css">
 </head>
 

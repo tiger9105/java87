@@ -23,8 +23,11 @@ public interface VideoDao {
 
   public int getTotalCount() throws Exception ;
 
- /* // UPDATE
-  public void updateArtist(Artist artist) throws Exception ;*/
+
+  public void updateVideo(Video video) throws Exception ;
   
   
+  public void updateHits(Video video) throws Exception ;
+  
+  public void deleteVideo(int videoNo) throws Exception ;
 }

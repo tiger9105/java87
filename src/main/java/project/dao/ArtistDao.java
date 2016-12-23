@@ -25,6 +25,7 @@ public interface ArtistDao {
 
   public int getTotalCount() throws Exception ;
 
+  public void updateArtist(Artist artist) throws Exception ;
   // UPDATE
 //  public void updateUser(User user) throws Exception ;
   

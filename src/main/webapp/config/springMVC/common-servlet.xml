@@ -43,6 +43,7 @@
    		<mvc:interceptor>
 			<mvc:mapping path="/user/**"/>
 			<mvc:mapping path="/artist/**"/>
+			<mvc:mapping path="/season/**"/>
 			<bean class="project.web.LogonCheckInterceptor" />
    		</mvc:interceptor>
 
@@ -88,7 +89,7 @@
     <mvc:resources mapping="/fonts/**" location="/fonts/" /> 
       <mvc:resources mapping="/artistImage/**" location="/artistImage/" />
        <mvc:resources mapping="/getLikeArtist/**" location="/getLikeArtist/" />
-        <mvc:resources mapping="/getLikeArtist/**" location="/getLikeArtist/" />
+       
     
 	<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
    	

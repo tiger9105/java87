@@ -48,5 +48,17 @@
   from ART_LIKE al, ARTISTS a 
   where al.ARTIST_NO=a.ARTIST_NO AND al.user_no=#{value}
     </select> 
+    
+     <update  id="updateArtist" parameterType="artist" >
+      UPDATE artists
+      <set>
+        artist_name=#{artistName},
+        genre=#{genre},
+        artist_pro = #{image},
+        art_int= #{introduce} 
+       </set>
+      WHERE user_no = #{userNumber.userNo}
+    </update>
+    
  
 </mapper>

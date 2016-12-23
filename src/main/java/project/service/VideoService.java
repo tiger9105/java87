@@ -17,8 +17,12 @@ public interface VideoService {
  
   
   public Map<String , Object> getVideoList() throws Exception;
-/*
-  public Artist getArtist1(int userNo) throws Exception;
-  public void updateArtist(Artist artist) throws Exception;
-*/
+
+
+  public void updateVideo(Video video) throws Exception;
+  
+  public void updateHits(Video video) throws Exception;
+  
+  public void deleteVideo(int videoNo) throws Exception;
+
 }

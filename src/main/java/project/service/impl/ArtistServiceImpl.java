@@ -67,11 +67,13 @@ public class ArtistServiceImpl implements ArtistService{
     return artistDao.getArtist1(userNo);
   }
   
-/*
 
-  public void updateUser(User user) throws Exception {
-    userDao.updateUser(user);
+
+  public void updateArtist(Artist artist) throws Exception {
+    artistDao.updateArtist(artist);
   }
+
+  /*
 
   public boolean checkDuplication(String userId) throws Exception {
     boolean result=true;

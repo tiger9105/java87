@@ -20,13 +20,14 @@
 <!-- 로고 -->	
 <link rel="stylesheet" href="/css/UP/UP.css">
 <!-- menubar -->
-<link rel="stylesheet" href="/css/menubar.css">
+<link rel="stylesheet" href="/css/menubar.css"> 
 <!-- 상단 menu -->
 <link rel="stylesheet" href="/css/screen.css">
 <!-- pagination -->
 <link rel="stylesheet" href="/css/music/pagination.css">
 <!-- 최신순,인기순,조회순 -->
 <link rel="stylesheet" href="/css/music/order.css">
+<link rel="stylesheet" href="/css/music/genre.css">
 </head>
  
 <body>
@@ -150,18 +151,10 @@
 	
 <!--ends 홈페이지 메뉴바 -->
 
-<!-- artist 장르별 메뉴 -->
-	<nav class="genre">
-		<ul>
-			<li class="current"><a href="#"><span>ALL</span></a></li>
-			<li class=""><a href="#"><span>R & B</span></a></li>
-			<li class=""><a href="#"><span>힙합 & RAP<span></a></li>
-			<li class=""><a href="#"><span>어쿠스틱<span></a></li>
-			<li class=""><a href="#"><span>락<span></a></li>
-			<li class=""><a href="#"><span>일렉토로닉<span></a></li>
-		</ul>
-	</nav>
-<!--ends artist 장르별 메뉴 -->
+
+<!-- nav -->
+
+<!-- ends nav -->
 
 <!-- music 등록하기 버튼 -->
 	<p>
@@ -200,9 +193,12 @@
 		</div>
 	</section>
 	
-	<div class="container">			
+	<div class="container">	
+
+	 
 <!--music , video list  -->
 <c:forEach var="video" items="${list}">
+ 
 		<div class="container2" >
 				<!-- column -->
 				<div class="column">
@@ -210,9 +206,7 @@
 					<div class="post-module" >
 						<!-- thumbnail1-->
 						<div class="thumbnail1" >
-							<div class="video">
-								<img src="/images/icon/video-camera.png">
-							</div>
+						
 							<c:if test="${video.userNumber.artistCode=='0'}">
 							<a href="/video/getVideo?videoNo=${video.videoNo}">
 								<img
@@ -251,8 +245,12 @@
 			</div>
 			<!--ends music , video list  -->
 
-</c:forEach>			
-	</div>
+</c:forEach>
+
+
+
+</div>			
+	
 	<!--ends container -->
 
 <!--javascript 모음  -->  
@@ -570,5 +568,7 @@
 	      }); 
 	    });
 	</script>	
+	
+
 </body>
 </html>

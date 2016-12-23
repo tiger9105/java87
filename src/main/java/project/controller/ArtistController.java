@@ -250,4 +250,58 @@ public class ArtistController {
   System.out.println("아티스트 리스트 :"+artistList);
     return "forward:/getLikeArtist.jsp";
   }
+  
+  @RequestMapping( value="updateArtist", method=RequestMethod.POST )
+  public @ResponseBody Artist updateArtist(  Model model , HttpSession session , MultipartHttpServletRequest request) throws Exception{
+
+    System.out.println("/artist/updateArtist : POST");
+    //Business Logic
+    
+    
+    
+    int userNo=((User)session.getAttribute("user")).getUserNo();
+    
+    String userId=((User)session.getAttribute("user")).getUserId();
+    
+    User user = userService.getUser(userId);
+        
+    Artist artist =artistService.getArtist1(userNo);
+    
+    MultipartFile file = request.getFile("uploadfile");
+    
+    if(file.getOriginalFilename()!=""){  //디비에 있는 파일경로랑 jsp 에 있는 파일경로가 같지 않다면 
+        //String path="C:\\Users\\BitCamp\\git\\java87\\UI02Project\\src\\main\\webapp\\images\\uploadFiles\\"+file.getOriginalFilename();
+        String path="C:\\Users\\kimjihee\\git\\java87\\src\\main\\webapp\\images\\uploadFiles\\"+file.getOriginalFilename();
+        file.transferTo(new File(path));
+        
+       artist.setArtistName(request.getParameter("artistName"));
+       artist.setGenre(request.getParameter("genre"));
+       artist.setImage(file.getOriginalFilename());
+       artist.setIntroduce(request.getParameter("introduce"));
+       artist.setUserNumber(user);
+       
+       artistService.updateArtist(artist);
+        
+       artist= artistService.getArtist(artist.getArtistNo());
+       
+       session.setAttribute("artist", artist);
+               
+       }if(file.getOriginalFilename()==""){ //jsp 에서 가져온값이랑 user안의 파일경로에 파일이름이랑 같은애들 
+      
+         artist.setArtistName(request.getParameter("artistName"));
+           artist.setGenre(request.getParameter("genre"));
+           artist.setImage(artist.getImage());
+           artist.setIntroduce(request.getParameter("introduce"));
+           artist.setUserNumber(user);
+        
+           artistService.updateArtist(artist);
+           
+           artist= artistService.getArtist(artist.getArtistNo());
+           
+           session.setAttribute("artist", artist);
+       }
+    
+  return artist;
+  } 
+
 }  

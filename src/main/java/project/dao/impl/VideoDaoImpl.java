@@ -44,18 +44,17 @@ public class VideoDaoImpl implements VideoDao{
     System.out.println("오나"+videoNo);
     return sqlSession.selectOne("VideoMapper.getVideo", videoNo);
   }
-/*  
-  public Artist getArtist1(int userNo) throws Exception {
-    System.out.println("오나"+userNo);
-    return sqlSession.selectOne("ArtistMapper.getArtist1", userNo);
-  }
   
 
-  public void updateArtist(Artist artist) throws Exception {
-    sqlSession.update("ArtistMapper.updateArtist", artist);
+  public void updateVideo(Video video) throws Exception {
+    sqlSession.update("VideoMapper.updateVideo", video);
+  }
+  
+  public void updateHits(Video video) throws Exception {
+	    sqlSession.update("VideoMapper.updateHits", video);
   }
 
-*/
+
   public List<Video> getVideoList() throws Exception {
     System.out.println("여기까지는 옴");
     System.out.println(sqlSession.selectList("VideoMapper.getVideoList"));
@@ -65,6 +64,11 @@ public class VideoDaoImpl implements VideoDao{
   
   public int getTotalCount() throws Exception {
     return sqlSession.selectOne("VideoMapper.getTotalCount");
+  }
+  
+  public void deleteVideo(int videoNo) throws Exception {
+	    System.out.println("오나"+videoNo);
+	    sqlSession.delete("VideoMapper.deleteVideo", videoNo);
   }
 
 }

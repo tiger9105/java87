@@ -62,27 +62,14 @@ public class VideoController {
   @Value("#{commonProperties['pageSize']}")
   int pageSize;
   
-/*
-  @RequestMapping( value="addArtist", method=RequestMethod.POST )
-  public String addArtist( @ModelAttribute("artist") Artist artist ) throws Exception {
-    System.out.println("image �씠由�?"+artist.getImage());
-    System.out.println(artist);
-    System.out.println("/artist/addArtist : POST");
-    //Business Logic
-    artistService.addArtist(artist);
-    
-    ////////////////////
-    return "redirect:/artist.jsp";
 
-  }
-  */
   
   @RequestMapping( value="addVideo", method=RequestMethod.POST )
   public String addVideo( @ModelAttribute("video") Video video ,HttpSession session) throws Exception {
 	
 	System.out.println("/video/addVideo : POST");
 	  
-	User user=(User)session.getAttribute("user");
+	  User user=(User)session.getAttribute("user");
     Artist artist = artistService.getArtist1(user.getUserNo());
     
     video.setUserNumber(user);
@@ -107,118 +94,78 @@ public class VideoController {
  
 
   @RequestMapping( value="getVideo", method=RequestMethod.GET )
-  public String getArtist( HttpServletRequest request, Model model ) throws Exception {
+  public String getVideo( HttpServletRequest request, Model model ) throws Exception {
     
     System.out.println("/video/getVideo : GET");
     
     String videoNo = request.getParameter("videoNo");
     //Business Logic
     Video video = videoService.getVideo(Integer.parseInt(videoNo));
-
+    
+    video.setHits(video.getHits()+1);
+    
+    videoService.updateHits(video);
+    
+    video=videoService.getVideo(video.getVideoNo());
+    
     model.addAttribute("video", video);
     
     return "forward:/getMusic/getMusic.jsp";
   }
   
   
-/*  
-  @RequestMapping(value = "getArtist/{artistNo}", method = RequestMethod.GET)
-  public String getArtist(@PathVariable("artistNo") int artistNo, Model model) throws Exception {
-      //Business Logic
+  @RequestMapping( value="getVideoByUpdate/{videoNo}", method=RequestMethod.GET )
+  public String getVideoByUpdate(@PathVariable("videoNo") int videoNo, HttpServletRequest request, Model model ) throws Exception {
     
-    System.out.println("/artist/getArtist : GET");
-    Artist artist = artistService.getArtist(artistNo);
-
-    model.addAttribute("artist", artist);
-  
-  return "forward:/getArtist/getArtist.jsp";
-
-
-}
-  
-  @RequestMapping(value = "getArtist1", method = RequestMethod.GET)
-  public String getArtist1(HttpSession session, Model model) throws Exception {
-      //Business Logic
+    System.out.println("/video/getVideoByUpdate : GET");
     
-    System.out.println("/artist/getArtist1 : GET");
     
-    int userNo=((User)session.getAttribute("user")).getUserNo();
-    System.out.println(userNo);
-
-    Artist artist = artistService.getArtist1(userNo);
-    System.out.println(artist);
-
-    model.addAttribute("artist", artist);
-  
-    return "forward:/updateArtist/updateArtist.jsp";
-
-
-}
-
-
-  
- 
-  //@RequestMapping("/updateUser.do")
-  @RequestMapping( value="updateArtist", method=RequestMethod.POST )
-  public @ResponseBody Artist updateUser( MultipartHttpServletRequest request,HttpSession session) throws Exception{
-
-    System.out.println("/user/updateArtist : POST");
     //Business Logic
-    
-    
-    int userNo=((User)session.getAttribute("user")).getUserNo();
-    User user=(User)session.getAttribute("user");
-    System.out.println(userNo);
-    MultipartFile file = request.getFile("uploadfile");
-    System.out.println(request.getFile("uploadfile"));
-    Artist artist = artistService.getArtist1(userNo);
-    System.out.println(artist);
-    
-    if(file.getOriginalFilename()!=""){  //디비에 있는 파일경로랑 jsp 에 있는 파일경로가 같지 않다면 
-    	   // String path="C:\\Users\\BitCamp\\git\\java87\\UI02Project\\src\\main\\webapp\\images\\uploadFiles\\"+file.getOriginalFilename();
-    	    String path="C:\\Users\\kimjihee\\git\\java87\\src\\main\\webapp\\images\\uploadFiles\\"+file.getOriginalFilename(); //
-    	    file.transferTo(new File(path));
-    	    System.out.println("여기1");
-    	    System.out.println(request.getParameter(file.getOriginalFilename()));
+    Video video = videoService.getVideo(videoNo);
 
-    	    artist.setArtistName(request.getParameter("artistName"));
-    	    artist.setGenre(request.getParameter("genre"));
-    	    artist.setImage(file.getOriginalFilename());
-    	    artist.setIntroduce(request.getParameter("introduce"));
-    	    artist.setUserNumber(user);
-    	    
-    	    artistService.updateArtist(artist);
-    	    artist=artistService.getArtist1(userNo);
-    	    
-    	    session.setAttribute("user", user);
-    	    session.setAttribute("artist", artist);
-    	 
-    	           
-    	   }if(file.getOriginalFilename()==""){ //jsp 에서 가져온값이랑 user안의 파일경로에 파일이름이랑 같은애들 
+    model.addAttribute("video", video);
+    
+    return "forward:/updateVideo/updateVideo.jsp";
+  }
+  
+
+
+  @RequestMapping( value="updateVideo", method=RequestMethod.POST )
+  public @ResponseBody String updateVideo(HttpServletRequest request, Model model,HttpSession session) throws Exception{
+
+    System.out.println("/video/updateVideo : POST");
+    //Business Logic
+    String videoNo=request.getParameter("videoNo");
+    Video video =videoService.getVideo(Integer.parseInt(videoNo));
+    
+    video.setGenre(request.getParameter("genre"));
+    video.setTitle(request.getParameter("title"));
+    video.setApp(request.getParameter("app"));
+    video.setText(request.getParameter("text"));
+    video.setIntroduce(request.getParameter("introduce"));
+    
+    
+    String url [] = new String [2];
+    
    
-    	     
-    	 	    artist.setArtistName(request.getParameter("artistName"));
-        	    artist.setGenre(request.getParameter("genre"));
-        	    artist.setImage(artist.getImage());
-        	    artist.setIntroduce(request.getParameter("introduce"));
-        	    artist.setUserNumber(user);
-        	    
-        	    System.out.println("여기2");
-          	    artistService.updateArtist(artist);
-        	    artist=artistService.getArtist1(userNo);
-        	    
-        	    session.setAttribute("user", user);
-        	    session.setAttribute("artist", artist);
-        	      	      
-    	   }
-    	     //return "redirect:/getUser.do?userId="+user.getUserId();
-//    	    return "redirect:/user/getUser?userId="+user.getUserId();
-    	    return artist;
+    url = request.getParameter("url").split("=");
+    System.out.println(url[1]);
+    video.setUrl(url[1]);
+    
+    
+    
+    videoService.updateVideo(video);
+    
+    video=videoService.getVideo(video.getVideoNo());
+   
+    model.addAttribute("video", video);
+    
+    return "forward:/getVideo/getVideo?videoNo="+videoNo;
   }
 
   
   
-*/  
+
   //@RequestMapping("/listUser.do")
   @RequestMapping( value="listVideo" )
   public String listVideo( Model model , HttpServletRequest request) throws Exception{
@@ -235,5 +182,19 @@ public class VideoController {
     
     return "forward:/music/music.jsp";
   }
- 
+  
+  @RequestMapping( value="deleteVideo/{videoNo}")
+  public  String deleteVideo( @PathVariable("videoNo") int videoNo,HttpServletRequest request, Model model ) throws Exception {
+    
+	System.out.println("delete 여기오니??");
+    
+    //Business Logic
+    videoService.deleteVideo(videoNo);
+
+
+    
+    return "forward:/video/listVideo";
+  }
+  
+
 }  

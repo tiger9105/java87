@@ -19,6 +19,8 @@
     <typeAlias alias="search" type="project.domain.Search" />
     <typeAlias alias="userLikeArt" type="project.domain.UserLikeArt"/>
      <typeAlias alias="video" type="project.domain.Video" />
+     <typeAlias alias="Season" type="project.domain.Season"/>
+     <typeAlias alias="leag"  type="project.domain.Leag"/>
   </typeAliases>
   
    <!-- SQL Definition :: file include -->
@@ -27,6 +29,8 @@
     <mapper resource="sql/ArtistMapper.xml"/>
     <mapper resource="sql/UserLikeArtMapper.xml"/>
     <mapper resource="sql/VideoMapper.xml"/>
+    <mapper resource="sql/SeasonMapper.xml"/>
+    <mapper resource="sql/LeagMapper.xml"/>
   </mappers>
 
 </configuration>

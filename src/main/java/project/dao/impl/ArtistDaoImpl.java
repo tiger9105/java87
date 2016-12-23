@@ -70,5 +70,8 @@ public class ArtistDaoImpl implements ArtistDao{
     
     return sqlSession.selectList("ArtistMapper.getLikeArtistList",userNo);
   }
-
+  
+  public void updateArtist(Artist artist) throws Exception {
+    sqlSession.update("ArtistMapper.updateArtist", artist);
+  }
 }

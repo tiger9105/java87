@@ -84,7 +84,7 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 	rel='stylesheet' type='text/css'>
 </head>
 <body>
-<c:import url="/artist/nav.jsp"></c:import>  <!--  네비게이션 부분 모듈화  -->
+<c:import url="/nav/nav.jsp"></c:import>  <!--  네비게이션 부분 모듈화  -->
 	
 	<!--  위에 네비게이터부분 모듈화함  -->
 	<!-- <div id="main" style="padding-top: 0px; padding-bottom: 0px;">
@@ -138,12 +138,12 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 							<ul>
 								<li><a href="portfolioproject.jsp">Portfolio Project</a></li>
 							</ul></li>
-						<li><a href="blog.jsp">Blog</a>
+						<li><a href="/video/listVideo">Video</a>
 							<ul>
 								<li><a href="singleblog.jsp">Single Post</a></li>
 							</ul></li>
 						<li><a href="features.jsp">Features</a></li>
-						<li><a href="upcontest.jsp">UP contest</a></li>
+						<li><a href="/season/getSeasonlist">UP contest</a></li>
 						<!-- 로그인 로그아웃 부분  -->
 						<c:if test="${user!=null}">
 							<li><a href="/user/logout" onclick="FB.logout();"

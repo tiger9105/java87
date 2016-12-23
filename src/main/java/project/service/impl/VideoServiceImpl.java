@@ -60,21 +60,19 @@ public class VideoServiceImpl implements VideoService{
     return map;
   }
 
-  
- /* 
-  public Artist getArtist(int artistNo) throws Exception {
-    return artistDao.getArtist(artistNo);
-  }
-  
-  public Artist getArtist1(int userNo) throws Exception {
-	    return artistDao.getArtist1(userNo);
-	  }
 
  
-  public void updateArtist(Artist artist) throws Exception {
-    artistDao.updateArtist(artist);
+  public void updateVideo(Video video) throws Exception {
+    videoDao.updateVideo(video);
   }
   
+  public void updateHits(Video video) throws Exception {
+	    videoDao.updateHits(video);
+  }
+  
+  public void deleteVideo(int videoNo) throws Exception {
+	    videoDao.deleteVideo(videoNo);
+	  }
  
-  }*/
+
 }

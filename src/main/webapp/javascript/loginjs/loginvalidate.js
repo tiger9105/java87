@@ -2,7 +2,7 @@ $(function(){
     $("#checkloginbutton").click(function(){
         var form = $('form')[0];
         var formData = new FormData(form);
-            $.ajax({
+          $.ajax({
                url: '/user/login',
                processData: false,
                contentType: false,

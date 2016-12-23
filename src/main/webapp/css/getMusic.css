@@ -1,10 +1,33 @@
+.title{
+	float:left;
+	
+}
+
+.userUpdateVideo{
+	float:right;
+}
+
+
+.btn1{
+	width: auto;
+	border: 0px solid rgba(254, 82, 76, 0.7);
+	background:rgba(254, 82, 76, 0.7);
+	padding: 8px 20px;
+	margin:0px;
+	margin-left:2px;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+	text-transform: uppercase;
+
+}
+
 .container > #btn{
 	width: auto;
-	border: 2px solid rgba(254, 82, 76, 1);;
+	border: 2px solid rgba(254, 82, 76, 1);
 	background: #fff;
 	padding: 10px 40px;
-	margin-left:-15px;
-	color: rgba(254, 82, 76, 1);;
+	color: rgba(254, 82, 76, 1);
 	border-radius: 2px;
 	cursor: pointer;
 	text-transform: uppercase;
@@ -16,29 +39,33 @@
 	margin-right:20%;
 }
 .container3 h4{
+	clear:both;
 	color:gray;
 	float:left;
 }
+
 .good{
+
 	font-weight: 600;
     letter-spacing: 1px;
-	float:right;
+	float:left;
 	font-size:14px;
-	margin:0% 5% 5% 5%;
+	margin:10px 2px;
 }
 
-.good .heart  {
 
-	margin: 0 16px 0 0;
+.good .heart  {
+	
+	margin: 0 20px 10px 0;
 }
 .good .heart img{
 	margin: 0 4px 0 0 ;
-	width:35px;
-	height:25px;
+	width:30px;
+	height:20x;
 }
 .good .hits  {
 
-	margin: 0 16px 0 0;
+	margin: 0 20px 10px 0;
 }
 .good .hits img{
 	margin: 0 4px 0 0 ;
