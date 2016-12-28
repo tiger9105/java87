@@ -26,10 +26,10 @@
              )
   </insert>
 
-  <select id="getSeasonMapper" parameterType="int" resultMap="seasonSelectMap">
+  <select id="getSeasonMapper" parameterType="String" resultMap="seasonSelectMap">
     SELECT *
     FROM SEASON
-    WHERE sea_no = #{seasonNo:INTEGER}
+    WHERE sname = #{seasonName:VARCHAR}
   </select>
   
     <select id="getSeasonlistMapper" resultMap="seasonSelectMap">
@@ -38,7 +38,11 @@
     ORDER BY sea_no DESC
   </select>
   
- 
+  
+    <select id= "getTotalCount" resultType="int">
+    SELECT COUNT(*)
+    FROM SEASON
+   </select>
   
  
  

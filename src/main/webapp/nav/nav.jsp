@@ -38,7 +38,7 @@
           <a href="#" class="updateArtist">
             아티스트 정보 수정
           </a>
-        </div>  
+        </div> 
         <div class="post">
           <a href="#" class="videoRegister">
             동영상 올리기
@@ -51,7 +51,7 @@
         </div>
           <hr>
     </c:if> 
-<!--ends 아티스트 경우 메뉴바  -->   
+<!--ends 아티스트 경우 메뉴바  -->  
     
       <div class="post">
        <a class='ajax1' href="/history.jsp">
@@ -101,21 +101,7 @@
   });
 </script>
 
-<!-- 아티스트 수정 창 -->
-  <script type="text/javascript">
-      $('.updateArtist').on("click", function() {
-        $.colorbox({
-          closeButton : "false",
-          fixed : "true",
-          iframe : "true",
-          href : "/artist/getArtist1", 
-          width : "600px",
-          height : "600px",
-          scrolling : false        
-        }); 
-      });
-  </script>
-  
+
 <!-- 동영상 올리기 -->  
   <script type="text/javascript">
       $('.videoRegister').on("click", function() {
@@ -132,21 +118,7 @@
   </script> 
 
 
-<!-- 아티스트 눌렀을 떄 나오는 자바스크립트(getArtist) -->
-  <script type="text/javascript">
-       $('i[id^=getArtist]').on("click", function() {
-        var artNo = $(this).attr("id").replace("getArtist_","");
-        $.colorbox({
-          closeButton : "false",
-          fixed : "true",
-          iframe : "true",
-          href : "/artist/getArtist/"+artNo, 
-          width : "640px",
-          height : "600px",
-          scrolling : false   
-          }); 
-       });
-  </script>
+
 
 <!-- 등록했을떄 나오는 alert창 -->
   <script type="text/javascript">
@@ -201,15 +173,11 @@
 
 
 <!-- colorbox inline 등록창 -->
-  <script>
-      $(document).ready(function(){
-          $(".inline").colorbox({inline:true}); 
-      });
-    </script>
+
     
     <script>
       $(".ajax").colorbox({iframe:true, width:"40%", height:"650px"});
-      $(".ajax1").colorbox({iframe:true, width:"30%", height:"80%"});
+      $(".ajax1").colorbox({iframe:true, width:"450px", height:"80%"});
        $(".makeseason").colorbox({iframe:true, width:"40%", height:"300px"});
     </script>
 
@@ -368,6 +336,21 @@
             }
   </script>
 
+
+  <!-- 아티스트 수정 창 -->
+  <script type="text/javascript">
+      $('.updateArtist').on("click", function() {
+        $.colorbox({
+          closeButton : "false",
+          fixed : "true",
+          iframe : "true",
+          href : "/artist/getArtist1", 
+          width : "600px",
+          height : "650px",
+          scrolling : false        
+        }); 
+      });
+  </script> 
 
 
 </body>

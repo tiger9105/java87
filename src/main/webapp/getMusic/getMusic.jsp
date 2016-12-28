@@ -3,11 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("utf-8");
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Insert title here</title>
 <!--  모달창 -->
 <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">   
@@ -43,6 +45,7 @@
 	cursor: pointer;
 	text-transform: uppercase;
 }
+
 </style> 
 <body>
 <!-- 내정보 슬라이드 -->
@@ -173,11 +176,28 @@ ends carousel -->
 
 		<div class="good">
 
-				<span class="heart"><img src="/images/icon/heart.png">${video.heart}</span>
-				<span class="hits"><img src="/images/icon/eye.png"></i>${video.hits}</span>
+				<span class="hits"><img src="/images/icon/eye.png">${video.hits}</span>
+				
+				<span class="heart1">
+					<c:if test="${videoHeart.userNo eq user.userNo}">
+						<input id="heart" name="heart" type="checkbox" checked="checked" />
+					</c:if>	
+					
+					<c:if test="${videoHeart.userNo ne user.userNo}">
+						<input id="heart" name="heart" type="checkbox" />
+					</c:if>	
+				
+					<label for="heart">❤</label>
+						<div id="heartCount">
+							${video.heart}
+						</div>
+				</span>
+
 		</div>
+		
+	
 			
-		<div class="container">
+		<div class="container4">
 		  <!-- Trigger the modal with a button -->
 		  <button type="button" id="btn" data-toggle="modal" data-target="#myModal">가사 보기</button>
 		
@@ -201,6 +221,8 @@ ends carousel -->
 		  </div>
 		  
 		</div>
+		
+				
 	</div>
 <!-- ends video -->
 
@@ -216,6 +238,19 @@ ends carousel -->
 	<script src="/javascript/screen.js" type="text/javascript"></script>
 	<!-- Tabs -->
 	<script src="/javascript/tabs.js" type="text/javascript"></script>
+	
+	
+	<!-- 하트 javaScript 
+	<script>
+	$(".love").click(function(){
+		  $('.heart').toggleClass('love');
+		  $('.heart').addClass("active").delay(300).queue(function(next){
+		    $('.heart').removeClass("active");
+		    next();
+		  });
+		});
+	</script>
+	-->
 	
 	
 	<!-- 메뉴슬라이드 자바스크립트  -->
@@ -309,6 +344,63 @@ ends carousel -->
     	 });
 	</script>
 	
+	
+<!-- 좋아요 javaScript -->
+	<script type="text/javascript">
+  		 $('#heart').on("click", function() {
+  			var ischecked =$(this).attr('checked');
+  			if(ischecked){
+ 
+  				
+	    		var num = $("#heartCount").text();
+	    	
+	    		var num1=parseInt(num)+parseInt(1);
+	    		
+	     		var vidNo =${video.videoNo};
+     		
+    			document.getElementById("heartCount").innerHTML = num1;
+    		
+	    		$.ajax({
+		               url: "/video/heartAdd",
+		               type: "GET",           
+		               data: {"heartAdd":num1 ,"vidNo":vidNo},
+		               async: false,
+		               success: function(data) {                   
+		                   alert(html);
+		               }
+		           });   
+    		  
+  			 }else{
+ 
+  		
+  				var num = $("#heartCount").text();
+	    		
+	    		var num1=parseInt(num)-parseInt(1);
+	    		
+	     		var vidNo =${video.videoNo};
+  	    		document.getElementById("heartCount").innerHTML = num1;
+  	    		
+  	    		  $.ajax({
+  		               url: "/video/heartDelete",
+  		               type: "GET",           
+  		               data: {"heartDelete":num1 ,"vidNo":vidNo},
+  		               async: false,
+  		               success: function(data) {                   
+  		                   
+  		               }
+  		   
+  		           });   
+	 
+  	  		 }	  
+    		
+    	 });
+  		
+	</script>
+	
+
+
+	
+
 	
 </body>
 </html>

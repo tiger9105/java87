@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,7 +30,9 @@ import project.domain.Page;
 import project.domain.Search;
 import project.domain.User;
 import project.domain.UserLikeArt;
+import project.domain.Video;
 import project.service.UserService;
+import project.service.VideoService;
 
 
 @Controller
@@ -40,7 +43,13 @@ public class UserController {
   @Autowired
   @Qualifier("userServiceImpl")
   private UserService userService;
-    
+  
+  @Autowired
+  @Qualifier("videoServiceImpl")
+  private VideoService videoService;
+  
+  
+  
   public UserController(){
     System.out.println(this.getClass());
   }
@@ -394,26 +403,16 @@ public class UserController {
       }
   }
   
-  
-  @RequestMapping(value="video/{url}")
-  public String video(HttpSession session,@PathVariable("url") String url,HttpServletRequest request){
-    System.out.println("video:"+url);
-    
- 
-   /* Set<String> set  = null;
-    if((Set<String>)session.getAttribute("set")==null){
-      set  = new HashSet<String>();
-    }else{
-      set  = (Set<String>)session.getAttribute("set");
-    }
-    set.add(url);
-    session.setAttribute("set", set);
-     Set<String> set =(Set<String>)session.getAttribute("set");
-    set.add(user);
-    */
-    return "redirect:index.jsp";
+/*    내가올린동영상 처리해주는 컨트롤러 
+  @RequestMapping(value="myvideo/{userNo}",method=RequestMethod.GET)
+  public @ResponseBody List<Video> myvideo(HttpSession session,@PathVariable("userNo") int userNo) throws Exception{
+    User user=(User)session.getAttribute("user");
+    User user1=userService.getUser(user.getUserId());
+    List<Video> list=videoService.getMyVideoList(user1.getUserNo());
+    return list;
   }
   
+  */
   
   
   

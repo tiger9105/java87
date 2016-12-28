@@ -143,9 +143,7 @@
 		
 		}); */
  /////////////////////////////////////////////////////////////여기는 최근본 동영상 자바스크립트 
-  $(".ajax").colorbox({iframe:true, width:"30%", height:"80%"});
-		$(".ajax1").colorbox({iframe:true, width:"30%", height:"80%"});
-		 $(".makeseason").colorbox({iframe:true, width:"40%", height:"450px"});
+
  ////////
 			
 			//내 정보 수정 페이지 처리하기 

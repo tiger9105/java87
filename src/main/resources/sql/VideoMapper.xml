@@ -29,6 +29,12 @@
 		WHERE vid_no =#{value}
    </select>   
       
+      
+   <select  id="getmyVideolist"   parameterType="int" resultMap="videoSelectMap" >
+    SELECT  vid_url FROM video 
+    WHERE user_no=#{value}
+   </select>   
+      
 
    <update  id="updateVideo" parameterType="video" >
       UPDATE video
@@ -43,8 +49,22 @@
       WHERE vid_no = #{videoNo}
     </update>
   
-    <select  id="getVideoList"  resultMap="videoSelectMap" >
-		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no FROM video ORDER BY vid_no DESC
+    <select  id="getVideoList"   resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  ORDER BY vid_no DESC
+   </select>
+   
+   <select  id="getVideoListHeart"  resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  ORDER BY vid_hat DESC
+   </select>
+   
+       <select  id="getVideoListHits"  resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  ORDER BY vid_hits DESC
    </select>
    
    
@@ -72,4 +92,17 @@
       WHERE vid_no = #{videoNo}
     </update>
  
+ 
+ 	   
+    <update  id="updateHeart" parameterType="video" >
+      UPDATE video
+      <set>
+        vid_hat=#{heart}
+       </set>
+      WHERE vid_no = #{videoNo}
+    </update>
+    
+    
+   
+  	
 </mapper>

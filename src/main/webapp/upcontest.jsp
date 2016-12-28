@@ -9,7 +9,159 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
+<style type="text/css">
+/**
+ * Resize images without JavaScript or jQuery
+ */
 
+
+li img {
+  max-height: 150px;
+  max-width: 150px;
+}
+
+/**
+ * IGNORE - Not required. Just some eye candy
+ */
+ 
+ /* 유투브가 들어갈 li css */
+.lioption {
+  list-style: none;
+  box-shadow: 0 0 10px #ccc;
+  float: left;
+  margin: 50px 0 0 50px;
+  padding: 0;
+  text-align: center;
+  
+    height: 300px;
+  width: 300px;
+}
+
+
+ /* VS가 들어갈 li css */
+.lioption1 {
+  list-style: none;
+
+  float: left;
+  margin: 50px 0 0 50px;
+  padding: 0;
+  text-align: center;
+  
+}
+
+
+ /* 대결구도전체적인 틀 ul 가운데 정렬옵션을줌 */
+.uloption{
+  width : 1200px;
+  margin:0 auto;
+}
+
+
+/*여기는 셀렉문 css*/
+/* -------------------- Page Styles (not required) */
+
+/* -------------------- Select Box Styles: bavotasan.com Method (with special adaptations by ericrasch.com) */
+/* -------------------- Source: http://bavotasan.com/2011/style-select-box-using-only-css/ */
+.styled-select {
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+  height: 25px;
+  overflow: hidden;
+  width: 240px;
+}
+.styled-select select {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px;
+  /* If you add too much padding here, the options won't show in IE */
+  width: 268px;
+}
+
+/* -------------------- Rounded Corners */
+.rounded {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+.semi-square {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+/* -------------------- Colors: Background */
+
+
+.yellow {
+  background-color: #eec111;
+}
+
+/* -------------------- Colors: Text */
+
+
+.yellow select {
+  color: #000;
+}
+
+/* -------------------- Select Box Styles: danielneumann.com Method */
+/* -------------------- Source: http://danielneumann.com/blog/how-to-style-dropdown-with-css-only/ */
+
+
+
+
+/*여기는 버튼 css*/
+/* Material style */
+.votebutton {
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 1px 20px;
+  border-radius: 2px;
+  font-size: 22px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+  background: #FD7979;
+}
+
+/* Ripple magic */
+.votebutton{
+  position: relative;
+  overflow: hidden;
+}
+
+.votebutton:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, .5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+.votebutton:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+ 
+</style>
 <!-- Basic Page Needs ================================================== 
 ================================================== -->
 
@@ -28,7 +180,7 @@
 
 <!-- CSS ==================================================
 ================================================== -->
-
+<link rel="stylesheet" href="/css/upcontest.css">
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/skeleton.css">
 <link rel="stylesheet" href="/css/screen.css">
@@ -59,47 +211,37 @@
     <!-- Header | Logo, Menu
     ================================================== -->
    
-   <div class="retrologo"><a href="index.jsp" style="font-size: 50px">Underground  Play</a></div>
+ 
     <!-- ㅁㄴㅇㅁ니ㅏㅁㄴ어미ㅏㄴ어ㅣㅁㄴㅇ -->
     <div class="mainmenu">
       <div id="mainmenu">
-        <ul class="sf-menu">
-          <li><a href="/index.jsp">Home</a></li>
-          <li><a href="/about.jsp">About</a></li>
-          <li><a href="portfolio.jsp">Portfolio</a>
-            <ul>
-              <li><a href="portfolioproject.jsp">Portfolio Project</a></li>
-            </ul>
-          </li>
-          <li><a href="blog.jsp">Blog</a>
-            <ul>
-              <li><a href="singleblog.jsp">Single Post</a></li>
-            </ul>
-          </li>
-          <li><a href="features.jsp">Features</a></li>
-             <li><a href="/upcontest.jsp">UP Contest</a></li>
-               <c:if test="${user!=null}">
-            <li> <a href="/user/logout" onclick="FB.logout();" style="color: white;">logout</a><br></li>
+          <ul class="sf-menu">
+            <li><a href="/index.jsp" >Home</a></li>
+            <li><a href="/about.jsp">About</a></li>
+            <li><a href="/artist/listArtist">Artist</a>
+            <li><a href="/video/listVideo">Video</a>
+            <li><a href="/season/getSeasonlist" id="visited">UP contest</a></li>
+            <!-- 로그인 로그아웃 부분  -->
+            <c:if test="${user!=null}">
+              <li><a href="/user/logout" onclick="FB.logout();"
+                style="color: white;">logout</a><br></li>
             </c:if>
             <c:if test="${user==null}">
-            <li> <a href="/login.jsp" style="color: white;">login</a><br></li>
+              <li><a href="/login.jsp" style="color: white;">login</a><br></li>
             </c:if>
-        </ul>
+          </ul>
       </div>
       <!-- mainmenu ends here --> 
       
       <!-- Responsive Menu -->
       <form id="responsive-menu" action="#" method="post">
         <select>
-          <option value="">Navigation</option>
-          <option value="index.jsp">Home</option>
-          <option value="about.jsp">About</option>
-          <option value="portfolio.jsp">Portfolio</option>
-          <option value="portfolioproject.jsp">Portfolio Project</option>
-          <option value="blog.jsp">Blog</option>
-          <option value="singleblog.jsp">Single Post</option>
-          <option value="features.jsp">Features</option>
-          <option value="upcontest.jsp">UP contest</option>
+            <option value="">메뉴</option>
+            <option value="/index.jsp">Home</option>
+            <option value="/about.jsp">About</option>
+            <option value="/artist/listArtist">Artist</option>
+            <option value="/video/listVideo">Video</option>
+            <option value="/season/getSeasonlist">UP contest</option>
         </select>
       </form>
     </div>
@@ -114,7 +256,7 @@
   <div class="container" style="text-align: center;">
     <header>
    
-      <h1>UP contest</h1>
+      <h1 style="color:#FE524C;">UP contest</h1>
 
     </header>
   </div>
@@ -122,16 +264,115 @@
   <hr class="separator1">
   
 </div>
+
+  <nav class="genre">
+    <ul>
+      <li class="current"><a href="#"><span>8강</span></a></li>
+      <li class=""><a href="#"><span>4강</span></a></li>
+      <li class=""><a href="#"><span>3,4위전<span></a></li>
+      <li class=""><a href="#"><span>결승<span></a></li>
+    </ul>
+  </nav>
+
+
 <!-- breadcrumbs ends here --> 
 <!-- Contact Content Part - GoogleMap ==================================================
 ================================================== -->
 
+<div class="styled-select yellow rounded" style="height:30px; margin-top: 20px; margin-left: 350px;">
+<select id="selectseason"style="float:left;  ">
+<c:forEach var="season" items="${list}" begin="0" end="${totalCount}" step="1">
+
+  <option class="myOptions"  value="${season.seasonName}">${season.seasonName}</option>
+
+</c:forEach>
+</select>
+
+</div>
+
+<div style="height:30px; margin-top: 20px; margin-left: 350px;" >
+<h5 style="float:left;padding-left:5px;width:100px;">시즌시작:</h5><h4 id="stday"style="width:200px; float:left; padding-left:10px; ">${list[0].seasonStart}</h4>
+<h5 style="float:left;padding-left:5px;width:100px;">시즌종료:</h5><h4 id="enday"style="width:200px; float:left; padding-left:10px; ">${list[0].seasonEnd}</h4>
+</div>
 
 
 
 
 
+<div style="text-align: center; padding-left: 200px;">
+<ul class="uloption" >
+  <li class="lioption">
+    <iframe id="player1"
+             width="300" height="200"
+            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
+            <button class="votebutton">UP</button>
+            <h3>100</h3>
+  </li>
+  <li class="lioption1">
+    <img src="/artistImage/vs.pn.png">
+  </li>
+  <li class="lioption">
+    <iframe id="player1"
+            width="300" height="200"
+            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
+            <button class="votebutton">UP</button>
+            <h3>100</h3>
+  </li>
+</ul>
 
+
+
+
+
+<ul class="uloption">
+  <li class="lioption">
+    <iframe id="player1"
+             width="300" height="200"
+            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
+  </li>
+  <li class="lioption1">
+    <img src="/artistImage/vs.pn.png">
+  </li>
+  <li class="lioption">
+    <iframe id="player1"
+            width="300" height="200"
+            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
+  </li>
+</ul>
+
+<ul class="uloption">
+  <li class="lioption">
+    <iframe id="player1"
+             width="300" height="200"
+            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
+  </li>
+  <li class="lioption1">
+    <img src="/artistImage/vs.pn.png">
+  </li>
+  <li class="lioption">
+    <iframe id="player1"
+            width="300" height="200"
+            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
+  </li>
+</ul>
+
+<ul class="uloption">
+  <li class="lioption">
+    <iframe id="player1"
+             width="300" height="200"
+            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
+  </li>
+  <li class="lioption1">
+    <img src="/artistImage/vs.pn.png">
+  </li>
+  <li class="lioption">
+    <iframe id="player1"
+            width="300" height="200"
+            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
+  </li>
+</ul>
+
+</div>
 
 
 
@@ -263,19 +504,40 @@
 ================================================== --> 
 <!-- Scripts ==================================================
 ================================================== --> 
-<script src="/js/jquery-1.8.0.min.js" type="text/javascript"></script> 
+
+
+<script src="/javascript/jquery-1.8.0.min.js" type="text/javascript"></script> 
 <!-- Main js files --> 
-<script src="/js/screen.js" type="text/javascript"></script> 
+<script src="/javascript/screen.js" type="text/javascript"></script> 
 <!-- Tabs --> 
-<script src="/js/tabs.js" type="text/javascript"></script> 
+<script src="/javascript/tabs.js" type="text/javascript"></script> 
 <!-- Include prettyPhoto --> 
-<script src="/js/jquery.prettyPhoto.js" type="text/javascript"></script> 
+<script src="/javascript/jquery.prettyPhoto.js" type="text/javascript"></script> 
 <!-- Include Superfish --> 
-<script src="/js/superfish.js" type="text/javascript"></script> 
-<script src="/js/hoverIntent.js" type="text/javascript"></script> 
+<script src="/javascript/superfish.js" type="text/javascript"></script> 
+<script src="/javascript/hoverIntent.js" type="text/javascript"></script> 
 <!-- Flexslider --> 
-<script src="/js/jquery.flexslider-min.js" type="text/javascript"></script> 
+<script src="/javascript/jquery.flexslider-min.js" type="text/javascript"></script> 
 <!-- Modernizr --> 
-<script type="text/javascript" src="/js/modernizr.custom.29473.js"></script>
+<script type="text/javascript" src="/javascript/modernizr.custom.29473.js"></script>
+<script type="text/javascript">
+$('#selectseason').change(function(){
+       var selectseason = $("#selectseason option:selected").val();
+          $.ajax({
+          url:'/season/getSeason/'+selectseason,
+          type: 'GET',
+          success: function(season){
+        	 console.log(($("#stday")).text());
+           console.log(($("#enday")).text());
+           console.log("바꾸기전 /후 상황비교하기 ")
+        	 console.log(($("#stday")).text(season.seasonStart));
+           console.log(($("#enday")).text(season.seasonEnd));
+           console.log(($("#stday")).text());
+           console.log(($("#enday")).text());
+        }                  
+      });      
+  });
+
+</script>
 </body>
 </html>

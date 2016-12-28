@@ -4,7 +4,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -18,15 +18,16 @@
 <body>
 
 	<section> 
-	<input type="radio" id="profile" value="1"
-		name="tractor" checked='checked' /> <input type="radio" id="settings"
-		value="2" name="tractor" /> <input type="radio" id="posts" value="3"
-		name="tractor" /> <input type="radio" id="books" value="4"
-		name="tractor" /> <nav> <label for="profile"
-		class='fontawesome-camera-retro'></label> <label for="settings"
-		class='fontawesome-film'></label> <label for="posts"
-		class='fontawesome-calendar'></label> <label for="books"
-		class='fontawesome-list-alt'></label> </nav> 
+	<input type="radio" id="profile" value="1" name="tractor" checked='checked' />
+	 <input type="radio" id="settings"value="2" name="tractor" />
+	  <input type="radio" id="posts" value="3"	name="tractor" /> 
+	  <input type="radio" id="books" value="4"	name="tractor" />
+	  <nav> 
+	  <label for="profile"		class='fontawesome-camera-retro'></label>
+	   <label for="settings"	class='fontawesome-film'></label> 
+	   <label for="posts"		class='fontawesome-calendar'></label> 
+	   <label for="books"	class='fontawesome-list-alt'></label>
+	    </nav> 
 		
 		
 		
@@ -47,8 +48,11 @@
       <input type="button" id="jjim_btn" value="찜버튼">
         
 
-		</article> <article class='dos fontawesome-wrench'>
+		</article>
+	 <article class='dos fontawesome-wrench'>
 	<p>내가 올린 동영상</p>
+	<div class="myvideo"></div>
+	<input type="hidden" id="hiddenNo" value="${user.userNo}">
 	</article> <article class='tres fontawesome-file-alt'>
 	<ol>
 
@@ -93,7 +97,26 @@
           });              
       });
     });
-
+	  
+	$("#settings").click(function(){
+		  var userNo =$("#hiddenNo").val();
+		  console.log(userNo);
+		  console.log("ajax실행전 ");
+		  $.ajax({
+			  url:'/user/myvideo/'+userNo,
+			  processData: false,
+        contentType: false,
+			  type:'GET',
+			  success:function(list){
+				  console.log(list[0]);
+				  $.each((list),function(index,value){
+					  console.log(index+":"+value.url);
+					  $(".myvideo").append("<iframe width='100%' height='200' src='https://www.youtube.com/embed/'"+value.url+"  frameborder='0' allowfullscreen></iframe>")
+				  });
+				  			  
+			  }
+		  });
+	});
 	</script>
 
 

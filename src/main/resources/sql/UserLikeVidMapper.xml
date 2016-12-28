@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserLikeVidMapper">
+ <resultMap id="userSelectMap" type="userLikeVid">
+    <result property="userNo"    column="user_no"      jdbcType="NUMERIC"/>
+    <result property="vidNo"     column="vid_no" jdbcType="NUMERIC"/>
+  </resultMap>
+ 
+ 
+ 
+ <insert id="addUserLikeVid" parameterType="userLikeVid">
+    INSERT
+    INTO VID_LIKE(USER_NO,VID_NO)
+    VALUES (#{userNo:INTEGER},
+             #{vidNo:INTEGER})
+  </insert>
+  
+  
+  <delete id="deleteUser" parameterType="hashmap">
+      DELETE 
+      FROM VID_LIKE
+      WHERE USER_NO = #{userNo:INTEGER} AND VID_NO = #{vidNo:INTEGER} 
+  </delete>
+  
+   <select id="getLikeVid" parameterType="userLikeVid" resultMap="userSelectMap">
+    SELECT *
+    FROM VID_LIKE
+    WHERE USER_NO = #{userNo:INTEGER} AND Vid_NO = #{vidNo:INTEGER} 
+  </select>
+ 
+ 
+</mapper>

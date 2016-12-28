@@ -41,7 +41,7 @@ public class SeasonDaoImpl implements SeasonDao{
   }
 
   @Override
-  public Season getSeason(int seasonNo) throws Exception {
+  public Season getSeason(String seasonNo) throws Exception {
     // TODO Auto-generated method stub
    
     return sqlSession.selectOne("SeasonMapper.getSeasonMapper",seasonNo);
@@ -51,6 +51,12 @@ public class SeasonDaoImpl implements SeasonDao{
   public List<Season> getSeasonList() throws Exception {
     // TODO Auto-generated method stub
     return sqlSession.selectList("SeasonMapper.getSeasonlistMapper");
+  }
+
+  @Override
+  public int getTotalCount() throws Exception {
+    // TODO Auto-generated method stub
+    return sqlSession.selectOne("SeasonMapper.getTotalCount");
   }
 
 

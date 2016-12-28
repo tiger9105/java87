@@ -53,6 +53,10 @@ public class VideoDaoImpl implements VideoDao{
   public void updateHits(Video video) throws Exception {
 	    sqlSession.update("VideoMapper.updateHits", video);
   }
+  
+  public void updateHeart(Video video) throws Exception {
+	    sqlSession.update("VideoMapper.updateHeart", video);
+}
 
 
   public List<Video> getVideoList() throws Exception {
@@ -62,6 +66,19 @@ public class VideoDaoImpl implements VideoDao{
     return sqlSession.selectList("VideoMapper.getVideoList");
   }
   
+  public List<Video> getVideoListHeart() throws Exception {
+	   
+	    System.out.println("여기까지는 옴");
+	    return sqlSession.selectList("VideoMapper.getVideoListHeart");
+	  }
+  
+  
+  public List<Video> getVideoListHits() throws Exception {
+
+	    System.out.println("여기까지는 옴");
+	    return sqlSession.selectList("VideoMapper.getVideoListHits");
+	  }
+  
   public int getTotalCount() throws Exception {
     return sqlSession.selectOne("VideoMapper.getTotalCount");
   }
@@ -69,6 +86,13 @@ public class VideoDaoImpl implements VideoDao{
   public void deleteVideo(int videoNo) throws Exception {
 	    System.out.println("오나"+videoNo);
 	    sqlSession.delete("VideoMapper.deleteVideo", videoNo);
+  }
+  
+  @Override
+  public List<Video> getMyVideoList(int userNo) throws Exception {
+    // TODO Auto-generated method stub
+    
+    return sqlSession.selectList("VideoMapper.getmyVideolist",userNo);
   }
 
 }

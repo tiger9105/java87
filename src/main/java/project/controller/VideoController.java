@@ -28,6 +28,7 @@ import project.domain.Artist;
 import project.domain.Page;
 import project.domain.Search;
 import project.domain.User;
+import project.domain.UserLikeVid;
 import project.domain.Video;
 import project.service.ArtistService;
 import project.service.UserService;
@@ -69,7 +70,7 @@ public class VideoController {
 	
 	System.out.println("/video/addVideo : POST");
 	  
-	  User user=(User)session.getAttribute("user");
+	User user=(User)session.getAttribute("user");
     Artist artist = artistService.getArtist1(user.getUserNo());
     
     video.setUserNumber(user);
@@ -94,11 +95,13 @@ public class VideoController {
  
 
   @RequestMapping( value="getVideo", method=RequestMethod.GET )
-  public String getVideo( HttpServletRequest request, Model model ) throws Exception {
+  public String getVideo( HttpServletRequest request, Model model ,HttpSession session ) throws Exception {
     
     System.out.println("/video/getVideo : GET");
     
     String videoNo = request.getParameter("videoNo");
+    
+    int userNo=((User)session.getAttribute("user")).getUserNo();
     //Business Logic
     Video video = videoService.getVideo(Integer.parseInt(videoNo));
     
@@ -106,7 +109,16 @@ public class VideoController {
     
     videoService.updateHits(video);
     
+    UserLikeVid userLikeVid = new UserLikeVid(userNo,Integer.parseInt(videoNo));
+	 	 	
+	userLikeVid = videoService.getLikeVid(userLikeVid);
+	
+	model.addAttribute("videoHeart",userLikeVid);
+    
+    
     video=videoService.getVideo(video.getVideoNo());
+    
+    
     
     model.addAttribute("video", video);
     
@@ -170,9 +182,64 @@ public class VideoController {
   @RequestMapping( value="listVideo" )
   public String listVideo( Model model , HttpServletRequest request) throws Exception{
     
-    System.out.println("/artist/listVideo : GET / POST");
-    
+    System.out.println("/video/listVideo : GET / POST");
     Map<String , Object> map=videoService.getVideoList();
+    
+    System.out.println(map);
+  
+    model.addAttribute("list", map.get("list"));
+  
+    model.addAttribute("totalCount", map.get("totalCount"));
+
+    return "forward:/music/music.jsp";
+  }
+  
+  @ResponseBody
+  @RequestMapping( value="sorting" )
+  public String sortingVideo(@RequestParam String sorting, Model model , HttpServletRequest request) throws Exception{
+    
+    System.out.println("/video/sorting : GET / POST");
+    System.out.println("sorting:"+sorting);
+    
+    Map<String , Object> map = null;
+    
+    if(sorting.equals("recently")){
+    	map=videoService.getVideoList();
+    }else if(sorting.equals("popularity")){
+    	System.out.println("여기 들어옴??"+sorting);
+    	map=videoService.getVideoListHeart();
+    }else if(sorting.equals("hits")) {
+    	map=videoService.getVideoListHits();
+    	
+    }
+    
+    System.out.println(map);
+  
+    model.addAttribute("list", map.get("list"));
+  
+    model.addAttribute("totalCount", map.get("totalCount"));
+    
+    return "forward:/music/music.jsp";
+  }
+  
+
+  @RequestMapping( value="sorting/{sorting}" )
+  public String sortingVideo1(@PathVariable("sorting") String sorting, Model model , HttpServletRequest request) throws Exception{
+    
+    System.out.println("/video/sorting : GET / POST");
+    System.out.println("sorting:"+sorting);
+    
+    Map<String , Object> map = null;
+    
+    if(sorting.equals("recently")){
+    	map=videoService.getVideoList();
+    }else if(sorting.equals("popularity")){
+    	System.out.println("여기 들어옴??"+sorting);
+    	map=videoService.getVideoListHeart();
+    }else if(sorting.equals("hits")) {
+    	map=videoService.getVideoListHits();
+    	
+    }
     
     System.out.println(map);
   
@@ -196,5 +263,61 @@ public class VideoController {
     return "forward:/video/listVideo";
   }
   
+  @ResponseBody
+  @RequestMapping(value = "heartAdd", method = RequestMethod.GET)
+  public Model heartAdd(@RequestParam int heartAdd,@RequestParam int vidNo, HttpSession session, Model model) throws Exception {
+  	
+	System.out.println("heartAdd 여기 안와??ㅠㅠ");
+  	System.out.println(heartAdd);
+  	int userNo=((User)session.getAttribute("user")).getUserNo();
+  	
+  	
+  	UserLikeVid userLikeVid = new UserLikeVid(userNo,vidNo);
+ 	 	
+  	videoService.addlikeVidUser(userLikeVid);
+  	
+	userLikeVid = videoService.getLikeVid(userLikeVid);
+	
+	model.addAttribute("videoHeart",userLikeVid);
+  	
+  	Video video=videoService.getVideo(vidNo);
+  	video.setHeart(heartAdd);
+  	
+  	videoService.updateHeart(video);
+    
+    model.addAttribute("video", video);
+    
+  	return model;
+  }
+  
+  
+  @ResponseBody
+  @RequestMapping(value = "heartDelete", method = RequestMethod.GET)
+  public Model heartDelete(@RequestParam int heartDelete,@RequestParam int vidNo, HttpSession session, Model model) throws Exception {
+  	
+	System.out.println("heartDelete 여기 안와??ㅠㅠ");
+  	System.out.println(heartDelete);
+  	
+  	int userNo=((User)session.getAttribute("user")).getUserNo();
+  	
+  	
+  	UserLikeVid userLikeVid = new UserLikeVid(userNo,vidNo);
+ 	 	
+  	videoService.deletelikeVidUser(userNo, vidNo);
+  	
+	userLikeVid = videoService.getLikeVid(userLikeVid);
+	
+	model.addAttribute("videoHeart",userLikeVid);
+  	
+  	Video video=videoService.getVideo(vidNo);
+  	video.setHeart(heartDelete);
+  	
+  	videoService.updateHeart(video);
+    
+    model.addAttribute("video", video);
+    
+
+  	return model;
+  }
 
 }  

@@ -1,6 +1,7 @@
 package project.service;
 
 import java.util.List;
+import java.util.Map;
 
 import project.domain.Leag;
 import project.domain.Season;
@@ -9,9 +10,9 @@ public interface SeasonService {
   public int addSeason(Season season) throws Exception;
   
 
-  public Season getSeason(int seasonNo) throws Exception;
+  public Season getSeason(String selectseason) throws Exception;
   
-  public List<Season> getSeasonList() throws Exception;
+  public Map<String,Object> getSeasonList() throws Exception;
    
   ///리그 관련 Dao 
   

@@ -10,9 +10,8 @@
   overflow: hidden;
   position: relative;
   display: block;
-  margin: 40px auto;
   font-family: "roboto-regular", arial;
-  box-shadow: 0px 0px 30px 10px rgba(202, 91, 49, 0.5);
+ 
 }
 .trailer-wrapper.mobile {
   width: 360px;
@@ -25,17 +24,12 @@
 }
 .trailer-wrapper.web {
   width: 100%;
-  max-width: 900px;
-  min-width: 720px;
 }
 .trailer-wrapper .tr-header {
+  width:425px;
   height: 100px;
   background: #F44336;
-  position: absolute;
   z-index: 4;
-  top: 0;
-  left: 0;
-  right: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .trailer-wrapper .tr-header .you-icon {
@@ -56,11 +50,11 @@
   display: inline-block;
 }
 .trailer-wrapper .tr-header .title {
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
   float: left;
-  margin-top: 18px;
-  margin-left: 10px;
+  margin-top: 30px;
+  margin-left: 20px;
 }
 .trailer-wrapper .tr-header .tune {
   display: block;
@@ -104,8 +98,7 @@
   display: block;
   clear: both;
   width: 100%;
-  margin-top: 99px;
-}
+ }
 .trailer-wrapper .tr-coming-soon .music-cards {
   width: 178px;
   height: 180px;
@@ -350,9 +343,7 @@
   
   <div class="trailer-wrapper web">
     <div class="tr-header">
-    <span class="you-icon">
-    <!--   <img src="http://www.clipartbest.com/cliparts/dc7/jEk/dc7jEkRMi.png" alt="" />  아이콘 넣는 것으로 추정 -->
-    </span>
+   
       <span class="title"><strong>최근 본 동영상</strong></span>
       <span class="tune">
 <!--   이것도 아이콘으로추정       <img src="https://cdn0.iconfinder.com/data/icons/pixon-1/24/filter_list_order_sequence_sort_sorting_outline-512.png" alt="" /> -->

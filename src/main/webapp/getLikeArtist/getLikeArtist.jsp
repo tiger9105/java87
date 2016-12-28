@@ -275,21 +275,7 @@
 		        }
 	</script>
 
-<!-- 아티스트 눌렀을 떄 나오는 자바스크립트(getArtist) -->
-	<script type="text/javascript">
-  		 $('i[id^=getArtist]').on("click", function() {
-    		var artNo = $(this).attr("id").replace("getArtist_","");
-	    	$.colorbox({
-	        closeButton : "false",
-	        iframe : "true",
-	        href : "/artist/getArtist/"+artNo, 
-	        width : "640px",
-	        height : "600px",
-	        fixed : true,
-	        scrolling : false   
-      		}); 
-    	 });
-	</script>
+
 
 <!-- 등록했을떄 나오는 alert창 -->
 	<script type="text/javascript">

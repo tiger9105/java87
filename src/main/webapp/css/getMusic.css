@@ -1,3 +1,20 @@
+#heartCount{
+	display: inline-block;
+	margin:0px;
+	width:20px;
+	
+}
+
+
+
+.container4{
+	
+    margin-left: 200px;
+    width: 700px;
+	
+}
+
+
 .title{
 	float:left;
 	
@@ -54,22 +71,52 @@
 }
 
 
-.good .heart  {
+.good .heart1  {
 	
-	margin: 0 20px 10px 0;
 }
-.good .heart img{
-	margin: 0 4px 0 0 ;
-	width:30px;
-	height:20x;
-}
+
+
+
 .good .hits  {
 
-	margin: 0 20px 10px 0;
+	margin: -25px 20px 10px 0;
 }
 .good .hits img{
-	margin: 0 4px 0 0 ;
-	width:30px;
-	height:30px;
+	margin: -25px 4px 0 0 ;
+	width:35px;
+	height:35px;
 }
 
+
+.good .heart1 #heart {
+  position: absolute;
+  left: -100vw;
+}
+
+[for="heart"] {
+  color: #aab8c2;
+  cursor: pointer;
+  font-size: 3em;
+  align-self: center;  
+  /* transition: color 0.2s ease-in-out; */
+}
+
+[for="heart"]:hover {
+  color: grey;
+}
+
+[for="heart"]::selection {
+  color: none;
+  background: transparent;
+}
+
+[for="heart"]::moz-selection {
+  color: none;
+  background: transparent;
+}
+
+[id="heart"]:checked + label {
+  color: #e2264d;
+  will-change: font-size;
+  /* animation: heart 1s cubic-bezier(.17, .89, .32, 1.49); */
+}

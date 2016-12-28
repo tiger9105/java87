@@ -132,17 +132,10 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 				
 					<ul class="sf-menu">
 					
-						<li><a href="index.jsp" id="visited">Home</a></li>
-						<li><a href="about.jsp">About</a></li>
+						<li><a href="/index.jsp" id="visited">Home</a></li>
+						<li><a href="/about.jsp">About</a></li>
 						<li><a href="/artist/listArtist">Artist</a>
-							<ul>
-								<li><a href="portfolioproject.jsp">Portfolio Project</a></li>
-							</ul></li>
-						<li><a href="/video/listVideo">Video</a>
-							<ul>
-								<li><a href="singleblog.jsp">Single Post</a></li>
-							</ul></li>
-						<li><a href="features.jsp">Features</a></li>
+			  	  <li><a href="/video/listVideo">Video</a>
 						<li><a href="/season/getSeasonlist">UP contest</a></li>
 						<!-- 로그인 로그아웃 부분  -->
 						<c:if test="${user!=null}">
@@ -150,7 +143,7 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 								style="color: white;">logout</a><br></li>
 						</c:if>
 						<c:if test="${user==null}">
-							<li><a href="login.jsp" style="color: white;">login</a><br></li>
+							<li><a href="/login.jsp" style="color: white;">login</a><br></li>
 						</c:if>
 					</ul>
 				</div>
@@ -160,14 +153,11 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 				<form id="responsive-menu" action="#" method="post">
 					<select>
 						<option value="">메뉴</option>
-						<option value="index.jsp">Home</option>
-						<option value="about.jsp">About</option>
+						<option value="/index.jsp">Home</option>
+						<option value="/about.jsp">About</option>
 						<option value="/artist/listArtist">Artist</option>
-						<option value="portfolioproject.jsp">Portfolio Project</option>
-						<option value="blog.jsp">asdsa</option>
-						<option value="singleblog.jsp">Busking</option>
-						<option value="features.jsp">Features</option>
-						<option value="contact.jsp">UP contest</option>
+						<option value="/video/listVideo">Video</option>
+						<option value="/season/getSeasonlist">UP contest</option>
 					</select>
 				</form>
 			</div>

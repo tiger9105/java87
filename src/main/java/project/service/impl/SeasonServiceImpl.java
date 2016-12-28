@@ -1,6 +1,8 @@
 package project.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -45,15 +47,23 @@ public class SeasonServiceImpl implements SeasonService{
   }
   ///getseason은 아직 미완성 
   @Override
-  public Season getSeason(int seasonNo) throws Exception {
+  public Season getSeason(String seasonNo) throws Exception {
     // TODO Auto-generated method stub
     return seasonDao.getSeason(seasonNo);
   }
 
   @Override
-  public List<Season> getSeasonList() throws Exception {
+  public Map<String,Object> getSeasonList() throws Exception {
     // TODO Auto-generated method stub
-    return seasonDao.getSeasonList();
+    List<Season> list = seasonDao.getSeasonList();
+    int gettotal = seasonDao.getTotalCount();
+    
+    Map<String,Object> map=new HashMap<String,Object>();
+    
+    map.put("list", list);
+    map.put("totalcount", new Integer(gettotal));   
+    
+    return map;
   }
   
   ////////////////////////////////밑에는 리그관련 

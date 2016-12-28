@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/artist.css">
-<link rel="stylesheet" href="/artist/artist.css">
+
 <!-- colorbox창 -->
 <link rel="stylesheet" href="/css/colorbox/colorbox.css">
 <!-- alert창 (등록) -->
@@ -43,25 +43,21 @@
 				<div id="mainmenu">
 					<ul class="sf-menu">
 						<li><a href="/index.jsp">Home</a></li>
-						<li><a href="/about.jsp">About</a></li>
-						<li><a href="/artist/listArtist" id="visited">Artist</a>
-							<ul>
-								<li><a href="portfolioproject.jsp">Artist</a></li>
-							</ul></li>
-						<li><a href="/video/listVideo">Video</a>
-							<ul>
-								<li><a href="/video/listVideo">Video</a></li>
-							</ul></li>
-						<li><a href="/features.jsp">Features</a></li>
-						<li><a href="upcontest.jsp">UP contest</a></li>
-						<!-- 로그인 로그아웃 부분  -->
-						<c:if test="${user!=null}">
-							<li><a href="/user/logout" onclick="FB.logout();"
-								style="color: white;">logout</a><br></li>
-						</c:if>
-						<c:if test="${user==null}">
-							<li><a href="/login.jsp" style="color: white;">login</a><br></li>
-						</c:if>
+            <li><a href="/about.jsp">About</a></li>
+            <li><a href="/artist/listArtist" id="visited">Artist</a>
+                  <ul>
+                <li><a href="/artist/listArtist">Artist</a></li>
+              </ul></li>
+            <li><a href="/video/listVideo">Video</a>
+            <li><a href="/season/getSeasonlist">UP contest</a></li>
+            <!-- 로그인 로그아웃 부분  -->
+            <c:if test="${user!=null}">
+              <li><a href="/user/logout" onclick="FB.logout();"
+                style="color: white;">logout</a><br></li>
+            </c:if>
+            <c:if test="${user==null}">
+              <li><a href="/login.jsp" style="color: white;">login</a><br></li>
+            </c:if>
 					</ul>
 				</div>
 				<!-- mainmenu ends here -->
@@ -69,15 +65,12 @@
 				<!-- Responsive Menu -->
 				<form id="responsive-menu" action="#" method="post">
 					<select>
-						<option value="">메뉴</option>
-						<option value="index.jsp">Home</option>
-						<option value="about.jsp">About</option>
-						<option value="artist.jsp">Artist</option>
-						<option value="portfolioproject.jsp">Portfolio Project</option>
-						<option value="blog.jsp">asdsa</option>
-						<option value="singleblog.jsp">Busking</option>
-						<option value="features.jsp">Features</option>
-						<option value="contact.jsp">My page</option>
+				        <option value="">메뉴</option>
+            <option value="/index.jsp">Home</option>
+            <option value="/about.jsp">About</option>
+            <option value="/artist/listArtist">Artist</option>
+            <option value="/video/listVideo">Video</option>
+            <option value="/season/getSeasonlist">UP contest</option>
 					</select>
 				</form>
 			</div>
@@ -89,6 +82,20 @@
 	
 <!--ends 홈페이지 메뉴바 -->
 	
+	<!-- artist 장르별 메뉴 -->
+  <nav class="genre">
+    <ul>
+      <li class="current"><a href="#"><span>ALL</span></a></li>
+      <li class=""><a href="#"><span>R & B</span></a></li>
+      <li class=""><a href="#"><span>힙합 & RAP<span></a></li>
+      <li class=""><a href="#"><span>어쿠스틱<span></a></li>
+      <li class=""><a href="#"><span>락<span></a></li>
+      <li class=""><a href="#"><span>일렉토로닉<span></a></li>
+    </ul>
+  </nav>
+<!--ends artist 장르별 메뉴 -->
+	
+	
 	<!-- 아티스트 등록하기 버튼 -->
 	<p>
 		<div class="container1">
@@ -99,18 +106,6 @@
 	</p>
 	<!-- ends 아티스트 등록하기 버튼 -->
 
-<!-- artist 장르별 메뉴 -->
-	<nav class="genre">
-		<ul>
-			<li class="current"><a href="#"><span>ALL</span></a></li>
-			<li class=""><a href="#"><span>R & B</span></a></li>
-			<li class=""><a href="#"><span>힙합 & RAP<span></a></li>
-			<li class=""><a href="#"><span>어쿠스틱<span></a></li>
-			<li class=""><a href="#"><span>락<span></a></li>
-			<li class=""><a href="#"><span>일렉토로닉<span></a></li>
-		</ul>
-	</nav>
-<!--ends artist 장르별 메뉴 -->
 
 
 <!-- artist list -->
@@ -172,6 +167,8 @@
 	
 	<script src="/javascript/jquery-1.8.0.min.js" type="text/javascript"></script>
 	<script src="/javascript/colorbox/jquery.colorbox.js"></script>
+	  
+	  <!-- 아티스트 등록할때 버튼 이벤트  -->
 	  <script type="text/javascript">
       $('.pulse-button').on("click", function() {
         $.colorbox({
@@ -185,6 +182,22 @@
           scrolling : false        
         }); 
       });
+  </script>
+  
+  <!-- 아티스트 눌렀을 떄 나오는 자바스크립트(getArtist) -->
+  <script type="text/javascript">
+       $('i[id^=getArtist]').on("click", function() {
+        var artNo = $(this).attr("id").replace("getArtist_","");
+        $.colorbox({
+          closeButton : "false",
+          fixed : "true",
+          iframe : "true",
+          href : "/artist/getArtist/"+artNo, 
+          width : "640px",
+          height : "600px",
+          scrolling : false   
+          }); 
+       });
   </script>
 	
 </body>

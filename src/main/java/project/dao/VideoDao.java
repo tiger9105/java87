@@ -21,6 +21,10 @@ public interface VideoDao {
   // SELECT LIST
   public List<Video> getVideoList() throws Exception ;
 
+  public List<Video> getVideoListHeart() throws Exception ;
+  
+  public List<Video> getVideoListHits() throws Exception ;
+  
   public int getTotalCount() throws Exception ;
 
 
@@ -29,5 +33,9 @@ public interface VideoDao {
   
   public void updateHits(Video video) throws Exception ;
   
+  public void updateHeart(Video video) throws Exception ;
+  
   public void deleteVideo(int videoNo) throws Exception ;
+  
+  public List<Video> getMyVideoList(int userNo) throws Exception;
 }

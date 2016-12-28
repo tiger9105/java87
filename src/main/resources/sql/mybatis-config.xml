@@ -18,6 +18,7 @@
     <typeAlias alias="artist" type="project.domain.Artist" />
     <typeAlias alias="search" type="project.domain.Search" />
     <typeAlias alias="userLikeArt" type="project.domain.UserLikeArt"/>
+    <typeAlias alias="userLikeVid" type="project.domain.UserLikeVid"/>
      <typeAlias alias="video" type="project.domain.Video" />
      <typeAlias alias="Season" type="project.domain.Season"/>
      <typeAlias alias="leag"  type="project.domain.Leag"/>
@@ -28,6 +29,7 @@
     <mapper resource="sql/UserMapper.xml"/>
     <mapper resource="sql/ArtistMapper.xml"/>
     <mapper resource="sql/UserLikeArtMapper.xml"/>
+    <mapper resource="sql/UserLikeVidMapper.xml"/>
     <mapper resource="sql/VideoMapper.xml"/>
     <mapper resource="sql/SeasonMapper.xml"/>
     <mapper resource="sql/LeagMapper.xml"/>

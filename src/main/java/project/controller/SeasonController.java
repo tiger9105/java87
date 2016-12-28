@@ -64,17 +64,26 @@ public class SeasonController {
   }
   
   @RequestMapping(value="getSeasonlist")
-  public String getSeason(HttpServletRequest req) throws Exception{
+  public String getSeasonlist(HttpServletRequest req, Model model ) throws Exception{
  
-    List<Season> season=seasonService.getSeasonList();
-    System.out.println(season);
+     Map<String,Object> map=seasonService.getSeasonList();
+    
+     model.addAttribute("list", map.get("list"));
+     
+     model.addAttribute("totalCount", map.get("totalcount"));
+     
     
     return "forward:/upcontest.jsp";
   }
   
-  
-  
-  
-  
-  
+  @RequestMapping(value="getSeason/{selectseason}", method = RequestMethod.GET)
+  public @ResponseBody Season getSeason(@PathVariable("selectseason") String selectseason,Model model) throws Exception{
+    Season season = new Season();
+     season=seasonService.getSeason(selectseason);
+    
+
+    
+    return season;
+  }
+    
 }

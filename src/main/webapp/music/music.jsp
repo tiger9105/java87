@@ -3,11 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("utf-8");
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/artist.css">
 <link rel="stylesheet" href="/css/music/music.css">
@@ -26,8 +29,70 @@
 <!-- pagination -->
 <link rel="stylesheet" href="/css/music/pagination.css">
 <!-- 최신순,인기순,조회순 -->
-<link rel="stylesheet" href="/css/music/order.css">
-<link rel="stylesheet" href="/css/music/genre.css">
+
+<style>
+
+.center-on-page {
+  font-size: 16px;
+  font-weight: 300;
+  width:350px;
+  z-index:100;
+  color: rgba(254, 82, 76, 1);
+  margin-left:200px;
+
+}
+input[type="checkbox"],
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+label {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 10px;
+  line-height: 36px;
+  cursor: pointer;
+}
+label::before {
+  content: " ";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(254, 82, 76, 1);
+  border-radius: 4px;
+  z-index: -1;
+}
+input[type="radio"] + label::before {
+  border-radius: 18px;
+}
+/* Checked */
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + label {
+  padding-left: 10px;
+  color: #fff;
+}
+input[type="checkbox"]:checked + label::before,
+input[type="radio"]:checked + label::before {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(254, 82, 76, 1);
+}
+/* Transition */
+label,
+label::before {
+  -webkit-transition: .25s all ease;
+  transition: .25s all ease;
+}
+</style>
+
 </head>
  
 <body>
@@ -103,43 +168,34 @@
 		
 			<div class="mainmenu">
 				<div id="mainmenu">
-					<ul class="sf-menu">
-						<li><a href="/index.jsp">Home</a></li>
-						<li><a href="/about.jsp">About</a></li>
-						<li><a href="/artist/listArtist" >Artist</a>
-							<ul>
-								<li><a href="/artist/listArtist">Artist</a></li>
-							</ul></li>
-						<li><a href="/video/listVideo"  id="visited">Video</a>
-							<ul>
-								<li><a href="/video/listVideo">Video</a></li>
-							</ul></li>
-						<li><a href="/features.jsp">Features</a></li>
-						<li><a href="upcontest.jsp">UP contest</a></li>
-						<!-- 로그인 로그아웃 부분  -->
-						<c:if test="${user!=null}">
-							<li><a href="/user/logout" onclick="FB.logout();"
-								style="color: white;">logout</a><br></li>
-						</c:if>
-						<c:if test="${user==null}">
-							<li><a href="/login.jsp" style="color: white;">login</a><br></li>
-						</c:if>
-					</ul>
+				<ul class="sf-menu">
+          
+            <li><a href="/index.jsp" >Home</a></li>
+            <li><a href="/about.jsp">About</a></li>
+            <li><a href="/artist/listArtist">Artist</a>
+            <li><a href="/video/listVideo"  id="visited">Video</a>
+            <li><a href="/season/getSeasonlist">UP contest</a></li>
+            <!-- 로그인 로그아웃 부분  -->
+            <c:if test="${user!=null}">
+              <li><a href="/user/logout" onclick="FB.logout();"
+                style="color: white;">logout</a><br></li>
+            </c:if>
+            <c:if test="${user==null}">
+              <li><a href="/login.jsp" style="color: white;">login</a><br></li>
+            </c:if>
+          </ul>
 				</div>
 				<!-- mainmenu ends here -->
 
 				<!-- Responsive Menu -->
 				<form id="responsive-menu" action="#" method="post">
 					<select>
-						<option value="">메뉴</option>
-						<option value="index.jsp">Home</option>
-						<option value="about.jsp">About</option>
-						<option value="artist.jsp">Artist</option>
-						<option value="portfolioproject.jsp">Portfolio Project</option>
-						<option value="blog.jsp">asdsa</option>
-						<option value="singleblog.jsp">Busking</option>
-						<option value="features.jsp">Features</option>
-						<option value="contact.jsp">My page</option>
+		          <option value="">메뉴</option>
+            <option value="/index.jsp">Home</option>
+            <option value="/about.jsp">About</option>
+            <option value="/artist/listArtist">Artist</option>
+            <option value="/video/listVideo">Video</option>
+            <option value="/season/getSeasonlist">UP contest</option>
 					</select>
 				</form>
 			</div>
@@ -151,10 +207,19 @@
 	
 <!--ends 홈페이지 메뉴바 -->
 
+<!-- artist 장르별 메뉴 -->
+	<nav class="genre">
+		<ul>
+			<li><a href="#"><span>ALL</span></a></li>
+			<li ><a href="#"><span>R & B</span></a></li>
+			<li ><a href="#"><span>힙합 & RAP<span></a></li>
+			<li ><a href="#"><span>어쿠스틱<span></a></li>
+			<li ><a href="#"><span>락<span></a></li>
+			<li ><a href="#"><span>일렉토로닉<span></a></li>
+		</ul>
+	</nav>
+<!--ends artist 장르별 메뉴 -->
 
-<!-- nav -->
-
-<!-- ends nav -->
 
 <!-- music 등록하기 버튼 -->
 	<p>
@@ -164,22 +229,8 @@
 	</p>
 <!-- ends muisc 등록하기 버튼 -->
 
-<!-- 최근순 ,인기순 ,조회순 -->
-	<div class="main">
-	  <div class="radioholder">
-	    <input type="radio" name="projecttype" value="recently" checked>
-	    <label for="pt_recently">최근순</label>
-	  </div>
-	  <div class="radioholder">
-	    <input type="radio" name="projecttype" value="popularity">
-	    <label for="pt_popularity">인기순</label>
-	  </div>
-	   <div class="radioholder">
-	    <input type="radio" name="projecttype" value="hits">
-	    <label for="pt_hits">조회순</label>
-	  </div>
-	</div>
-<!--ends 최근순 ,인기순 ,조회순 -->
+
+
 
 <!-- music list -->
 	<section id="team" class="team content-section">
@@ -193,9 +244,27 @@
 		</div>
 	</section>
 	
-	<div class="container">	
+	<!-- nav -->
 
-	 
+<div class="center-on-page">
+
+  <input type="radio" name="radio" id="rb1" value="recently"  checked="checked"/>
+  <label for="rb1">최신순</label>
+  <input type="radio" name="radio" id="rb2" value="popularity"/>
+  <label for="rb2">인기순</label>
+  <input type="radio" name="radio" id="rb3" value="hits" />
+  <label for="rb3">조회순</label>
+  
+ 
+  
+</div>
+
+<!-- ends nav -->
+
+
+
+<div class="container">	
+
 <!--music , video list  -->
 <c:forEach var="video" items="${list}">
  
@@ -249,9 +318,9 @@
 
 
 
-</div>			
-	
+</div>
 	<!--ends container -->
+
 
 <!--javascript 모음  -->  
 	<script src="/javascript/jquery-1.8.0.min.js" type="text/javascript"></script>
@@ -261,195 +330,19 @@
 	<!-- Tabs -->
 	<script src="javascript/tabs.js" type="text/javascript"></script>
 	
-<!-- 이미지 사이즈 조정 -->
-	<script>
-
-		var div = figure.querySelector('figure');// 이미지를 감싸는 div
-		var img = div.querySelector('img'); // 이미지
-		var divAspect = 90 / 120; // div의 가로세로비는 알고 있는 값이다
-		var imgAspect = img.height / img.width;
-		 
-		if (imgAspect <= divAspect) {
-		    // 이미지가 div보다 납작한 경우 세로를 div에 맞추고 가로는 잘라낸다
-		    var imgWidthActual = div.offsetHeight / imgAspect;
-		    var imgWidthToBe = div.offsetHeight / divAspect;
-		    var marginLeft = -Math.round((imgWidthActual - imgWidthToBe) / 2);
-		    img.style.cssText = 'width: auto; height: 100%; margin-left: '
-		                      + marginLeft + 'px;'
-		} else {
-		    // 이미지가 div보다 길쭉한 경우 가로를 div에 맞추고 세로를 잘라낸다
-		    img.style.cssText = 'width: 100%; height: auto; margin-left: 0;';
-		}
-
-	</script>
 
 
 
-<!-- colorbox inline 등록창 -->
-	<script>
-      $(document).ready(function(){
-          $(".inline").colorbox({inline:true}); 
-      });
-    </script>
+
+
 
     <script>
    		$(".ajax").colorbox({iframe:true, width:"40%", height:"650px"});
    	</script>    
 
-<!-- genre 부분 자바스크립트 (아직 작동안됌) -->
-	<script>
-		$(document).on('click', 'li', function() {
-		    $('.current').removeClass('current');
-		    $(this).addClass('current');
-		});
-
-	</script>
-	
-	<script type="text/javascript">
-		$(document).ready(function() {
-		    $(".drop .option").click(function() {
-		      var val = $(this).attr("data-value"),
-		          $drop = $(".drop"),
-		          prevActive = $(".drop .option.active").attr("data-value"),
-		          options = $(".drop .option").length;
-		      $drop.find(".option.active").addClass("mini-hack");
-		      $drop.toggleClass("visible");
-		      $drop.removeClass("withBG");
-		      $(this).css("top");
-		      $drop.toggleClass("opacity");
-		      $(".mini-hack").removeClass("mini-hack");
-		      if ($drop.hasClass("visible")) {
-		        setTimeout(function() {
-		          $drop.addClass("withBG");
-		        }, 400 + options*100); 
-		      }
-		      triggerAnimation();
-		      if (val !== "placeholder" || prevActive === "placeholder") {
-		        $(".drop .option").removeClass("active");
-		        $(this).addClass("active");
-		      };
-		    });
-		    
-		    function triggerAnimation() {
-		      var finalWidth = $(".drop").hasClass("visible") ? 22 : 20;
-		      $(".drop").css("width", "24em");
-		      setTimeout(function() {
-		        $(".drop").css("width", finalWidth + "em");
-		      }, 400);
-		    }
-		  });	 
-	 </script>
-
-<!-- 이미지 파일 업로드시 작동하는 자바스크립트 -->
-	<script>
-	    $(document)
-	        .ready(
-	            function() {
-	              var fileTarget = $('.filebox .upload-hidden');
-	
-	              fileTarget.on('change', function() {
-	                if (window.FileReader) {
-	                  // 파일명 추출
-	                  var filename = $(this)[0].files[0].name;
-	                }
-	
-	                else {
-	                  // Old IE 파일명 추출
-	                  var filename = $(this).val().split('/')
-	                      .pop().split('\\').pop();
-	                }
-	                ;
-	
-	                $(this).siblings('.upload-name').val(filename);
-	              });
-	
-	              //preview image 
-	              var imgTarget = $('.preview-image .upload-hidden');
-	
-	              imgTarget
-	                  .on(
-	                      'change',
-	                      function() {
-	                        var parent = $(this).parent();
-	                        parent.children(
-	                            '.upload-display')
-	                            .remove();
-	
-	                        if (window.FileReader) {
-	                          //image 파일만
-	                          if (!$(this)[0].files[0].type
-	                              .match(/image\//))
-	                            return;
-	
-	                          var reader = new FileReader();
-	                          reader.onload = function(e) {
-	                            var src = e.target.result;
-	                            parent
-	                                .prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>');
-	                          }
-	                          reader
-	                              .readAsDataURL($(this)[0].files[0]);
-	                        }
-	
-	                        else {
-	                          $(this)[0].select();
-	                          $(this)[0].blur();
-	                          var imgSrc = document.selection
-	                              .createRange().text;
-	                          parent
-	                              .prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
-	
-	                          var img = $(this).siblings(
-	                              '.upload-display')
-	                              .find('img');
-	                          img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""
-	                              + imgSrc + "\")";
-	                        }
-	                      });
-	            });
-  	</script>
-
-<!-- 아티스트 추가 ajax -->
-	<script type="text/javascript">
-		$(function(){
-			$("#uploadbutton").click(function(){
-			     var form = $('form')[1];
-			     var formData = new FormData(form);
-			        $.ajax({
-			            url: '/artist/upload',
-			            processData: false,
-			            contentType: false,
-			            data: formData,
-			            type: 'POST',
-			            success: function(result){
-			            	swal({
-			            		   title: "아트스트 등록하시겠습니까?",
-			            		   type: "info",
-			            		   showCancelButton: true,
-			            		   closeOnConfirm: false,
-			            		   showLoaderOnConfirm: true
-			            		 }, function () {
-			            		   setTimeout(function () {
-			            			   location.href="/artist/listArtist";
-			            		   }, 2000);
-			            		 });					  
-			             }	
-			       	});     
-			 });
-		});
 
 
-		//이미지 미리보기
-		 function readURL(input) {
-		            if (input.files && input.files[0]) {
-		                var reader = new FileReader();
-		                reader.onload = function (e) {
-		                    $('#blah').attr('src', e.target.result);
-		                }
-		                reader.readAsDataURL(input.files[0]);
-		            }
-		        }
-	</script>
+
 
  <!--video 눌렀을 떄 나오는 자바스크립트(getVideo) -->
 	<script type="text/javascript">
@@ -509,51 +402,8 @@
 		});
 	</script>
 	
-<!-- 최근순,인기순,조회순 자바스크립트 -->
-	<script>
-		// preload image function
-		function preload(arrayOfImages) {
-			$(arrayOfImages).each(function(){
-				$('<img/>')[0].src = this;
-			});
-		}
-	
-		$(document).ready(function(){
-	
-		  // set up radio boxes
-			$('.radioholder').each(function(){
-				$(this).children().hide();
-				var description = $(this).children('label').html();
-				$(this).append('<span class="desc">'+description+'</span>');
-				$(this).prepend('<span class="tick"></span>');
-				// on click, update radio boxes accordingly
-				$(this).click(function(){
-					$(this).children('input').prop('checked', true);
-					$(this).children('input').trigger('change');
-				});
-			});
-			// update radio holder classes when a radio element changes
-			$('input[type=radio]').change(function(){
-		    $('input[type=radio]').each(function(){
-		      if($(this).prop('checked') == true) {   
-		        $(this).parent().addClass('activeradioholder');
-		      }
-					else $(this).parent().removeClass('activeradioholder');
-				});
-			});
-			// manually fire radio box change event on page load
-			$('input[type=radio]').change();
-	
-		
-			// preload hover images
-		  preload([
-		    'http://supereightstudio.com/img/radio_tick.png',
-		    'http://supereightstudio.com/img/pulldown.png',
-		    'http://supereightstudio.com/img/pulldown_hover.png'
-		  ]);
-		});	
-	</script>
-	
+
+
 	<!-- 아티스트 수정 창 -->
 	<script type="text/javascript">
 	    $('.updateArtist').on("click", function() {
@@ -569,6 +419,48 @@
 	    });
 	</script>	
 	
+
+<script>
+
+$("input:radio[name=radio]").click(function(){
+	var temp = $(':radio[name="radio"]:checked').val();
+
+	
+	location.href="/video/sorting/"+temp;
+	
+});
+
+</script>
+	
+	
+<script type="text/javascript">
+if (location.href.match('/hits')) {
+
+	$("input:radio[name='radio']:radio[value='hits']").attr("checked",true);
+	
+	}
+	else if (location.href.match('/popularity')){
+		$("input:radio[name='radio']:radio[value='popularity']").attr("checked",true);
+
+	}
+	else if (location.href.match('/recently')){
+		$("input:radio[name='radio']:radio[value='recently']").attr("checked",true);
+
+		}
+</script>
+
+<script>
+
+$("#genre1").click(function(){
+	var t =$(this).text();
+	alert(t);
+
+
+	
+});
+
+</script>
+
 
 </body>
 </html>
