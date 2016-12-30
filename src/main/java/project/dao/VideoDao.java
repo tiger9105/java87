@@ -11,31 +11,49 @@ import project.domain.Video;
 
 public interface VideoDao {
   
-  // INSERT
-  public void addVideo(Video video) throws Exception ;
+//INSERT
+ public void addVideo(Video video) throws Exception ;
 
-// SELECT ONE
-  public Video getVideo(int videoNo) throws Exception ;
-
-
-  // SELECT LIST
-  public List<Video> getVideoList() throws Exception ;
-
-  public List<Video> getVideoListHeart() throws Exception ;
-  
-  public List<Video> getVideoListHits() throws Exception ;
-  
-  public int getTotalCount() throws Exception ;
+//SELECT ONE
+ public Video getVideo(int videoNo) throws Exception ;
 
 
-  public void updateVideo(Video video) throws Exception ;
+ // SELECT LIST
+ public List<Video> getVideoList() throws Exception ;
+
+
+ public int getTotalCount() throws Exception ;
+
+
+ public void updateVideo(Video video) throws Exception ;
+ 
+ 
+ public void updateHits(Video video) throws Exception ;
+ 
+ public void updateHeart(Video video) throws Exception ;
+ 
+ public void deleteVideo(int videoNo) throws Exception ;
+ 
+ public List<Video> getMyVideoList(int userNo) throws Exception;
+ 
+ public List<Video> getVideoListHeart() throws Exception ;
+ 
+ public List<Video> getVideoListHits() throws Exception ;
+ 
+ public List<Video> getVideoListGenre(String genre) throws Exception ;
+ 
+ public List<Video> getVideoListGenreHeart(String genre) throws Exception ;
+ 
+ public List<Video> getVideoListGenreHits(String genre) throws Exception ;
+ 
   
+ public List<Video> getLeagueList() throws Exception;
+ 
+ public List<Video> getLeagueListHeart() throws Exception ;
+ 
+ public List<Video> getLeagueListHits() throws Exception ;
   
-  public void updateHits(Video video) throws Exception ;
-  
-  public void updateHeart(Video video) throws Exception ;
-  
-  public void deleteVideo(int videoNo) throws Exception ;
-  
-  public List<Video> getMyVideoList(int userNo) throws Exception;
+    //추가된것.. //////////////////12.30일/////////////////////////////
+  public List<Video> getMyVideoList(String vidapp) throws Exception;
+  ////////
 }

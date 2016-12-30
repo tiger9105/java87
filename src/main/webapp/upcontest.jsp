@@ -175,7 +175,7 @@ li img {
 
 <!-- Mobile Specific Metas ================================================== 
 ================================================== -->
-
+<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">   
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
 <!-- CSS ==================================================
@@ -192,9 +192,8 @@ li img {
 ================================================== -->
 
 <link rel="shortcut icon" href="/images/favicon.png">
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+
+
 
 <!-- Google Fonts ==================================================
 ================================================== -->
@@ -219,7 +218,7 @@ li img {
             <li><a href="/index.jsp" >Home</a></li>
             <li><a href="/about.jsp">About</a></li>
             <li><a href="/artist/listArtist">Artist</a>
-            <li><a href="/video/listVideo">Video</a>
+            <li><a href="/video/listVideo">Music</a>
             <li><a href="/season/getSeasonlist" id="visited">UP contest</a></li>
             <!-- 로그인 로그아웃 부분  -->
             <c:if test="${user!=null}">
@@ -281,13 +280,10 @@ li img {
 
 <div class="styled-select yellow rounded" style="height:30px; margin-top: 20px; margin-left: 350px;">
 <select id="selectseason"style="float:left;  ">
-<c:forEach var="season" items="${list}" begin="0" end="${totalCount}" step="1">
-
+<c:forEach var="season" items="${list}">
   <option class="myOptions"  value="${season.seasonName}">${season.seasonName}</option>
-
 </c:forEach>
 </select>
-
 </div>
 
 <div style="height:30px; margin-top: 20px; margin-left: 350px;" >
@@ -300,79 +296,37 @@ li img {
 
 
 <div style="text-align: center; padding-left: 200px;">
+
+<c:forEach var="leag" items="${leaglist}">
 <ul class="uloption" >
   <li class="lioption">
-    <iframe id="player1"
+    <iframe class="player"
              width="300" height="200"
-            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
+            src="https://www.youtube.com/embed/${leag.voteObject1}?enablejsapi=1"></iframe>
             <button class="votebutton">UP</button>
-            <h3>100</h3>
+            <h3 class="votelike">${leag.vote1}</h3>
+            <h3 class="voteArtist">${leag.artist1.artistName}</h3>
   </li>
   <li class="lioption1">
     <img src="/artistImage/vs.pn.png">
   </li>
   <li class="lioption">
-    <iframe id="player1"
+    <iframe class="player"
             width="300" height="200"
-            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
+            src="https://www.youtube.com/embed/${leag.voteObject2}?enablejsapi=1"></iframe>
             <button class="votebutton">UP</button>
-            <h3>100</h3>
+            <h3 class="votelike">${leag.vote2}</h3>
+            <h3 class="voteArtist">${leag.artist2.artistName}</h3>
   </li>
 </ul>
-
-
-
-
-
-<ul class="uloption">
-  <li class="lioption">
-    <iframe id="player1"
-             width="300" height="200"
-            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
-  </li>
-  <li class="lioption1">
-    <img src="/artistImage/vs.pn.png">
-  </li>
-  <li class="lioption">
-    <iframe id="player1"
-            width="300" height="200"
-            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
-  </li>
-</ul>
-
-<ul class="uloption">
-  <li class="lioption">
-    <iframe id="player1"
-             width="300" height="200"
-            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
-  </li>
-  <li class="lioption1">
-    <img src="/artistImage/vs.pn.png">
-  </li>
-  <li class="lioption">
-    <iframe id="player1"
-            width="300" height="200"
-            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
-  </li>
-</ul>
-
-<ul class="uloption">
-  <li class="lioption">
-    <iframe id="player1"
-             width="300" height="200"
-            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
-  </li>
-  <li class="lioption1">
-    <img src="/artistImage/vs.pn.png">
-  </li>
-  <li class="lioption">
-    <iframe id="player1"
-            width="300" height="200"
-            src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe>
-  </li>
-</ul>
+<input class="checkvote" type="hidden" name="checkvote" value="${leag.vote1<=leag.vote2?leag.voteObject2:leag.voteObject1}" >
+</c:forEach>
 
 </div>
+
+<c:if test="${user.userId=='admin'&& leaglist[0].progress=='4'}">
+<button id="probtn" name="probtn" value="3">시즌진행하기! 4강</button>
+</c:if>
 
 
 
@@ -444,48 +398,7 @@ li img {
         <h3>About</h3>
         <p>이페지를 들어와주셔서 감사합니다.</p>
         <p>방문해주셔서감사해욧 ^^ 자바라기일동</p>
-        <p>
-          <a class='youtube' id="youtube1" name="video" href="ab"></a>
-        </p>
-        <p>
-          <a class='youtube' id="youtube2" name="video" href="ab"></a>
-        </p>
-        <p>
-          <a class='youtube' id="youtube3" name="video" href="ab"></a>
-        </p>
-
-        <div style='display: none'>
-          <div id='inline_content' style='padding: 10px; background: #fff;'>
-                <form id="form">
-      <h1 id="h1">내 정보 수정 </h1>
-      <div class="control">
-      <input type="text" placeholder="User ID"/>
-      </div>
-      <div class="control">
-      <input type="text" placeholder="PASSWORD "/>
-      </div>
-      <div class="control">
-      <input type="text" placeholder="User Email" />
-      </div>
-
-        <div class="filebox bs3-primary preview-image">
-    <input class="upload-name" value="PROFILE" disabled="disabled"
-      > <label for="input_file">프로필사진 업로드 </label> <input
-      type="file" id="input_file" name="uploadfile"class="upload-hidden">
-  </div>
-      
-      <div class="control submit">
-      <span><button id="button"> 수정하기</button></span>
-      <span><button id="button"> 취소</button></span>
-      </div>
-    </form>
-
-
           </div>
-        </div>
-
-
-      </div>
       <!-- four columns ends here -->
     </div>
     <!-- container ends here -->
@@ -521,22 +434,81 @@ li img {
 <!-- Modernizr --> 
 <script type="text/javascript" src="/javascript/modernizr.custom.29473.js"></script>
 <script type="text/javascript">
+
+
+//시즌에 맞게 정보를 가져오는 함수
 $('#selectseason').change(function(){
-       var selectseason = $("#selectseason option:selected").val();
+    var selectseason = $("#selectseason option:selected").val();
           $.ajax({
           url:'/season/getSeason/'+selectseason,
-          type: 'GET',
-          success: function(season){
+          type: 'POST',
+          dataType : "json" ,
+          headers : {
+            "Accept" : "application/json",
+            "Content-Type" : "application/json"
+          },
+          success: function(JSONData){
+        	 console.log(JSONData.season);
+        	 console.log(JSONData.leaglist);
+        	 console.log(JSONData.leaglist[0]);
+        	 console.log(JSONData.leaglist[0].leagNo);
         	 console.log(($("#stday")).text());
            console.log(($("#enday")).text());
-           console.log("바꾸기전 /후 상황비교하기 ")
-        	 console.log(($("#stday")).text(season.seasonStart));
-           console.log(($("#enday")).text(season.seasonEnd));
+           console.log("바꾸기전 /후 상황비교하기 ");
+        	 console.log(($("#stday")).text(JSONData.season.seasonStart));
+           console.log(($("#enday")).text(JSONData.season.seasonEnd));
            console.log(($("#stday")).text());
-           console.log(($("#enday")).text());
-        }                  
+           console.log(($("#enday")).text()); 
+            // console.log($('ul.uloption').find('iframe'));
+            
+           var leaglist = new Array(); //리그 리스트
+           var leagvote = new Array(); //리그 투표수
+           var leagartist = new Array(); //리그 아티스트 
+           $.each((JSONData.leaglist),function(index,value){
+        	     console.log(index+"번째의 첫번째 url"+value.voteObject1+"두번째 url"+value.voteObject2);
+        	     console.log(index+"번째의 첫번째 투표개수:"+value.vote1+"두번째 투표개수:"+value.vote2);
+        	     leaglist.push("https://www.youtube.com/embed/"+value.voteObject1+"?enablejsapi=1");
+        	     leaglist.push("https://www.youtube.com/embed/"+value.voteObject2+"?enablejsapi=1");
+        	     leagvote.push(value.vote1);
+        	     leagvote.push(value.vote2);
+        	     leagartist.push(value.artist1.artistName);
+        	     leagartist.push(value.artist2.artistName);
+            }); 
+                  
+           $.each($('.player'),function(index,value){
+        	   value.src=leaglist[index];
+        	   console.log(index+"번째:"+value.src);
+           });
+           $.each($('.votelike'),function(index,value){
+        	   value.innerHTML=leagvote[index];
+             console.log(index+"번째 벨류:"+value.innerHTML );
+            });
+           
+           $.each($('.voteArtist'),function(index,value){
+        	   value.innerHTML=leagartist[index];
+        	   console.log(index+"번째 :"+value.innerHTML);
+           });
+           
+         }//end sus                  
       });      
   });
+
+//시즌이 진행되면 ADD 하는 함수 
+$("#probtn").on("click",function(){
+	alert('시즌이 진행되었습니다.');
+  var progress=$("#probtn").val();
+	$.each($(".checkvote"),function(index,value){
+		console.log(index+"번째 : "+value.value);
+	});
+	
+	
+});//end function 
+
+//UP버튼누르면 개수하나 증가하는 함수
+$(".votebutton").on("click",function(){
+	console.log("투표버튼을 누르셨습니다. ");
+});
+
 
 </script>
 </body>

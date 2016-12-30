@@ -59,5 +59,17 @@ public class SeasonDaoImpl implements SeasonDao{
     return sqlSession.selectOne("SeasonMapper.getTotalCount");
   }
 
+  @Override
+  public Season getSeason(int seasonNo) throws Exception {
+    // TODO Auto-generated method stub
+    return sqlSession.selectOne("SeasonMapper.getSeasonMapperbyNO",seasonNo);
+  }
+
+  @Override
+  public int getMaxSeasonNo() throws Exception {
+    // TODO Auto-generated method stub
+    return sqlSession.selectOne("SeasonMapper.getMaxSeasonNo");
+  }
+
 
 }

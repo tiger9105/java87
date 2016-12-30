@@ -15,6 +15,7 @@ import project.dao.UserDao;
 import project.domain.Artist;
 import project.domain.Search;
 import project.domain.User;
+import project.domain.Video;
 import project.service.ArtistService;
 import project.service.UserService;;
 
@@ -72,6 +73,17 @@ public class ArtistServiceImpl implements ArtistService{
   public void updateArtist(Artist artist) throws Exception {
     artistDao.updateArtist(artist);
   }
+  
+  public Map<String , Object > getArtistListGenre(String genre) throws Exception {
+    List<Video> list= artistDao.getArtistListGenre(genre);
+    int totalCount =artistDao.getTotalCount();
+    
+    Map<String, Object> map = new HashMap<String, Object>();
+    map.put("list", list );
+    map.put("totalCount", new Integer(totalCount));
+  
+    return map;
+}
 
   /*
 

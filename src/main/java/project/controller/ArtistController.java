@@ -303,5 +303,27 @@ public class ArtistController {
     
   return artist;
   } 
+  
+  
+
+@RequestMapping( value="genre/{genre}" )
+  public String genreArtist(@PathVariable("genre") String genre, Model model , HttpServletRequest request) throws Exception{
+
+    System.out.println("/artist/genre : GET / POST");
+    System.out.println("sorting:"+genre);
+    
+    
+  
+    Map<String , Object> map=artistService.getArtistListGenre(genre);
+    
+    System.out.println(map);
+  
+    model.addAttribute("list", map.get("list"));
+  
+    model.addAttribute("totalCount", map.get("totalCount"));
+    
+    return "forward:/artist/artist.jsp";
+  }
+
 
 }  

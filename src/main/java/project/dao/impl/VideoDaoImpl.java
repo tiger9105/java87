@@ -59,6 +59,17 @@ public class VideoDaoImpl implements VideoDao{
 }
 
 
+
+
+
+  //추가된것.. //////////////////12.30일/////////////////////////////
+  @Override
+  public List<Video> getMyVideoList(String vidapp) throws Exception {
+    // TODO Auto-generated method stub
+    return sqlSession.selectList("VideoMapper.getAddLeagueVideourllist",vidapp);
+  }
+  
+  ///////지희가 추가한거 (12/30)////////////
   public List<Video> getVideoList() throws Exception {
     System.out.println("여기까지는 옴");
     System.out.println(sqlSession.selectList("VideoMapper.getVideoList"));
@@ -66,26 +77,14 @@ public class VideoDaoImpl implements VideoDao{
     return sqlSession.selectList("VideoMapper.getVideoList");
   }
   
-  public List<Video> getVideoListHeart() throws Exception {
-	   
-	    System.out.println("여기까지는 옴");
-	    return sqlSession.selectList("VideoMapper.getVideoListHeart");
-	  }
-  
-  
-  public List<Video> getVideoListHits() throws Exception {
-
-	    System.out.println("여기까지는 옴");
-	    return sqlSession.selectList("VideoMapper.getVideoListHits");
-	  }
   
   public int getTotalCount() throws Exception {
     return sqlSession.selectOne("VideoMapper.getTotalCount");
   }
   
   public void deleteVideo(int videoNo) throws Exception {
-	    System.out.println("오나"+videoNo);
-	    sqlSession.delete("VideoMapper.deleteVideo", videoNo);
+      System.out.println("오나"+videoNo);
+      sqlSession.delete("VideoMapper.deleteVideo", videoNo);
   }
   
   @Override
@@ -94,5 +93,53 @@ public class VideoDaoImpl implements VideoDao{
     
     return sqlSession.selectList("VideoMapper.getmyVideolist",userNo);
   }
+  
+  public List<Video> getVideoListHeart() throws Exception {
+     
+      System.out.println("여기까지는 옴");
+      return sqlSession.selectList("VideoMapper.getVideoListHeart");
+  }
+ 
+  public List<Video> getVideoListHits() throws Exception {
+  
+        System.out.println("여기까지는 옴");
+        return sqlSession.selectList("VideoMapper.getVideoListHits");
+ }
+  
+  
+  public List<Video> getVideoListGenre(String genre) throws Exception {
+     
+      System.out.println("여기까지는 옴");
+      return sqlSession.selectList("VideoMapper.getVideoListGenre",genre);
+}
+  public List<Video> getVideoListGenreHeart(String genre) throws Exception {
+     
+      System.out.println("여기까지는 옴");
+      return sqlSession.selectList("VideoMapper.getVideoListGenreHeart",genre);
+}
+  public List<Video> getVideoListGenreHits(String genre) throws Exception {
+     
+      System.out.println("여기까지는 옴");
+      return sqlSession.selectList("VideoMapper.getVideoListGenreHits",genre);
+}
+
+
+  public List<Video> getLeagueList() throws Exception {
+      // TODO Auto-generated method stub
+      
+      return sqlSession.selectList("VideoMapper.getLeagueList");
+  }
+  
+  public List<Video> getLeagueListHeart() throws Exception {
+     
+      System.out.println("getLeagueListHeart");
+      return sqlSession.selectList("VideoMapper.getLeagueListHeart");
+}
+
+  public List<Video> getLeagueListHits() throws Exception {
+  
+        System.out.println("여기까지는 옴");
+        return sqlSession.selectList("VideoMapper.getLeagueListHits");
+}
 
 }

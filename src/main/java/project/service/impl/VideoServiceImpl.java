@@ -59,6 +59,20 @@ public class VideoServiceImpl implements VideoService{
     return videoDao.getVideo(videoNo);
   }
 
+
+
+
+
+ //추가된것.. //////////////////12.30일/////////////////////////////
+  @Override
+  public List<Video> getMyVideoList(String vidapp) throws Exception {
+    // TODO Auto-generated method stub
+    return videoDao.getMyVideoList(vidapp);
+  }
+  
+  
+  
+  ///지희가 추가한거 (12/30)///
   public Map<String , Object > getVideoList() throws Exception {
     List<Video> list= videoDao.getVideoList();
     int totalCount =videoDao.getTotalCount();
@@ -70,28 +84,6 @@ public class VideoServiceImpl implements VideoService{
     return map;
   }
   
-  public Map<String , Object > getVideoListHeart() throws Exception {
-	    List<Video> list= videoDao.getVideoListHeart();
-	    int totalCount =videoDao.getTotalCount();
-	    
-	    Map<String, Object> map = new HashMap<String, Object>();
-	    map.put("list", list );
-	    map.put("totalCount", new Integer(totalCount));
-	  
-	    return map;
-	  }
-  
-  public Map<String , Object > getVideoListHits() throws Exception {
-	    List<Video> list= videoDao.getVideoListHits();
-	    int totalCount =videoDao.getTotalCount();
-	    
-	    Map<String, Object> map = new HashMap<String, Object>();
-	    map.put("list", list );
-	    map.put("totalCount", new Integer(totalCount));
-	  
-	    return map;
-	  }
-
 
  
   public void updateVideo(Video video) throws Exception {
@@ -99,33 +91,89 @@ public class VideoServiceImpl implements VideoService{
   }
   
   public void updateHits(Video video) throws Exception {
-	    videoDao.updateHits(video);
+      videoDao.updateHits(video);
   }
   public void updateHeart(Video video) throws Exception {
-	    videoDao.updateHeart(video);
+      videoDao.updateHeart(video);
 }
   public void deleteVideo(int videoNo) throws Exception {
-	    videoDao.deleteVideo(videoNo);
+      videoDao.deleteVideo(videoNo);
  }
   
   public void addlikeVidUser(UserLikeVid userLikeVid) throws Exception {
-	    userLikeVidDao.addUserLikeVid(userLikeVid);
-	}
-	  
+      userLikeVidDao.addUserLikeVid(userLikeVid);
+  }
+    
   public void deletelikeVidUser(int userNo, int vidNo) throws Exception {
-	   userLikeVidDao.deleteUserLikeVid(userNo,vidNo);
+     userLikeVidDao.deleteUserLikeVid(userNo,vidNo);
   }
   
 
    public UserLikeVid getLikeVid(UserLikeVid userLikeVid) throws Exception {
-	   // TODO Auto-generated method stub
-	   return userLikeVidDao.getLikeVid(userLikeVid);
-	 }
+     // TODO Auto-generated method stub
+     return userLikeVidDao.getLikeVid(userLikeVid);
+   }
    
    @Override
    public List<Video> getMyVideoList(int userNo) throws Exception {
      // TODO Auto-generated method stub
      return videoDao.getMyVideoList(userNo);
    }
+   
+   public Map<String , Object > getVideoListHeart() throws Exception {
+      List<Video> list= videoDao.getVideoListHeart();
+      int totalCount =videoDao.getTotalCount();
+      
+      Map<String, Object> map = new HashMap<String, Object>();
+      map.put("list", list );
+      map.put("totalCount", new Integer(totalCount));
+    
+      return map;
+    }
+   
+   public Map<String , Object > getVideoListHits() throws Exception {
+      List<Video> list= videoDao.getVideoListHits();
+      int totalCount =videoDao.getTotalCount();
+      
+      Map<String, Object> map = new HashMap<String, Object>();
+      map.put("list", list );
+      map.put("totalCount", new Integer(totalCount));
+    
+      return map;
+    }
+
+ 
+ public  List<Video> getVideoListGenre(String genre) throws Exception {
+  
+   return videoDao.getVideoListGenre(genre);
+ }
+ 
+ public  List<Video> getVideoListGenreHeart(String genre) throws Exception {
+    
+   return videoDao.getVideoListGenreHeart(genre);
+ }
+ 
+ public  List<Video> getVideoListGenreHits(String genre) throws Exception {
+    
+   return videoDao.getVideoListGenreHits(genre);
+ }
+
+
+   public List<Video> getLeagueList() throws Exception {
+       // TODO Auto-generated method stub
+       return videoDao.getLeagueList();
+     }
+   
+   public List<Video> getLeagueListHeart() throws Exception {
+      
+      return videoDao.getLeagueListHeart();
+    }
+  
+  public List<Video> getLeagueListHits() throws Exception {
+     
+      return videoDao.getLeagueListHits();
+    }
+
+
 
 }

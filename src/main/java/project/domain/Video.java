@@ -1,7 +1,7 @@
 package project.domain;
 
 
-public class Video {
+public class Video{
 
   private int videoNo;
   private int heart;
@@ -124,6 +124,8 @@ public class Video {
 					+ url + ", title=" + title + ", app=" + app + ", text=" + text + ", introduce=" + introduce
 					+ ", userNumber=" + userNumber + ", artist=" + artist + "]";
 		}
+
+  
 
 
 

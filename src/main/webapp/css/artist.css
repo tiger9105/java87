@@ -239,31 +239,6 @@ a:hover {
   color: #FF5C4E;
 }
 
-/* The line */
-.genre li:first-child::before {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 80%;
-  height: 4px;
-  background: #FF5C4E;
-  content: '';
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
-}
-
-/* Move the line */
-.genre li:first-child.current ~ li:last-child::before {
-  -webkit-transform: translate3d(-112.5%, 0, 0);
-  transform: translate3d(-112.5%, 0, 0);
-}
-
-.genre li:last-child.current::before {
-  -webkit-transform: translate3d(12.5%, 0, 0);
-  transform: translate3d(12.5%, 0, 0);
-}
 
 /* ///////////////////button///////////////// */
 .container1 {

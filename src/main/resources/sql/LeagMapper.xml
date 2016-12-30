@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="LeagMapper">
- <resultMap id="seasonSelectMap" type="leag">
+ <resultMap id="leagSelectMap" type="leag">
     <result property="leagNo"    column="leag_no"      jdbcType="NUMERIC"/>
     <result property="leagName"     column="lname"  jdbcType="VARCHAR"/>
    <result property="vote1"    column="art_vt1"      jdbcType="NUMERIC"/>
@@ -12,32 +12,38 @@
      <result property="vote2"    column="art_vt2"      jdbcType="NUMERIC"/>
     <result property="voteObject2"    column="art_pd2"      jdbcType="VARCHAR"/>
     <result property="progress"    column="leag_part"        jdbcType="VARCHAR"/>
-    <association property="seasonNo"    column="sea_no"  select="seasonMapper.getseason"    javaType="project.domain.Season"/>
+    <association property="seasonNo"    column="sea_no"  select="SeasonMapper.getSeasonMapperbyNO"    javaType="project.domain.Season"/>
     <association property="artist1"    column="artist_no1" select="ArtistMapper.getArtist"     javaType="project.domain.Artist"/>
     <association property="artist2"    column="artist_no2" select="ArtistMapper.getArtist"     javaType="project.domain.Artist"/>
   </resultMap>
  
  
  
- <insert id="addSeasonMapper" parameterType="Season">
+ <insert id="addLeagMapper" parameterType="leag">
     INSERT
-    INTO SEASON(sea_no,sname,sea_st,sea_ed)
-    VALUES (seq_season_seasonno.NEXTVAL,
-             #{seasonName:VARCHAR},
-             #{seasonStart:VARCHAR},
-              #{seasonEnd:VARCHAR}
+    INTO LEAG(leag_no,lname,art_vt1,art_pd1,art_vt2,art_pd2,leag_part,sea_no,artist_no1,artist_no2)
+    VALUES (seq_leag_leag_no.NEXTVAL,
+             #{leagName:VARCHAR},
+             #{vote1:INTEGER},
+             #{voteObject1:VARCHAR},
+             #{vote2:INTEGER},
+             #{voteObject2:VARCHAR},
+             #{progress:VARCHAR},
+             #{seasonNo.seasonNo},
+             #{artist1.artistNo},
+             #{artist2.artistNo}
              )
   </insert>
 
-  <select id="getSeasonMapper" parameterType="int" resultMap="seasonSelectMap">
+  <select id="getLeagListMapper" parameterType="int" resultMap="leagSelectMap">
     SELECT *
-    FROM SEASON
-    WHERE sea_no = #{seasonNo:INTEGER}
+    FROM LEAG
+    WHERE sea_no= #{value}
   </select>
   
-    <select id="getSeasonlistMapper" resultMap="seasonSelectMap">
+    <select id="getSeasonlistMapper" resultMap="leagSelectMap">
     SELECT *
-    FROM SEASON
+    FROM LEAG
     ORDER BY sea_no DESC
   </select>
   

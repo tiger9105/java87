@@ -6,6 +6,7 @@ import java.util.List;
 import project.domain.Artist;
 import project.domain.Search;
 import project.domain.User;
+import project.domain.Video;
 
 
 public interface ArtistDao {
@@ -26,6 +27,8 @@ public interface ArtistDao {
   public int getTotalCount() throws Exception ;
 
   public void updateArtist(Artist artist) throws Exception ;
+  
+  public List<Video> getArtistListGenre(String genre) throws Exception ;
   // UPDATE
 //  public void updateUser(User user) throws Exception ;
   

@@ -10,7 +10,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/artist.css">
-
 <!-- colorbox창 -->
 <link rel="stylesheet" href="/css/colorbox/colorbox.css">
 <!-- alert창 (등록) -->
@@ -45,10 +44,7 @@
 						<li><a href="/index.jsp">Home</a></li>
             <li><a href="/about.jsp">About</a></li>
             <li><a href="/artist/listArtist" id="visited">Artist</a>
-                  <ul>
-                <li><a href="/artist/listArtist">Artist</a></li>
-              </ul></li>
-            <li><a href="/video/listVideo">Video</a>
+            <li><a href="/video/listVideo">Music</a>
             <li><a href="/season/getSeasonlist">UP contest</a></li>
             <!-- 로그인 로그아웃 부분  -->
             <c:if test="${user!=null}">
@@ -84,13 +80,13 @@
 	
 	<!-- artist 장르별 메뉴 -->
   <nav class="genre">
-    <ul>
-      <li class="current"><a href="#"><span>ALL</span></a></li>
-      <li class=""><a href="#"><span>R & B</span></a></li>
-      <li class=""><a href="#"><span>힙합 & RAP<span></a></li>
-      <li class=""><a href="#"><span>어쿠스틱<span></a></li>
-      <li class=""><a href="#"><span>락<span></a></li>
-      <li class=""><a href="#"><span>일렉토로닉<span></a></li>
+    <ul >
+      <li class="genre1" id="genre2_all" ><a href="#"><span>ALL</span></a></li>
+      <li class="genre1" id="genre2_R&B" ><a href="#"><span>R&B</span></a></li>
+      <li class="genre1" id="genre2_힙합&RAP" ><a href="#"><span>힙합 & RAP<span></a></li>
+      <li class="genre1" id="genre2_어쿠스틱"><a href="#"><span>어쿠스틱<span></a></li>
+      <li class="genre1" id="genre2_락" ><a href="#"><span>락<span></a></li>
+      <li class="genre1" id="genre2_일렉트로닉" ><a href="#"><span>일렉트로닉<span></a></li>
     </ul>
   </nav>
 <!--ends artist 장르별 메뉴 -->
@@ -106,20 +102,6 @@
 	</p>
 	<!-- ends 아티스트 등록하기 버튼 -->
 
-
-
-<!-- artist list -->
-	<section id="team" class="team content-section">
-		<div class="container">
-			<div class="row text-center">
-				<div class="col-md-12">
-					<h2>Artists Index</h2>
-					<h3 class="captiongray">Artist profile</h3>
-				</div>
-			</div>
-		</div>
-	</section>
-	
 
 <!-- 반복문으로 artists 뽑아오는 곳(getArtistList) -->
 	<c:forEach var="i" begin="0" end="${totalCount/3}" step="1">
@@ -199,6 +181,59 @@
           }); 
        });
   </script>
+
+
+
 	
+
+<!-- 장르별로 list 보내기 -->
+<script>
+
+$(".genre1").click(function(){
+	var genre =$(this).text();
+	alert(genre);
+	$('.current').removeClass();
+	$('#genre2').removeClass().addClass('genre1');
+	$(this).attr('class','current');
+
+	location.href="/artist/genre/"+decodeURI(genre, "UTF-8");
+	
+});
+
+$("#genre2_all").click(function(){
+	var genre =$(this).text();
+//	alert(genre);
+	$('.current').removeClass();
+	$(this).attr('class','current');
+	
+	location.href="/artist/listArtist";
+	
+});
+
+
+</script>
+
+<!-- genre list된 거 check -->
+<script type="text/javascript">
+ var link =  document.location.href;
+//alert(link);
+if(link.includes("genre")){
+	$('.current').removeClass();
+ 	var genre=link.split('/');
+	genre=genre[5]; 
+	genre=decodeURI(genre, "UTF-8");
+	
+	$('li[id^=genre2_]').removeClass().addClass('genre1');
+	document.getElementById("genre2_"+genre).className = "current";
+
+	
+}else if(link.includes("listArtist")){
+	document.getElementById("genre2_all").className = "current";
+}else if(link.includes("sorting")){
+	document.getElementById("genre2_all").className = "current";
+}
+
+</script>
+		
 </body>
 </html>

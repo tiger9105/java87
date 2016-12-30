@@ -10,7 +10,7 @@
     <result property="genre"   column="genre"     jdbcType="VARCHAR" />
     <result property="image"   column="artist_pro"   jdbcType="VARCHAR"  />
     <result property="introduce"   column="art_int"   jdbcType="VARCHAR"  />
-    <association property="userNumber" column="user_no" select="UserMapper.getUser" javaType="project.domain.Artist" />
+    <association property="userNumber" column="user_no" select="UserMapper.getUserByNo" javaType="project.domain.Artist" />
   </resultMap>
   <!-- SQL : INSERT -->
   <insert   id="addArtist"    parameterType="artist" >
@@ -59,6 +59,13 @@
        </set>
       WHERE user_no = #{userNumber.userNo}
     </update>
+    
+        
+   <select  id="getArtistListGenre"  parameterType="string" resultMap="artistSelectMap" >
+      SELECT *
+      FROM artists
+      WHERE genre =#{genre}
+   </select>
     
  
 </mapper>

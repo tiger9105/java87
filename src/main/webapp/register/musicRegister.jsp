@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -54,7 +55,7 @@
 					<option value="락">락</option>
 					<option value="일렉트로닉">일렉트로닉</option>
 		</select>
-	
+	<c:if test="${user.artistCode =='1'}">
 		<div class="control12">	
 			<div class="control1">
 			리그 참여 여부
@@ -66,7 +67,7 @@
 								value="불참여" >불참여
 			</div>
 		</div>	
-	
+	</c:if>
 		<div class="control">
 			<input type="text" id="url" name="url" placeholder="YOUTUBE URL" />				
 		</div>

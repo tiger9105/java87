@@ -5,6 +5,7 @@ package project.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,7 @@ import project.domain.User;
 import project.domain.UserLikeVid;
 import project.domain.Video;
 import project.service.ArtistService;
+import project.service.SeasonService;
 import project.service.UserService;
 import project.service.VideoService;
 
@@ -51,6 +53,10 @@ public class VideoController {
   @Autowired
   @Qualifier("artistServiceImpl")
   private ArtistService artistService;
+  
+  @Autowired
+  @Qualifier("seasonServiceImpl")
+  private SeasonService seasonService;
   
     
   public VideoController(){
@@ -187,13 +193,29 @@ public class VideoController {
     
     System.out.println(map);
   
+    Map<String,Object> seasonMap=seasonService.getSeasonList();
+    model.addAttribute("seasonList",seasonMap.get("list"));
+    
+    
     model.addAttribute("list", map.get("list"));
-  
     model.addAttribute("totalCount", map.get("totalCount"));
 
     return "forward:/music/music.jsp";
   }
+
+  //추가한것 ..................................................................
+  @RequestMapping(value="artistvideos/{artNo}",method=RequestMethod.GET)
+  public @ResponseBody List<Video> artistvideos(@PathVariable("artNo") int artNo) throws Exception {
+    
+    Artist artist =artistService.getArtist(artNo);
+    System.out.println("내용확인 ->artist:"+artist);
+    System.out.println("내용확인->UserNO:"+artist.getUserNumber().getUserNo());
+      //세션에서 유저값을 가져오고 그유저값이 아티스트면 비디오리스트에 넣어주기 
+     List<Video> video=videoService.getMyVideoList(artist.getUserNumber().getUserNo());
+     return video;
+  }
   
+  //////지희가 추가한 거 (12-30)/////////////////
   @ResponseBody
   @RequestMapping( value="sorting" )
   public String sortingVideo(@RequestParam String sorting, Model model , HttpServletRequest request) throws Exception{
@@ -204,13 +226,13 @@ public class VideoController {
     Map<String , Object> map = null;
     
     if(sorting.equals("recently")){
-    	map=videoService.getVideoList();
+      map=videoService.getVideoList();
     }else if(sorting.equals("popularity")){
-    	System.out.println("여기 들어옴??"+sorting);
-    	map=videoService.getVideoListHeart();
+      System.out.println("여기 들어옴??"+sorting);
+      map=videoService.getVideoListHeart();
     }else if(sorting.equals("hits")) {
-    	map=videoService.getVideoListHits();
-    	
+      map=videoService.getVideoListHits();
+      
     }
     
     System.out.println(map);
@@ -232,13 +254,13 @@ public class VideoController {
     Map<String , Object> map = null;
     
     if(sorting.equals("recently")){
-    	map=videoService.getVideoList();
+      map=videoService.getVideoList();
     }else if(sorting.equals("popularity")){
-    	System.out.println("여기 들어옴??"+sorting);
-    	map=videoService.getVideoListHeart();
+      System.out.println("여기 들어옴??"+sorting);
+      map=videoService.getVideoListHeart();
     }else if(sorting.equals("hits")) {
-    	map=videoService.getVideoListHits();
-    	
+      map=videoService.getVideoListHits();
+      
     }
     
     System.out.println(map);
@@ -253,7 +275,7 @@ public class VideoController {
   @RequestMapping( value="deleteVideo/{videoNo}")
   public  String deleteVideo( @PathVariable("videoNo") int videoNo,HttpServletRequest request, Model model ) throws Exception {
     
-	System.out.println("delete 여기오니??");
+  System.out.println("delete 여기오니??");
     
     //Business Logic
     videoService.deleteVideo(videoNo);
@@ -266,58 +288,146 @@ public class VideoController {
   @ResponseBody
   @RequestMapping(value = "heartAdd", method = RequestMethod.GET)
   public Model heartAdd(@RequestParam int heartAdd,@RequestParam int vidNo, HttpSession session, Model model) throws Exception {
-  	
-	System.out.println("heartAdd 여기 안와??ㅠㅠ");
-  	System.out.println(heartAdd);
-  	int userNo=((User)session.getAttribute("user")).getUserNo();
-  	
-  	
-  	UserLikeVid userLikeVid = new UserLikeVid(userNo,vidNo);
- 	 	
-  	videoService.addlikeVidUser(userLikeVid);
-  	
-	userLikeVid = videoService.getLikeVid(userLikeVid);
-	
-	model.addAttribute("videoHeart",userLikeVid);
-  	
-  	Video video=videoService.getVideo(vidNo);
-  	video.setHeart(heartAdd);
-  	
-  	videoService.updateHeart(video);
+    
+  System.out.println("heartAdd 여기 안와??ㅠㅠ");
+    System.out.println(heartAdd);
+    int userNo=((User)session.getAttribute("user")).getUserNo();
+    
+    
+    UserLikeVid userLikeVid = new UserLikeVid(userNo,vidNo);
+    
+    videoService.addlikeVidUser(userLikeVid);
+    
+  userLikeVid = videoService.getLikeVid(userLikeVid);
+  
+  model.addAttribute("videoHeart",userLikeVid);
+    
+    Video video=videoService.getVideo(vidNo);
+    video.setHeart(heartAdd);
+    
+    videoService.updateHeart(video);
     
     model.addAttribute("video", video);
     
-  	return model;
+    return model;
   }
   
   
   @ResponseBody
   @RequestMapping(value = "heartDelete", method = RequestMethod.GET)
   public Model heartDelete(@RequestParam int heartDelete,@RequestParam int vidNo, HttpSession session, Model model) throws Exception {
-  	
-	System.out.println("heartDelete 여기 안와??ㅠㅠ");
-  	System.out.println(heartDelete);
-  	
-  	int userNo=((User)session.getAttribute("user")).getUserNo();
-  	
-  	
-  	UserLikeVid userLikeVid = new UserLikeVid(userNo,vidNo);
- 	 	
-  	videoService.deletelikeVidUser(userNo, vidNo);
-  	
-	userLikeVid = videoService.getLikeVid(userLikeVid);
-	
-	model.addAttribute("videoHeart",userLikeVid);
-  	
-  	Video video=videoService.getVideo(vidNo);
-  	video.setHeart(heartDelete);
-  	
-  	videoService.updateHeart(video);
+    
+  System.out.println("heartDelete 여기 안와??ㅠㅠ");
+    System.out.println(heartDelete);
+    
+    int userNo=((User)session.getAttribute("user")).getUserNo();
+    
+    
+    UserLikeVid userLikeVid = new UserLikeVid(userNo,vidNo);
+    
+    videoService.deletelikeVidUser(userNo, vidNo);
+    
+  userLikeVid = videoService.getLikeVid(userLikeVid);
+  
+  model.addAttribute("videoHeart",userLikeVid);
+    
+    Video video=videoService.getVideo(vidNo);
+    video.setHeart(heartDelete);
+    
+    videoService.updateHeart(video);
     
     model.addAttribute("video", video);
     
 
-  	return model;
+    return model;
   }
+  
+  @RequestMapping( value="genre/{genre}" )
+  public String genreVideo(@PathVariable("genre") String genre, Model model , HttpServletRequest request) throws Exception{
+
+    System.out.println("/video/genre : GET / POST");
+    System.out.println("sorting:"+genre);
+    
+    
+    //genre=new String(genre.getBytes("iso-8859-1"), "utf-8");
+    
+    
+    List<Video> map =videoService.getVideoListGenre(genre);
+    
+    System.out.println(map);
+  
+    model.addAttribute("list", map);
+
+    return "forward:/music/music.jsp";
+  }
+  
+  @RequestMapping( value="leagueVideo" )
+  public String leagueVideo(Model model , HttpServletRequest request) throws Exception{
+
+    System.out.println("/video/leagueVideo : GET / POST");
+   
+    List<Video> map=videoService.getLeagueList(); //토너먼트 참여한애들만 나오는 리스트 
+    
+    System.out.println(map);
+  
+    model.addAttribute("list", map);
+
+    
+    return "forward:/music/music.jsp";
+  }
+  
+  @RequestMapping( value="leagueSorting/{sorting}" )
+  public String leagueSorting(@PathVariable("sorting") String sorting, Model model , HttpServletRequest request) throws Exception{
+    
+    System.out.println("/video/leagueSorting : GET / POST");
+    System.out.println("sorting:"+sorting);
+    
+   List<Video> map = null;
+    
+    if(sorting.equals("recently")){
+        map=videoService.getLeagueList();
+    }else if(sorting.equals("popularity")){
+       map=videoService.getLeagueListHeart();
+    }else if(sorting.equals("hits")) {
+      map=videoService.getLeagueListHits();
+      
+    }
+    
+    System.out.println(map);
+  
+    model.addAttribute("list", map);
+
+    return "forward:/music/music.jsp";
+  }
+  
+  @RequestMapping( value="genreSorting/{sorting}/{genre}" )
+  public String genreSorting(@PathVariable("sorting") String sorting,@PathVariable("genre") String genre, Model model , HttpServletRequest request) throws Exception{
+    
+    System.out.println("/video/leagueSorting : GET / POST");
+    System.out.println("sorting:"+sorting);
+    
+    //genre=new String(genre.getBytes("iso-8859-1"), "utf-8");
+    
+    System.out.println("sorting:"+genre);
+    
+    List<Video> map = null;
+    
+    if(sorting.equals("recently")){
+         map=videoService.getVideoListGenre(genre);
+    }else if(sorting.equals("popularity")){
+       map=videoService.getVideoListGenreHeart(genre);
+    }else if(sorting.equals("hits")) {
+       map=videoService.getVideoListGenreHits(genre);
+      
+    }
+    
+    System.out.println(map);
+  
+    model.addAttribute("list", map);
+
+    return "forward:/music/music.jsp";
+  }
+  
+  
 
 }  

@@ -135,7 +135,7 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 						<li><a href="/index.jsp" id="visited">Home</a></li>
 						<li><a href="/about.jsp">About</a></li>
 						<li><a href="/artist/listArtist">Artist</a>
-			  	  <li><a href="/video/listVideo">Video</a>
+			  	  <li><a href="/video/listVideo">Music</a>
 						<li><a href="/season/getSeasonlist">UP contest</a></li>
 						<!-- 로그인 로그아웃 부분  -->
 						<c:if test="${user!=null}">

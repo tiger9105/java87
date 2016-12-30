@@ -15,9 +15,15 @@ public interface SeasonDao {
 
 // SELECT ONE
   public Season getSeason(String seasonNo) throws Exception ;
+  
+  public Season getSeason(int seasonNo) throws Exception ;
 
   public List<Season> getSeasonList() throws Exception;
 
   public int getTotalCount() throws Exception ;
+  
+  public int getMaxSeasonNo() throws Exception;
+  
+
 
 }

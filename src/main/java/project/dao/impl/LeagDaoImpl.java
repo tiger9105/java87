@@ -37,7 +37,7 @@ public class LeagDaoImpl implements LeagDao{
   @Override
   public int addLeag(Leag leag) throws Exception {
     // TODO Auto-generated method stub
-    return 1;
+    return sqlSession.insert("LeagMapper.addLeagMapper",leag);
   }
 
   @Override
@@ -47,9 +47,9 @@ public class LeagDaoImpl implements LeagDao{
   }
 
   @Override
-  public List<Leag> getLeagList() throws Exception {
+  public List<Leag> getLeagList(int seasonNo) throws Exception {
     // TODO Auto-generated method stub
-    return null;
+    return sqlSession.selectList("LeagMapper.getLeagListMapper",seasonNo);
   }
 
 

@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import project.domain.Artist;
 import project.domain.Page;
 import project.domain.Search;
 import project.domain.User;
@@ -414,6 +415,17 @@ public class UserController {
   
   */
   
+  @RequestMapping(value="myvideo" ,method=RequestMethod.GET)
+  public String getmyvideoList(Model model,HttpSession session) throws Exception{
+    User user = (User)session.getAttribute("user");
+
+    User user1=userService.getUser(user.getUserId());
+    List<Video> list=videoService.getMyVideoList(user1.getUserNo());
+    
+    model.addAttribute("urllist",list);
+    
+    return "forward:/getMyVideo/getMyVideo.jsp";
+  }
   
   
   

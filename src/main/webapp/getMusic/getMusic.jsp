@@ -45,6 +45,99 @@
 	cursor: pointer;
 	text-transform: uppercase;
 }
+/*comment  */
+.detailBox {
+	width:620px;
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+	margin: 15px;
+	margin-top: 30px;
+}
+
+.titleBox {
+	background-color: #fdfdfd;
+	padding: 10px;
+}
+
+.titleBox label {
+	color: #444;
+	margin: 0;
+	display: inline-block;
+}
+
+.actionBox .form-group * {
+	width: 100%;
+}
+
+.taskDescription {
+	margin-top: 10px 0;
+}
+
+.commentList {
+	padding: 0;
+	list-style: none;
+	max-height: 300px;
+	overflow: auto;
+	margin-left: 5px;
+}
+
+.commentList li {
+	margin: 0;
+	margin-top: 10px;
+	padding-left: 10px;
+}
+
+.commentList li>div {
+	display: table-cell;
+}
+
+.commenterImage {
+	width: 30px;
+	margin-right: 5px;
+	float: left;
+}
+
+.commenterImage img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+.commentText p {
+	margin: 0;
+}
+
+.sub-text {
+	color: #aaa;
+	font-family: verdana;
+	font-size: 11px;
+}
+
+.actionBox {
+	border-top: 1px dotted #bbb;
+}
+
+.commentText {
+	padding-left: 10px;
+}
+
+#add_comment_btn {
+	position: relative;
+	top: 20px;
+	left: -15px;
+	background-color: #ED2553;
+}
+#toast-container {
+  top: auto !important;
+  right: 1%;
+  bottom: 7%;
+  left:auto !important;
+}
+
+
+.delete_btn_custom{
+	cursor: pointer;
+}
 
 </style> 
 <body>
@@ -71,7 +164,7 @@
 							<ul>
 								<li><a href="/artist/listArtist">Artist</a></li>
 							</ul></li>
-						<li><a href="/video/listVideo" id="visited">Video</a>
+						<li><a href="/video/listVideo" id="visited">Music</a>
 							<ul>
 								<li><a href="/video/listVideo" >Video</a></li>
 							</ul></li>
@@ -111,46 +204,6 @@
 	<!-- header ends here -->
 
 <!--ends 홈페이지 메뉴바 -->
-
-<!--carousel 
-	<div class='g-carousel'>
-	  <a class='prev' href='#'><</a>
-	  <a class='next' href='#'>></a>
-	  <ul class='carousel'>
-	    <li class="thumbnail">
-	      <img src='/images/uploadFiles/daybreak.jpg'>
-	    </li>
-	    <li class="thumbnail">
-	      <img src='/images/uploadFiles/hong1.jpg'>
-	    </li>
-	    <li class="thumbnail">
-	      <img src='/images/uploadFiles/hong2.jpg'>
-	    </li>
-	    <li class="thumbnail">
-	      <img src='/images/uploadFiles/lee.jpg'>
-	    </li>
-	    <li class="thumbnail">
-	      <img src='/images/uploadFiles/sungso.jpg'>
-	    </li>
-	        <li class="thumbnail">
-	      <img src='/images/uploadFiles/daybreak.jpg'>
-	    </li>
-	    <li class="thumbnail">
-	      <img src='/images/uploadFiles/hong1.jpg'>
-	    </li>
-	    <li class="thumbnail">
-	      <img src='/images/uploadFiles/hong2.jpg'>
-	    </li>
-	    <li class="thumbnail">
-	      <img src='/images/uploadFiles/lee.jpg'>
-	    </li>
-	    <li class="thumbnail">
-	      <img src='/images/uploadFiles/sungso.jpg'>
-	    </li>
-	  </ul>
-	</div>
-ends carousel -->
-
 
 <!-- video -->
 	<div class="container3">
@@ -222,6 +275,53 @@ ends carousel -->
 		  
 		</div>
 		
+
+<%-- 		<div class="col offset-s2 s8">
+				<div class="detailBox">
+					<div class="titleBox">
+						<label>너의 의견을 달아봐 </label>
+					</div>
+					<div class="actionBox">
+						<ul id="commentList" class="commentList">
+							<c:forEach var="comment" items="${commentList}">
+								<li>
+									<div class="commenterImage">
+										<img src="/images/uploadFiles/"${user.filepath }">
+									</div>
+									<div class="commentText">
+										<p class="">${comment.commentContent}</p>
+										<span class="date sub-text">${comment.regDate}</span>
+
+									</div> <c:if test="${comment.userNo==user.userNo}">
+										<div id="delete_comment_${comment.commentNo}" class="delete_btn_custom">
+											<i class="material-icons">remove_circle_outline</i>
+										</div>
+									</c:if>
+								</li>
+							</c:forEach>
+							<!-- 댓글 들어가는곳 -->
+						</ul>
+
+						<div class="row">
+						<form id="comment_form">
+							<input name="voteNo" type="hidden" value="${vote.voteNo}">
+							<div class="input-field col s8">
+								<input name="commentContent" id="comment" type="text" class="validate">
+								<label for="comment">댓글</label>
+							</div>
+						</form>
+							<div class="col s4">
+								<div  id="add_comment_btn" class="btn btn-default">Add</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		
+	
+	 --%>
+	
 				
 	</div>
 <!-- ends video -->
@@ -238,20 +338,7 @@ ends carousel -->
 	<script src="/javascript/screen.js" type="text/javascript"></script>
 	<!-- Tabs -->
 	<script src="/javascript/tabs.js" type="text/javascript"></script>
-	
-	
-	<!-- 하트 javaScript 
-	<script>
-	$(".love").click(function(){
-		  $('.heart').toggleClass('love');
-		  $('.heart').addClass("active").delay(300).queue(function(next){
-		    $('.heart').removeClass("active");
-		    next();
-		  });
-		});
-	</script>
-	-->
-	
+
 	
 	<!-- 메뉴슬라이드 자바스크립트  -->
 	<script>
@@ -266,45 +353,6 @@ ends carousel -->
 		});
 	</script>
 	
-	<!-- carousel javascript
-	<script>
-		(function () {
-		    $(document).ready(function () {
-		        var $carouselList, $width, currentItem, initLeft, numberOfItems, totalNumberOfItems;
-		        initLeft = 40;
-		        $width = 800;
-		        numberOfItems = 4;
-		        $carouselList = $('ul.carousel');
-		        totalNumberOfItems = $carouselList.children().size();
-		        currentItem = numberOfItems;
-		        $('a.next').on('click', function () {
-		            var left;
-		            left = parseInt($carouselList.css('left'));
-		            left = left - 200;
-		            if (currentItem === totalNumberOfItems) {
-		                left = initLeft;
-		                currentItem = numberOfItems;
-		            } else {
-		                currentItem += 1;
-		            }
-		            return $carouselList.animate({ 'left': left + 'px' }, 400);
-		        });
-		        return $('a.prev').on('click', function () {
-		            var left;
-		            left = parseInt($carouselList.css('left'));
-		            left = left + 200;
-		            if (currentItem === numberOfItems) {
-		                left = initLeft - 200 * (totalNumberOfItems - numberOfItems);
-		                currentItem = totalNumberOfItems;
-		            } else {
-		                currentItem -= 1;
-		            }
-		            return $carouselList.animate({ 'left': left + 'px' }, 400);
-		        });
-		    });
-		}.call(this));
-	</script>
-	 -->
 	 
 	<!-- 동영상 수정 자바스크립트(getVideoByUpdate) -->
 	<script type="text/javascript">
@@ -397,6 +445,66 @@ ends carousel -->
   		
 	</script>
 	
+	<script>
+	
+	$("#commentList").scrollTop($("#commentList")[0].scrollHeight);
+	
+	$("#add_comment_btn").on("click",function(){
+	
+		if($("#comment").val()==''){
+			  Materialize.toast('댓글을 입력하세요. ', 3000,'pink accent-3')	
+			  return;
+		}
+		
+		
+		var form = new FormData($("#comment_form")[0]);
+		
+		$.ajax({
+			type : "post",
+			url : "/comment/addComment",
+			processData : false,/*data 파라미터로 전달된 데이터를 jQuery 내부적으로 query string 으로 만드는데, 파일 전송의 경우 이를 하지 않아야 하고 이를 설정하는 것이 processData: false 이다.*/
+			contentType : false,/*contentType 은 default 값이 "application/x-www-form-urlencoded; charset=UTF-8" 인데, "multipart/form-data" 로 전송이 되게 false 로 넣어준다. */
+			data : form,
+			success : function(data){
+				var parsedDate = new Date(parseInt(data.comment.regDate))
+				var jsDate = new Date(parsedDate);
+				var convertedDate= jsDate.getFullYear()+"-"+(jsDate.getMonth()+1)+"-"+jsDate.getDate()+" "+jsDate.getHours()+":"+jsDate.getMinutes()+":"+jsDate.getSeconds()+"."+jsDate.getMilliseconds();
+				var row ="";
+				
+				row +=  "<li><div class='commenterImage'>";
+				if(data.user.userPhoto.startsWith("fb_profile_image")){
+					row +="<img src='"+data.user.userPhoto.replace("fb_profile_image","")+"'/></div>"
+				}else{
+					row +="<img src='/image/profile/thumbnail/"+data.user.userPhoto+"'/></div>"
+				}
+				
+				
+				
+				row +="<div class='commentText'>";
+				row +="<p class=''>"+data.comment.commentContent+"</p>";
+				row +="<span class='date sub-text'>"+convertedDate+"&nbsp;&nbsp;"+data.user.userName+"님</span></div>";
+				row +="<div id='delete_comment_"+data.comment.commentNo+"' class='delete_btn_custom'><i class='material-icons'>remove_circle_outline</i></div></li>";
+			
+				
+				$("#commentList").append(row);
+				$("#comment").val("");
+				$("#commentList").scrollTop($("#commentList")[0].scrollHeight);
+			}
+		});
+	});
+
+
+	$(document).on("click","div[id^='delete_comment_']",function(){
+		var commentNo = $(this).attr("id").replace("delete_comment_","");
+		$.ajax({
+			type : "get",
+			url : "/comment/deleteComment/"+commentNo
+		});
+		$(this).parent().remove();
+	});
+
+	
+	</script>
 
 
 	

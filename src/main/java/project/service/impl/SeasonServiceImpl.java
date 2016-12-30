@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import project.dao.LeagDao;
+import project.dao.LeagUserDao;
 import project.dao.SeasonDao;
 import project.dao.VideoDao;
 import project.domain.Leag;
+import project.domain.LeagUser;
 import project.domain.Season;
 
 import project.service.SeasonService;
@@ -29,6 +31,11 @@ public class SeasonServiceImpl implements SeasonService{
   @Autowired
   @Qualifier("leagDaoImpl")
   private LeagDao leagDao;
+  
+  @Autowired
+  @Qualifier("leaguserDaoImpl")
+  private LeagUserDao leagUserDao;
+  
   
   public void setUserDao(SeasonDao seasonDao) { /** */
     this.seasonDao = seasonDao;
@@ -71,7 +78,7 @@ public class SeasonServiceImpl implements SeasonService{
   @Override
   public int addLeag(Leag leag) throws Exception {
     // TODO Auto-generated method stub
-    return 0;
+    return leagDao.addLeag(leag);
   }
 
   @Override
@@ -81,10 +88,35 @@ public class SeasonServiceImpl implements SeasonService{
   }
 
   @Override
-  public List<Leag> getLeagList() throws Exception {
+  public List<Leag> getLeagList(int seasonNo) throws Exception {
     // TODO Auto-generated method stub
-    return null;
+    return leagDao.getLeagList(seasonNo);
   }
 
+  @Override
+  public Season getSeason(int seasonNo) throws Exception {
+    // TODO Auto-generated method stub
+    return seasonDao.getSeason(seasonNo);
+  }
 
+  @Override
+  public int getMaxSeasonNo() throws Exception {
+    // TODO Auto-generated method stub
+    return seasonDao.getMaxSeasonNo();
+  }
+
+  ////LeagUser 부분 ................................................
+  @Override
+  public int addLeagUser(LeagUser leagUser) throws Exception {
+    // TODO Auto-generated method stub
+    return leagUserDao.addLeagUser(leagUser);
+  }
+
+  @Override
+  public LeagUser getLeagUser(LeagUser leagUser) throws Exception {
+    // TODO Auto-generated method stub
+    return leagUserDao.getLeagUser(leagUser);
+  }
+
+  //LeagUser 부분 ...............................................
 }

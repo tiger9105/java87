@@ -7,6 +7,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+/* Transitions */
+
+.LikeAritst {
+  transition-property: all;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
+}
+
+/* General styling */
+
+.LikeAritst {
+  background: #ff9999;
+
+  border-radius: 1em;
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  font: Helvetica, Arial, Sans-serif;
+  padding: 1em 3em;
+}
+
+.LikeAritst:hover {
+  background: #ff9999;
+  color: #fff;
+  font-size: 27px;
+}
+
+</style>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/getArtist.css">
@@ -45,14 +76,14 @@
 			</h2>
   <input type="hidden" name="artistjjim" id="artistjjim" value="${artist.artistNo}">
       
-      <input type="button" id="jjim_btn" value="찜버튼">
+      <button   style="margin-left:200px;" class="LikeAritst" id="jjim_btn">LIKE</button>
         
 
 		</article>
 	 <article class='dos fontawesome-wrench'>
-	<p>내가 올린 동영상</p>
+	<p>Music</p>
 	<div class="myvideo"></div>
-	<input type="hidden" id="hiddenNo" value="${user.userNo}">
+	<input type="hidden" id="hiddenNo" value="${artist.artistNo}">
 	</article> <article class='tres fontawesome-file-alt'>
 	<ol>
 
@@ -98,25 +129,29 @@
       });
     });
 	  
-	$("#settings").click(function(){
-		  var userNo =$("#hiddenNo").val();
-		  console.log(userNo);
-		  console.log("ajax실행전 ");
-		  $.ajax({
-			  url:'/user/myvideo/'+userNo,
-			  processData: false,
-        contentType: false,
-			  type:'GET',
-			  success:function(list){
-				  console.log(list[0]);
-				  $.each((list),function(index,value){
-					  console.log(index+":"+value.url);
-					  $(".myvideo").append("<iframe width='100%' height='200' src='https://www.youtube.com/embed/'"+value.url+"  frameborder='0' allowfullscreen></iframe>")
-				  });
-				  			  
-			  }
-		  });
+	
+	$("#settings").one("click",function(){
+		var artNo =$("#hiddenNo").val();
+	      console.log(artNo);
+	      console.log("ajax실행전 ");
+	      $.ajax({
+	        url:'/video/artistvideos/'+artNo,
+	        processData: false,
+	        contentType: false,
+	        type:'GET',
+	        success:function(list){
+	         // console.log(list[0]);
+	         var youtubesrc="https://www.youtube.com/embed/";
+	         
+	         console.log(youtubesrc);
+	          $.each((list),function(index,value){
+	             $(".myvideo").append("<iframe width='100%' height='200' src="+(youtubesrc+value.url)+" frameborder='0'></iframe>")
+	          });
+	                  
+	        }
+	      });
 	});
+
 	</script>
 
 

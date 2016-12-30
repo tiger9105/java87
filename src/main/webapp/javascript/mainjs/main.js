@@ -38,7 +38,7 @@
 			switch (event.data) {
 			case -1:
 				console.log(($(player1.getIframe()).attr('src')));
-				$.cookie('uri', ($(player1.getIframe()).attr('src')), {path :'/'});
+				$.cookie('uri', ($(player1.getIframe()).attr('src')),{path :'/'});
 				break;
 			case 0:
 					break;
@@ -56,9 +56,7 @@
 			case -1:
 				console.log(($(player2.getIframe()).attr('src')));
 				console.log(player2.getVideoUrl());
-				$.cookie('uri1', ($(player2.getIframe()).attr('src')), {
-					path :'/'
-				});
+				$.cookie('uri1', ($(player2.getIframe()).attr('src')),{path :'/'});
 
 				break;
 			case 0:

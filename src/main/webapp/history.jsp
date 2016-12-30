@@ -417,6 +417,21 @@
              <iframe name="video" width="420" height="250"
     src="ab"></iframe>
  
+     
+             <iframe name="video" width="420" height="250"
+    src="ab"></iframe>
+        
+             <iframe name="video" width="420" height="250"
+    src="ab"></iframe>
+        
+             <iframe name="video" width="420" height="250"
+    src="ab"></iframe>
+        
+             <iframe name="video" width="420" height="250"
+    src="ab"></iframe>
+        
+             <iframe name="video" width="420" height="250"
+    src="ab"></iframe>
         
         <!-- <div class="play-btn color5">
           <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-play-128.png" alt="" />
@@ -462,7 +477,7 @@
 		  ///1번 
 		var check=false;
 		var def = new Array();
-		var abc = new Array($.cookie('uri'),$.cookie('uri1'),$.cookie('uri2'),$.cookie('uri3'),$.cookie('uri4'));
+		var abc = new Array($.cookie('uri'),$.cookie('uri1'),$.cookie('uri2'),$.cookie('uri3'),$.cookie('uri4'),$.cookie('uri5'),$.cookie('uri6'),$.cookie('uri7'),$.cookie('uri8'),$.cookie('uri9'));
 		for(var i=0;i<abc.length;i++){
 		  if(abc[i]!=null){
 		     def.push(abc[i]);  //새로운 배열에다가 다시 null이 아닌것만 넣어줌 

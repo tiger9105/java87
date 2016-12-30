@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import project.domain.Leag;
+import project.domain.LeagUser;
 import project.domain.Season;
 public interface SeasonService {
   
@@ -12,7 +13,11 @@ public interface SeasonService {
 
   public Season getSeason(String selectseason) throws Exception;
   
+  public Season getSeason(int seasonNo) throws Exception;
+  
   public Map<String,Object> getSeasonList() throws Exception;
+  
+  public int getMaxSeasonNo() throws Exception;
    
   ///리그 관련 Dao 
   
@@ -24,6 +29,13 @@ public interface SeasonService {
 
 
   // SELECT LIST
-  public List<Leag> getLeagList() throws Exception ;
+  public List<Leag> getLeagList(int seasonNo) throws Exception ;
+  
+  //LeagUser  부분 =============================================
+  // INSERT
+  public int addLeagUser(LeagUser leagUser) throws Exception ;
+  //GET
+  public LeagUser getLeagUser(LeagUser leagUser) throws Exception ;
+  //===========================================================
   
 }

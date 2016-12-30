@@ -13,6 +13,7 @@ import project.dao.UserDao;
 import project.domain.Artist;
 import project.domain.Search;
 import project.domain.User;
+import project.domain.Video;
 
 
 @Repository("artistDaoImpl")
@@ -73,5 +74,10 @@ public class ArtistDaoImpl implements ArtistDao{
   
   public void updateArtist(Artist artist) throws Exception {
     sqlSession.update("ArtistMapper.updateArtist", artist);
+  }
+  public List<Video> getArtistListGenre(String genre) throws Exception {
+    
+    System.out.println("여기까지는 옴");
+    return sqlSession.selectList("ArtistMapper.getArtistListGenre",genre);
   }
 }

@@ -55,24 +55,6 @@
 		  ORDER BY vid_no DESC
    </select>
    
-   <select  id="getVideoListHeart"  resultMap="videoSelectMap" >
-		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
-		  FROM video 
-		  ORDER BY vid_hat DESC
-   </select>
-   
-       <select  id="getVideoListHits"  resultMap="videoSelectMap" >
-		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
-		  FROM video 
-		  ORDER BY vid_hits DESC
-   </select>
-   
-   
-<!--     <select  id="getVideoList"  resultMap="videoSelectMap" >
-	SELECT artists.artist_name , artists.artist_pro, video.vid_no,video.vid_title,
-	video.genre,video.vid_hat, video.vid_hits from artists,video where artists.user_no=video.user_no ORDER BY video.vid_no desc
-   </select>
-    -->
    <select id= "getTotalCount" resultType="int">
 	    SELECT COUNT(*)
 	    FROM video
@@ -102,7 +84,66 @@
       WHERE vid_no = #{videoNo}
     </update>
     
-    
+    <select  id="getVideoListHeart"  resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  ORDER BY vid_hat DESC
+   </select>
+ 
+   
+    <select  id="getVideoListHits"  resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  ORDER BY vid_hits DESC
+   </select>
+   
+   <select  id="getVideoListGenre"  parameterType="string" resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  WHERE genre =#{genre}
+   </select>
+   
+      <select  id="getVideoListGenreHeart"  parameterType="string" resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  WHERE genre =#{genre}
+		  ORDER BY vid_hat DESC
+   </select>
+   
+      <select  id="getVideoListGenreHits"  parameterType="string" resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  WHERE genre =#{genre}
+		  ORDER BY vid_hits DESC
+   </select>
+   
+   <select  id="getLeagueList"  resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  Where vid_app='참여'
+   </select>
+   
+    <select  id="getLeagueListHeart"  resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  Where vid_app='참여'
+		  ORDER BY vid_hat DESC
+   </select>
+ 
+   
+    <select  id="getLeagueListHits"  resultMap="videoSelectMap" >
+		  SELECT vid_no ,vid_hat ,vid_hits, vid_title,vid_url,genre,vid_app,vid_int,vid_text,user_no 
+		  FROM video 
+		  Where vid_app='참여'
+		  ORDER BY vid_hits DESC
+   </select>
+   
+     <select id="getAddLeagueVideourllist" parameterType="string" resultMap="videoSelectMap">
+   SELECT vid_url FROM VIDEO
+   WHERE vid_app=#{value}
+   ORDER BY vid_hat DESC
+   </select>
+   
    
   	
 </mapper>

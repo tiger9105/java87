@@ -17,7 +17,7 @@ public interface LeagDao {
 
 
   // SELECT LIST
-  public List<Leag> getLeagList() throws Exception ;
+  public List<Leag> getLeagList(int seasonNo) throws Exception ;
 
  /* // UPDATE
   public void updateArtist(Artist artist) throws Exception ;*/

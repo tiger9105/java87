@@ -15,21 +15,13 @@ public interface VideoService {
   
   public void addVideo(Video video) throws Exception;
   
-
   public Video getVideo(int videoNo) throws Exception;
- 
-  
+   
   public Map<String , Object> getVideoList() throws Exception;
   
-  public Map<String , Object> getVideoListHeart() throws Exception;
-  
-  public Map<String , Object> getVideoListHits() throws Exception;
-
-
   public void updateVideo(Video video) throws Exception;
   
   public void updateHits(Video video) throws Exception;
-  
   
   public void updateHeart(Video video) throws Exception;
   
@@ -42,5 +34,26 @@ public interface VideoService {
   public UserLikeVid getLikeVid(UserLikeVid userLikeVid) throws Exception ;
   
   public List<Video> getMyVideoList(int userNo) throws Exception;
+  
+  public Map<String , Object> getVideoListHeart() throws Exception;
+  
+  public Map<String , Object> getVideoListHits() throws Exception;
+  
+  public List<Video> getVideoListGenre(String genre) throws Exception;
+  
+  public List<Video> getVideoListGenreHeart(String genre) throws Exception;
+  
+  public List<Video> getVideoListGenreHits(String genre) throws Exception;
+  
+  public List<Video> getLeagueList() throws Exception;
+  
+  public List<Video> getLeagueListHeart() throws Exception;
+  
+  public List<Video> getLeagueListHits() throws Exception;
 
+  
+  
+//추가된것.. //////////////////12.30일/////////////////////////////
+  public List<Video> getMyVideoList(String vidapp) throws Exception;
+  
 }

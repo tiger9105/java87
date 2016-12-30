@@ -32,6 +32,13 @@
     WHERE sname = #{seasonName:VARCHAR}
   </select>
   
+  
+    <select id="getSeasonMapperbyNO" parameterType="int" resultMap="seasonSelectMap">
+    SELECT *
+    FROM SEASON
+    WHERE sea_no = #{value}
+  </select>
+  
     <select id="getSeasonlistMapper" resultMap="seasonSelectMap">
     SELECT *
     FROM SEASON
@@ -44,6 +51,9 @@
     FROM SEASON
    </select>
   
+  <select id="getMaxSeasonNo"  resultType="int">
+   select MAX(sea_no) from leag
+  </select>
  
  
 </mapper>

@@ -20,6 +20,9 @@ public interface ArtistService {
   public Artist getArtist1(int userNo) throws Exception;
   
   public void updateArtist(Artist artist) throws Exception;
+  
+  public Map<String , Object> getArtistListGenre(String genre) throws Exception;
+
 /*  
   public void updateUser(User user) throws Exception;
 
