@@ -24,4 +24,6 @@ public interface UserDao {
   // �Խ��� Page ó���� ���� ��üRow(totalCount)  return
   public int getTotalCount(Search search) throws Exception ;
   
+  public User getUserByEmail(String email) throws Exception;
+  
 }

@@ -4,6 +4,7 @@
 		var player3;
 		var youtubeuri = new Array();
 		function onYouTubeIframeAPIReady() {
+			console.log("여기는 잘들어오시나요? ");
 			$('iframe').each(function(i, e) {
 				if ($(e).attr('id') == 'player1') {
 					player1 = new YT.Player($(e).attr('id'), {
@@ -34,9 +35,10 @@
 			});//end each function
 		}//end function
 		function onPlayerStateChange(event) {
-
+			console.log("여기는 잘들어와야 정상이지");
 			switch (event.data) {
 			case -1:
+				
 				console.log(($(player1.getIframe()).attr('src')));
 				$.cookie('uri', ($(player1.getIframe()).attr('src')),{path :'/'});
 				break;

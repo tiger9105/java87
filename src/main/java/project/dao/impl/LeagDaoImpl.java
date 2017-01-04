@@ -3,7 +3,9 @@ package project.dao.impl;
 
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,15 +43,37 @@ public class LeagDaoImpl implements LeagDao{
   }
 
   @Override
-  public Leag getLeag(int leagNo, int seasonNo) throws Exception {
+  public Leag getLeag(int leagNo) throws Exception {
     // TODO Auto-generated method stub
-    return null;
+    return sqlSession.selectOne("LeagMapper.getLeag",leagNo);
   }
 
   @Override
   public List<Leag> getLeagList(int seasonNo) throws Exception {
     // TODO Auto-generated method stub
     return sqlSession.selectList("LeagMapper.getLeagListMapper",seasonNo);
+  }
+
+  @Override
+  public int updateVote1(Leag leag) throws Exception {
+    // TODO Auto-generated method stub
+    
+    return sqlSession.update("LeagMapper.updateLeagVote1",leag);
+  }
+
+  @Override
+  public int updateVote2(Leag leag) throws Exception {
+    // TODO Auto-generated method stub
+    return sqlSession.update("LeagMapper.updateLeagVote2",leag);
+  }
+
+  @Override
+  public List<Leag> getLeagList(int seasonNo,String progress) throws Exception {
+    // TODO Auto-generated method stub
+    Map<String,Object> map=new HashMap<String,Object>();
+    map.put("seasonNo", seasonNo);
+    map.put("progress", progress);
+   return sqlSession.selectList("LeagMapper.getleagList",map);
   }
 
 

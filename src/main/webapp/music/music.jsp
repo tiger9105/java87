@@ -179,7 +179,7 @@ label::before {
             <li><a href="/about.jsp">About</a></li>
             <li><a href="/artist/listArtist">Artist</a>
             <li><a href="/video/listVideo"  id="visited">Music</a>
-            <li><a href="/season/getSeasonlist">UP contest</a></li>
+            <li><a href="/season/getSeasonlist">UP Tournament</a></li>
             <!-- 로그인 로그아웃 부분  -->
             <c:if test="${user!=null}">
               <li><a href="/user/logout" onclick="FB.logout();"
@@ -200,7 +200,7 @@ label::before {
             <option value="/about.jsp">About</option>
             <option value="/artist/listArtist">Artist</option>
             <option value="/video/listVideo">Video</option>
-            <option value="/season/getSeasonlist">UP contest</option>
+            <option value="/season/getSeasonlist">UP Tournament</option>
 					</select>
 				</form>
 			</div>
@@ -259,11 +259,10 @@ label::before {
 <!--ends 최신순, 인기순, 조회순 -->
 
 
-
+<form id="url_form">
 <!--music , video list  -->
 <c:forEach var="video" items="${list}">
- 
-		<div class="container2" >
+ 		<div class="container2" >
 				<!-- column -->
 				<div class="column">
 					<!-- Post-->
@@ -312,21 +311,29 @@ label::before {
 				<!--ends column -->
 			</div>
 			<!--ends music , video list  -->
+<input type="hidden" name="videoNoList" value="${video.videoNo}">
 
 </c:forEach>
 
 
-
-</div>
-	<!--ends container -->
+</form>
 <c:if test="${user.userId=='admin'}">
 <button id="addleag">리그로 보내기(탑8만)</button>
-<select name="selectSeason">
+<select name="selectSeason" id="selectSeason">
 <c:forEach var="season" items="${seasonList}">
   <option  value="${season.seasonNo}">${season.seasonName}</option>
 </c:forEach>
 </select>
 </c:if>
+</div>
+	<!--ends container -->
+
+  
+   <div id="logo">
+    <p id="logoP">
+      <a id="logoA" href="/index.jsp"> UP </a>
+    </p>
+   </div>
 
 <!--javascript 모음  -->  
 	<script src="/javascript/jquery-1.8.0.min.js" type="text/javascript"></script>
@@ -336,12 +343,6 @@ label::before {
 	<!-- Tabs -->
 	<script src="javascript/tabs.js" type="text/javascript"></script>
 	
-
-
-
-
-
-
     <script>
    		$(".ajax").colorbox({iframe:true, width:"40%", height:"650px"});
    	</script>    
@@ -553,14 +554,14 @@ if(link.includes("leagueVideo")){
 <!-- 탑8만 리그로 보내기  -->
 <script type="text/javascript">
 $("#addleag").on("click",function(){
-  
-   var form = $('#url_form')[0];
+    var form = $('#url_form')[0];
      var formData = new FormData(form);
+     console.log(formData);
          $.ajax({
             url: '/season/addleag',
             processData: false,
-            contentType: false,
-            data: formData,
+            contentType: false, 
+            data:formData,
             type: 'POST',
             success: function(result){
             alert("업로드 성공!!");

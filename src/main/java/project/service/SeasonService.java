@@ -25,7 +25,7 @@ public interface SeasonService {
   public int addLeag(Leag leag) throws Exception ;
 
 // SELECT ONE
-  public Leag getLeag(int leagNo,int seasonNo) throws Exception ;
+  public Leag getLeag(int leagNo) throws Exception ;
 
 
   // SELECT LIST
@@ -37,5 +37,19 @@ public interface SeasonService {
   //GET
   public LeagUser getLeagUser(LeagUser leagUser) throws Exception ;
   //===========================================================
+  
+  //투표수
+  public int updateVote1(Leag leag) throws Exception ;
+  
+  public int updateVote2(Leag leag) throws Exception ;
+  
+  public List<Leag> getLeagList(int seasonNo,String progress) throws Exception ;
+  
+  public String getMinLeagProgress() throws Exception; 
+  
+  
+  //투표수
+  
+  public int setEndSeason(Season season) throws Exception ;
   
 }

@@ -13,6 +13,7 @@ window.fbAsyncInit = function() {
 		}
 	});
 	FB.Event.subscribe('auth.logout', function(response) {
+		alert("로그아웃테스트");
 		document.location.reload();
 	});
 	

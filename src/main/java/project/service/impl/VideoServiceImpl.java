@@ -16,6 +16,7 @@ import project.dao.UserLikeArtDao;
 import project.dao.UserLikeVidDao;
 import project.dao.VideoDao;
 import project.domain.Artist;
+import project.domain.Comment;
 import project.domain.Search;
 import project.domain.User;
 import project.domain.UserLikeArt;
@@ -173,7 +174,23 @@ public class VideoServiceImpl implements VideoService{
      
       return videoDao.getLeagueListHits();
     }
+  
+  public void addComment(Comment comment) throws Exception {
+    videoDao.addComment(comment);
+  }
+  
+  ///Method
+  public Comment getComment(int commentNo) throws Exception {
+    return videoDao.getComment(commentNo);
+  }
 
+  public void deleteComment(int commentNo) throws Exception {
+  videoDao.deleteComment(commentNo);
+}
+
+  public List<Comment> getVideoComment(int videoNo) throws Exception {
+      return videoDao.getVideoComment(videoNo);
+    }
 
 
 }

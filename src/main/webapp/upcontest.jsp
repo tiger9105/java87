@@ -180,6 +180,8 @@ li img {
 
 <!-- CSS ==================================================
 ================================================== -->
+<link rel="stylesheet"
+  href="/node_modules/sweetalert/dist/sweetalert.css">
 <link rel="stylesheet" href="/css/upcontest.css">
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/skeleton.css">
@@ -219,7 +221,7 @@ li img {
             <li><a href="/about.jsp">About</a></li>
             <li><a href="/artist/listArtist">Artist</a>
             <li><a href="/video/listVideo">Music</a>
-            <li><a href="/season/getSeasonlist" id="visited">UP contest</a></li>
+            <li><a href="/season/getSeasonlist" id="visited">UP Tournament</a></li>
             <!-- 로그인 로그아웃 부분  -->
             <c:if test="${user!=null}">
               <li><a href="/user/logout" onclick="FB.logout();"
@@ -240,7 +242,7 @@ li img {
             <option value="/about.jsp">About</option>
             <option value="/artist/listArtist">Artist</option>
             <option value="/video/listVideo">Video</option>
-            <option value="/season/getSeasonlist">UP contest</option>
+            <option value="/season/getSeasonlist">UP Tournament</option>
         </select>
       </form>
     </div>
@@ -266,13 +268,25 @@ li img {
 
   <nav class="genre">
     <ul>
-      <li class="current"><a href="#"><span>8강</span></a></li>
-      <li class=""><a href="#"><span>4강</span></a></li>
-      <li class=""><a href="#"><span>3,4위전<span></a></li>
-      <li class=""><a href="#"><span>결승<span></a></li>
+      <li class="current"><a href="/season/getSeasonlist"><span>8강</span></a></li>
+      <li class=""><a href="#" id="fourgang"><span>4강</span></a></li>
+      <li class=""><a href="#" id="threefourgang"><span>3,4위전<span></a></li>
+      <li class=""><a href="#" id="final"><span>결승<span></a></li>
     </ul>
   </nav>
-
+  <p>
+  <div class="container1">
+  <c:if test="${user.userId=='admin'&& leaglist[0].progress=='4'}">
+<span class="pulse-button" id="probtn" name="probtn" value="3">시즌진행</span>
+</c:if>
+<c:if test="${user.userId=='admin'&& leaglist[0].progress=='3'}">
+<span class="pulse-button"id="probtn1" name="probtn1" value="2">시즌진행</span>
+</c:if>
+<c:if test="${user.userId=='admin'&& leaglist[0].progress=='1'}">
+<span class="pulse-button"id="probtn2" name="probtn2" value="1">시즌End</span>
+</c:if>
+</div>
+</p>  
 
 <!-- breadcrumbs ends here --> 
 <!-- Contact Content Part - GoogleMap ==================================================
@@ -286,9 +300,12 @@ li img {
 </select>
 </div>
 
-<div style="height:30px; margin-top: 20px; margin-left: 350px;" >
+<div id="seasoninfo" style="height:30px; margin-top: 20px; margin-left: 350px;" >
 <h5 style="float:left;padding-left:5px;width:100px;">시즌시작:</h5><h4 id="stday"style="width:200px; float:left; padding-left:10px; ">${list[0].seasonStart}</h4>
 <h5 style="float:left;padding-left:5px;width:100px;">시즌종료:</h5><h4 id="enday"style="width:200px; float:left; padding-left:10px; ">${list[0].seasonEnd}</h4>
+
+<input type="hidden" id="checkseason" name="checkseason" value="${list[0].state}"> 
+
 </div>
 
 
@@ -303,7 +320,7 @@ li img {
     <iframe class="player"
              width="300" height="200"
             src="https://www.youtube.com/embed/${leag.voteObject1}?enablejsapi=1"></iframe>
-            <button class="votebutton">UP</button>
+            <button class="votebutton" name="${leag.leagNo}">UP</button>
             <h3 class="votelike">${leag.vote1}</h3>
             <h3 class="voteArtist">${leag.artist1.artistName}</h3>
   </li>
@@ -314,19 +331,16 @@ li img {
     <iframe class="player"
             width="300" height="200"
             src="https://www.youtube.com/embed/${leag.voteObject2}?enablejsapi=1"></iframe>
-            <button class="votebutton">UP</button>
+            <button class="votebutton" name="${leag.leagNo}">UP</button>
             <h3 class="votelike">${leag.vote2}</h3>
             <h3 class="voteArtist">${leag.artist2.artistName}</h3>
   </li>
 </ul>
-<input class="checkvote" type="hidden" name="checkvote" value="${leag.vote1<=leag.vote2?leag.voteObject2:leag.voteObject1}" >
+<input class="checkvote" type="hidden" name="checkvote" value="${leag.vote1<=leag.vote2?leag.voteObject2:leag.voteObject1}_${leag.vote1<=leag.vote2?leag.artist2.artistNo:leag.artist1.artistNo}" >
+
 </c:forEach>
 
 </div>
-
-<c:if test="${user.userId=='admin'&& leaglist[0].progress=='4'}">
-<button id="probtn" name="probtn" value="3">시즌진행하기! 4강</button>
-</c:if>
 
 
 
@@ -342,22 +356,11 @@ li img {
 <!-- Socialize ==================================================
 ================================================== -->
 <hr class="separator2">
-<div class="socialsblock">
-  <div class="container socialize">
-    <h3>Socialize with us!</h3>
-    <section class="socials">
-      <ul class="socials">
-        <li><a href="#"><img src="images/socials/twitter.png" alt="" /></a></li>
-        <li><a href="#"><img src="images/socials/facebook.png" alt="" /></a></li>
-      </ul>
-    </section>
-  </div>
-  <!-- container ends here --> 
-</div>
+
 <!-- socialsblock ends here --> 
 <!-- Footer ==================================================
 ================================================== -->
-<div class="footer">
+<div class="footer" style="margin-top:50px;">
     <div class="container">
       <div class="one_fourth">
         <h3>정보를 알고싶어요?</h3>
@@ -417,7 +420,12 @@ li img {
 ================================================== --> 
 <!-- Scripts ==================================================
 ================================================== --> 
-
+ 
+   <div id="logo">
+    <p id="logoP">
+      <a id="logoA" href="/index.jsp"> UP </a>
+    </p>
+   </div>
 
 <script src="/javascript/jquery-1.8.0.min.js" type="text/javascript"></script> 
 <!-- Main js files --> 
@@ -432,13 +440,28 @@ li img {
 <!-- Flexslider --> 
 <script src="/javascript/jquery.flexslider-min.js" type="text/javascript"></script> 
 <!-- Modernizr --> 
+  <script src="/node_modules/sweetalert/dist/sweetalert.min.js"
+    type="text/javascript"></script>
 <script type="text/javascript" src="/javascript/modernizr.custom.29473.js"></script>
 <script type="text/javascript">
 
 
 //시즌에 맞게 정보를 가져오는 함수
+/* $(document).ready(function() {
+	  alert("이건실행되자너?");
+	  alert($("#checkseason").val());
+	 check=$("#checkseason").val();
+	if(check=='끝'){
+		  alert("잘들어오나?")
+		  swal("시즌이 끝났습니다.")
+		  $('.votebutton').attr('disabled',true);  //투표버튼 활성화
+		}
+	});
+ */
+
 $('#selectseason').change(function(){
     var selectseason = $("#selectseason option:selected").val();
+  
           $.ajax({
           url:'/season/getSeason/'+selectseason,
           type: 'POST',
@@ -459,11 +482,18 @@ $('#selectseason').change(function(){
            console.log(($("#enday")).text(JSONData.season.seasonEnd));
            console.log(($("#stday")).text());
            console.log(($("#enday")).text()); 
-            // console.log($('ul.uloption').find('iframe'));
+           
+           console.log($("#checkseason").val(JSONData.season.state));
+       
+               
+           
+           // console.log($('ul.uloption').find('iframe'));
             
            var leaglist = new Array(); //리그 리스트
            var leagvote = new Array(); //리그 투표수
            var leagartist = new Array(); //리그 아티스트 
+           var leagNo =new Array(); //리그번호 다시바꿔주기 
+       
            $.each((JSONData.leaglist),function(index,value){
         	     console.log(index+"번째의 첫번째 url"+value.voteObject1+"두번째 url"+value.voteObject2);
         	     console.log(index+"번째의 첫번째 투표개수:"+value.vote1+"두번째 투표개수:"+value.vote2);
@@ -473,8 +503,12 @@ $('#selectseason').change(function(){
         	     leagvote.push(value.vote2);
         	     leagartist.push(value.artist1.artistName);
         	     leagartist.push(value.artist2.artistName);
+        	     leagNo.push(value.leagNo);
+        	     leagNo.push(value.leagNo);
             }); 
                   
+           console.log(leagNo);
+           
            $.each($('.player'),function(index,value){
         	   value.src=leaglist[index];
         	   console.log(index+"번째:"+value.src);
@@ -489,26 +523,187 @@ $('#selectseason').change(function(){
         	   console.log(index+"번째 :"+value.innerHTML);
            });
            
+           $.each($('.votebutton'),function(index,value){
+        	   value.name=leagNo[index];
+        	   console.log(index+"번째:"+value.name);
+           });
+           
+           if(JSONData.season.state=="끝"){
+               $('.votebutton').attr('disabled',true);  //투표버튼 비활성화
+               
+               if($("#seasoninfo").children().size()==6){
+            	   return;
+               } 
+               $("#seasoninfo").append("<h3 style='padding-left:5px;width:300px;'><strong>시즌이 끝났습니다.</strong></h3>");
+               
+                  return;
+             }
+           
+           
+           
          }//end sus                  
       });      
   });
 
 //시즌이 진행되면 ADD 하는 함수 
 $("#probtn").on("click",function(){
-	alert('시즌이 진행되었습니다.');
-  var progress=$("#probtn").val();
-	$.each($(".checkvote"),function(index,value){
-		console.log(index+"번째 : "+value.value);
-	});
-	
-	
+
+	 var selectseason = $("#selectseason option:selected").val();
+	 var progressNumber="4";
+	  $.ajax({
+          url:'/season/addLeagProgress/'+selectseason+'/'+progressNumber,
+          type : 'GET',
+          headers : {
+              "Accept" : "application/json",
+              "Content-Type" : "application/json"
+           },
+          success: function(data){
+        	  console.log(data.result);
+        	  if(data.result==100){
+        		  swal("시즌이 진행되었습니다.(4강으로)");   
+        		  window.location.reload();
+        	  }
+        
+         }//end success
+   });//ajaxend
 });//end function 
+
+$("#probtn1").on("click",function(){
+
+	   var selectseason = $("#selectseason option:selected").val();
+	   var progressNumber="3";
+	    $.ajax({
+	          url:'/season/addLeagProgress/'+selectseason+'/'+progressNumber,
+	          type : 'GET',
+	          headers : {
+	              "Accept" : "application/json",
+	              "Content-Type" : "application/json"
+	           },
+	          success: function(data){
+	            console.log(data.result);
+	            if(data.result==101){
+	              swal("시즌이 진행되었습니다.(3,4위전으로)"); 
+	              window.location.reload();
+	             
+	            
+	            }
+	        
+	         }//end success
+	   });//ajaxend
+	});//end function 
+
+
+
+
+
+
+
+
 
 //UP버튼누르면 개수하나 증가하는 함수
 $(".votebutton").on("click",function(){
 	console.log("투표버튼을 누르셨습니다. ");
+/* 	  check=$("#checkseason").val();
+	    alert(check);
+	    if(check=='끝'){
+	        alert("잘들어오나?")
+	        $('.votebutton').attr('disabled',true);  //투표버튼 비활성화
+	     swal("시즌이 끝났습니다");
+	        return;
+	      } */
+
+	//버튼 누른 다음곳에 텍스트에 1을 더해준다  
+	var num=parseInt($(this).next().text())+parseInt(1);
+	var leagNo=$(this).attr("name");
+	var artistName=$(this).next().next().text();
+  
+	 //var seasonName = ${season.seasonName};
+	 //var seasonName=$("#selectseason option:selected").text();
+ //
+  var $a=$(this).next();
+  // $(this).next().html(num)
+   console.log("보낼 아티스트이름:"+artistName);
+	 console.log("보낼숫자:"+num);
+	 console.log("보낼 리그번호:"+leagNo)
+	//console.log("시즌이름:"+seasonName);
+//ajaxstart
+  $.ajax({
+          url:'/season/addLeagVote',
+          type : 'GET',
+          dataType : "json" ,
+           data: {voteAdd:num, leagNo:leagNo, artistName:artistName},
+           async:false,
+           headers : {
+               "Accept" : "application/json",
+               "Content-Type" : "application/json"
+             },
+          success: function(data){
+        	 if(data.check==100){
+        	   swal("이미 투표하셨습니다.");
+        	 }else{
+        	   console.log("여기가 들어오긴하나?");
+        	   $a.text(num);
+        	 }
+          }//end success
+   });//ajaxend
 });
 
+//4강버튼을 눌렀을대 이벤트  시즌네임이랑 프로그레스 정보를 줘야되는데 
+$("#fourgang").on("click",function(){
+	  var selectseason = $("#selectseason option:selected").val();
+	  var progress="3";
+	  var checkpro=${min};
+	  
+	  if(checkpro==4){	  
+		  swal("시즌중입니다.");
+	  }else{
+		  location.href='/season/LeagList/'+selectseason+'/'+progress;
+	  }
+});
+
+$("#threefourgang").on("click",function(){
+    var selectseason = $("#selectseason option:selected").val();
+    var progress="2";
+    var checkpro=${min};
+    if(checkpro==3 || checkpro==4){   
+        swal("시즌중입니다.");
+    }
+    else{
+        location.href='/season/LeagList/'+selectseason+'/'+progress;
+      }
+    
+});
+
+$("#final").on("click",function(){
+    var selectseason = $("#selectseason option:selected").val();
+    var progress="1";
+    var checkpro=${min};
+    if(checkpro==3 || checkpro==4){
+    	
+        swal("시즌중입니다.");
+    }
+    else{
+        location.href='/season/LeagList/'+selectseason+'/'+progress;
+      }
+    
+});
+
+$("#probtn2").on("click",function(){
+	alert("시즌마무리버튼");
+	var selectseason = $("#selectseason option:selected").val();
+	 $.ajax({
+         url:'/season/setEndSeason/'+selectseason,
+         type : 'GET',
+         dataType : "json" ,
+         headers : {
+              "Accept" : "application/json",
+              "Content-Type" : "application/json"
+            },
+         success: function(data){
+        	  alert(data.endseason);      
+         }//end success
+  });//ajaxend
+});
 
 </script>
 </body>

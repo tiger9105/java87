@@ -82,9 +82,9 @@ public class SeasonServiceImpl implements SeasonService{
   }
 
   @Override
-  public Leag getLeag(int leagNo, int seasonNo) throws Exception {
+  public Leag getLeag(int leagNo) throws Exception {
     // TODO Auto-generated method stub
-    return null;
+    return leagDao.getLeag(leagNo);
   }
 
   @Override
@@ -116,6 +116,36 @@ public class SeasonServiceImpl implements SeasonService{
   public LeagUser getLeagUser(LeagUser leagUser) throws Exception {
     // TODO Auto-generated method stub
     return leagUserDao.getLeagUser(leagUser);
+  }
+
+  @Override
+  public int updateVote1(Leag leag) throws Exception {
+    // TODO Auto-generated method stub
+    return leagDao.updateVote1(leag);
+  }
+
+  @Override
+  public int updateVote2(Leag leag) throws Exception {
+    // TODO Auto-generated method stub
+    return leagDao.updateVote2(leag);
+  }
+
+  @Override
+  public List<Leag> getLeagList(int seasonNo,String progress) throws Exception {
+    // TODO Auto-generated method stub
+    return leagDao.getLeagList(seasonNo,progress);
+  }
+
+  @Override
+  public String getMinLeagProgress() throws Exception {
+    // TODO Auto-generated method stub
+    return seasonDao.getMinLeagProgress();
+  }
+
+  @Override
+  public int setEndSeason(Season season) throws Exception {
+    // TODO Auto-generated method stub
+    return seasonDao.setEndSeason(season);
   }
 
   //LeagUser 부분 ...............................................

@@ -45,7 +45,7 @@
             <li><a href="/about.jsp">About</a></li>
             <li><a href="/artist/listArtist" id="visited">Artist</a>
             <li><a href="/video/listVideo">Music</a>
-            <li><a href="/season/getSeasonlist">UP contest</a></li>
+            <li><a href="/season/getSeasonlist">UP Tournament</a></li>
             <!-- 로그인 로그아웃 부분  -->
             <c:if test="${user!=null}">
               <li><a href="/user/logout" onclick="FB.logout();"
@@ -66,7 +66,7 @@
             <option value="/about.jsp">About</option>
             <option value="/artist/listArtist">Artist</option>
             <option value="/video/listVideo">Video</option>
-            <option value="/season/getSeasonlist">UP contest</option>
+            <option value="/season/getSeasonlist">UP Tournament</option>
 					</select>
 				</form>
 			</div>
@@ -146,7 +146,13 @@
 	</c:forEach>
 <!--ends 반복문으로 artists 뽑아오는 곳(getArtistList) -->	
 	
-	
+	 
+   <div id="logo">
+    <p id="logoP">
+      <a id="logoA" href="/index.jsp"> UP </a>
+    </p>
+   </div>
+   
 	<script src="/javascript/jquery-1.8.0.min.js" type="text/javascript"></script>
 	<script src="/javascript/colorbox/jquery.colorbox.js"></script>
 	  

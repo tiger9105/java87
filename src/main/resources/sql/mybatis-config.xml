@@ -23,6 +23,7 @@
      <typeAlias alias="Season" type="project.domain.Season"/>
      <typeAlias alias="leag"  type="project.domain.Leag"/>
      <typeAlias alias="leaguser" type="project.domain.LeagUser"/>
+     <typeAlias alias="comment" type="project.domain.Comment" />
   </typeAliases>
   
    <!-- SQL Definition :: file include -->
@@ -34,7 +35,8 @@
     <mapper resource="sql/VideoMapper.xml"/>
     <mapper resource="sql/SeasonMapper.xml"/>
     <mapper resource="sql/LeagMapper.xml"/>
-     <mapper resource="sql/LeagUserMapper.xml"/>
+    <mapper resource="sql/LeagUserMapper.xml"/>
+     <mapper resource="sql/CommentMapper.xml"/>
   </mappers>
 
 </configuration>

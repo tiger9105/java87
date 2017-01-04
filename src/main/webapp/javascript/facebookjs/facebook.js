@@ -6,6 +6,7 @@ window.fbAsyncInit = function() {
 		xfbml : true
 	});
 	FB.Event.subscribe('auth.logout', function(response) {
+		
 		document.location.reload();
 	});
 	FB.getLoginStatus(function(response) {

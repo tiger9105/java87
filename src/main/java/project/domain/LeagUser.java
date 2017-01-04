@@ -4,7 +4,7 @@ package project.domain;
 public class LeagUser {
 
   private int userNo;
-  private int seasonNo;
+  private int leagNo;
   
   
   public LeagUser() {
@@ -23,26 +23,20 @@ public class LeagUser {
   }
 
 
-  public int getSeasonNo() {
-    return seasonNo;
+  public int getLeagNo() {
+    return leagNo;
   }
 
 
-  public void setSeasonNo(int seasonNo) {
-    this.seasonNo = seasonNo;
+  public void setLeagNo(int leagNo) {
+    this.leagNo = leagNo;
   }
 
 
   @Override
   public String toString() {
-    return "LeagUser [userNo=" + userNo + ", seasonNo=" + seasonNo + "]";
+    return "LeagUser [userNo=" + userNo + ", leagNo=" + leagNo + "]";
   }
-
-
-
-
-
-
 
   
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import project.domain.Artist;
+import project.domain.Comment;
 import project.domain.Search;
 import project.domain.User;
 import project.domain.UserLikeArt;
@@ -55,5 +56,13 @@ public interface VideoService {
   
 //추가된것.. //////////////////12.30일/////////////////////////////
   public List<Video> getMyVideoList(String vidapp) throws Exception;
+  
+ public void addComment(Comment comment) throws Exception;
+  
+  public Comment getComment(int commentNo) throws Exception;
+   
+  public void deleteComment(int commentNo) throws Exception;
+  
+  public List<Comment> getVideoComment(int commentNo) throws Exception;
   
 }

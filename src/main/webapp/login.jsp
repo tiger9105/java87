@@ -17,6 +17,7 @@
 
 <link rel="stylesheet" href="/css/login/login.css">
 <link rel="stylesheet" href="/node_modules/sweetalert/dist/sweetalert.css">
+<link rel="stylesheet" href="/css/colorbox/colorbox.css">
 </head>
 <body>
 
@@ -48,7 +49,7 @@
 							</button>
 						</div>
 						<div class="footer">
-							<a href="#">Forgot your password?</a>
+							<a id="checkpassword" href="#">Forgot your password?</a>
 						</div>
 						<div id="fb-root"></div>
 						<!-- facebook icon 수정본  -->
@@ -105,5 +106,20 @@
 	<script src="javascript/loginjs/validate.js"></script>
 	<script src="javascript/loginjs/loginvalidate.js"></script>
 	<script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="/javascript/colorbox/jquery.colorbox.js"></script>
+	<script type="text/javascript">
+	  $("#checkpassword").click(function(){
+		  alert("클릭했음");
+          $.colorbox(
+            {
+            href:"/front/Password.jsp",
+            width:'400px',
+            height:'333px',
+            scrolling:false,
+            iframe:true}
+            );
+        });
+	</script>
+	
 </body>
 </html>

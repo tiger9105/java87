@@ -6,20 +6,20 @@
 <mapper namespace="LeagUserMapper">
  <resultMap id="leaguserSelectMap" type="leaguser">
     <result property="userNo"     column="user_no"  jdbcType="NUMERIC"/>
-    <result property="seasonNo"    column="season_no"      jdbcType="NUMERIC"/>
+    <result property="leagNo"    column="leag_no"      jdbcType="NUMERIC"/>
 </resultMap>
 
 <insert id="addLeagUserMapper" parameterType="leaguser">
   INSERT
-    INTO LEAGUSER(USER_NO,SEASON_NO)
+    INTO LEAGUSER(USER_NO,LEAG_NO)
     VALUES (#{userNo:INTEGER},
-             #{seasonNo:INTEGER})
+             #{leagNo:INTEGER})
  </insert>
   
  <select id="getLeagUserMapper" parameterType="leaguser" resultMap="leaguserSelectMap">
   SELECT *
   FROM LEAGUSER
-  WHERE user_no = #{userNo} AND season_no = #{seasonNo}
+  WHERE user_no = #{userNo} AND leag_no = #{leagNo}
  </select>
  
 

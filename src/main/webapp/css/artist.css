@@ -67,7 +67,7 @@ a:hover {
 .team-member figure {
   width:290px;
   height:240px;
- 
+  z-index: 10;
   position: relative;
   overflow: hidden;
   padding: 0;
@@ -173,17 +173,15 @@ a:hover {
 
 
 .genre ul {
+  padding-top:120px;
   background: #FFF;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 auto;
-  
-    margin-left: 50px;
 
-  padding: 0;
+
   max-width: 1200px;
   list-style: none;
   -webkit-flex-flow: row wrap;
@@ -531,6 +529,8 @@ display: inline-block;
 width: 100%;
 margin-top: 13px;
 }
+
+
 
 
       

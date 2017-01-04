@@ -1,3 +1,8 @@
+hr{border-top: 5px solid #eee;
+	
+	
+}
+
 body.overflow-hidden {
 	overflow: hidden;
 }
@@ -8,16 +13,11 @@ body.overflow-hidden {
 .menu-button {
 	position: fixed;
 	padding: 12px 10px;
-	border-radius: 50px;
-	margin-top: 8px;
-	margin-right: 20px;
-	margin-left: 0;
-	top: 0;
-	left: 17px;
-	z-index: 30;
+	top: 150px;
+	z-index: 999;
 	transition: 1s;
-	background: #e0603d;
-	border: 2px solid #e0603d;
+	background: rgba(254,82,76,1);
+	border: 2px solid rgba(254,82,76,1);
 }
 
 .menu-button span.close {
@@ -92,23 +92,23 @@ body.overflow-hidden {
  */
 .menubar {
 	float: left;
-	width: 200px;
+	width: 20px;
 	position: fixed;
-	height: 70px;
-	z-index: 29;
+	height: 20px;
+	z-index: 999;
 }
 
 .menubar header {
 	float: left;
-	width: 200px;
-	background: #e0603d;
+	width: 220px;
+	background: rgba(254,82,76,1);
 	height: 60px;
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 2;
+	z-index:999;
 	transition: 1s;
-	transform: translateX(-200px);
+	transform: translateX(-220px);
 }
 
 .menubar header.open {
@@ -121,16 +121,16 @@ body.overflow-hidden {
 
 .menubar .posts {
 	float: left;
-	width: 200px;
+	width: 220px;
 	height: calc(100% - 60px);
 	position: fixed;
-	top: 60px;
+	top: 120px;
 	left: 0;
-	right: 0;
+	left: 0;
 	bottom: 0;
-	z-index: 3;
+	z-index:999;
 	transition: 1s;
-	transform: translateX(-200px);
+	transform: translateX(-220px);
 }
 
 .menubar .posts.open {
@@ -138,7 +138,7 @@ body.overflow-hidden {
 	-moz-animation: openNav 1s;
 	animation: openNav 1s;
 	transform: translateX(0px);
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: #fff;
 }
 
 .menubar .posts .post {
@@ -158,8 +158,9 @@ body.overflow-hidden {
 .menubar .posts .Userprofile img {
 	object-fit: cover;
 	border-radius: 50%;
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
+	padding:10px;
 }
 
 .menubar .posts .Userprofile:hover:after {
@@ -198,13 +199,13 @@ body.overflow-hidden {
 }
 
 .menubar .posts .post a {
+	text-align:center;
 	text-decoration: none;
-    color: #fff;
+    color: black;
     display: block;
     padding: 1px 10px 1px 10px;
     position: relative;
-    z-index: 20;
-    font-size: 1.5rem;
+    z-index: 999;
     letter-spacing: 2px;
     margin: 0px 0px 0px 0px;
 }
@@ -216,16 +217,15 @@ body.overflow-hidden {
 
 /* 프로필 사진 */
 .menubar .posts .Userprofile a {
-	 text-shadow: 2.5px 2.5px #999;
 	padding: 5px;
 	font-weight:bold;
 	text-decoration: none;
-	color: #fff;
+	color: black;
 	display: block;
 	font-size: 2rem;
 	letter-spacing: 2px;
 	position: relative;
-	z-index: 20;
+	z-index: 999;
 	letter-spacing: 2px;
 }
 
@@ -342,11 +342,11 @@ to {
 	font-weight:bold;
 	margin-bottom:15px;
 	text-decoration: none;
-	color: #fff;
+	color: black;
 	display: block;
 	padding: 1px 10px 1px 10px;
 	position: relative;
-	z-index: 20;
+	z-index: 999;
 	font-size: 1.5rem;
 	letter-spacing: 2px;
 }

@@ -82,48 +82,404 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 ================================================== -->
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700'
 	rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">	
+<!-- 스타일 (01/02)-->
+
+<style>
+
+
+.grid {
+			 list-style:none;
+  		    overflow: hidden;
+			padding: 0 0.5em 0 0 ;
+			max-width: 76em;
+			margin: 0 auto;
+		}
+		.grid li {
+			width:180px;
+			height:250px;
+			margin-top:20px;
+			margin-left:20px;
+			margin-bottom:5px;
+			padding: 0 0.2em 0.2em 0;
+			
+		}
+		.grid li > .top10 {
+			margin-left:10px;	
+			background:rgba(1, 2, 27, 0.76);
+			padding: 0px;
+			width:180px;
+			height:250px;
+			text-align: center;
+			box-shadow: 0px 2px 0px #888888;
+			
+		}
+		.grid li a {
+			color: #fff;
+		}
+		
+		@media all and (min-width: 27em) {
+			.grid li {
+				width: 50%;
+				float: left;
+			}
+		}
+
+		@media all and (min-width: 60em) {
+			.grid li {
+				width: 18%;
+				
+		}
+
+#topH4{
+ margin-left:15px;
+ margin-top:8px;
+ margin-bottom:3px;
+ padding:0px;
+ color:white;
+ text-align:left;
+ letter-spacing:2px;
+ 
+}
+		
+#topH5{
+ margin-left:15px;
+ margin-top:6px;
+ padding:0px;
+ color:#999;
+font-size:12px;
+text-align:left;
+
+}	
+.top10  span{
+    display: block;
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    font-family: Montserrat;
+    font-size: 11px;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    background:black;
+
+}
+
+#topH2{
+ margin:20px;
+ text-align:center;
+ font-weight:bold;
+ 
+}	
+
+		
+#topBtn{
+	display:line-block;
+    margin-top :30px;
+    margin-left:40%;
+    width:20%;
+    background:rgba(0, 0, 0, 0.7);
+    color:white;
+    padding:15px 20px 15px 20px;
+    border:0px;
+    text-align: center;
+    font-size:15px;
+    
+}
+.contanier5{
+	margin:20px;
+	margin-left:0px;
+	width:100%;
+	height:700px;
+    background-color: #272828;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+#SeasonH2 {
+	margin-top:10px;
+	color:#f07272;
+	padding:50px;
+	padding-top:100px;
+	text-align:center;
+	font-weight:bold;
+}
+#SeasonH3{
+	
+	color:white;
+	padding:10px;
+	font-weight:bold;
+
+}
+.album{
+	
+	margin-left:70px;
+}
+.album img {	
+	float:left;
+	display:inline-block;
+}
+.music{
+	float: left;
+	display:inline-block;
+	width:550px;
+	margin:10px;
+	margin-left:0px;
+}
+
+ #SeasonH4{
+	margin-left:20px;
+	padding:10px;
+	color:white;
+    font-size:15px;
+    display:inline-block;
+}
+	
+ #SeasonH5{
+ 	padding-top:70px;
+ 	padding-left:40px;
+    text-align:center;
+	margin:0px;
+	color:white;
+    font-size:14px;
+    display:inline-block;
+   
+}
+.music1{
+    background: linear-gradient( to right,#12242f , #666a6d );
+	margin-left:20px;
+	width:500px;
+	height:200px;
+
+
+}
+.music1 img{
+	width:200px;
+	opacity:0.5;
+}
+
+.music1 span{
+    display: block;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    font-family: Montserrat;
+    font-size: 11px;
+    color: white;
+    line-height: 28px;
+    text-align: center;
+    background:black;
+    z-index:100;
+
+}
+.music2 {
+
+	background: linear-gradient( to right,#170907 , #5e452b);
+	margin-left:20px;
+	width:500px;
+	height:200px;
+
+}
+
+.music2 img{
+	width:200px;
+	opacity:0.5;
+}
+
+.music2 span{
+    display: block;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    font-family: Montserrat;
+    font-size: 11px;
+    color: white;
+    line-height: 28px;
+    text-align: center;
+    background:black;
+    z-index:100;
+
+}
+
+#SeasonBtn{
+	display:inline-block;
+	float:right;
+    font-size: 12px;
+    line-height: 21px;
+    box-sizing: border-box;
+    border: 0.1px 0.1px 0.1px black;
+    color:white;
+    padding:5px;
+    background-color: #272828;
+    margin:0px;
+    margin-right:30px;
+    margin-top:10px; 
+}
+
+
+/* //MAIN// */
+.img12{
+background: linear-gradient( 45deg,#f07272 ,#72f0c2);
+width: 1600px; 
+height: 600px; 
+overflow: hidden;
+
+	
+
+}
+
+#main1H2{
+	padding:10px;
+	text-align:center;
+	font-weight:bold;
+	fon-size:25px;
+	color:#fff;
+    text-shadow: 0 0 10px #fff,
+         0 0 20px #fff;
+	
+}
+
+#main1H1{
+	text-align:center;
+	font-weight:bold;
+	font-size:80px;
+	color:#fff;
+	letter-spacing:10px;
+	margin:20px;
+	padding:10px;
+    text-shadow: 0 0 10px #fff,
+         0 0 20px #fff;
+}
+
+
+#main1{
+	margin-top:100px;
+	font-weight:bold;
+	
+	
+}
+#mainBtn{    
+text-align:center;
+ position: absolute;
+ top:450px;
+ left:540px;
+ color:#fff;
+ padding:15px;
+ width:200px;
+ border:1.5px solid #fff;
+
+ 
+}
+#mainH5{
+	padding:5px;
+	margin:30px;
+	text-align:center;
+	font-weight:bold;
+	font-size:18px;
+	color:#fff;
+	line-height: 28px;
+
+}
+
+#circle {
+
+ position: absolute;
+ top:-80px;
+ left:100px;
+ width: 200px;
+ height: 200px;
+ background: linear-gradient( 45deg,#ffc358 ,#f07272);
+ -moz-border-radius: 50px;
+ -webkit-border-radius: 50px;
+ border-radius: 50%;
+ 
+}
+
+#circle1 {
+
+ position: absolute;
+ top:300px;
+ left:950px;
+ width: 100px;
+ height: 100px;
+ background: linear-gradient( 45deg,#72f0c2 ,#f07272);
+ -moz-border-radius: 50px;
+ -webkit-border-radius: 50px;
+ border-radius: 50%;
+}
+
+#circle2 {
+
+ position: absolute;
+ top:80px;
+ left:900px;
+ width: 15px;
+ height: 15px;
+ background: #fff;
+ -moz-border-radius: 50px;
+ -webkit-border-radius: 50px;
+ border-radius: 50%;
+  box-shadow: 0 0 50px #fff,
+         0 0 20px #fff;
+}
+
+#circle2-1{
+ position: absolute;
+ top:500px;
+ left:150px;
+ width: 15px;
+ height: 15px;
+ background: #fff;
+ -moz-border-radius: 50px;
+ -webkit-border-radius: 50px;
+ border-radius: 50%;
+ box-shadow: 0 0 50px #fff,
+         0 0 20px #fff;
+}
+
+#circle2-2{
+ position: absolute;
+ top:150px;
+ left:500px;
+ width: 10px;
+ height: 10px;
+ background: #fff;
+ -moz-border-radius: 50px;
+ -webkit-border-radius: 50px;
+ border-radius: 50%;
+ box-shadow: 0 0 50px #fff,
+         0 0 20px #fff;
+ }
+ #circle2-3{
+ position: absolute;
+ top:500px;
+ left:900px;
+ width: 10px;
+ height: 10px;
+ background: #fff;
+ -moz-border-radius: 50px;
+ -webkit-border-radius: 50px;
+ border-radius: 50%;
+ box-shadow: 0 0 50px #fff,
+         0 0 20px #fff;
+ }
+</style>
+	
+	
+
+	
 </head>
 <body>
-<c:import url="/nav/nav.jsp"></c:import>  <!--  네비게이션 부분 모듈화  -->
-	
-	<!--  위에 네비게이터부분 모듈화함  -->
-	<!-- <div id="main" style="padding-top: 0px; padding-bottom: 0px;">
-		<span
-			style="font-size: 30px; cursor: pointer; color: white; float: left; padding-top: 10px; padding-right: 50px" 
-			onclick="openNav()">&#9776; open</span>
-	</div> -->
+ 
 
 
-	<!--Content Part ==================================================
-================================================== -->
+<c:import url="/nav/nav.jsp"></c:import> 
+
+
 	<div id="header">
-	<div id="roundedlogo" style="float: left; margin-left: 100px">
-  <div class="wrapper12">
-   UP<span class="hidden-name12">laudio</span>
-  </div>
-</div>
+
 		<div class="container">
-			<!-- Header | Logo, Menu
-    ==================================여기는 UP ================ -->
-    <!--  위에 네비게이터부분 모듈화함  -->
-    
-    <!--  위에 네비게이터부분 모듈화함  -->
-			<!-- <div id="mySidenav" class="sidenav">
-				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				<a class='ajax1' href="/history.jsp"> 최근본동영상 </a> 
-					<a href="#">내가찜한 아티스트</a> 
-					<a href="#">버스킹찜목록</a> 
-					<a class='ajax'  href="/updateUser.jsp">내정보수정</a>
-			</div> -->
-			
-			
-		<!-- 	<div class="retrologo">
-				<a href="index.jsp">Underground Play</a>
-			</div> -->
 
-
-			<!-- ㄴㅇ러미ㅏㄴㅇ러ㅏ민ㅇ러;ㅁㄴㅇ러ㅏㅣㅁㄴㅇ러ㅏㅣ;ㅁㄴㅇ럼ㄴ;ㅣㅇ러ㅣㅁ -->
-			<!-- 여기는 UP 로고  -->
 			<div class="mainmenu">
 			
 			
@@ -136,7 +492,7 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 						<li><a href="/about.jsp">About</a></li>
 						<li><a href="/artist/listArtist">Artist</a>
 			  	  <li><a href="/video/listVideo">Music</a>
-						<li><a href="/season/getSeasonlist">UP contest</a></li>
+						<li><a href="/season/getSeasonlist">UP Tournament</a></li>
 						<!-- 로그인 로그아웃 부분  -->
 						<c:if test="${user!=null}">
 							<li><a href="/user/logout" onclick="FB.logout();"
@@ -157,7 +513,7 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 						<option value="/about.jsp">About</option>
 						<option value="/artist/listArtist">Artist</option>
 						<option value="/video/listVideo">Video</option>
-						<option value="/season/getSeasonlist">UP contest</option>
+						<option value="/season/getSeasonlist">UP Tournament</option>
 					</select>
 				</form>
 			</div>
@@ -172,30 +528,36 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 		<div class="flexslider">
 			<ul class="slides">
 			
-			
-				<li>
-				<div style="width:100%; height:500px; font-family: overwatch; font-style: italic;">
-          <c:import url="versus.jsp"></c:import>
-       </div>
-					</li>
-								
-					         
-        <li><img class="img12" src="images/flexslider/musicback2.jpg"
-          alt="" style="width: 1600px; height: 500px; overflow: hidden;" />
-          <section class="caption" style="text-align: center;">
-            <h2 class="shadow3">Best Artist</h2>
-            <p>
-              김지희가 현재 1등을 유지하고있어요 <a href="http://www.anarieldesign.com/"
-                rel="nofollow"></a>
-            </p>
-            <a class="button" href="#">지금 바로 보러가기!</a>
-          </section></li>
-          
-									
+
+	
+						         
+        	<li><div class="img12"  >
+        	<div id="main1">
+        		<h2 id="main1H2">SEASON </h2>
+	         	<h1 id="main1H1">UP CONTEST</h1>
+	         	<h5 id="mainH5"> 이번 시즌에 가장 주목할만 한 ARTIST는 누구일까요?<br>
+	         	당신의 투표로 선정되는 '이번 시즌의 MUSIC'을 결정해주세요 </h5>
+	         	<a id="mainBtn">지금 보러가기</a>
+         	</div>
+         	<div id="circle"></div>	
+			<div id="circle1"></div>	
+			<div id="circle2"></div>
+			<div id="circle2-1"></div>
+			<div id="circle2-2"></div>	
+			<div id="circle2-3"></div>
+         	</div></li>
+         
+         	<li>
+				<div style="width:100%; height:600px; font-family: overwatch; font-style: italic;">
+         			<c:import url="versus.jsp"></c:import>
+       			</div>
+			</li> 
 					
-				<li><a href="#"><img class="img12"
+         										
+					
+<!-- 				<li><a href="#"><img class="img12"
 						src="images/flexslider/musicback3.jpg"
-						style="width: 1600px; height: 500px; overflow: hidden;" alt="" /></a>
+						style="width: 1600px; height: 550px; overflow: hidden;" alt="" /></a>
 					<section class="caption">
 						<h2 class="shadow3">Busking</h2>
 						<p>
@@ -203,213 +565,154 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 								rel="nofollow"></a>
 						</p>
 						<a class="button" href="#">지금 바로 보러가기!</a>
-					</section></li>
+					</section></li> -->
 			</ul>
 		</div>
 		<!-- flexslider ends here -->
 	</section>
 	<!-- slider ends here -->
 	<!-- info Box ==================================================================================================== -->
-	<div class="infobox">
-		<div class="container info">
-			<header>
-				<h1>This week Top3</h1>
-				<!--   주석처리 한부분 
-      <p class="infop">- Free, fully <span class="pink">responsive HTML</span> site template made by <a href="http://www.anarieldesign.com/" rel="nofollow"><strong>Anariel Design</strong></a> -</p>
-      -->
-			</header>
-			<hr class="separator">
-		</div>
-		<!-- container ends here -->
-	</div>
-	<!-- infobox ends here -->
-	<!--Latest Photos ==================================================================================================== -->
-	<div class="container latest">
-		<div class="one_third">
-			<figure class="shadow">
-				<a href="#" class="thumb"><iframe id="player1"
-						type="text/html" width="300" height="200"
-						src="https://www.youtube.com/embed/tSAJ-iW1GBg?enablejsapi=1"></iframe></a>
-				<figcaption>
-					<a href="#">
-						<h3 class="heading">데이브레이크</h3>
-					</a>
-					<p class="bioquote">
-						-좋다-</br>
+	<div class="container">
+	
+	<h2 id="topH2">THIS WEEK TOP 10</h2>
+	
+	<section id="pattern" class="pattern">
+  	<ul class="grid">
+			<li>
+				<div class="top10">
+					<span>1</span>
+					<img style="width:100%; height:180px" src="/images/uploadFiles/KakaoTalk_20161229_152820093.jpg">
+					<h4 id="topH4">우주를 줄게</h4>
+					<h5 id="topH5">볼빨간 사춘기</h5>
+				</div>
+			</li>
+			<li>
+				<div class="top10">
+					<span>2</span>
+					<img style="width:100%; height:180px" src="/images/uploadFiles/KakaoTalk_20161229_153805915.jpg">
+					<h4 id="topH4">우주를 줄게</h4>
+					<h5 id="topH5">볼빨간 사춘기</h5>
+				</div>
+			</li>
+			<li>
+				<div class="top10">
+					<span>3</span>
+					<img style="width:100%; height:180px" src="/images/uploadFiles/kimjiheee.jpg">
+					<h4 id="topH4">우주를 줄게</h4>
+					<h5 id="topH5">볼빨간 사춘기</h5>
+				</div>
+			</li>
+			<li>
+				<div class="top10">
+					<span>4</span>
+					<img style="width:100%; height:180px" src="/images/uploadFiles/20161226105613_s__7290904.jpg">
+					<h4 id="topH4">우주를 줄게</h4>
+					<h5 id="topH5">볼빨간 사춘기</h5>
+				</div>
+			</li>
+			<li>
+				<div class="top10">
+					<span>5</span>
+					<img style="width:100%; height:180px" src="/images/uploadFiles/KakaoTalk_20161229_153805915.jpg">
+					<h4 id="topH4">우주를 줄게</h4>
+					<h5 id="topH5">볼빨간 사춘기</h5>
+				</div>
+			</li>
+			<li>
+				<div class="top10">
+					<span>6</span>
+					<img style="width:100%; height:180px" src="/images/uploadFiles/20161226105613_s__7290904.jpg">
+					<h4 id="topH4">우주를 줄게</h4>
+					<h5 id="topH5">볼빨간 사춘기</h5>
+				</div>
+			</li>
+			<li>
+				<div class="top10">
+					<span>7</span>
+					<img style="width:100%; height:180px" src="/images/uploadFiles/2016102800649_0.jpg">
+					<h4 id="topH4">우주를 줄게</h4>
+					<h5 id="topH5">볼빨간 사춘기</h5>
+				</div>
+			</li>
+			<li>
+				 <div class="top10">
+					<span>8</span>
+					<img style="width:100%; height:180px" src="/images/uploadFiles/KakaoTalk_20161229_153805915.jpg">
+					<h4 id="topH4">우주를 줄게</h4>
+					<h5 id="topH5">볼빨간 사춘기</h5>
+				</div>	
+			</li>
+			<li>
+			
+			<div class="top10">
+					<span>9</span>
+					<img style="width:100%; height:180px" src="/images/uploadFiles/20161226105613_s__7290904.jpg">
+					<h4 id="topH4">우주를 줄게</h4>
+					<h5 id="topH5">볼빨간 사춘기</h5>
+				</div>
+			</li>
+			<li>
+			<div class="top10">
+					<span>10</span>
+					<img style="width:100%; height:180px" src="/images/uploadFiles/2016102800649_0.jpg">
+					<h4 id="topH4">우주를 줄게</h4>
+					<h5 id="topH5">볼빨간 사춘기</h5>
+				</div>
+			</li>
 
-					</p>
-				</figcaption>
-			</figure>
-		</div>
-		<!-- one_third ends here -->
-		<div class="one_third">
-			<figure class="shadow">
-				<a href="#" class="thumb"><iframe id="player2" width="300"
-						height="200"
-						src="https://www.youtube.com/embed/r52he_XcBXg?enablejsapi=1"></iframe></a>
-				<figcaption>
-					<a href="#">
-						<h3 class="heading">볼빨간 사춘기</h3>
-					</a>
-					<p class="bioquote">
-						심술</br>
-					</p>
-				</figcaption>
-			</figure>
-		</div>
-		<!-- one_third ends here -->
-		<div class="one_third lastcolumn">
-			<figure class="shadow">
-				<a href="#" class="thumb"><iframe id="player3" width="300"
-						height="200"
-						src="https://www.youtube.com/embed/UeCTNhP-E_c?enablejsapi=1"></iframe></a>
-				<figcaption>
-					<a href="#">
-						<h3 class="heading">혁 오</h3>
-					</a>
-					<p class="bioquote">
-						위잉위잉 </br>
-					</p>
-				</figcaption>
-			</figure>
-		</div>
-		<!-- one_third ends here -->
-		<center>
-			<h3>
-				<a href="http://192.168.0.77/UI01/index.jsp">더보기</a>
-			</h3>
-		</center>
-	</div>
+		</ul>
+	 
+	 <div class="topCenter"><button id="topBtn">M U S I C 더 보 기</button></div>
+	</section>
+
+</div>
 	<!-- end container -->
-	<!--Heading Box ==================================================
-================================================== -->
-	<div class="headingblock">
-		<div class="container heading">
-			<header>
-				<h2>이번주 버스킹정보를 확인하세요!</h2>
-				<!--  
-      <p>- Free, fully <span class="pink">responsive HTML</span> site template made by <a href="http://www.anarieldesign.com/" rel="nofollow"><strong>Anariel Design</strong></a> -</p>
-      -->
-			</header>
+	<div class="contanier5">
+		<h2 id="SeasonH2">SEASON CONTEST</h2>
+	
+		<div class="album">
+			<img style="width:50px; height:50px;" src="/images/icon/Player.svg">
+			<h3 id="SeasonH3">MUSIC</h3>
+			
+			
+				<div class="music">
+					
+					<h4 id="SeasonH4"> 차가움과 따스함이 공존하는 음악 </h4>
+					<button id="SeasonBtn">자세히보기</button>		
+					<div class="music1">
+						<span>8강</span>
+						<img style="width:200px; height:200px" src="/images/uploadFiles/KakaoTalk_20161229_152820093.jpg">
+						<h5 id="SeasonH5">차가움과 따스함이 공존하는 음악</h5>
+					
+					</div>
+					
+				</div>
+				
+				
+				<div class="music">
+					
+					<h4 id="SeasonH4"> 차가움과 따스함이 공존하는 음악 </h4>
+					<button id="SeasonBtn">자세히보기</button>
+					
+					<div class="music2">
+					<span>8강</span>
+						<img style="width:200px; height:200px" src="/images/uploadFiles/KakaoTalk_20161229_152820093.jpg">
+						<h5 id="SeasonH5">차가움과 따스함이 공존하는 음악</h5>
+					</div>
+							
+				</div>
+	
 		</div>
-		<!-- container ends here -->
-		<hr class="separator1">
+	
 	</div>
-	<!-- headingblock ends here -->
-	<!-- Latest News & Faq ==================================================
-================================================== -->
-	<div class="container latest">
-		<div class="one_third">
-			<div class="card123">
-				<img src="artist/10cm.jpg" alt="Avatar" style="width: 100%">
-				<div class="container12">
-					<h4>
-						<b>이승기</b>
-					</h4>
-					<p>장소:</p>
-					<strong>홍대3번출구</strong>
-					<p>시간:</p>
-					<strong>홍대3번출구</strong>
-					<p>날짜:</p>
-					<strong>홍대3번출구</strong>
-				</div>
-			</div>
-		</div>
+	
+	
+	 <div id="logo">
+	  <p id="logoP">
+	  	<a id="logoA" href="/index.jsp"> UP </a>
+	  </p>
+   </div>
 
-		<div class="one_third">
-			<div class="card123">
-				<img src="artist/10cm.jpg" alt="Avatar" style="width: 100%">
-				<div class="container12">
-					<h4>
-						<b>이승기</b>
-					</h4>
-					<p>장소:</p>
-					<strong>홍대3번출구</strong>
-					<p>시간:</p>
-					<strong>홍대3번출구</strong>
-					<p>날짜:</p>
-					<strong>홍대3번출구</strong>
-				</div>
-
-			</div>
-		</div>
-
-		<div class="one_third lastcolumn">
-			<div class="card123">
-				<img src="artist/10cm.jpg" alt="Avatar" style="width: 100%">
-				<div class="container12">
-					<h4>
-						<b>이승기</b>
-					</h4>
-					<p>장소:</p>
-					<strong>홍대3번출구</strong>
-					<p>시간:</p>
-					<strong>홍대3번출구</strong>
-					<p>날짜:</p>
-					<strong>홍대3번출구</strong>
-				</div>
-			</div>
-		</div>
-		<div class="one_third">
-			<div class="card123">
-				<img src="artist/10cm.jpg" alt="Avatar" style="width: 100%">
-				<div class="container12">
-					<h4>
-						<b>이승기</b>
-					</h4>
-					<p>장소:</p>
-					<strong>홍대3번출구</strong>
-					<p>시간:</p>
-					<strong>홍대3번출구</strong>
-					<p>날짜:</p>
-					<strong>홍대3번출구</strong>
-				</div>
-			</div>
-		</div>
-
-		<div class="one_third">
-			<div class="card123">
-				<img src="artist/10cm.jpg" alt="Avatar" style="width: 100%">
-				<div class="container12">
-					<h4>
-						<b>이승기</b>
-					</h4>
-					<p>장소:</p>
-					<strong>홍대3번출구</strong>
-					<p>시간:</p>
-					<strong>홍대3번출구</strong>
-					<p>날짜:</p>
-					<strong>홍대3번출구</strong>
-				</div>
-
-			</div>
-		</div>
-
-		<div class="one_third lastcolumn">
-			<div class="card123">
-				<img src="artist/10cm.jpg" alt="Avatar" style="width: 100%">
-				<div class="container12">
-					<h4>
-						<b>이승기</b>
-					</h4>
-					<p>장소:</p>
-					<strong>홍대3번출구</strong>
-					<p>시간:</p>
-					<strong>홍대3번출구</strong>
-					<p>날짜:</p>
-					<strong>홍대3번출구</strong>
-				</div>
-			</div>
-		</div>
-
-		<center>
-			<h3>
-				<a href="http://192.168.0.77/index.jsp">더보기</a>
-			</h3>
-		</center>
-	</div>
-
-	<!-- end container -->
 	<!-- Socialize ==================================================
 ================================================== -->
 	<hr class="separator2">
@@ -430,6 +733,7 @@ src: url("/fonts/overwatch.ttf"); /*폰트 파일 주소*/
 	<!-- socialsblock ends here -->
 	<!-- Footer ==================================================
 ================================================== -->
+
 	<div class="footer">
 		<div class="container">
 			<div class="one_fourth">

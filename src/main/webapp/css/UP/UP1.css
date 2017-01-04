@@ -1,0 +1,60 @@
+@import url(http://fonts.googleapis.com/css?family=Fredoka+One);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300);
+#roundedlogo {
+  overflow: hidden;
+/*   background-image: url('http://media.giphy.com/media/5TrHrpZC5ya6A/giphy.gif'); */
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+  margin: auto;
+  text-align: center;
+  line-height: 1.45em;
+  color: #FFF;
+  font-family: 'Fredoka One', cursive;
+  font-size: 60px;
+  font-weight: normal;
+  /*text-shadow: 1px -1px 0 rgba(0, 0, 0, 0.10), -1px 2px 1px rgba(0, 0, 0, 0.10), -2px 4px 1px rgba(0, 0, 0, 0.10), -3px 6px 1px rgba(0, 0, 0, 0.10), -4px 8px 1px rgba(0, 0, 0, 0.10), -5px 10px 1px rgba(0, 0, 0, 0.10), -6px 12px 1px rgba(0, 0, 0, 0.10), -7px 14px 1px rgba(0, 0, 0, 0.10), -8px 16px 1px rgba(0, 0, 0, 0.10), -9px 18px 1px rgba(0, 0, 0, 0.10), -10px 20px 1px rgba(0, 0, 0, 0.10), -11px 22px 1px rgba(0, 0, 0, 0.10), -12px 24px 1px rgba(0, 0, 0, 0.10), -13px 26px 1px rgba(0, 0, 0, 0.10), -14px 28px 1px rgba(0, 0, 0, 0.10), -15px 30px 1px rgba(0, 0, 0, 0.10), -16px 32px 1px rgba(0, 0, 0, 0.10), -17px 34px 1px rgba(0, 0, 0, 0.10), -18px 36px 1px rgba(0, 0, 0, 0.10), -19px 38px 1px rgba(0, 0, 0, 0.10), -20px 40px 1px rgba(0, 0, 0, 0.10), -21px 42px 1px rgba(0, 0, 0, 0.10), -22px 44px 1px rgba(0, 0, 0, 0.10);*/
+}
+#roundedlogo .wrapper12 {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: -3px;
+  left: -3px;
+  border-radius: 999px;
+  margin: 6px;
+  border: 2px solid white;
+}
+#roundedlogo .hidden-name12 {
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  text-shadow: none;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  width: 0;
+  opacity: 0;
+  position: absolute;
+  top: -5px;
+  padding-left: 29px;
+  left: 0;
+
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+#roundedlogo:hover .hidden-name12 {
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  width: auto;
+  opacity: 1;
+  left: auto;
+}

@@ -29,17 +29,18 @@ public class LeagUserDaoImpl implements LeagUserDao{
   public LeagUserDaoImpl() {
     System.out.println(this.getClass());
   }
-
+  //리그유저 ADD 하기 
   @Override
-  public int addLeagUser(LeagUser leagUser) throws Exception {
+  public int addLeagUser(LeagUser leaguser) throws Exception {
     // TODO Auto-generated method stub
-    return 0;
+    return sqlSession.insert("LeagUserMapper.addLeagUserMapper",leaguser);
   }
 
+  //리그유저 가져오기 
   @Override
-  public LeagUser getLeagUser(LeagUser leagUser) throws Exception {
+  public LeagUser getLeagUser(LeagUser leaguser) throws Exception {
     // TODO Auto-generated method stub
-    return null;
+    return sqlSession.selectOne("LeagUserMapper.getLeagUserMapper",leaguser);
   }
 
  

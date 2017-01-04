@@ -12,6 +12,7 @@ import project.dao.ArtistDao;
 import project.dao.UserDao;
 import project.dao.VideoDao;
 import project.domain.Artist;
+import project.domain.Comment;
 import project.domain.Search;
 import project.domain.User;
 import project.domain.Video;
@@ -141,5 +142,27 @@ public class VideoDaoImpl implements VideoDao{
         System.out.println("여기까지는 옴");
         return sqlSession.selectList("VideoMapper.getLeagueListHits");
 }
+  
+  public void addComment(Comment comment) throws Exception {
+    
+    sqlSession.insert("CommentMapper.addComment", comment);
+}
+
+public Comment getComment(int commentNo) throws Exception {
+    System.out.println("오나"+commentNo);
+    return sqlSession.selectOne("CommentMapper.getComment", commentNo);
+}  
+
+
+public void deleteComment(int commentNo) throws Exception {
+    
+    sqlSession.insert("CommentMapper.deleteComment", commentNo);
+}
+
+
+public List<Comment> getVideoComment(int videoNo) throws Exception {
+    System.out.println("오나"+videoNo);
+    return sqlSession.selectList("CommentMapper.getVideoComment", videoNo);
+}  
 
 }

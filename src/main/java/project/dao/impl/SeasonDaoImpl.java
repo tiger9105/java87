@@ -71,5 +71,17 @@ public class SeasonDaoImpl implements SeasonDao{
     return sqlSession.selectOne("SeasonMapper.getMaxSeasonNo");
   }
 
+  @Override
+  public String getMinLeagProgress() throws Exception {
+    // TODO Auto-generated method stub
+    return sqlSession.selectOne("LeagMapper.getMaxLeagProgress");
+  }
+
+  @Override
+  public int setEndSeason(Season season) throws Exception {
+    // TODO Auto-generated method stub
+    return sqlSession.update("SeasonMapper.setEndSeason",season);
+  }
+
 
 }

@@ -4,6 +4,7 @@ package project.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import project.domain.Artist;
+import project.domain.Comment;
 import project.domain.Page;
 import project.domain.Search;
 import project.domain.User;
@@ -116,10 +118,10 @@ public class VideoController {
     videoService.updateHits(video);
     
     UserLikeVid userLikeVid = new UserLikeVid(userNo,Integer.parseInt(videoNo));
-	 	 	
-	userLikeVid = videoService.getLikeVid(userLikeVid);
-	
-	model.addAttribute("videoHeart",userLikeVid);
+      
+  userLikeVid = videoService.getLikeVid(userLikeVid);
+  
+  model.addAttribute("videoHeart",userLikeVid);
     
     
     video=videoService.getVideo(video.getVideoNo());
@@ -127,6 +129,10 @@ public class VideoController {
     
     
     model.addAttribute("video", video);
+    
+    List <Comment> comment = videoService.getVideoComment(video.getVideoNo());
+    
+    model.addAttribute("commentList", comment);
     
     return "forward:/getMusic/getMusic.jsp";
   }
@@ -371,6 +377,8 @@ public class VideoController {
     System.out.println(map);
   
     model.addAttribute("list", map);
+    Map<String,Object> seasonMap=seasonService.getSeasonList();
+    model.addAttribute("seasonList",seasonMap.get("list"));
 
     
     return "forward:/music/music.jsp";
@@ -428,6 +436,34 @@ public class VideoController {
     return "forward:/music/music.jsp";
   }
   
+  /* 댓글 등록 */
+  @RequestMapping(value = "addComment", method = RequestMethod.POST)
+  public @ResponseBody Map<String,Object> addComment (@ModelAttribute("comment") Comment comment, HttpSession session ,HttpServletRequest request) throws Exception {
+
+    System.out.println("addcomment : POST");
+    
+    User user = (User)session.getAttribute("user");
+    comment.setUser(user);
+    String videoNo = request.getParameter("video");
+    comment.setVideoNo(Integer.parseInt(videoNo));
+    
+    Map<String,Object> commentMap = new HashMap<String,Object>();
+    videoService.addComment(comment);
+    
+    Comment dbComment = videoService.getComment(comment.getCommentNo());
+    commentMap.put("comment", dbComment);
+    commentMap.put("user", user);
+    
+    return commentMap;
+  }
+  
+  /*댓글 삭제*/
+  @RequestMapping(value="deleteComment/{commentNo}",method=RequestMethod.GET)
+  public void deleteComment(@PathVariable("commentNo") int commentNo) throws Exception{
+    System.out.println("deleteComment - GET");
+    
+    videoService.deleteComment(commentNo);
+  }
   
 
 }  

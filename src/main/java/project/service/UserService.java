@@ -25,4 +25,6 @@ public interface UserService {
   public void deletelikeArtUser(int userNo,int artNo) throws Exception ;
   
   public UserLikeArt getLikeArt(UserLikeArt userLikeArt) throws Exception ;
+  
+  public User getUserByEmail(String email) throws Exception;
 }

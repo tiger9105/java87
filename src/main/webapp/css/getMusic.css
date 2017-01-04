@@ -16,6 +16,7 @@
 
 
 .title{
+	padding-top:150px;
 	float:left;
 	
 }
@@ -51,7 +52,6 @@
 	
 }
 .container3{
-	margin:5%;
 	margin-left:20%;
 	margin-right:20%;
 }

@@ -86,6 +86,12 @@ public UserLikeArt getLikeArt(UserLikeArt userLikeArt) throws Exception {
   // TODO Auto-generated method stub
   return userLikeArtDao.getLikeArt(userLikeArt);
 }
+
+@Override
+public User getUserByEmail(String email) throws Exception {
+  // TODO Auto-generated method stub
+  return userDao.getUserByEmail(email);
+}
     
   
 }

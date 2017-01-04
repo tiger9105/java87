@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    
+    <mapper namespace="CommentMapper">
+
+	
+	<resultMap type="comment" id="commentSelectMap">
+		<result property="commentNo" column="COT_NO" jdbcType="INTEGER"/>
+		<!-- <result property="userNo" column="user_NO" jdbcType="INTEGER"/> -->
+		<result property="videoNo" column="VID_NO" jdbcType="INTEGER"/> 
+		<result property="commentContent" column="COT_CON" jdbcType="VARCHAR"/>
+		<result property="commentTime" column="COT_TIME" jdbcType="DATE"/>
+		<association property="user" column="user_no" select="UserMapper.getUserByNo" javaType="project.domain.User"/> 
+	
+	</resultMap>
+	
+	<insert id="addComment" parameterType="comment"   useGeneratedKeys="true" keyProperty="commentNo" keyColumn="COT_NO">
+		INSERT 
+		INTO VIDEO_COMMENT(COT_NO,USER_NO,COT_CON,vid_NO,COT_TIME)
+		VALUES (SEQ_VIDEO_COMMNET_COT_NO.NEXTVAL,
+				#{user.userNo:INTEGER},
+				#{commentContent:VARCHAR},
+				#{videoNo:INTEGER},
+				SYSDATE)	
+<!-- 		<selectKey keyProperty="commentNo" resultType="Integer" order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey> -->
+				
+	</insert>
+	<select id="getComment" parameterType="integer" resultMap="commentSelectMap">
+		SELECT *
+		FROM VIDEO_COMMENT
+		WHERE COT_NO=#{value}
+	</select>
+
+	<select id="getVideoComment" parameterType="integer" resultMap="commentSelectMap">
+		SELECT *
+		FROM VIDEO_COMMENT
+		WHERE vid_no=#{value}
+		ORDER BY COT_NO DESC
+	</select>
+	
+	<delete id="deleteComment" parameterType="integer">
+			DELETE 
+			FROM VIDEO_COMMENT
+			WHERE COT_NO = #{value}
+	</delete>
+	
+	
+</mapper>

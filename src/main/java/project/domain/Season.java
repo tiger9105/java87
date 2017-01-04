@@ -10,7 +10,16 @@ public class Season {
   private String seasonEnd;
    private Artist seasonwinner;
   private Artist seasonsecondwinner;
+  private String state;
   
+  public String getState() {
+    return state;
+  }
+
+  public void setState(String state) {
+    this.state = state;
+  }
+
   public Season(){
     System.out.println("Season 디폴트 생성자 실행");
   }
@@ -61,7 +70,7 @@ public class Season {
   public String toString() {
     return "Season [seasonNo=" + seasonNo + ", seasonName=" + seasonName + ", seasonStart=" + seasonStart
         + ", seasonEnd=" + seasonEnd + ", seasonwinner=" + seasonwinner + ", seasonsecondwinner=" + seasonsecondwinner
-        + "]";
+        + ", state=" + state + "]";
   }
 
 

@@ -9,6 +9,7 @@
     <result property="seasonName"     column="sname"  jdbcType="VARCHAR"/>
    <result property="seasonStart"    column="sea_st"      jdbcType="VARCHAR"/>
     <result property="seasonEnd"    column="sea_ed"      jdbcType="VARCHAR"/>
+    <result property="state"        column="state"        jdbcType="VARCHAR"/>
     <association property="seasonwinner"    column="artist_no2"  select="ArtistMapper.getArtist"    javaType="project.domain.Artist"/>
     <association property="seasonsecondwinner"    column="artist_no" select="ArtistMapper.getArtist"     javaType="project.domain.Artist"/>
    
@@ -18,11 +19,12 @@
  
  <insert id="addSeasonMapper" parameterType="Season">
     INSERT
-    INTO SEASON(sea_no,sname,sea_st,sea_ed)
+    INTO SEASON(sea_no,sname,sea_st,sea_ed,state)
     VALUES (seq_season_seasonno.NEXTVAL,
              #{seasonName:VARCHAR},
              #{seasonStart:VARCHAR},
-              #{seasonEnd:VARCHAR}
+              #{seasonEnd:VARCHAR},
+              #{state:VARCHAR}
              )
   </insert>
 
@@ -54,6 +56,14 @@
   <select id="getMaxSeasonNo"  resultType="int">
    select MAX(sea_no) from leag
   </select>
+  
+  <update id="setEndSeason" parameterType="season">
+   UPDATE SEASON
+      <set>
+        state=#{state}      
+       </set>
+      WHERE sea_no = #{seasonNo}
+  </update>
  
  
 </mapper>

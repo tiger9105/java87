@@ -6,6 +6,7 @@ import java.util.List;
 import project.domain.Artist;
 import project.domain.Leag;
 import project.domain.Season;
+import project.domain.User;
 
 
 public interface SeasonDao {
@@ -23,6 +24,11 @@ public interface SeasonDao {
   public int getTotalCount() throws Exception ;
   
   public int getMaxSeasonNo() throws Exception;
+
+  String getMinLeagProgress() throws Exception;
+  
+  public int setEndSeason(Season season) throws Exception ;
+  
   
 
 

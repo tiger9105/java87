@@ -65,9 +65,12 @@ div.blankSeparator2 {
 /****************************** HOME - Content Part - Logo&Menu ******************************/
 /* Header - Logo & Menu */
 #header {
-	background:#261b0d url(../images/rausch.png) repeat;
-	margin-top:0px;
-	border-bottom:1px solid #1d1b18;
+    position: fixed;
+    background: #272828;
+    margin-top: 0px;
+    border-bottom: 0px solid  #272828;
+    width: 100%;
+    z-index: 990;
 }
 .logo {
 	float: left;
@@ -132,7 +135,7 @@ ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul {
 	padding:45px 15px 45px 15px;
 	text-decoration:none;
 	text-transform:uppercase;
-	color: #fbe6cb;
+	color: #f07272;
 	-webkit-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;
@@ -211,9 +214,7 @@ a:focus > .sf-sub-indicator, a:hover > .sf-sub-indicator, a:active > .sf-sub-ind
 /* FlexSlider Necessary Styles
 *********************************/
 .flexslider {
-	padding: 0 0 10px 0;
-	background:#dbcab6 url(../images/bg/caption1.png) repeat;
-	border-top:1px solid #e8ded1;
+
 }
 .flexslider .slides > li {
 	display: none;
@@ -249,6 +250,7 @@ html[xmlns] .slides {
 /* FlexSlider Default Theme
 *********************************/
 .flexslider {
+	padding-top:115px;
 	position: relative;
 	zoom: 1;
 }

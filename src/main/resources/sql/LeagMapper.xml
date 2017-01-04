@@ -47,8 +47,39 @@
     ORDER BY sea_no DESC
   </select>
   
- 
+  <update id="updateLeagVote1" parameterType="leag">
+   UPDATE LEAG
+      <set>
+        art_vt1=#{vote1}      
+       </set>
+      WHERE leag_no = #{leagNo}
+  </update>
   
+    <update id="updateLeagVote2" parameterType="leag">
+   UPDATE LEAG
+      <set>
+        art_vt2=#{vote2}      
+       </set>
+      WHERE leag_no = #{leagNo}
+  </update>
  
+  <select id="getLeag" parameterType="int" resultMap="leagSelectMap">
+  select 
+  * 
+  from LEAG
+  where leag_no=#{value}
+  </select>
+  
+  <select id="getleagList" parameterType="hashmap"   resultMap="leagSelectMap">
+  select
+  *
+  from LEAG
+  where sea_no=#{seasonNo} AND leag_part=#{progress}
+  </select>
+  
+  <select id="getMaxLeagProgress" resultType="String">
+  select MIN(leag_part) from leag
+  </select>
+  
  
 </mapper>

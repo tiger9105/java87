@@ -33,110 +33,131 @@
 </head>
 <style type="text/css">
 #btn{
-	margin-top:10px;
-	margin-right:200px;
-	width: auto;
-	border: 2px solid rgba(254, 82, 76, 1);;
-	background: #fff;
-	padding: 10px 40px;
-	float:right;
-	color: rgba(254, 82, 76, 1);;
-	border-radius: 2px;
-	cursor: pointer;
-	text-transform: uppercase;
-}
-/*comment  */
-.detailBox {
-	width:620px;
-	border-top: 1px solid #bbb;
-	border-bottom: 1px solid #bbb;
-	margin: 15px;
-	margin-top: 30px;
+   margin-top:10px;
+   margin-right:200px;
+   width: auto;
+   border: 2px solid rgba(254, 82, 76, 1);;
+   background: #fff;
+   padding: 10px 40px;
+   float:right;
+   color: rgba(254, 82, 76, 1);;
+   border-radius: 2px;
+   cursor: pointer;
+   text-transform: uppercase;
 }
 
-.titleBox {
-	background-color: #fdfdfd;
-	padding: 10px;
+#add_comment_btn{
+    width: auto;
+    border: 0px solid rgba(254, 82, 76, 0.7);
+    background: rgba(254, 82, 76, 0.7);
+    padding: 8px 20px;
+    margin: 0px;
+    margin-left: 2px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+#commentList{
+ padding-left:100px;
+ list-style:none;
 }
 
-.titleBox label {
-	color: #444;
-	margin: 0;
-	display: inline-block;
+.commenterImage{
+ display:inline-block;
+ float:left;
+ width:50px;
+ heigth:50px;
+ 
 }
 
-.actionBox .form-group * {
-	width: 100%;
+.commenterImage img{
+
+   display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
-.taskDescription {
-	margin-top: 10px 0;
+.dateSubText{
+   padding-left:50px;
+   font-size:10px;
 }
 
-.commentList {
-	padding: 0;
-	list-style: none;
-	max-height: 300px;
-	overflow: auto;
-	margin-left: 5px;
-}
-
-.commentList li {
-	margin: 0;
-	margin-top: 10px;
-	padding-left: 10px;
-}
-
-.commentList li>div {
-	display: table-cell;
-}
-
-.commenterImage {
-	width: 30px;
-	margin-right: 5px;
-	float: left;
-}
-
-.commenterImage img {
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-}
-
-.commentText p {
-	margin: 0;
-}
-
-.sub-text {
-	color: #aaa;
-	font-family: verdana;
-	font-size: 11px;
-}
-
-.actionBox {
-	border-top: 1px dotted #bbb;
-}
-
-.commentText {
-	padding-left: 10px;
-}
-
-#add_comment_btn {
-	position: relative;
-	top: 20px;
-	left: -15px;
-	background-color: #ED2553;
-}
-#toast-container {
-  top: auto !important;
-  right: 1%;
-  bottom: 7%;
-  left:auto !important;
-}
-
+p{
+ display:inline-block;
+ padding-top:10px;   
+ padding-left:50px;
+ padding-right:10px;
+ font-size:18px;
+ }
 
 .delete_btn_custom{
-	cursor: pointer;
+ margin-top:10px;
+ float:right;
+ display:inline-block;
+
+}
+
+.delete_btn_custom img{
+    cursor: pointer;
+}
+
+.actionBox{
+   width:850px;
+   height:auto;
+}
+
+#comment{
+ width:650px;
+ height:70px;
+ padding:20px;
+ margin-left:110px;
+}
+.addComment{
+display:inline-block;
+
+}
+.addCommentButton{
+margin:30px;
+margin-top:20px;
+float:right;
+}
+.addCommentBox{
+
+display:inline-block;
+}
+#hr1{
+margin-top:10px;
+margin-bottom:10px;
+border:1px solid #eee;
+}
+h3{
+    margin: 20px 0 0 100px;
+    text-transform: none;
+    color: rgba(254, 82, 76, 1);
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1.5;
+
+
+}
+
+#append{
+    padding-left: 100px;
+    list-style: none;
+    width:850px;
+}
+
+.container2{
+ 
+ position: relative;
+    width: 960px;
+    margin: 0 auto;
+margin-top:80px;
+
 }
 
 </style> 
@@ -225,7 +246,7 @@
 		</c:if>
 		
 		
-		<iframe width="100%" height="400" src="https://www.youtube.com/embed/${video.url}" frameborder="0" allowfullscreen></iframe>	
+		<iframe id="player" width="100%" height="400" src="https://www.youtube.com/embed/${video.url}?enablejsapi=1" frameborder="0" allowfullscreen></iframe>	
 
 		<div class="good">
 
@@ -275,56 +296,78 @@
 		  
 		</div>
 		
+	</div>
+	<br>
+	
+	<div class="container2">	
+	<div class="addComment">
 
-<%-- 		<div class="col offset-s2 s8">
+				<h3>Comment</h3>
+						<div class="row">
+						<form id="comment_form">
+							<input name="video" type="hidden" value="${video.videoNo}">
+							<div class="addCommentBox">
+								<input name="commentContent" id="comment" type="text" class="validate">
+								<label for="comment"></label>
+							</div>
+							<div class="addCommentButton">
+								<div  id="add_comment_btn" class="btn btn-default">Add</div>
+							</div>
+						</form>
+
+						</div>
+	
 				<div class="detailBox">
-					<div class="titleBox">
-						<label>너의 의견을 달아봐 </label>
-					</div>
+				
+					
+					<div id="append"></div>
+					
 					<div class="actionBox">
 						<ul id="commentList" class="commentList">
 							<c:forEach var="comment" items="${commentList}">
-								<li>
+							
+								<li id="commentIi">
+								<hr id="hr1">
+								<div class="OneComment">
 									<div class="commenterImage">
-										<img src="/images/uploadFiles/"${user.filepath }">
+										<img src="/images/uploadFiles/${ comment.user.filepath}">
+										<%-- <p class="">${comment.userNo}</p> --%>
+						
 									</div>
-									<div class="commentText">
+								<div class="commentText">
 										<p class="">${comment.commentContent}</p>
-										<span class="date sub-text">${comment.regDate}</span>
-
-									</div> <c:if test="${comment.userNo==user.userNo}">
+										
+									<c:if test="${comment.user.userNo==user.userNo}">
 										<div id="delete_comment_${comment.commentNo}" class="delete_btn_custom">
-											<i class="material-icons">remove_circle_outline</i>
+											<img style="width:30px; height:30px;" src="/images/icon/delete.png">
 										</div>
 									</c:if>
+										<br>
+										<span class="dateSubText">${comment.commentTime}</span>
+												
+				
+								</div>	
 								</li>
+						
 							</c:forEach>
 							<!-- 댓글 들어가는곳 -->
 						</ul>
 
-						<div class="row">
-						<form id="comment_form">
-							<input name="voteNo" type="hidden" value="${vote.voteNo}">
-							<div class="input-field col s8">
-								<input name="commentContent" id="comment" type="text" class="validate">
-								<label for="comment">댓글</label>
-							</div>
-						</form>
-							<div class="col s4">
-								<div  id="add_comment_btn" class="btn btn-default">Add</div>
-							</div>
-						</div>
-
 					</div>
+					
+					
 				</div>
 			</div>
-		
+		</div>
 	
-	 --%>
-	
-				
-	</div>
 <!-- ends video -->
+
+ 
+   <div id="logo">
+    <p id="logoP">
+      <a id="logoA" href="/index.jsp"> UP </a>
+    </p>
+   </div>
 
 <!-- javascript 모임 -->
 	<!-- 모달창 -->
@@ -338,6 +381,8 @@
 	<script src="/javascript/screen.js" type="text/javascript"></script>
 	<!-- Tabs -->
 	<script src="/javascript/tabs.js" type="text/javascript"></script>
+	  <script src="https://www.youtube.com/iframe_api"></script>
+	   <script src="/javascript/cookie/cookie.js"></script>
 
 	
 	<!-- 메뉴슬라이드 자바스크립트  -->
@@ -445,66 +490,118 @@
   		
 	</script>
 	
-	<script>
 	
-	$("#commentList").scrollTop($("#commentList")[0].scrollHeight);
-	
-	$("#add_comment_btn").on("click",function(){
-	
-		if($("#comment").val()==''){
-			  Materialize.toast('댓글을 입력하세요. ', 3000,'pink accent-3')	
-			  return;
-		}
-		
-		
-		var form = new FormData($("#comment_form")[0]);
-		
-		$.ajax({
-			type : "post",
-			url : "/comment/addComment",
-			processData : false,/*data 파라미터로 전달된 데이터를 jQuery 내부적으로 query string 으로 만드는데, 파일 전송의 경우 이를 하지 않아야 하고 이를 설정하는 것이 processData: false 이다.*/
-			contentType : false,/*contentType 은 default 값이 "application/x-www-form-urlencoded; charset=UTF-8" 인데, "multipart/form-data" 로 전송이 되게 false 로 넣어준다. */
-			data : form,
-			success : function(data){
-				var parsedDate = new Date(parseInt(data.comment.regDate))
-				var jsDate = new Date(parsedDate);
-				var convertedDate= jsDate.getFullYear()+"-"+(jsDate.getMonth()+1)+"-"+jsDate.getDate()+" "+jsDate.getHours()+":"+jsDate.getMinutes()+":"+jsDate.getSeconds()+"."+jsDate.getMilliseconds();
-				var row ="";
-				
-				row +=  "<li><div class='commenterImage'>";
-				if(data.user.userPhoto.startsWith("fb_profile_image")){
-					row +="<img src='"+data.user.userPhoto.replace("fb_profile_image","")+"'/></div>"
-				}else{
-					row +="<img src='/image/profile/thumbnail/"+data.user.userPhoto+"'/></div>"
-				}
-				
-				
-				
-				row +="<div class='commentText'>";
-				row +="<p class=''>"+data.comment.commentContent+"</p>";
-				row +="<span class='date sub-text'>"+convertedDate+"&nbsp;&nbsp;"+data.user.userName+"님</span></div>";
-				row +="<div id='delete_comment_"+data.comment.commentNo+"' class='delete_btn_custom'><i class='material-icons'>remove_circle_outline</i></div></li>";
-			
-				
-				$("#commentList").append(row);
-				$("#comment").val("");
-				$("#commentList").scrollTop($("#commentList")[0].scrollHeight);
-			}
-		});
-	});
+<!-- 댓글 구현 -->  
+  <script>
+  
+  $("#commentList").scrollTop($("#commentList")[0].scrollHeight);
+  
+  $("#add_comment_btn").on("click",function(){
+    alert($("#comment").val());
+    
+    if($("#comment").val()==''){
+        Materialize.toast('댓글을 입력하세요. ', 3000,'pink accent-3')  
+        return;
+    }
+    
+    
+    var form = new FormData($("#comment_form")[0]);
+    
+    $.ajax({
+      type : "post",
+      url : "/video/addComment",
+      processData : false,/*data 파라미터로 전달된 데이터를 jQuery 내부적으로 query string 으로 만드는데, 파일 전송의 경우 이를 하지 않아야 하고 이를 설정하는 것이 processData: false 이다.*/
+      contentType : false,/*contentType 은 default 값이 "application/x-www-form-urlencoded; charset=UTF-8" 인데, "multipart/form-data" 로 전송이 되게 false 로 넣어준다. */
+      data : form,
+      success : function(data){
+        var parsedDate = new Date(parseInt(data.comment.commentTime))
+        var jsDate = new Date(parsedDate);
+        var convertedDate= jsDate.getFullYear()+"-"+(jsDate.getMonth()+1)+"-"+jsDate.getDate()+" "+jsDate.getHours()+":"+jsDate.getMinutes()+":"+jsDate.getSeconds()+"."+jsDate.getMilliseconds(); 
+        
+        var row ="";
+        row="<div id='append'>"
+        row += "<hr id='hr1'>";
+         row +=  "<li><div class='commenterImage'>";
+        if(data.user.filepath.startsWith("fb_profile_image")){
+          row +="<img src='"+data.user.filepath.replace("fb_profile_image","")+"'/></div>"
+        }else{
+          image="<img src='/images/uploadFiles/";
+          image+=data.user.filepath+"'"+"/></div>";
+          row += image;
+        }
+        
+      
+        row +="<div class='commentText'>";
+        row +="<div id='delete_comment_"+data.comment.commentNo+"' class='delete_btn_custom'><img style='width:30px; height:30px;' src='/images/icon/delete.png'></div>";
+        row +="<p class=''>"+data.comment.commentContent+"</p>";
+        row +="<br><span class='dateSubText'>"+convertedDate+"</span></div>";
+        row +="</li></div>";
+          
+      
+        $("#append").before(row);
+        $("#comment").val("");
+        $("#commentList").scrollTop($("#commentList")[0].scrollHeight); 
+      }
+    });
+  });
 
 
-	$(document).on("click","div[id^='delete_comment_']",function(){
-		var commentNo = $(this).attr("id").replace("delete_comment_","");
-		$.ajax({
-			type : "get",
-			url : "/comment/deleteComment/"+commentNo
-		});
-		$(this).parent().remove();
-	});
+  $(document).on("click","div[id^='delete_comment_']",function(){
+    var commentNo = $(this).attr("id").replace("delete_comment_","");
+    $.ajax({
+      type : "get",
+      url : "/video/deleteComment/"+commentNo
+    });
+    $(this).parent().parent().remove();
+    $("#hr1").remove();
 
-	
-	</script>
+  });
+
+  
+  </script>
+  
+  <!-- 최근본동영상 자바 스크립트  1/1 추가된 부분 ! -->
+  <script type="text/javascript">
+  var player;
+  function onYouTubeIframeAPIReady() {
+	 /*  alert("이건실행되나?"); */
+      $('iframe').each(function(i, e) {
+        if($(e).attr('id')=='player'){
+          player =  new YT.Player($(e).attr('id'), {
+          events: { 'onStateChange': onPlayerStateChange}
+        });
+        }//end if
+      });//end each function
+    }//end function
+    
+    
+    function onPlayerStateChange(event) {
+        switch(event.data) {
+        case -1:
+          var abc = new Array($.cookie('uri3'),$.cookie('uri4'),$.cookie('uri5'),$.cookie('uri6'),$.cookie('uri7'),$.cookie('uri8'),$.cookie('uri9'));
+          for(var i=0;i<abc.length;i++){
+            console.log(i+"번째:"+abc[i]);
+            if(abc[i]==null){
+              var uri="uri"+(i+3);
+              console.log(uri);
+              $.cookie(uri,($(player.getIframe()).attr('src')),{path :'/'});
+              break;
+            }//end if
+          }//end for 
+          console.log($.cookie('uri3'));
+        /*  console.log($("#player").attr("src"));
+            $("#player").each(function(index,value){
+              console.log(index+"번째:"+value.src);
+            });
+            
+            console.log("여기 잘들어오시나여ㅛ? "); */
+          break;
+        } 
+    }
+  
+  </script>
+
+  
 
 
 	
