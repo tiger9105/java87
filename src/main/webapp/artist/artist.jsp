@@ -185,7 +185,7 @@
           iframe : "true",
           href : "/artist/getArtist/"+artNo, 
           width : "640px",
-          height : "600px",
+          height : "550px",
           scrolling : false   
           }); 
        });

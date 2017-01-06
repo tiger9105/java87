@@ -271,7 +271,7 @@ label::before {
 						<div class="thumbnail1" >
 						<div class="video">
 						<c:if test="${video.app eq '참여' }">
-							<img src="/images/icon/up.png">
+							<img style="width:40px;height:40px;" src="/images/icon/up.png">
 						</c:if>	
 						</div>
 							<c:if test="${video.userNumber.artistCode=='0'}">

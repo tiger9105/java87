@@ -72,7 +72,7 @@
 }
 
 .commenterImage img{
-
+    margin-bottom: 4px;
    display: block;
     max-width: 100%;
     height: auto;
@@ -159,6 +159,15 @@ h3{
 margin-top:80px;
 
 }
+#commentH5{
+
+  display: inline;
+  margin: 1px 0 20px 0;
+  font-weight: 600;
+  line-height: 1;
+  color:gray;
+}
+
 
 </style> 
 <body>
@@ -327,9 +336,8 @@ margin-top:80px;
 								<hr id="hr1">
 								<div class="OneComment">
 									<div class="commenterImage">
-										<img src="/images/uploadFiles/${ comment.user.filepath}">
-										<%-- <p class="">${comment.userNo}</p> --%>
-						
+										 <img src="/images/uploadFiles/${ comment.user.filepath}">
+										  <h5 id="commentH5">${comment.user.userId}</h5> 
 									</div>
 								<div class="commentText">
 										<p class="">${comment.commentContent}</p>
@@ -511,27 +519,23 @@ margin-top:80px;
       contentType : false,/*contentType 은 default 값이 "application/x-www-form-urlencoded; charset=UTF-8" 인데, "multipart/form-data" 로 전송이 되게 false 로 넣어준다. */
       data : form,
       success : function(data){
-        var parsedDate = new Date(parseInt(data.comment.commentTime))
-        var jsDate = new Date(parsedDate);
-        var convertedDate= jsDate.getFullYear()+"-"+(jsDate.getMonth()+1)+"-"+jsDate.getDate()+" "+jsDate.getHours()+":"+jsDate.getMinutes()+":"+jsDate.getSeconds()+"."+jsDate.getMilliseconds(); 
+    
         
         var row ="";
         row="<div id='append'>"
         row += "<hr id='hr1'>";
-         row +=  "<li><div class='commenterImage'>";
-        if(data.user.filepath.startsWith("fb_profile_image")){
-          row +="<img src='"+data.user.filepath.replace("fb_profile_image","")+"'/></div>"
-        }else{
-          image="<img src='/images/uploadFiles/";
-          image+=data.user.filepath+"'"+"/></div>";
-          row += image;
-        }
-        
+        row +=  "<li><div class='commenterImage'>";
+
+        image="<img src='/images/uploadFiles/";
+        image+=data.user.filepath+"'"+"/>";
+        row += image;
+        row += "<h5 id='commentH5'>"+data.user.userId+"</h5></div>";
+            
       
         row +="<div class='commentText'>";
         row +="<div id='delete_comment_"+data.comment.commentNo+"' class='delete_btn_custom'><img style='width:30px; height:30px;' src='/images/icon/delete.png'></div>";
         row +="<p class=''>"+data.comment.commentContent+"</p>";
-        row +="<br><span class='dateSubText'>"+convertedDate+"</span></div>";
+        row +="<br><span class='dateSubText'>"+data.comment.commentTime+"</span></div>";
         row +="</li></div>";
           
       
@@ -556,6 +560,8 @@ margin-top:80px;
 
   
   </script>
+
+
   
   <!-- 최근본동영상 자바 스크립트  1/1 추가된 부분 ! -->
   <script type="text/javascript">

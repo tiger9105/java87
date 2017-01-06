@@ -843,8 +843,8 @@ text-align:center;
 	        top : "true",
 	        iframe : "true",
 	        href : "/artist/getArtist/"+$("#artistNo").val(),
-	        width : "600px",
-	        height : "600px",
+	        width : "640px",
+	        height : "550px",
 	        scrolling:false
 	        
 	      });

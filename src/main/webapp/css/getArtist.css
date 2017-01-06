@@ -52,6 +52,25 @@ article {
 	transition-delay: .1s;
 }
 
+
+.uno{
+	width:640px;
+	background-color: white;
+	position: absolute;
+	left: 0;
+	top: 80px;
+	right: 0;
+	bottom: 0;
+	padding: 1rem 2rem 0;
+	overflow: auto;
+	transition: .7s;
+	transform: scale(0);
+	transform-origin: center right;
+	transition-delay: .1s;
+}
+
+
+
 article:before {
 	color: rgba(0, 0, 0, .2);
 	font-size: 4rem;
@@ -61,29 +80,27 @@ article:before {
 	right: 1rem;
 }
 
-h2 {
-	font-size: 2.5rem;
+.h2 {
+	
 	font-weight: 600;
-	text-align: center;
-	colcor: gray;
+	color: gray;
 }
 
-body>h2 {
+body>.h2 {
 	height: auto;
 }
 
-h2 img {
-	width: 150px;
-	height: 150px;
-	border: 0 none rgba(0, 0, 0, .7);
-	border-radius: 50%;
+.h2 img {
+	width: 250px;
+	height: 250px;
 	padding: 0px;
-	display: block;
-	margin: 0 auto;
-	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	display:inline-block;
+	margin:10px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .8);
+	float:left;
 }
 
-h2 span {
+.h2 span {
 	font-weight: 400;
 	display: block;
 	margin-bottom: 1rem;
@@ -140,7 +157,7 @@ input[type="radio"]{
 
 
 label {
-	width: 25%;
+	width: 50%;
 	float: left;
 	text-align: center;
 	cursor: pointer;

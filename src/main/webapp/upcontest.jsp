@@ -161,6 +161,17 @@ li img {
   animation: ripple 1s ease-out;
 }
  
+ /*폰트  /// */
+ #id{
+  font-family: 'kiwibananabold';
+}
+
+@font-face {
+font-family: 'kiwibananabold'; /* 폰트 패밀리 이름 주기*/
+src: url("/fonts/kiwibananabold.ttf"); /*폰트 파일 주소*/
+}
+ 
+ 
 </style>
 <!-- Basic Page Needs ================================================== 
 ================================================== -->
@@ -301,13 +312,13 @@ li img {
 </div>
 
 <div id="seasoninfo" style="height:30px; margin-top: 20px; margin-left: 350px;" >
-<h5 style="float:left;padding-left:5px;width:100px;">시즌시작:</h5><h4 id="stday"style="width:200px; float:left; padding-left:10px; ">${list[0].seasonStart}</h4>
-<h5 style="float:left;padding-left:5px;width:100px;">시즌종료:</h5><h4 id="enday"style="width:200px; float:left; padding-left:10px; ">${list[0].seasonEnd}</h4>
+<h5 style="float:left;padding-left:5px;width:100px;font-family: kiwibananabold;">시즌시작:</h5><h4 id="stday"style="width:200px; float:left; padding-left:10px;font-family: kiwibananabold; ">${list[0].seasonStart}</h4>
+<h5 style="float:left;padding-left:5px;width:100px;font-family: kiwibananabold;">시즌종료:</h5><h4 id="enday"style="width:200px; float:left; padding-left:10px;font-family: kiwibananabold; ">${list[0].seasonEnd}</h4>
 
 <input type="hidden" id="checkseason" name="checkseason" value="${list[0].state}"> 
 
 </div>
-
+ 
 
 
 
@@ -322,10 +333,10 @@ li img {
             src="https://www.youtube.com/embed/${leag.voteObject1}?enablejsapi=1"></iframe>
             <button class="votebutton" name="${leag.leagNo}">UP</button>
             <h3 class="votelike">${leag.vote1}</h3>
-            <h3 class="voteArtist">${leag.artist1.artistName}</h3>
+            <h3 class="voteArtist" style="font-family: kiwibananabold; color:#fb0595;">-${leag.artist1.artistName}-</h3>
   </li>
   <li class="lioption1">
-    <img src="/artistImage/vs.pn.png">
+    <img src="/artistImage/vs.pn.png" style="height:50px;width: 110px;margin-top:100px; ">
   </li>
   <li class="lioption">
     <iframe class="player"
@@ -333,7 +344,7 @@ li img {
             src="https://www.youtube.com/embed/${leag.voteObject2}?enablejsapi=1"></iframe>
             <button class="votebutton" name="${leag.leagNo}">UP</button>
             <h3 class="votelike">${leag.vote2}</h3>
-            <h3 class="voteArtist">${leag.artist2.artistName}</h3>
+            <h3 class="voteArtist" style="font-family: kiwibananabold; color:#fb0595;">-${leag.artist2.artistName}-</h3>
   </li>
 </ul>
 <input class="checkvote" type="hidden" name="checkvote" value="${leag.vote1<=leag.vote2?leag.voteObject2:leag.voteObject1}_${leag.vote1<=leag.vote2?leag.artist2.artistNo:leag.artist1.artistNo}" >
