@@ -93,7 +93,7 @@ public class ArtistController {
  
   @RequestMapping(value = "upload")
   @ResponseBody
-  public String uploadFile( @ModelAttribute("artist") Artist artist,MultipartHttpServletRequest request,@RequestParam("uploadfile") MultipartFile multipartfile, HttpSession session,Model model) throws Exception {
+  public String uploadFile( @ModelAttribute("artist") Artist artist,HttpSession session,MultipartHttpServletRequest request,@RequestParam("uploadfile") MultipartFile multipartfile,Model model) throws Exception {
       
     
     Iterator<String> itr =  request.getFileNames();
@@ -104,10 +104,12 @@ public class ArtistController {
               //just temporary save file info into ufile
               
               System.out.println("image?"+multipartfile.getOriginalFilename());
+              String serverPath = session.getServletContext().getRealPath("/images/uploadFiles")+"/"+multipartfile.getOriginalFilename();
+              System.out.println("서버 패스 :"+serverPath);
             String path="C:\\Users\\BitCamp\\git\\java87\\UI02Project\\src\\main\\webapp\\images\\uploadFiles\\"+multipartfile.getOriginalFilename(); 
       //        String path="C:\\Users\\kimjihee\\git\\java87\\src\\main\\webapp\\images\\uploadFiles\\"+multipartfile.getOriginalFilename(); //
       //        String path1="C:\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\java87\\images\\uploadFiles"+multipartfile.getOriginalFilename(); //
-              File file =new File(path);
+              File file =new File(serverPath);
       //        File file1=new File(path1);
               
               multipartfile.transferTo(file); // �뙆�씪蹂대깂 
@@ -170,7 +172,13 @@ public class ArtistController {
   @RequestMapping(value = "getArtist/{artistNo}", method = RequestMethod.GET)
   public String getArtist(@PathVariable("artistNo") int artistNo, Model model) throws Exception {
       //Business Logic
-    
+  
+/*    
+    if(user==null){
+      session.setAttribute("fromGetArtist", true);
+      session.setAttribute("artistNo", artistNo);
+      return "forward:/index.jsp";
+    }*/
     System.out.println("/artist/getArtist : GET");
     Artist artist = artistService.getArtist(artistNo);
 
@@ -180,7 +188,21 @@ public class ArtistController {
 
 
 }
+  @RequestMapping(value = "getArtistFromShare/{artistNo}", method = RequestMethod.GET)
+  public String getArtistFromShare(@PathVariable("artistNo") int artistNo, Model model, HttpSession session) throws Exception {
+      //Business Logic
+    session.setAttribute("fromGetArtist", true);
+    session.setAttribute("artistNo", artistNo);
+
+    System.out.println("/artist/getArtist : GET");
+    Artist artist = artistService.getArtist(artistNo);
+
+    model.addAttribute("artist", artist);
   
+  return "forward:/index.jsp";
+
+
+}
   @RequestMapping(value = "getArtist1", method = RequestMethod.GET)
   public String getArtist1(HttpSession session, Model model) throws Exception {
       //Business Logic

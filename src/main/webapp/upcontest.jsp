@@ -218,7 +218,7 @@ li img {
       <div id="mainmenu">
           <ul class="sf-menu">
             <li><a href="/index.jsp" >Home</a></li>
-            <li><a href="/about.jsp">About</a></li>
+         
             <li><a href="/artist/listArtist">Artist</a>
             <li><a href="/video/listVideo">Music</a>
             <li><a href="/season/getSeasonlist" id="visited">UP Tournament</a></li>
@@ -239,7 +239,7 @@ li img {
         <select>
             <option value="">메뉴</option>
             <option value="/index.jsp">Home</option>
-            <option value="/about.jsp">About</option>
+         
             <option value="/artist/listArtist">Artist</option>
             <option value="/video/listVideo">Video</option>
             <option value="/season/getSeasonlist">UP Tournament</option>
@@ -560,7 +560,12 @@ $("#probtn").on("click",function(){
           success: function(data){
         	  console.log(data.result);
         	  if(data.result==100){
-        		  swal("시즌이 진행되었습니다.(4강으로)");   
+        		     swal({
+                         title:"",     
+                         text:"시즌이 진행되었습니다.",
+                         confirmButtonColor:"#ff2770",
+                         imageSize:"40x40"
+                       });  
         		  window.location.reload();
         	  }
         
@@ -582,7 +587,12 @@ $("#probtn1").on("click",function(){
 	          success: function(data){
 	            console.log(data.result);
 	            if(data.result==101){
-	              swal("시즌이 진행되었습니다.(3,4위전으로)"); 
+	                swal({
+	                     title:"",     
+	                     text:"시즌이 진행되었습니다.",
+	                     confirmButtonColor:"#ff2770",
+	                     imageSize:"40x40"
+	                   }); 
 	              window.location.reload();
 	             
 	            
@@ -639,7 +649,12 @@ $(".votebutton").on("click",function(){
              },
           success: function(data){
         	 if(data.check==100){
-        	   swal("이미 투표하셨습니다.");
+        		 swal({
+                     title:"",     
+                     text:"이미 투표하셨습니다.",
+                     confirmButtonColor:"#ff2770",
+                     imageSize:"40x40"
+                   });
         	 }else{
         	   console.log("여기가 들어오긴하나?");
         	   $a.text(num);
@@ -655,7 +670,12 @@ $("#fourgang").on("click",function(){
 	  var checkpro=${min};
 	  
 	  if(checkpro==4){	  
-		  swal("시즌중입니다.");
+		    swal({
+                title:"",     
+                text:"시즌중 입니다.",
+                confirmButtonColor:"#ff2770",
+                imageSize:"40x40"
+              });
 	  }else{
 		  location.href='/season/LeagList/'+selectseason+'/'+progress;
 	  }
@@ -666,7 +686,12 @@ $("#threefourgang").on("click",function(){
     var progress="2";
     var checkpro=${min};
     if(checkpro==3 || checkpro==4){   
-        swal("시즌중입니다.");
+        swal({
+            title:"",     
+            text:"시즌중 입니다.",
+            confirmButtonColor:"#ff2770",
+            imageSize:"40x40"
+          });
     }
     else{
         location.href='/season/LeagList/'+selectseason+'/'+progress;
@@ -680,7 +705,12 @@ $("#final").on("click",function(){
     var checkpro=${min};
     if(checkpro==3 || checkpro==4){
     	
-        swal("시즌중입니다.");
+        swal({
+            title:"",     
+            text:"시즌중 입니다.",
+            confirmButtonColor:"#ff2770",
+            imageSize:"40x40"
+          });
     }
     else{
         location.href='/season/LeagList/'+selectseason+'/'+progress;

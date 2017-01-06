@@ -438,9 +438,9 @@ public class UserController {
   public @ResponseBody Boolean findPwd(String EmCheck, HttpSession session) throws Exception{
     System.out.println("여긴 이메일비밀번호 찾아주는곳");
     
-    String sender = "mycloset.test@gmail.com";
+    String sender = "UpContest@gmail.com";
     String receiver = EmCheck;
-    String subject ="mycloset비밀번호발송.";
+    String subject ="UpContest임시비밀번호발송.";
     String str = ((int)(Math.random() * 8999)+1000)+"";
       
     System.out.println("이메일 패스워드:"+str);
@@ -456,7 +456,7 @@ public class UserController {
     //SMTP 서버의 계정 설정
     //Naver와 연결할 경우 네이버 아이디 지정
     //Google과 연결할 경우 본인의 Gmail 주소
-    p.put("mail.smtp.user", "mycloset.test@gmail.com");
+    p.put("mail.smtp.user", "UpContest@gmail.com");
 
     //SMTP 서버 정보 설정
     //네이버일 경우 smtp.naver.com

@@ -470,7 +470,10 @@ text-align:center;
 	
 </head>
 <body>
- 
+  <input type="hidden" id="fromGetArtist" value="${fromGetArtist}">
+  <input type="hidden" id="artistNo" value="${artistNo}">
+  <% session.removeAttribute("fromGetArtist");%>
+  <% session.removeAttribute("artistNo");%>
 
 
 <c:import url="/nav/nav.jsp"></c:import> 
@@ -487,19 +490,23 @@ text-align:center;
 				
 				
 					<ul class="sf-menu">
-					
+					<c:if test="${user!=null }">
 						<li><a href="/index.jsp" id="visited">Home</a></li>
-						<li><a href="/about.jsp">About</a></li>
+						
 						<li><a href="/artist/listArtist">Artist</a>
 			  	  <li><a href="/video/listVideo">Music</a>
 						<li><a href="/season/getSeasonlist">UP Tournament</a></li>
+						</c:if>
+						<c:if test="${user==null }">
+						<li><a href="#" style="color: white;">로그인이후에 서비스 이용가능합니다</a><br></li>
+						</c:if>
 						<!-- 로그인 로그아웃 부분  -->
 						<c:if test="${user!=null}">
 							<li><a href="/user/logout" onclick="FB.logout();"
 								style="color: white;">logout</a><br></li>
 						</c:if>
 						<c:if test="${user==null}">
-							<li><a href="/login.jsp" style="color: white;">login</a><br></li>
+							<li><a href="/login.jsp" style="color: white;">로그인</a><br></li>
 						</c:if>
 					</ul>
 				</div>
@@ -509,11 +516,13 @@ text-align:center;
 				<form id="responsive-menu" action="#" method="post">
 					<select>
 						<option value="">메뉴</option>
+						<c:if test="${user!=null}">
 						<option value="/index.jsp">Home</option>
-						<option value="/about.jsp">About</option>
+					
 						<option value="/artist/listArtist">Artist</option>
 						<option value="/video/listVideo">Video</option>
 						<option value="/season/getSeasonlist">UP Tournament</option>
+						</c:if>
 					</select>
 				</form>
 			</div>
@@ -716,7 +725,7 @@ text-align:center;
 	<!-- Socialize ==================================================
 ================================================== -->
 	<hr class="separator2">
-	<div class="socialsblock">
+	<!-- <div class="socialsblock">
 		<div class="container socialize">
 			<h3>공유하기★</h3>
 			<section class="socials">
@@ -728,8 +737,8 @@ text-align:center;
 				</ul>
 			</section>
 		</div>
-		<!-- container ends here -->
-	</div>
+		container ends here
+	</div> -->
 	<!-- socialsblock ends here -->
 	<!-- Footer ==================================================
 ================================================== -->
@@ -826,5 +835,22 @@ text-align:center;
 	<script src="/node_modules/sweetalert/dist/sweetalert.min.js"
 		type="text/javascript"></script>
 	<script type="text/javascript" src="/javascript/mainjs/main.js"></script>
+	<script type="text/javascript">
+
+	if($("#fromGetArtist").val()=='true'){
+	      $.colorbox({
+	        closeButton : "false",
+	        top : "true",
+	        iframe : "true",
+	        href : "/artist/getArtist/"+$("#artistNo").val(),
+	        width : "600px",
+	        height : "600px",
+	        scrolling:false
+	        
+	      });
+	    }
+	
+	
+	</script>
 </body>
 </html>

@@ -180,7 +180,7 @@ margin-top:80px;
 				<div id="mainmenu">
 					<ul class="sf-menu">
 						<li><a href="/index.jsp">Home</a></li>
-						<li><a href="/about.jsp">About</a></li>
+					
 						<li><a href="/artist/listArtist" >Artist</a>
 							<ul>
 								<li><a href="/artist/listArtist">Artist</a></li>
@@ -206,15 +206,12 @@ margin-top:80px;
 				<!-- Responsive Menu -->
 				<form id="responsive-menu" action="#" method="post">
 					<select>
-						<option value="">메뉴</option>
-						<option value="index.jsp">Home</option>
-						<option value="about.jsp">About</option>
-						<option value="artist.jsp">Artist</option>
-						<option value="portfolioproject.jsp">Portfolio Project</option>
-						<option value="blog.jsp">asdsa</option>
-						<option value="singleblog.jsp">Busking</option>
-						<option value="features.jsp">Features</option>
-						<option value="contact.jsp">My page</option>
+			      <option value="">메뉴</option>
+            <option value="/index.jsp">Home</option>
+            <option value="/about.jsp">About</option>
+            <option value="/artist/listArtist">Artist</option>
+            <option value="/video/listVideo">Video</option>
+            <option value="/season/getSeasonlist">UP Tournament</option>
 					</select>
 				</form>
 			</div>

@@ -176,7 +176,7 @@ label::before {
 				<ul class="sf-menu">
           
             <li><a href="/index.jsp" >Home</a></li>
-            <li><a href="/about.jsp">About</a></li>
+          
             <li><a href="/artist/listArtist">Artist</a>
             <li><a href="/video/listVideo"  id="visited">Music</a>
             <li><a href="/season/getSeasonlist">UP Tournament</a></li>
@@ -197,7 +197,7 @@ label::before {
 					<select>
 		          <option value="">메뉴</option>
             <option value="/index.jsp">Home</option>
-            <option value="/about.jsp">About</option>
+          
             <option value="/artist/listArtist">Artist</option>
             <option value="/video/listVideo">Video</option>
             <option value="/season/getSeasonlist">UP Tournament</option>

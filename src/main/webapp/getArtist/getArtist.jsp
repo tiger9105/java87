@@ -119,10 +119,20 @@
                    success: function(userlikeart){
                      console.log("여기들어왔다옴");
                      if(userlikeart.artNo==0 && userlikeart.userNo==0 ){
-                     swal("찜목록에 이미들어갔슴");
+                    	 swal({
+                             title:"",     
+                             text:"찜목록에 이미 있습니다.",
+                             confirmButtonColor:"#ff2770",
+                             imageSize:"40x40"
+                           });
                      }
                      else{
-                       swal("찜목록에 추가로들어갔슴");
+                    	 swal({
+                             title:"",     
+                             text:"찜목록에 추가 되었습니다.",
+                             confirmButtonColor:"#ff2770",
+                             imageSize:"40x40"
+                           });
                      }
                  }                  
           });              

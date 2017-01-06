@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/artist.css">
 <!-- colorbox창 -->
@@ -42,7 +43,6 @@
 				<div id="mainmenu">
 					<ul class="sf-menu">
 						<li><a href="/index.jsp">Home</a></li>
-            <li><a href="/about.jsp">About</a></li>
             <li><a href="/artist/listArtist" id="visited">Artist</a>
             <li><a href="/video/listVideo">Music</a>
             <li><a href="/season/getSeasonlist">UP Tournament</a></li>
@@ -63,7 +63,6 @@
 					<select>
 				        <option value="">메뉴</option>
             <option value="/index.jsp">Home</option>
-            <option value="/about.jsp">About</option>
             <option value="/artist/listArtist">Artist</option>
             <option value="/video/listVideo">Video</option>
             <option value="/season/getSeasonlist">UP Tournament</option>
@@ -118,8 +117,12 @@
 											<img src="/images/uploadFiles/${artist.image}" alt="" class="img-responsive">
 											<figcaption>		
 												<ul>
-													<li><i class="fa fa-facebook fa-2x"></i></li>
-													<li><i class="fa fa-twitter fa-2x"></i></li>
+													<li>
+													   <i class="fa fa-facebook fa-2x" id="facebook_btn_${artist.artistNo}"></i>
+													   <input type="hidden" value="/images/uploadFiles/${artist.image}">
+													</li>
+												
+													<li><i class="fa fa-twitter fa-2x" id="twitter_btn_${artist.artistNo }"></i></li>
 													<li><i class="fa fa-linkedin fa-2x" id="getArtist_${artist.artistNo }"></i></li>
 												</ul>
 											</figcaption>
@@ -240,6 +243,49 @@ if(link.includes("genre")){
 }
 
 </script>
+  <script type="text/javascript">
+       $('i[id^=twitter_btn_]').on("click", function() {
+        var artNo = $(this).attr("id").replace("twitter_btn_","");
+        window.open("https://twitter.com/share?text=ddddddd&url=http://192.168.0.77:8080/artist/getArtistFromShare/"+artNo,"newwindow","width=552,height=690,toolbar=0,menubar=0"); 
+       });
+  </script>
+  
+   <script type="text/javascript">
+   window.fbAsyncInit = function() {
+	      FB.init({
+	        appId      : '1831265407091493',
+	        cookie     : true,  
+	        xfbml      : true,  
+	        version    : 'v2.8' 
+	      });
+	  };
+	  (function(d, s, id){
+	       var js, fjs = d.getElementsByTagName(s)[0];
+	       if (d.getElementById(id)) {return;}
+	       js = d.createElement(s); js.id = id;
+	       js.src = "//connect.facebook.net/ko_KR/sdk.js";
+	       fjs.parentNode.insertBefore(js, fjs);
+	     }(document, 'script', 'facebook-jssdk'));
+	  
+	  
+       $('i[id^=facebook_btn_]').on("click", function() {
+        var artNo = $(this).attr("id").replace("facebook_btn_","");
+        var check=$(this).next().val().split("/");
+    
+      alert(check[3]);
+      console.log("http://192.168.0.77/images/uploadFiles/"+check[3]);
+        FB.ui({
+            method: 'feed',
+            name: "아티스트제목",  //제목
+            link: "http://192.168.0.77:8080/artist/getArtistFromShare/"+artNo,              //링크
+            picture:"http://cache.clien.net/cs2/data/file/pds/thumb/728x0_70/20160311154540_TZf4Kwx9_EC9584EC9DB4EC9CA049.jpg",             //이미지
+            caption: '아티스트 정보 테스트',        
+            description: "와우 신난다."//내용 
+        });
+       });
+  </script>
+  
+  
 		
 </body>
 </html>

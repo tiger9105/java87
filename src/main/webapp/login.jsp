@@ -109,12 +109,11 @@
 	<script src="/javascript/colorbox/jquery.colorbox.js"></script>
 	<script type="text/javascript">
 	  $("#checkpassword").click(function(){
-		  alert("클릭했음");
-          $.colorbox(
+		      $.colorbox(
             {
             href:"/front/Password.jsp",
-            width:'400px',
-            height:'333px',
+            width:'460px',
+            height:'270px',
             scrolling:false,
             iframe:true}
             );
